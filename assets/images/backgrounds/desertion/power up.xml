@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="power up.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bella Power Up0000" x="34" y="34" width="1092" height="877" frameX="0" frameY="-2" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bella Power Up0001" x="34" y="34" width="1092" height="877" frameX="0" frameY="-2" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bella Power Up0002" x="34" y="929" width="1088" height="879" frameX="-2" frameY="0" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bella Power Up0003" x="34" y="929" width="1088" height="879" frameX="-2" frameY="0" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bella Power Up0004" x="34" y="929" width="1088" height="879" frameX="-2" frameY="0" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bella Power Up0005" x="1140" y="929" width="1082" height="878" frameX="-5" frameY="-1" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bella Power Up0006" x="1140" y="929" width="1082" height="878" frameX="-5" frameY="-1" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bella Power Up0007" x="1140" y="929" width="1082" height="878" frameX="-5" frameY="-1" frameWidth="1092" frameHeight="879"/>
+	<SubTexture name="Bex Power Up0000" x="2240" y="881" width="953" height="830" frameX="-3" frameY="0" frameWidth="960" frameHeight="830"/>
+	<SubTexture name="Bex Power Up0001" x="2240" y="881" width="953" height="830" frameX="-3" frameY="0" frameWidth="960" frameHeight="830"/>
+	<SubTexture name="Bex Power Up0002" x="1144" y="34" width="960" height="828" frameX="0" frameY="-2" frameWidth="960" frameHeight="830"/>
+	<SubTexture name="Bex Power Up0003" x="1144" y="34" width="960" height="828" frameX="0" frameY="-2" frameWidth="960" frameHeight="830"/>
+	<SubTexture name="Bex Power Up0004" x="1144" y="34" width="960" height="828" frameX="0" frameY="-2" frameWidth="960" frameHeight="830"/>
+	<SubTexture name="Bex Power Up0005" x="2122" y="34" width="956" height="829" frameX="-1" frameY="-1" frameWidth="960" frameHeight="830"/>
+	<SubTexture name="Bex Power Up0006" x="2122" y="34" width="956" height="829" frameX="-1" frameY="-1" frameWidth="960" frameHeight="830"/>
+	<SubTexture name="Bex Power Up0007" x="2122" y="34" width="956" height="829" frameX="-1" frameY="-1" frameWidth="960" frameHeight="830"/>
+</TextureAtlas>

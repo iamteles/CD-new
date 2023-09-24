@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="countdown.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="10000" x="1057" y="770" width="1012" height="436"/>
+	<SubTexture name="10001" x="1057" y="770" width="1012" height="436"/>
+	<SubTexture name="10002" x="2080" y="34" width="1006" height="424" frameX="0" frameY="0" frameWidth="1012" frameHeight="436"/>
+	<SubTexture name="10003" x="2080" y="34" width="1006" height="424" frameX="0" frameY="0" frameWidth="1012" frameHeight="436"/>
+	<SubTexture name="10004" x="2087" y="476" width="1005" height="424" frameX="0" frameY="0" frameWidth="1012" frameHeight="436"/>
+	<SubTexture name="10005" x="2087" y="476" width="1005" height="424" frameX="0" frameY="0" frameWidth="1012" frameHeight="436"/>
+	<SubTexture name="10006" x="2087" y="476" width="1005" height="424" frameX="0" frameY="0" frameWidth="1012" frameHeight="436"/>
+	<SubTexture name="10007" x="2087" y="476" width="1005" height="424" frameX="0" frameY="0" frameWidth="1012" frameHeight="436"/>
+	<SubTexture name="10008" x="2087" y="476" width="1005" height="424" frameX="0" frameY="0" frameWidth="1012" frameHeight="436"/>
+	<SubTexture name="20000" x="3110" y="34" width="712" height="437"/>
+	<SubTexture name="20001" x="3110" y="34" width="712" height="437"/>
+	<SubTexture name="20002" x="3110" y="489" width="704" height="425" frameX="0" frameY="-12" frameWidth="712" frameHeight="437"/>
+	<SubTexture name="20003" x="3110" y="489" width="704" height="425" frameX="0" frameY="-12" frameWidth="712" frameHeight="437"/>
+	<SubTexture name="20004" x="2087" y="932" width="703" height="425" frameX="0" frameY="-12" frameWidth="712" frameHeight="437"/>
+	<SubTexture name="20005" x="2087" y="932" width="703" height="425" frameX="0" frameY="-12" frameWidth="712" frameHeight="437"/>
+	<SubTexture name="20006" x="2087" y="932" width="703" height="425" frameX="0" frameY="-12" frameWidth="712" frameHeight="437"/>
+	<SubTexture name="20007" x="2087" y="932" width="703" height="425" frameX="0" frameY="-12" frameWidth="712" frameHeight="437"/>
+	<SubTexture name="20008" x="2087" y="932" width="703" height="425" frameX="0" frameY="-12" frameWidth="712" frameHeight="437"/>
+	<SubTexture name="30000" x="2808" y="932" width="306" height="430"/>
+	<SubTexture name="30001" x="2808" y="932" width="306" height="430"/>
+	<SubTexture name="30002" x="3132" y="932" width="296" height="417" frameX="-5" frameY="-6" frameWidth="306" frameHeight="430"/>
+	<SubTexture name="30003" x="3132" y="932" width="296" height="417" frameX="-5" frameY="-6" frameWidth="306" frameHeight="430"/>
+	<SubTexture name="30004" x="3446" y="932" width="295" height="415" frameX="-5" frameY="-7" frameWidth="306" frameHeight="430"/>
+	<SubTexture name="30005" x="3446" y="932" width="295" height="415" frameX="-5" frameY="-7" frameWidth="306" frameHeight="430"/>
+	<SubTexture name="30006" x="3446" y="932" width="295" height="415" frameX="-5" frameY="-7" frameWidth="306" frameHeight="430"/>
+	<SubTexture name="30007" x="3446" y="932" width="295" height="415" frameX="-5" frameY="-7" frameWidth="306" frameHeight="430"/>
+	<SubTexture name="30008" x="3446" y="932" width="295" height="415" frameX="-5" frameY="-7" frameWidth="306" frameHeight="430"/>
+	<SubTexture name="Go0000" x="34" y="34" width="1005" height="730"/>
+	<SubTexture name="Go0001" x="34" y="34" width="1005" height="730"/>
+	<SubTexture name="Go0002" x="1057" y="34" width="1005" height="718" frameX="0" frameY="0" frameWidth="1005" frameHeight="730"/>
+	<SubTexture name="Go0003" x="1057" y="34" width="1005" height="718" frameX="0" frameY="0" frameWidth="1005" frameHeight="730"/>
+	<SubTexture name="Go0004" x="34" y="782" width="1005" height="720" frameX="0" frameY="0" frameWidth="1005" frameHeight="730"/>
+	<SubTexture name="Go0005" x="34" y="782" width="1005" height="720" frameX="0" frameY="0" frameWidth="1005" frameHeight="730"/>
+	<SubTexture name="Go0006" x="34" y="782" width="1005" height="720" frameX="0" frameY="0" frameWidth="1005" frameHeight="730"/>
+	<SubTexture name="Go0007" x="34" y="782" width="1005" height="720" frameX="0" frameY="0" frameWidth="1005" frameHeight="730"/>
+	<SubTexture name="Go0008" x="34" y="782" width="1005" height="720" frameX="0" frameY="0" frameWidth="1005" frameHeight="730"/>
+</TextureAtlas>

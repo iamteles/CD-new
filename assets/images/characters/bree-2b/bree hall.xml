@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bree hall.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Breeh Down0000" x="34" y="2497" width="1184" height="789" frameX="-1" frameY="-8" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0001" x="34" y="2497" width="1184" height="789" frameX="-1" frameY="-8" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0002" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0003" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0004" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0005" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0006" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0007" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0008" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0009" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0010" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0011" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0012" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0013" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0014" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0015" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0016" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0017" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0018" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0019" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0020" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0021" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0022" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0023" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Down0024" x="1222" y="853" width="1178" height="792" frameX="0" frameY="0" frameWidth="1185" frameHeight="797"/>
+	<SubTexture name="Breeh Idle0000" x="1222" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0001" x="1222" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0002" x="1222" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0003" x="1222" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0004" x="1222" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0005" x="34" y="1678" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0006" x="34" y="1678" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0007" x="34" y="1678" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0008" x="34" y="1678" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0009" x="34" y="1678" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0010" x="2408" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0011" x="2408" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0012" x="2408" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0013" x="2408" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Idle0014" x="2408" y="34" width="1168" height="801"/>
+	<SubTexture name="Breeh Left0000" x="34" y="34" width="1170" height="805" frameX="0" frameY="0" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0001" x="34" y="34" width="1170" height="805" frameX="0" frameY="0" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0002" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0003" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0004" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0005" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0006" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0007" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0008" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0009" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0010" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0011" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0012" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0013" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0014" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0015" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0016" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0017" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0018" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0019" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0020" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0021" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0022" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0023" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Left0024" x="34" y="857" width="1169" height="803" frameX="-3" frameY="-2" frameWidth="1172" frameHeight="805"/>
+	<SubTexture name="Breeh Right0000" x="2401" y="1683" width="1141" height="802" frameX="-11" frameY="-1" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0001" x="2401" y="1683" width="1141" height="802" frameX="-11" frameY="-1" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0002" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0003" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0004" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0005" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0006" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0007" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0008" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0009" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0010" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0011" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0012" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0013" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0014" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0015" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0016" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0017" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0018" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0019" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0020" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0021" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0022" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0023" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Right0024" x="1221" y="1663" width="1147" height="806" frameX="0" frameY="0" frameWidth="1152" frameHeight="806"/>
+	<SubTexture name="Breeh Up0000" x="2418" y="853" width="1147" height="812" frameX="-5" frameY="0" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0001" x="2418" y="853" width="1147" height="812" frameX="-5" frameY="0" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0002" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0003" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0004" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0005" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0006" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0007" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0008" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0009" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0010" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0011" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0012" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0013" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0014" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0015" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0016" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0017" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0018" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0019" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0020" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0021" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0022" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0023" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+	<SubTexture name="Breeh Up0024" x="1236" y="2487" width="1147" height="803" frameX="0" frameY="-9" frameWidth="1152" frameHeight="812"/>
+</TextureAtlas>

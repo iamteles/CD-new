@@ -1,0 +1,44 @@
+{
+    "zoom": 0.6,
+    "bfPos": [612.6, 1000, 0, -323.05],
+    "dadPos": [0, 40, 0, 0],
+    "objects": [
+        {
+            "objName": "back",
+            "path": "backgrounds/cave/cave back",
+            "position": [-439.05, -207.65],
+            "scrollFactor": [0.5, 0.5]
+        },
+        {
+            "objName": "water",
+            "path": "backgrounds/cave/water",
+            "position": [-243.55, 390.2],
+            "alpha": 1,
+            "animations": [
+                {
+                    "name": "idle",
+                    "prefix": "water",
+                    "framerate": 24,
+                    "looped": true
+                }
+            ],
+            "scrollFactor": [0.6, 0.6]
+        },
+        {
+            "objName": "floor",
+            "path": "backgrounds/cave/floor",
+            "position": [-285.5, 13.35],
+            "scrollFactor": [0.7, 0.7]
+        },
+        {
+            "objName": "lwall",
+            "path": "backgrounds/cave/wall left",
+            "position": [-365.25, -159.25]
+        },
+        {
+            "objName": "rwall",
+            "path": "backgrounds/cave/wall right",
+            "position": [1361.35, -159.25]
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Bex ALTidle"
+		},
+		{
+			"offsets": [
+				-34,
+				1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Bex ALTleft"
+		},
+		{
+			"offsets": [
+				-38,
+				1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Bex ALTdown"
+		},
+		{
+			"offsets": [
+				-39,
+				4
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Bex ALTup"
+		},
+		{
+			"offsets": [
+				-40,
+				-1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Bex ALTright"
+		},
+		{
+			"offsets": [
+				-4,
+				84
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "panic",
+			"loop": false,
+			"name": "Bex Panic"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-2b/bex 2b alt",
+	"position": [
+		0,
+		70
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		38,
+		41,
+		50
+	],
+	"camera_position": [
+		-200,
+		-70
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-140, 22, -22]
+}

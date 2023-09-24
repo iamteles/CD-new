@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tabs.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="extras tab0000" x="34" y="168" width="426" height="98"/>
+	<SubTexture name="skins tab0000" x="34" y="284" width="426" height="98"/>
+	<SubTexture name="songs tab0000" x="34" y="34" width="432" height="116"/>
+</TextureAtlas>

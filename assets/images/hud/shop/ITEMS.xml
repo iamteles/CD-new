@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ITEMS.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="base0000" x="34" y="34" width="271" height="236"/>
+	<SubTexture name="mlc0000" x="612" y="288" width="271" height="236"/>
+	<SubTexture name="shack0000" x="1190" y="34" width="271" height="236"/>
+	<SubTexture name="crown0000" x="34" y="288" width="271" height="236"/>
+	<SubTexture name="gallery0000" x="323" y="34" width="271" height="236"/>
+	<SubTexture name="mania0000" x="323" y="288" width="271" height="236"/>
+	<SubTexture name="mic0000" x="612" y="34" width="271" height="236"/>
+	<SubTexture name="music0000" x="901" y="34" width="271" height="236"/>
+	<SubTexture name="tails0000" x="901" y="288" width="271" height="236"/>
+	<SubTexture name="ticket0000" x="1190" y="288" width="271" height="236"/>
+</TextureAtlas>

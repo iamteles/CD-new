@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-1,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Breeh Idle"
+		},
+		{
+			"offsets": [
+				-4,
+				1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Breeh Left"
+		},
+		{
+			"offsets": [
+				7,
+				-11
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Breeh Down"
+		},
+		{
+			"offsets": [
+				-20,
+				11
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Breeh Up"
+		},
+		{
+			"offsets": [
+				-25,
+				-1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Breeh Right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bree-2b/bree hall",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		127,
+		115,
+		135
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-95, -14, 24]
+}

@@ -1,0 +1,14 @@
+{
+    "zoom": 0.6,
+    "bfPos": [1400, 1800, -550, -300],
+    "dadPos": [770, 900, -300, 0],
+    "thirdPos": [200, 1800, 100, -300],
+    "objects": [
+        {
+            "objName": "outside",
+            "path": "backgrounds/desertion/desertion-one",
+            "position": [-707, -225.65],
+            "scrollFactor": [1, 1]
+        }
+    ]
+}

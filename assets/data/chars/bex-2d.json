@@ -1,0 +1,83 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				188,
+				-2
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				140,
+				-12
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				124,
+				44
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				92,
+				8
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [
+				140,
+				1
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-2d/bex-2d",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "pat",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		161,
+		161
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"rating_position": [
+		-370,
+		300
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-140, 22, -22]
+}

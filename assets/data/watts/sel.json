@@ -1,0 +1,15 @@
+{
+    "ident": "sel",
+    "lines": [
+        [
+            "Sure, what do you want to know.",
+            "neutral",
+            0.05
+        ],
+        [
+            "A. Tell me about Bella.\n* B. Tell me about Bex.\n* C. Tell me about Bree.\n* D. Tell me about yourself.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

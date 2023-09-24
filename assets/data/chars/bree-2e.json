@@ -1,0 +1,35 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-1,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Bree Idle Intim",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-e/bree scary",
+	"position": [
+		0,
+		140
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		127,
+		115,
+		135
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-95, -14, 24]
+}

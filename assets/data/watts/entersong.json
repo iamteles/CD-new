@@ -1,0 +1,35 @@
+{
+    "ident": "entersong",
+    "lines": [
+        [
+            "…",
+            "confused",
+            0.05
+        ],
+        [
+            "what?",
+            "confused",
+            0.05
+        ],
+        [
+            "Oh I don’t actually sing I was just trying to get rid of that yknow?",
+            "confused",
+            0.05
+        ],
+        [
+            "..",
+            "confused",
+            0.05
+        ],
+        [
+            "What'cha lookin at me like that for?",
+            "confused",
+            0.05
+        ],
+        [
+            "A. Plead\n* B. Taunt",
+            "confused",
+            0.05
+        ]
+    ]
+}

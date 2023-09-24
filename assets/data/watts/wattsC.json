@@ -1,0 +1,56 @@
+
+{
+    "ident": "wattssel",
+    "lines": [
+        [
+            "...",
+            "confused",
+            0.05
+        ],
+        [
+            "...",
+            "confused",
+            0.03
+        ],
+        [
+            "...",
+            "confused",
+            0.01
+        ],
+        [
+            "I HAVE A BOYFRIEND",
+            "angry",
+            0.05
+        ],
+        [
+            "Even if I didn't, I wouldn't just jump into a relationship.",
+            "confused",
+            0.05
+        ],
+        [
+            "What is up with people…",
+            "confused",
+            0.05
+        ],
+        [
+            "You aren’t even the first person to ask me today ",
+            "confused",
+            0.05
+        ],
+        [
+            "Some girl named Shaya came in earlier and asked the same thing.",
+            "confused",
+            0.05
+        ],
+        [
+            "Maybe I should get a sign that says taken and stick it to my forehead...",
+            "confused",
+            0.05
+        ],
+        [
+            "A. What do you do?\n* B. What's that framed photo behind you?\n* C. Are you single?\n* D. Do you like to travel?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

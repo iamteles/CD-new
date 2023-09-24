@@ -1,0 +1,40 @@
+{
+    "ident": "bexsel",
+    "lines": [
+        [
+            "My mom took me to a bar one day, hers did the same and we hit it off from there!",
+            "neutral",
+            0.05
+        ],
+        [
+            "We exchanged numbers that day and have been friends ever since.",
+            "neutral",
+            0.05
+        ],
+        [
+            "That was 5 years ago.",
+            "neutral",
+            0.05
+        ],
+        [
+            "Now I know both her AND Bella while they’re dating.",
+            "happy",
+            0.05
+        ],
+        [
+            "Bex even works at that same bar now!",
+            "neutral",
+            0.05
+        ],
+        [
+            "Small world, isn't it...",
+            "neutral",
+            0.05
+        ],
+        [
+            "A. How do you know her?\n* B. How close are you two?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

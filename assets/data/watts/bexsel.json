@@ -1,0 +1,10 @@
+{
+    "ident": "bexsel",
+    "lines": [
+        [
+            "A. How do you know her?\n* B. How close are you two?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

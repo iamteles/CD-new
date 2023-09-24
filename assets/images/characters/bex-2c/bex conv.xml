@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bex conv.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bex Flinch0000" x="34" y="34" width="463" height="684" frameX="0" frameY="-7" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0001" x="34" y="34" width="463" height="684" frameX="0" frameY="-7" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0002" x="34" y="736" width="452" height="691" frameX="-6" frameY="0" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0003" x="34" y="736" width="452" height="691" frameX="-6" frameY="0" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0004" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0005" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0006" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0007" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0008" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0009" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0010" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0011" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0012" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0013" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0014" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0015" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0016" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0017" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0018" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0019" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0020" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0021" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0022" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0023" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Flinch0024" x="500" y="1451" width="453" height="689" frameX="-5" frameY="-2" frameWidth="463" frameHeight="691"/>
+	<SubTexture name="Bex Idle0000" x="971" y="750" width="447" height="696" frameX="-2" frameY="-2" frameWidth="449" frameHeight="698"/>
+	<SubTexture name="Bex Idle0001" x="504" y="736" width="448" height="697" frameX="0" frameY="-1" frameWidth="449" frameHeight="698"/>
+	<SubTexture name="Bex Idle0002" x="970" y="34" width="447" height="698" frameX="-2" frameY="0" frameWidth="449" frameHeight="698"/>
+	<SubTexture name="Bex Idle0003" x="34" y="1445" width="448" height="697" frameX="-1" frameY="-1" frameWidth="449" frameHeight="698"/>
+</TextureAtlas>

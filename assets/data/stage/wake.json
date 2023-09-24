@@ -1,0 +1,35 @@
+{
+    "zoom": 0.6,
+    "bfPos": [612.6, 1000, 0, -323.05],
+    "dadPos": [0, 40, 0, 0],
+    "objects": [
+        {
+            "objName": "back",
+            "path": "backgrounds/cave/room",
+            "position": [-439.05, -207.65],
+            "scrollFactor": [1, 1]
+        },
+        {
+            "objName": "bex",
+            "path": "backgrounds/cave/Wakeup",
+            "position": [612.6, 200],
+            "alpha": 1,
+            "animations": [
+                {
+                    "name": "idle",
+                    "prefix": "Wake0084",
+                    "framerate": 24,
+                    "looped": true
+                },
+                {
+                    "name": "wake",
+                    "prefix": "Wake",
+                    "framerate": 24,
+                    "looped": false
+                }
+            ],
+            "scrollFactor": [1, 1],
+            "height": true
+        }
+    ]
+}

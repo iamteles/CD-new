@@ -1,0 +1,40 @@
+{
+    "ident": "wattssel",
+    "lines": [
+        [
+            "I work at this store to help out my family or charity.",
+            "neutral",
+            0.05
+        ],
+        [
+            "When I'm not here I like to engineer.",
+            "neutral",
+            0.05
+        ],
+        [
+            "Lemme tell you something, actually.",
+            "neutral",
+            0.05
+        ],
+        [
+            "My real name is Kecia, Watts is a nickname.",
+            "neutral",
+            0.05
+        ],
+        [
+            "I got it from an electrical incident working on a little robot.",
+            "confused",
+            0.05
+        ],
+        [
+            "That shit hurt, but at least I got a cool ass nickname out of it.",
+            "confused",
+            0.05
+        ],
+        [
+            "A. What do you do?\n* B. What's that framed photo behind you?\n* C. Are you single?\n* D. Do you like to travel?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

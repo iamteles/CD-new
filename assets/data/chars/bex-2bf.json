@@ -1,0 +1,90 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-1,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Bexh Idle"
+		},
+		{
+			"offsets": [
+				27,
+				7
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Bexh Left"
+		},
+		{
+			"offsets": [
+				8,
+				-18
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Bexh Down"
+		},
+		{
+			"offsets": [
+				1,
+				11
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Bexh Up"
+		},
+		{
+			"offsets": [
+				-14,
+				-1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Bexh Right"
+		},
+		{
+			"offsets": [
+				130,
+				10
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "neck",
+			"loop": false,
+			"name": "Bexh neck snap"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-2b/bex hall",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		38,
+		41,
+		50
+	],
+	"camera_position": [
+		-700,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-140, 22, -22]
+}

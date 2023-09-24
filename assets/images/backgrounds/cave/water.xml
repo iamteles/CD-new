@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="water.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="water0000" x="11" y="11" width="2043" height="326" pivotX="0" pivotY="0.55"/>
+	<SubTexture name="water0001" x="11" y="11" width="2043" height="326"/>
+	<SubTexture name="water0002" x="11" y="11" width="2043" height="326"/>
+	<SubTexture name="water0003" x="11" y="366" width="2042" height="326" frameX="-1" frameY="0" frameWidth="2043" frameHeight="326"/>
+	<SubTexture name="water0004" x="11" y="366" width="2042" height="326" frameX="-1" frameY="0" frameWidth="2043" frameHeight="326"/>
+	<SubTexture name="water0005" x="11" y="366" width="2042" height="326" frameX="-1" frameY="0" frameWidth="2043" frameHeight="326"/>
+	<SubTexture name="water0006" x="11" y="721" width="2042" height="326" frameX="0" frameY="0" frameWidth="2043" frameHeight="326"/>
+	<SubTexture name="water0007" x="11" y="721" width="2042" height="326" frameX="0" frameY="0" frameWidth="2043" frameHeight="326"/>
+	<SubTexture name="water0008" x="11" y="721" width="2042" height="326" frameX="0" frameY="0" frameWidth="2043" frameHeight="326"/>
+</TextureAtlas>

@@ -1,0 +1,22 @@
+{
+    "zoom": 0.6,
+    "bfPos": [0, 0, 0, 0],
+    "dadPos": [628.6, 17.3, 0, -10],
+    "objects": [
+        {
+            "objName": "outside",
+            "path": "hud/shop/back",
+            "position": [-121, -126.95],
+            "scrollFactor": [1, 1]
+        }
+    ],
+    "foreground": [
+        {
+            "objName": "table",
+            "path": "hud/shop/desk",
+            "position": [-174.4, 643.35],
+            "scale": 1.1,
+            "scrollFactor": [1, 1]
+        }
+    ]
+}

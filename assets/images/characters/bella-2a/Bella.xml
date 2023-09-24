@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Bella.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bella Down0000" x="11" y="11" width="710" height="982" pivotX="5.3" pivotY="-29.8" frameX="0" frameY="-25" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0001" x="11" y="11" width="710" height="982" frameX="0" frameY="-25" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0002" x="750" y="11" width="672" height="991" frameX="-22" frameY="-21" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0003" x="750" y="11" width="672" height="991" frameX="-22" frameY="-21" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0004" x="1451" y="11" width="679" height="1013" frameX="-14" frameY="-4" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0005" x="1451" y="11" width="679" height="1013" frameX="-14" frameY="-4" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0006" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0007" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0008" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0009" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0010" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0011" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0012" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0013" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0014" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0015" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0016" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0017" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0018" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0019" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0020" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0021" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0022" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0023" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Down0024" x="2159" y="11" width="686" height="1017" frameX="-8" frameY="0" frameWidth="710" frameHeight="1017"/>
+	<SubTexture name="Bella Idle0000" x="2874" y="11" width="675" height="1044" pivotX="0" pivotY="0" frameX="-3" frameY="-1" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0001" x="2874" y="11" width="675" height="1044" frameX="-3" frameY="-1" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0002" x="3578" y="11" width="636" height="987" frameX="-37" frameY="-45" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0003" x="3578" y="11" width="636" height="987" frameX="-37" frameY="-45" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0004" x="4243" y="11" width="617" height="986" frameX="-57" frameY="-51" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0005" x="4243" y="11" width="617" height="986" frameX="-57" frameY="-51" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0006" x="4889" y="11" width="640" height="1016" frameX="-36" frameY="-27" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0007" x="4889" y="11" width="640" height="1016" frameX="-36" frameY="-27" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0008" x="5558" y="11" width="666" height="1036" frameX="-12" frameY="-9" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0009" x="5558" y="11" width="666" height="1036" frameX="-12" frameY="-9" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0010" x="6253" y="11" width="675" height="1045" frameX="-3" frameY="-1" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0011" x="6253" y="11" width="675" height="1045" frameX="-3" frameY="-1" frameWidth="678" frameHeight="1046"/>
+	<SubTexture name="Bella Idle0012" x="6957" y="11" width="678" height="1046"/>
+	<SubTexture name="Bella Idle0013" x="6957" y="11" width="678" height="1046"/>
+	<SubTexture name="Bella Idle0014" x="6957" y="11" width="678" height="1046"/>
+	<SubTexture name="Bella Left0000" x="11" y="1086" width="784" height="1037" pivotX="94.6" pivotY="-7.9" frameX="0" frameY="-2" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0001" x="11" y="1086" width="784" height="1037" frameX="0" frameY="-2" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0002" x="824" y="1086" width="764" height="1039" frameX="-17" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0003" x="824" y="1086" width="764" height="1039" frameX="-17" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0004" x="1617" y="1086" width="737" height="1038" frameX="-41" frameY="-1" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0005" x="1617" y="1086" width="737" height="1038" frameX="-41" frameY="-1" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0006" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0007" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0008" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0009" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0010" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0011" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0012" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0013" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0014" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0015" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0016" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0017" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0018" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0019" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0020" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0021" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0022" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0023" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Left0024" x="2383" y="1086" width="731" height="1039" frameX="-47" frameY="0" frameWidth="784" frameHeight="1039"/>
+	<SubTexture name="Bella Right0000" x="3143" y="1086" width="794" height="1046" pivotX="-80" pivotY="0" frameX="-28" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0001" x="3143" y="1086" width="794" height="1046" frameX="-28" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0002" x="3966" y="1086" width="795" height="1046" frameX="-14" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0003" x="3966" y="1086" width="795" height="1046" frameX="-14" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0004" x="4790" y="1086" width="790" height="1046" frameX="-3" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0005" x="4790" y="1086" width="790" height="1046" frameX="-3" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0006" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0007" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0008" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0009" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0010" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0011" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0012" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0013" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0014" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0015" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0016" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0017" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0018" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0019" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0020" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0021" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0022" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0023" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Right0024" x="5609" y="1086" width="788" height="1046" frameX="0" frameY="0" frameWidth="822" frameHeight="1046"/>
+	<SubTexture name="Bella Up0000" x="6426" y="1086" width="693" height="1078" pivotX="11.35" pivotY="24.5" frameX="-9" frameY="0" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0001" x="6426" y="1086" width="693" height="1078" frameX="-9" frameY="0" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0002" x="7148" y="1086" width="703" height="1060" frameX="0" frameY="-14" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0003" x="7148" y="1086" width="703" height="1060" frameX="0" frameY="-14" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0004" x="11" y="2193" width="696" height="1047" frameX="-5" frameY="-24" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0005" x="11" y="2193" width="696" height="1047" frameX="-5" frameY="-24" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0006" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0007" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0008" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0009" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0010" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0011" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0012" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0013" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0014" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0015" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0016" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0017" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0018" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0019" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0020" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0021" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0022" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0023" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+	<SubTexture name="Bella Up0024" x="736" y="2193" width="693" height="1044" frameX="-9" frameY="-26" frameWidth="703" frameHeight="1078"/>
+</TextureAtlas>

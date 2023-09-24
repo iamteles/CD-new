@@ -1,0 +1,83 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				225,
+				-13
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				3,
+				-50
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				9,
+				20
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				-46,
+				-11
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/watts/watts-c",
+	"position": [
+		0,
+		755
+	],
+	"healthicon": "bella",
+	"flip_x": false,
+	"healthbar_colors": [
+		229,
+		224,
+		127
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"rating_position": [
+		-500,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-310, 0, 12]
+}

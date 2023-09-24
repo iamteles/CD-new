@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bex hall.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bexh Down0000" x="3120" y="2844" width="617" height="647" frameX="0" frameY="-15" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0001" x="3120" y="2844" width="617" height="647" frameX="0" frameY="-15" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0002" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0003" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0004" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0005" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0006" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0007" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0008" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0009" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0010" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0011" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0012" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0013" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0014" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0015" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0016" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0017" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0018" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0019" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0020" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0021" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0022" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0023" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Down0024" x="3121" y="2139" width="602" height="662" frameX="-9" frameY="0" frameWidth="617" frameHeight="662"/>
+	<SubTexture name="Bexh Idle0000" x="2501" y="2144" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0001" x="2501" y="2144" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0002" x="2501" y="2144" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0003" x="2501" y="2144" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0004" x="2501" y="2144" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0005" x="2516" y="739" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0006" x="2516" y="739" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0007" x="2516" y="739" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0008" x="2516" y="739" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0009" x="2516" y="739" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0010" x="2516" y="1439" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0011" x="2516" y="1439" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0012" x="2516" y="1439" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0013" x="2516" y="1439" width="602" height="682"/>
+	<SubTexture name="Bexh Idle0014" x="2516" y="1439" width="602" height="682"/>
+	<SubTexture name="Bexh Left0000" x="793" y="739" width="616" height="688" frameX="0" frameY="0" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0001" x="793" y="739" width="616" height="688" frameX="0" frameY="0" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0002" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0003" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0004" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0005" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0006" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0007" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0008" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0009" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0010" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0011" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0012" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0013" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0014" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0015" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0016" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0017" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0018" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0019" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0020" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0021" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0022" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0023" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Left0024" x="1269" y="1449" width="602" height="686" frameX="-19" frameY="-2" frameWidth="621" frameHeight="688"/>
+	<SubTexture name="Bexh Right0000" x="1889" y="1449" width="609" height="677" frameX="-10" frameY="-6" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0001" x="1889" y="1449" width="609" height="677" frameX="-10" frameY="-6" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0002" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0003" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0004" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0005" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0006" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0007" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0008" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0009" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0010" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0011" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0012" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0013" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0014" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0015" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0016" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0017" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0018" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0019" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0020" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0021" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0022" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0023" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Right0024" x="2501" y="2844" width="601" height="683" frameX="0" frameY="0" frameWidth="619" frameHeight="683"/>
+	<SubTexture name="Bexh Up0000" x="34" y="1444" width="597" height="698" frameX="-4" frameY="0" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0001" x="34" y="1444" width="597" height="698" frameX="-4" frameY="0" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0002" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0003" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0004" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0005" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0006" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0007" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0008" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0009" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0010" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0011" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0012" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0013" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0014" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0015" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0016" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0017" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0018" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0019" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0020" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0021" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0022" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0023" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh Up0024" x="649" y="1445" width="602" height="687" frameX="0" frameY="-11" frameWidth="602" frameHeight="698"/>
+	<SubTexture name="Bexh neck snap0000" x="2685" y="34" width="793" height="687" frameX="-40" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0001" x="1816" y="34" width="851" height="687" frameX="-11" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0002" x="1816" y="34" width="851" height="687" frameX="-11" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0003" x="34" y="34" width="873" height="687" frameX="0" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0004" x="34" y="34" width="873" height="687" frameX="0" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0005" x="34" y="34" width="873" height="687" frameX="0" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0006" x="925" y="34" width="873" height="687" frameX="0" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0007" x="925" y="34" width="873" height="687" frameX="0" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0008" x="925" y="34" width="873" height="687" frameX="0" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0009" x="34" y="739" width="741" height="687" frameX="-66" frameY="-10" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0010" x="646" y="2861" width="590" height="697" frameX="-135" frameY="0" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0011" x="646" y="2861" width="590" height="697" frameX="-135" frameY="0" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0012" x="1427" y="739" width="600" height="692" frameX="-130" frameY="-5" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0013" x="1427" y="739" width="600" height="692" frameX="-130" frameY="-5" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0014" x="649" y="2150" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0015" x="649" y="2150" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0016" x="34" y="2160" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0017" x="34" y="2160" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0018" x="1889" y="2144" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0019" x="1889" y="2144" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0020" x="1261" y="2153" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0021" x="1261" y="2153" width="594" height="693" frameX="-133" frameY="-4" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0022" x="34" y="2871" width="594" height="692" frameX="-133" frameY="-5" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0023" x="34" y="2871" width="594" height="692" frameX="-133" frameY="-5" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0024" x="1873" y="2855" width="510" height="696" frameX="-183" frameY="-1" frameWidth="873" frameHeight="697"/>
+	<SubTexture name="Bexh neck snap0025" x="1254" y="2864" width="510" height="696" frameX="-183" frameY="-1" frameWidth="873" frameHeight="697"/>
+</TextureAtlas>

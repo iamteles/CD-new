@@ -1,0 +1,94 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				72,
+				-1
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [
+				44,
+				-81
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				-40,
+				36
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				-56,
+				-6
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-10,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "miss",
+			"loop": false,
+			"name": "miss"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-e/bex really scary",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "bella",
+	"flip_x": true,
+	"healthbar_colors": [
+		38,
+		41,
+		50
+	],
+	"camera_position": [
+		-100,
+		310
+	],
+	"rating_position": [
+		-100,
+		330
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-140, 22, -22]
+}

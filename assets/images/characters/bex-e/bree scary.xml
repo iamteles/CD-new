@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bree scary.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bree Idle Intim0000" x="532" y="34" width="481" height="807" frameX="-3" frameY="-2" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0001" x="532" y="34" width="481" height="807" frameX="-3" frameY="-2" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0002" x="1029" y="860" width="481" height="787" frameX="-14" frameY="-21" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0003" x="1029" y="860" width="481" height="787" frameX="-14" frameY="-21" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0004" x="34" y="1665" width="472" height="783" frameX="-11" frameY="-26" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0005" x="34" y="1665" width="472" height="783" frameX="-11" frameY="-26" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0006" x="34" y="861" width="479" height="786" frameX="-5" frameY="-23" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0007" x="34" y="861" width="479" height="786" frameX="-5" frameY="-23" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0008" x="532" y="859" width="479" height="800" frameX="0" frameY="-9" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0009" x="532" y="859" width="479" height="800" frameX="0" frameY="-9" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0010" x="1031" y="34" width="479" height="808" frameX="-2" frameY="-1" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0011" x="1031" y="34" width="479" height="808" frameX="-2" frameY="-1" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0012" x="34" y="34" width="480" height="809" frameX="-2" frameY="0" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0013" x="34" y="34" width="480" height="809" frameX="-2" frameY="0" frameWidth="495" frameHeight="809"/>
+	<SubTexture name="Bree Idle Intim0014" x="34" y="34" width="480" height="809" frameX="-2" frameY="0" frameWidth="495" frameHeight="809"/>
+</TextureAtlas>

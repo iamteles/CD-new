@@ -1,0 +1,90 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Bex Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				19,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Bex Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-15,
+				-69
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Bex Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-17,
+				35
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Bex Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-26,
+				-1
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Bex Right",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "miss",
+			"loop": false,
+			"name": "Bex Miss"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-e/bex scary",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "bex",
+	"flip_x": true,
+	"healthbar_colors": [
+		38,
+		41,
+		50
+	],
+	"camera_position": [
+		-310,
+		-10
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-140, 22, -22]
+}

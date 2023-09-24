@@ -1,0 +1,123 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-5,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Bex Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				199,
+				-1
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Bex Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				113,
+				-55
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Bex Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-37,
+				26
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Bex Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-29,
+				3
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Bex Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				203,
+				-3
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "Bex MISSleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				102,
+				-49
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "Bex MISSdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-8,
+				26
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "Bex MISSup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-31,
+				2
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "Bex MISSright",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/bex-2a/Bex",
+	"position": [
+		0,
+		40
+	],
+	"healthicon": "bex",
+	"flip_x": true,
+	"healthbar_colors": [
+		38,
+		41,
+		50
+	],
+	"camera_position": [
+		50,
+		-30
+	],
+	"sing_duration": 4,
+	"scale": 1,
+	"note_colors": [-140, 22, -22]
+}

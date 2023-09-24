@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Bella Idle"
+		},
+		{
+			"offsets": [
+				107,
+				-9
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Bella Left"
+		},
+		{
+			"offsets": [
+				8,
+				-31
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Bella Down"
+		},
+		{
+			"offsets": [
+				8,
+				21
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Bella Up"
+		},
+		{
+			"offsets": [
+				-99,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Bella Right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bella-2a/Bella",
+	"position": [
+		-220,
+		40
+	],
+	"healthicon": "bella",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-22, -50, 13]
+}

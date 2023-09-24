@@ -1,0 +1,49 @@
+{
+    "zoom": 0.4,
+    "bfPos": [1230, 895, -150, 0],
+    "dadPos": [-100, 895, 260, 0],
+    "objects": [
+        {
+            "objName": "sky",
+            "path": "backgrounds/helica/sky",
+            "position": [-987.85, -587.65],
+            "scrollFactor": [0.3, 0.3],
+            "scale": 1.5
+        },
+        {
+            "objName": "clouds",
+            "path": "backgrounds/helica/cloud",
+            "position": [-1334.6, -570.15],
+            "scrollFactor": [0.4, 0.4],
+            "scale": 1.5
+        },
+        {
+            "objName": "city",
+            "path": "backgrounds/helica/floating",
+            "position": [-430.2, -310.55],
+            "scrollFactor": [0.6, 0.6],
+            "scale": 1.8
+        },
+        {
+            "objName": "island",
+            "path": "backgrounds/helica/island-1",
+            "position": [2058.1, 228.9],
+            "scrollFactor": [0.8, 0.8],
+            "scale": 1.8
+        },
+        {
+            "objName": "island-2",
+            "path": "backgrounds/helica/island-2",
+            "position": [-746.95, -200.45],
+            "scrollFactor": [0.8, 0.8],
+            "scale": 1.8
+        },
+        {
+            "objName": "plat",
+            "path": "backgrounds/helica/aurora",
+            "position": [-642.3, 708.25],
+            "scrollFactor": [1, 1],
+            "scale": 1.2
+        }     
+    ]
+}

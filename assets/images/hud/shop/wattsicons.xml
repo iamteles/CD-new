@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Shop_and_Conservation.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="watts text angry0000" x="34" y="34" width="342" height="222"/>
+	<SubTexture name="watts text confused0000" x="394" y="34" width="342" height="222"/>
+	<SubTexture name="watts text happy0000" x="34" y="274" width="342" height="222"/>
+	<SubTexture name="watts text neutral0000" x="394" y="274" width="342" height="222"/>
+	<SubTexture name="watts text sad0000" x="34" y="514" width="342" height="222"/>
+</TextureAtlas>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="shes going to kill you.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 10000" x="34" y="34" width="1448" height="632" frameX="-1" frameY="-8" frameWidth="1450" frameHeight="640"/>
+	<SubTexture name="Símbolo 10001" x="34" y="34" width="1448" height="632" frameX="-1" frameY="-8" frameWidth="1450" frameHeight="640"/>
+	<SubTexture name="Símbolo 10002" x="34" y="684" width="1448" height="589" frameX="-2" frameY="-5" frameWidth="1450" frameHeight="640"/>
+	<SubTexture name="Símbolo 10003" x="34" y="684" width="1448" height="589" frameX="-2" frameY="-5" frameWidth="1450" frameHeight="640"/>
+	<SubTexture name="Símbolo 10004" x="34" y="1291" width="1422" height="567" frameX="0" frameY="0" frameWidth="1450" frameHeight="640"/>
+	<SubTexture name="Símbolo 10005" x="34" y="1291" width="1422" height="567" frameX="0" frameY="0" frameWidth="1450" frameHeight="640"/>
+</TextureAtlas>

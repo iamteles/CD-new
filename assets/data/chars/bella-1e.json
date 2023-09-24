@@ -1,0 +1,35 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "bIdle",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-e/evil fucking bella",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "bella",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		-100,
+		310
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-22, -50, 13]
+}

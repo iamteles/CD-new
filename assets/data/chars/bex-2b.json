@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Bex Idle"
+		},
+		{
+			"offsets": [
+				19,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Bex Left"
+		},
+		{
+			"offsets": [
+				-15,
+				-69
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Bex Down"
+		},
+		{
+			"offsets": [
+				-17,
+				35
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Bex Up"
+		},
+		{
+			"offsets": [
+				-26,
+				-1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Bex Right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bex-2b/bex 2b",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "bex",
+	"flip_x": true,
+	"healthbar_colors": [
+		38,
+		41,
+		50
+	],
+	"camera_position": [
+		-310,
+		-10
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-140, 22, -22]
+}

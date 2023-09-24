@@ -1,0 +1,27 @@
+{
+    "zoom": 0.7,
+    "bfPos": [130, 825, -150, -50],
+    "dadPos": [-500, 850, 60, -100],
+    "objects": [
+        {
+            "objName": "outside",
+            "path": "backgrounds/allegro/outside",
+            "position": [-1000, -400],
+            "scrollFactor": [0.5, 0.5]
+        },
+        {
+            "objName": "inside",
+            "path": "backgrounds/allegro/Inside",
+            "position": [-1500, -600],
+            "scrollFactor": [1, 1]
+        }
+    ],
+    "foreground": [
+        {
+            "objName": "table",
+            "path": "backgrounds/allegro/table",
+            "position": [-500, 450],
+            "scrollFactor": [1, 1]
+        }
+    ]
+}

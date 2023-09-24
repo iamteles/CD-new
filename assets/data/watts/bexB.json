@@ -1,0 +1,40 @@
+{
+    "ident": "bexsel",
+    "lines": [
+        [
+            "We used to be pretty on and off...",
+            "neutral",
+            0.05
+        ],
+        [
+            "Ever since she and Bella started dating I’ve seen her a lot more!",
+            "neutral",
+            0.05
+        ],
+        [
+            "She’s opened up a lot more from when I first met her.",
+            "neutral",
+            0.05
+        ],
+        [
+            "Means I get to talk with her more too.",
+            "neutral",
+            0.05
+        ],
+        [
+            "There were a lot more similarities between us than I thought!",
+            "neutral",
+            0.05
+        ],
+        [
+            "Love spending time with that gal!",
+            "happy",
+            0.05
+        ],
+        [
+            "A. How do you know her?\n* B. How close are you two?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

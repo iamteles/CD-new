@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bex scary.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bex Down0000" x="3788" y="838" width="422" height="694" frameX="0" frameY="-18" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0001" x="3788" y="838" width="422" height="694" frameX="0" frameY="-18" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0002" x="2932" y="834" width="408" height="702" frameX="-12" frameY="-11" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0003" x="2932" y="834" width="408" height="702" frameX="-12" frameY="-11" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0004" x="3789" y="1550" width="411" height="710" frameX="-14" frameY="-3" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0005" x="3789" y="1550" width="411" height="710" frameX="-14" frameY="-3" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0006" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0007" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0008" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0009" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0010" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0011" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0012" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0013" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Down0014" x="3359" y="1640" width="412" height="713" frameX="-14" frameY="0" frameWidth="426" frameHeight="713"/>
+	<SubTexture name="Bex Idle0000" x="3359" y="838" width="411" height="784" frameX="-17" frameY="-2" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0001" x="3359" y="838" width="411" height="784" frameX="-17" frameY="-2" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0002" x="2485" y="1625" width="419" height="775" frameX="-12" frameY="-9" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0003" x="2485" y="1625" width="419" height="775" frameX="-12" frameY="-9" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0004" x="2485" y="837" width="429" height="770" frameX="0" frameY="-15" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0005" x="2485" y="837" width="429" height="770" frameX="0" frameY="-15" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0006" x="2922" y="1625" width="419" height="775" frameX="-9" frameY="-10" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0007" x="2922" y="1625" width="419" height="775" frameX="-9" frameY="-10" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0008" x="2866" y="34" width="417" height="782" frameX="-10" frameY="-4" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0009" x="2866" y="34" width="417" height="782" frameX="-10" frameY="-4" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0010" x="3359" y="34" width="412" height="786" frameX="-16" frameY="0" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0011" x="3359" y="34" width="412" height="786" frameX="-16" frameY="0" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0012" x="3789" y="34" width="412" height="786" frameX="-17" frameY="0" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0013" x="3789" y="34" width="412" height="786" frameX="-17" frameY="0" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Idle0014" x="3789" y="34" width="412" height="786" frameX="-17" frameY="0" frameWidth="431" frameHeight="786"/>
+	<SubTexture name="Bex Left0000" x="550" y="873" width="511" height="785" frameX="0" frameY="0" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0001" x="550" y="873" width="511" height="785" frameX="0" frameY="0" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0002" x="1076" y="1676" width="502" height="785" frameX="-14" frameY="0" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0003" x="1076" y="1676" width="502" height="785" frameX="-14" frameY="0" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0004" x="551" y="1676" width="507" height="784" frameX="-24" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0005" x="551" y="1676" width="507" height="784" frameX="-24" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0006" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0007" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0008" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0009" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0010" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0011" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0012" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0013" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Left0014" x="1072" y="34" width="509" height="784" frameX="-27" frameY="-1" frameWidth="536" frameHeight="785"/>
+	<SubTexture name="Bex Miss0000" x="2044" y="838" width="423" height="785"/>
+	<SubTexture name="Bex Miss0001" x="2044" y="838" width="423" height="785"/>
+	<SubTexture name="Bex Miss0002" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Miss0003" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Miss0004" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Miss0005" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Miss0006" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0007" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0008" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0009" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0010" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Miss0011" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Miss0012" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0013" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0014" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0015" x="2425" y="34" width="423" height="785"/>
+	<SubTexture name="Bex Miss0016" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Miss0017" x="2044" y="1641" width="423" height="784" frameX="0" frameY="0" frameWidth="423" frameHeight="785"/>
+	<SubTexture name="Bex Right0000" x="1980" y="34" width="427" height="786" frameX="-39" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0001" x="1980" y="34" width="427" height="786" frameX="-39" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0002" x="1596" y="1640" width="430" height="786" frameX="-18" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0003" x="1596" y="1640" width="430" height="786" frameX="-18" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0004" x="1531" y="836" width="431" height="786" frameX="-5" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0005" x="1531" y="836" width="431" height="786" frameX="-5" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0006" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0007" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0008" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0009" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0010" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0011" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0012" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0013" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Right0014" x="1079" y="836" width="434" height="786" frameX="0" frameY="0" frameWidth="466" frameHeight="786"/>
+	<SubTexture name="Bex Up0000" x="34" y="34" width="503" height="821" frameX="-2" frameY="0" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0001" x="34" y="34" width="503" height="821" frameX="-2" frameY="0" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0002" x="34" y="873" width="498" height="812" frameX="-1" frameY="-7" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0003" x="34" y="873" width="498" height="812" frameX="-1" frameY="-7" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0004" x="34" y="1703" width="499" height="804" frameX="0" frameY="-14" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0005" x="34" y="1703" width="499" height="804" frameX="0" frameY="-14" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0006" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0007" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0008" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0009" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0010" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0011" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0012" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0013" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+	<SubTexture name="Bex Up0014" x="555" y="34" width="499" height="801" frameX="0" frameY="-16" frameWidth="505" frameHeight="821"/>
+</TextureAtlas>

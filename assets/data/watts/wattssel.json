@@ -1,0 +1,10 @@
+{
+    "ident": "wattssel",
+    "lines": [
+        [
+            "A. What do you do?\n* B. What's that framed photo behind you?\n* C. Are you single?\n* D. Do you like to travel?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

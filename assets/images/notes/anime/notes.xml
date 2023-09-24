@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cd notes.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="confirm0000" x="34" y="291" width="231" height="237" frameX="-1" frameY="-2" frameWidth="234" frameHeight="239"/>
+	<SubTexture name="confirm0001" x="283" y="291" width="231" height="237" frameX="-1" frameY="-2" frameWidth="234" frameHeight="239"/>
+	<SubTexture name="confirm0002" x="34" y="34" width="234" height="239"/>
+	<SubTexture name="confirm0003" x="34" y="34" width="234" height="239"/>
+	<SubTexture name="note hold0000" x="392" y="628" width="51" height="44"/>
+	<SubTexture name="note hold end0000" x="392" y="546" width="50" height="64"/>
+	<SubTexture name="note0000" x="213" y="546" width="161" height="166"/>
+	<SubTexture name="press0000" x="34" y="546" width="161" height="166"/>
+	<SubTexture name="strum0000" x="286" y="34" width="161" height="166"/>
+</TextureAtlas>

@@ -1,0 +1,25 @@
+{
+    "ident": "irritation",
+    "lines": [
+        [
+            "Eh??",
+            "confused",
+            0.05
+        ],
+        [
+            "What do you mean scared??",
+            "angry",
+            0.05
+        ],
+        [
+            "I CAN BEAT YOU ANY DAMN DAY OF THE WEEK.",
+            "angry",
+            0.05
+        ],
+        [
+            "Let me put your cocky ass in place.",
+            "angry",
+            0.05
+        ]
+    ]
+}

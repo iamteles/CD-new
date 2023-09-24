@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="rain.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="droplets0000" x="34" y="2356" width="2667" height="1128" frameX="-6" frameY="0" frameWidth="2721" frameHeight="1161"/>
+	<SubTexture name="droplets0001" x="34" y="1211" width="2702" height="1127" frameX="-19" frameY="-10" frameWidth="2721" frameHeight="1161"/>
+	<SubTexture name="droplets0002" x="34" y="34" width="2668" height="1159" frameX="0" frameY="-2" frameWidth="2721" frameHeight="1161"/>
+</TextureAtlas>

@@ -1,0 +1,40 @@
+{
+    "ident": "bellasel",
+    "lines": [
+        [
+            "Oh, Bella and I go way back!",
+            "neutral",
+            0.05
+        ],
+        [
+            "I’ve known her since middle school.",
+            "neutral",
+            0.05
+        ],
+        [
+            "That girl hasn’t changed not one bit.",
+            "confused",
+            0.05
+        ],
+        [
+            "She is PRECIOUS though, wouldn’t trade her friendship for the world!",
+            "happy",
+            0.05
+        ],
+        [
+            "Seriously, I wish her the best wherever she and Bex go in the future.",
+            "neutral",
+            0.05
+        ],
+        [
+            "Maybe I could convince them to get into the shop business!",
+            "neutral",
+            0.05
+        ],
+        [
+            "A. How do you know her?\n* B. How close are you two?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

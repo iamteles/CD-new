@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Cute Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				17,
+				3
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Cute Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				48,
+				-51
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Cute Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-8,
+				16
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Cute Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-8,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Cute Right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/exotic/cute girl",
+	"position": [
+		-220,
+		40
+	],
+	"healthicon": "cute",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-22, -50, 13]
+}

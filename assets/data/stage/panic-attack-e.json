@@ -1,0 +1,49 @@
+{
+    "zoom": 0.68,
+    "bfPos": [730, 445, -380, 0],
+    "dadPos": [-450, 350, 100, 50],
+    "objects": [
+        {
+            "objName": "outsidenight",
+            "path": "backgrounds/pa/lightning",
+            "position": [-900, -700],
+            "alpha": 1,
+            "animations": [
+                {
+                    "name": "idle",
+                    "prefix": "outside strike0021",
+                    "framerate": 24,
+                    "looped": true
+                },
+                {
+                    "name": "thunder",
+                    "prefix": "outside strike",
+                    "framerate": 24,
+                    "looped": false
+                }
+            ],
+            "scrollFactor": [0.5, 1]
+        },
+        {
+            "objName": "rain",
+            "path": "backgrounds/pa/rain",
+            "position": [-900, -700],
+            "alpha": 1,
+            "animations": [
+                {
+                    "name": "idle",
+                    "prefix": "droplets",
+                    "framerate": 15,
+                    "looped": true
+                }
+            ],
+            "scrollFactor": [0.5, 1]
+        },
+        {
+            "objName": "inside",
+            "path": "backgrounds/pa/inside",
+            "position": [-1500, -600],
+            "scrollFactor": [1, 1]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "ident": "buy",
+    "lines": [
+        [
+            "Press SPACE to buy or CTRL to talk.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

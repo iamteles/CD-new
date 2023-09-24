@@ -1,0 +1,50 @@
+{
+    "ident": "bellasel",
+    "lines": [
+        [
+            "We used to be like peanut butter and jelly!",
+            "happy",
+            0.05
+        ],
+        [
+            "I feel really bad for her though…",
+            "sad",
+            0.05
+        ],
+        [
+            "…I’m not sure I’m even meant to tell you this..",
+            "sad",
+            0.05
+        ],
+        [
+            "but her parents died in a car crash drunk driving about a decade ago..",
+            "sad",
+            0.05
+        ],
+        [
+            "She tried to stay optimistic back when it first happened but I could see right through her.",
+            "neutral",
+            0.05
+        ],
+        [
+            "Her life started going uphill after that though, specially after she met Bex!",
+            "neutral",
+            0.05
+        ],
+        [
+            "She takes better care of her than I would!",
+            "happy",
+            0.05
+        ],
+        [
+            "But anyways, overall I’d say we’re pretty close yeah!",
+            "neutral",
+            0.05
+        ],
+        [
+            "A. How do you know her?\n* B. How close are you two?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

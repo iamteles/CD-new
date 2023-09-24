@@ -1,0 +1,90 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-1,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Bree Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				186,
+				1
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Bree Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-13,
+				-153
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Bree Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				71,
+				34
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Bree Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-45,
+				-1
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Bree Right",
+			"indices": []
+		},
+		{
+			"offsets": [
+				17,
+				-11
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "snap",
+			"loop": false,
+			"name": "Bree Snap"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bree-2b/bree",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		127,
+		115,
+		135
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-95, -14, 24]
+}

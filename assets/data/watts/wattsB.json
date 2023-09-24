@@ -1,0 +1,40 @@
+{
+    "ident": "wattsphoto",
+    "lines": [
+        [
+            "Oh yes that photo!",
+            "neutral",
+            0.05
+        ],
+        [
+            "Another job I took up was babysitting.",
+            "neutral",
+            0.05
+        ],
+        [
+            "That girl right there next to me is Nila.",
+            "neutral",
+            0.05
+        ],
+        [
+            "Her parents are always pretty busy so I take care of her really often.",
+            "neutral",
+            0.05
+        ],
+        [
+            "I love that child to death! She’s like a daughter to me.",
+            "happy",
+            0.05
+        ],
+        [
+            "As someone who aspires to be a mom, she’s been a really good test run.",
+            "happy",
+            0.05
+        ],
+        [
+            "A. What do you do?\n* B. What's that framed photo behind you?\n* C. Are you single?\n* D. Do you like to travel?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

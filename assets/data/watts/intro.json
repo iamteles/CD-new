@@ -1,0 +1,25 @@
+{
+    "ident": "buy",
+    "lines": [
+        [
+            "Woah, hey!",
+            "neutral",
+            0.05
+        ],
+        [
+            "Welcome to Johnson’s! The name’s Watts!",
+            "happy",
+            0.05
+        ],
+        [
+            "Feel free to look around the shop, or talk to me, do whatever.",
+            "neutral",
+            0.05
+        ],
+        [
+            "Press SPACE to buy or CTRL to talk.",
+            "neutral",
+            0.05
+        ]
+    ]
+}

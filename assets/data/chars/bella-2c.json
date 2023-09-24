@@ -1,0 +1,134 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "Bella Idle"
+		},
+		{
+			"offsets": [
+				9,
+				-2
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Bella Left"
+		},
+		{
+			"offsets": [
+				22,
+				-8
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Bella Down"
+		},
+		{
+			"offsets": [
+				-12,
+				35
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Bella Up"
+		},
+		{
+			"offsets": [
+				-11,
+				-1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Bella Right"
+		},
+		{
+			"offsets": [
+				2,
+				-3
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "Bella MISSleft"
+		},
+		{
+			"offsets": [
+				34,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "Bella MISSdown"
+		},
+		{
+			"offsets": [
+				-17,
+				31
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "Bella MISSup"
+		},
+		{
+			"offsets": [
+				65,
+				-7
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "Bella MISSright"
+		},
+		{
+			"offsets": [
+				390,
+				170
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "dodge",
+			"loop": false,
+			"name": "Bella Dodge"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bella-2c/bella conv",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"note_colors": [-22, -50, 13]
+}

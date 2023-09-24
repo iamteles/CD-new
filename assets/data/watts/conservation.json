@@ -1,0 +1,25 @@
+{
+    "ident": "conservation",
+    "lines": [
+        [
+            "Uhh",
+            "confused",
+            0.05
+        ],
+        [
+            "Yknow what?",
+            "confused",
+            0.05
+        ],
+        [
+            "Why the hell not!",
+            "neutral",
+            0.05
+        ],
+        [
+            "But only because you’re asking so nicely.",
+            "happy",
+            0.05
+        ]
+    ]
+}

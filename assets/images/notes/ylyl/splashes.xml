@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="noteSplashes.png">
+	<!-- Created with Adobe Animate version 19.0.0.326 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="down splash0000" x="143" y="295" width="110" height="113" frameX="-15" frameY="-15" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="down splash0001" x="552" y="287" width="120" height="124" frameX="-10" frameY="-9" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="down splash0002" x="428" y="144" width="138" height="139" frameX="-1" frameY="-2" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="down splash0003" x="144" y="147" width="138" height="142" frameX="-1" frameY="0" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="down splash0004" x="1" y="148" width="139" height="143"/>
+	<SubTexture name="right splash0000" x="143" y="412" width="110" height="113" frameX="-15" frameY="-15" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="right splash0001" x="552" y="415" width="120" height="124" frameX="-10" frameY="-9" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="right splash0002" x="286" y="290" width="138" height="139" frameX="-1" frameY="-2" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="right splash0003" x="286" y="1" width="138" height="142" frameX="-1" frameY="0" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="right splash0004" x="1" y="1" width="139" height="143"/>
+	<SubTexture name="up splash0000" x="570" y="1" width="110" height="113" frameX="-15" frameY="-15" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="up splash0001" x="428" y="287" width="120" height="124" frameX="-10" frameY="-9" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="up splash0002" x="286" y="147" width="138" height="139" frameX="-1" frameY="-2" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="up splash0003" x="144" y="1" width="138" height="142" frameX="-1" frameY="0" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="up splash0004" x="1" y="1" width="139" height="143"/>
+	<SubTexture name="left splash0000" x="570" y="118" width="110" height="113" frameX="-15" frameY="-15" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="left splash0001" x="428" y="415" width="120" height="124" frameX="-10" frameY="-9" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="left splash0002" x="428" y="1" width="138" height="139" frameX="-1" frameY="-2" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="left splash0003" x="1" y="295" width="138" height="142" frameX="-1" frameY="0" frameWidth="139" frameHeight="143"/>
+	<SubTexture name="left splash0004" x="1" y="1" width="139" height="143"/>
+</TextureAtlas>

@@ -1,0 +1,22 @@
+{
+    "zoom": 0.5,
+    "bfPos": [2440, 1050, -350, 0],
+    "dadPos": [770, 860, 100, 150],
+    "thirdPos": [2690, 1140, 100, -300],
+    "objects": [
+        {
+            "objName": "outside",
+            "path": "backgrounds/desertion/desertion-twobackback",
+            "position": [-800, -1000],
+            "scale": 1.7,
+            "scrollFactor": [0.6, 0.6]
+        },
+        {
+            "objName": "ground",
+            "path": "backgrounds/desertion/desertion-twoback",
+            "position": [200, 900],
+            "scale": 1.3,
+            "scrollFactor": [1, 1]
+        }
+    ]
+}

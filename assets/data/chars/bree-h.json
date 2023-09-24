@@ -1,0 +1,122 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				94,
+				-4
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				48,
+				63
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				53,
+				7
+			],
+			"anim": "block",
+			"fps": 24,
+			"name": "block",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				134,
+				22
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-30,
+				-4
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				289,
+				24
+			],
+			"anim": "pleft",
+			"fps": 24,
+			"name": "left punch",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				189,
+				44
+			],
+			"anim": "pright",
+			"fps": 24,
+			"name": "right punch",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				59,
+				48
+			],
+			"anim": "hit",
+			"fps": 24,
+			"name": "hit",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/helica/bree",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "pat",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		161,
+		161
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

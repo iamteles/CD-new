@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="button.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="button highlighed0000" x="34" y="34" width="505" height="163"/>
+	<SubTexture name="button idle0000" x="34" y="215" width="505" height="163"/>
+	<SubTexture name="button selected0000" x="34" y="396" width="505" height="163"/>
+</TextureAtlas>

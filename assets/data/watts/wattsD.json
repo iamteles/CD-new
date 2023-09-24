@@ -1,0 +1,40 @@
+{
+    "ident": "wattssel",
+    "lines": [
+        [
+            "I’ve only step foot out of Jersey a couple times...",
+            "neutral",
+            0.05
+        ],
+        [
+            "Last trip I took was to Philly.",
+            "neutral",
+            0.05
+        ],
+        [
+            "When I was there I found a lot of strange stuff.",
+            "confused",
+            0.05
+        ],
+        [
+            "But I also saw a blue haired dude and his girl fight this like big demon thing.",
+            "confused",
+            0.05
+        ],
+        [
+            "I knew I had seen everything after I saw that",
+            "confused",
+            0.05
+        ],
+        [
+            "I will stay here in good old Jersey, thank you very much.",
+            "confused",
+            0.05
+        ],
+        [
+            "A. What do you do?\n* B. What's that framed photo behind you?\n* C. Are you single?\n* D. Do you like to travel?\n* ESC. Go Back.",
+            "neutral",
+            0.05
+        ]
+    ]
+}
