@@ -65,6 +65,7 @@ class FreeplayState extends MusicBeatState
 		addSong("irritation", "watts");
 		addSong("intimidate", "bex");
 		addSong("exotic", "cute");
+		addSong("zanta", "cute");
 
 		grpItems = new FlxGroup();
 		add(grpItems);

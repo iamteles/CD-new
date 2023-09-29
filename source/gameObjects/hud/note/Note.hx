@@ -130,6 +130,13 @@ class Note extends FlxSprite
 						color = 0xFF00AEFF;
 		}
 
+		if(assetModifier == "taiko") {
+			switch(direction) {
+				case "up" | "down":
+					noteOffset.set(5, 26);
+			}
+		}
+
 		if(isHold)
 			antialiasing = false;
 

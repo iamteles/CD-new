@@ -306,6 +306,14 @@ class ChartingState extends MusicBeatState
 		playTicksDad.name = "dad_hitsounds";
 		playTicksDad.checked = playHitSounds[0];
 
+		var playInst = new FlxUICheckBox(10, 190, null, null, 'Mute Instrumental', 100);
+		playInst.name = "inst";
+		playInst.checked = false;
+
+		var playVoices = new FlxUICheckBox(10, 210, null, null, 'Mute Voices', 100);
+		playVoices.name = "voices";
+		playVoices.checked = false;
+
 		var clearSongButton = new FlxButton(200, 250, "Clear Song", function() {
 			SONG.notes = [];
 			reloadSection(0);
@@ -328,6 +336,8 @@ class ChartingState extends MusicBeatState
 		tabSong.add(stepperSpeed);
 		tabSong.add(playTicksBf);
 		tabSong.add(playTicksDad);
+		tabSong.add(playInst);
+		tabSong.add(playVoices);
 		tabSong.add(clearSongButton);
 
 		tabSong.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
@@ -542,6 +552,12 @@ class ChartingState extends MusicBeatState
 				{
 					case "dad_hitsounds": playHitSounds[0] = check.checked;
 					case "bf_hitsounds":  playHitSounds[1] = check.checked;
+					case "inst": 
+						if(check.checked) inst.volume = 0;
+						else inst.volume = 1;
+					case "voices": 
+						if(check.checked) vocals.volume = 0;
+						else vocals.volume = 1;
 					case "check_voices": 
 						SONG.needsVoices = check.checked;
 						reloadAudio();
@@ -666,6 +682,8 @@ class ChartingState extends MusicBeatState
 	// basically goes for the shortest audio
 	var songLength:Float = 0;
 
+	var inst:FlxSound;
+	var vocals:FlxSound;
 	function reloadAudio()
 	{
 		songList = [];
@@ -687,14 +705,14 @@ class ChartingState extends MusicBeatState
 
 		var daSong:String = SONG.song.toLowerCase();
 
-		var inst = new FlxSound();
+		inst = new FlxSound();
 		inst.loadEmbedded(Paths.inst(daSong), false, false);
 		songLength = inst.length;
 		addMusic(inst);
 
 		if(SONG.needsVoices)
 		{
-			var vocals = new FlxSound();
+			vocals = new FlxSound();
 			vocals.loadEmbedded(Paths.vocals(daSong), false, false);
 			addMusic(vocals);
 		}

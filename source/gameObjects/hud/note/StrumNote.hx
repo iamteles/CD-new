@@ -21,6 +21,8 @@ class StrumNote extends FlxSprite
 	public var scaleOffset:FlxPoint = new FlxPoint(0,0);
 	public var initialPos:FlxPoint = new FlxPoint(0,0);
 
+	public var exPos:FlxPoint = new FlxPoint(0,0);
+
 	private var direction:String = "left";
 
 	public function reloadStrum(strumData:Int, ?assetModifier:String = "base", ?noteColor:Array<Int>):StrumNote
@@ -33,6 +35,26 @@ class StrumNote extends FlxSprite
 
 		switch(assetModifier)
 		{
+			case "taiko":
+				strumSize = 0.7;
+				frames = Paths.getSparrowAtlas('notes/$assetModifier/strums');
+
+				addDefaultAnims();
+				
+				addOffset("static", 0, 0);
+				addOffset("pressed", 0, 0);
+				addOffset("confirm", 0, 0);
+
+				switch(direction) {
+					case 'up':
+						exPos.set(86*strumSize, 34*strumSize);
+					case 'down':
+						exPos.set(28*strumSize, 32*strumSize);
+					case 'right':
+						exPos.set(87*strumSize, 0);
+					default:
+						exPos.set(0, 0);
+				}
 			case "pixel":
 				strumSize = 6;
 				loadGraphic(Paths.image("notes/pixel/notesPixel"), true, 17, 17);

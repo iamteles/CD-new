@@ -267,10 +267,19 @@ class HudClass extends FlxGroup
 		}
 		updateIconPos();
 
-		healthBar.createFilledBar(
-			HealthIcon.getColor(iconDad.curIcon),
-			HealthIcon.getColor(iconBf.curIcon)
-		);
+		if(invertedIcons) {
+			healthBar.createFilledBar(
+				HealthIcon.getColor(iconBf.curIcon),
+				HealthIcon.getColor(iconDad.curIcon)
+			);
+		}
+		else {
+			healthBar.createFilledBar(
+				HealthIcon.getColor(iconDad.curIcon),
+				HealthIcon.getColor(iconBf.curIcon)
+			);
+		}
+
 		healthBar.updateBar();
 	}
 

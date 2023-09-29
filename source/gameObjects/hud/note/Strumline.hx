@@ -33,7 +33,9 @@ class Strumline extends FlxGroup
 
 	public var noteColor:Array<Int> = [0, 0, 0];
 
-	public function new(x:Float, ?character:Character, ?downscroll:Bool, ?isPlayer = false, ?botplay = true, ?assetModifier:String = "base", ?noteColors:Array<Int>)
+	public var isTaiko:Bool = false;
+
+	public function new(x:Float, ?character:Character, ?downscroll:Bool, ?isPlayer = false, ?botplay = true, ?assetModifier:String = "base", isTaiko:Bool = false)
 	{
 		super();
 		this.x = x;
@@ -41,7 +43,7 @@ class Strumline extends FlxGroup
 		this.isPlayer = isPlayer;
 		this.botplay = botplay;
 		this.character = character;
-		noteColor = noteColors;
+		this.isTaiko = isTaiko;
 
 		strumGroup = new FlxTypedGroup<StrumNote>();
 		noteGroup = new FlxTypedGroup<Note>();
@@ -58,7 +60,7 @@ class Strumline extends FlxGroup
 		for(i in 0...4)
 		{
 			var strum = new StrumNote();
-			strum.reloadStrum(i, assetModifier, noteColors);
+			strum.reloadStrum(i, assetModifier);
 			strumGroup.add(strum);
 		}
 
@@ -160,8 +162,13 @@ class Strumline extends FlxGroup
 			// 25
 			strum.y = (!downscroll ? 40 : FlxG.height - strum.height - 40);
 			
+			var downMult:Int = (!downscroll ? 1 : -1);
 			strum.x = x;
-			strum.x += CoolUtil.noteWidth() * strum.strumData;
+
+			strum.x += strum.exPos.x;
+			strum.y += downMult * strum.exPos.y;
+			
+			if(!isTaiko) strum.x += CoolUtil.noteWidth() * strum.strumData;
 		}
 
 		var lastStrum = strumGroup.members[strumGroup.members.length - 1];

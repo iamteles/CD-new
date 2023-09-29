@@ -28,7 +28,6 @@ class OptionsState extends MusicBeatState
 		"gameplay" => [
 			"Ghost Tapping",
 			"Downscroll",
-			"Middlescroll",
 			"Cutscenes",
 			"Framerate Cap",
 			
@@ -56,7 +55,6 @@ class OptionsState extends MusicBeatState
 			"Skin",
 			"Antialiasing",
 			"Note Splashes",
-			"Ratings on HUD",
 			"Song Timer",
 			"Smooth Healthbar",
 			"Split Holds",
@@ -70,7 +68,7 @@ class OptionsState extends MusicBeatState
 		"controls"  => 0xFF8295f5,
 	];
 
-	public static var curCat:String = "main";
+	public static var curCat:String = "gameplay";
 
 	static var curSelected:Int = 0;
 	static var storedSelected:Map<String, Int> = [];
@@ -78,6 +76,7 @@ class OptionsState extends MusicBeatState
 	var grpTexts:FlxTypedGroup<AlphabetMenu>;
 	var grpAttachs:FlxTypedGroup<FlxBasic>;
 	var infoTxt:FlxText;
+	var catChanger:FlxText;
 
 	// objects
 	var bg:FlxSprite;
@@ -117,10 +116,15 @@ class OptionsState extends MusicBeatState
 		infoTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		add(infoTxt);
 
+		catChanger = new FlxText(0, 0, FlxG.width * 0.92, "");
+		catChanger.setFormat(Main.gFont, 100, 0xFFFFFFFF, CENTER);
+		catChanger.setBorderStyle(OUTLINE, FlxColor.BLACK, 4.5);
+		add(catChanger);
+
 		reloadCat();
 	}
 
-	public function reloadCat(curCat:String = "main")
+	public function reloadCat(curCat:String = "gameplay")
 	{
 		storedSelected.set(OptionsState.curCat, curSelected);
 
@@ -273,9 +277,11 @@ class OptionsState extends MusicBeatState
 		infoTxt.text = "";
 		if(curCat != "main")
 		{
+			catChanger.text = "< " + curCat.toUpperCase() + " >";
+			catChanger.screenCenter(X);
 			try{
 				
-				infoTxt.text = SaveData.displaySettings.get(grpTexts.members[curSelected].text)[2];
+				infoTxt.text = SaveData.displaySettings.get(optionShit.get(curCat)[curSelected])[2];
 				infoTxt.y = FlxG.height - infoTxt.height - 16;
 				infoTxt.screenCenter(X);
 				
@@ -349,8 +355,8 @@ class OptionsState extends MusicBeatState
 			if(curCat == "main")
 			{
 				storedSelected.set("main", curSelected);
-				var daOption:String = grpTexts.members[curSelected].text;
-				switch(daOption.toLowerCase())
+				var daOption:String = grpTexts.members[curSelected].text.toLowerCase();
+				switch(daOption)
 				{
 					default:
 						if(optionShit.exists(daOption))

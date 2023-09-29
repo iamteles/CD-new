@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="retry.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="tex0000" x="1328" y="753" width="1051" height="700" frameX="-100" frameY="0" frameWidth="1276" frameHeight="1105"/>
+	<SubTexture name="tex0001" x="2397" y="753" width="794" height="701" frameX="-244" frameY="-333" frameWidth="1276" frameHeight="1105"/>
+	<SubTexture name="tex0002" x="34" y="775" width="1276" height="683" frameX="0" frameY="-406" frameWidth="1276" frameHeight="1105"/>
+	<SubTexture name="tex0003" x="34" y="775" width="1276" height="683" frameX="0" frameY="-406" frameWidth="1276" frameHeight="1105"/>
+	<SubTexture name="tex0004" x="34" y="34" width="1216" height="723" frameX="-30" frameY="-382" frameWidth="1276" frameHeight="1105"/>
+	<SubTexture name="tex0005" x="34" y="34" width="1216" height="723" frameX="-30" frameY="-382" frameWidth="1276" frameHeight="1105"/>
+	<SubTexture name="tex0006" x="1268" y="34" width="1234" height="701" frameX="-21" frameY="-397" frameWidth="1276" frameHeight="1105"/>
+	<SubTexture name="tex0007" x="1268" y="34" width="1234" height="701" frameX="-21" frameY="-397" frameWidth="1276" frameHeight="1105"/>
+</TextureAtlas>

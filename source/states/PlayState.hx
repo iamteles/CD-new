@@ -79,6 +79,8 @@ class PlayState extends MusicBeatState
 	public var bfStrumline:Strumline;
 	public var dadStrumline:Strumline;
 
+	public var taikoStrumline:Strumline;
+
 	public static var botplay:Bool = false;
 	public static var validScore:Bool = true;
 
@@ -92,6 +94,7 @@ class PlayState extends MusicBeatState
 	public var camVg:FlxCamera;
 	public var camHUD:FlxCamera;
 	public var camStrum:FlxCamera;
+	public var camTaiko:FlxCamera;
 	public var camOther:FlxCamera; // used so substates dont collide with camHUD.alpha or camHUD.visible
 	
 	public static var cameraSpeed:Float = 1.0;
@@ -125,6 +128,10 @@ class PlayState extends MusicBeatState
 	var bloom:FlxRuntimeShader;
 	var chrom:FlxRuntimeShader;
 	var echo:FlxRuntimeShader;
+
+	var playArea:FlxSprite;
+
+	var songHasTaiko:Bool = false;
 
 	public static function resetStatics()
 	{
@@ -176,6 +183,10 @@ class PlayState extends MusicBeatState
 		
 		camStrum = new FlxCamera();
 		camStrum.bgColor.alpha = 0;
+
+		camTaiko = new FlxCamera();
+		camTaiko.bgColor.alpha = 0;
+		//camTaiko.alpha = 0;
 		
 		camOther = new FlxCamera();
 		camOther.bgColor.alpha = 0;
@@ -185,6 +196,7 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camVg, false);
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.add(camStrum, false);
+		FlxG.cameras.add(camTaiko, false);
 		FlxG.cameras.add(camOther, false);
 		
 		// default camera
@@ -221,8 +233,14 @@ class PlayState extends MusicBeatState
 		// also updates the characters positions
 		changeStage(stageBuild.curStage);
 		
-		characters.push(dad);
-		characters.push(boyfriend);
+		if(daSong != "sin") {
+			characters.push(dad);
+			characters.push(boyfriend);
+		}
+		else {
+			characters.push(boyfriend);
+			characters.push(dad);
+		}
 
 		if(daSong == "desertion") {
 			characters.push(third);
@@ -332,6 +350,11 @@ class PlayState extends MusicBeatState
 			barDown.y = FlxG.height - barDown.height+55;
 		}
 
+		var taikoSongs = ['sin', 'zanta'];
+		if(taikoSongs.contains(daSong)) {
+			songHasTaiko = true;
+		}
+
 		add(barUp);
 		add(barDown);
 
@@ -349,13 +372,30 @@ class PlayState extends MusicBeatState
 		if(isSwapped)
 			noteColors = [boyfriend.noteColor, dad.noteColor];
 		
-		dadStrumline = new Strumline(strumPos[0] - strumPos[1], (isSwapped ? boyfriend : dad), downscroll, false, true, assetModifier, noteColors[0]);
+		dadStrumline = new Strumline(strumPos[0] - strumPos[1], (isSwapped ? boyfriend : dad), downscroll, false, true, assetModifier);
 		dadStrumline.ID = 0;
 		strumlines.add(dadStrumline);
 		
-		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, true, false, assetModifier, noteColors[1]);
+		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, true, false, assetModifier, true);
 		bfStrumline.ID = 1;
 		strumlines.add(bfStrumline);
+
+		if(songHasTaiko) {
+			taikoStrumline = new Strumline(100, boyfriend, downscroll, true, false, "taiko", true);
+			strumlines.add(taikoStrumline);
+			taikoStrumline.scrollSpeed = 2.3;
+
+			taikoStrumline.cameras = [camTaiko];
+
+			playArea = new FlxSprite().loadGraphic(Paths.image("notes/taiko/play"));
+			playArea.scale.set(0.7, 0.7);
+			playArea.updateHitbox();
+			playArea.x = 100 + 100;
+			//playArea.x += 100;
+			playArea.y = (!downscroll ? 40 : FlxG.height - playArea.height - 40);
+			playArea.cameras = [camTaiko];
+			add(playArea);
+		}
 		
 		var middlescroll:Bool = (daSong == 'conservation' || daSong == 'irritation');
 		if(middlescroll)
@@ -383,12 +423,12 @@ class PlayState extends MusicBeatState
 		}
 		else if(daSong == 'divergence')
 			noteSwap(true);
-		else if(daSong == 'intimidate')
+		else if(daSong == 'intimidate' || daSong == 'sin')
 			dadStrumline.x -= 2000;
 		
 		for(strumline in strumlines.members)
 		{
-			strumline.scrollSpeed = SONG.speed;
+			if(!strumline.isTaiko) strumline.scrollSpeed = SONG.speed;
 			strumline.updateHitbox();
 		}
 
@@ -459,6 +499,9 @@ class PlayState extends MusicBeatState
 			var thisChar = thisStrumline.character;*/
 
 			var noteAssetMod:String = assetModifier;
+
+			if(thisStrumline.isTaiko)
+				noteAssetMod = "taiko";
 			
 			// the funny
 			/*noteAssetMod = ["base", "pixel"][FlxG.random.int(0, 1)];
@@ -471,9 +514,35 @@ class PlayState extends MusicBeatState
 
 			// oop
 
-			thisStrumline.addSplash(note);
+			if(thisStrumline.isTaiko && !note.isHold && !note.isHoldEnd) {
+				thisStrumline.addSplash(note);
+				thisStrumline.unspawnNotes.push(note);
+			}
+			else if(!thisStrumline.isTaiko) {
+				thisStrumline.addSplash(note);
+				thisStrumline.unspawnNotes.push(note);
+			}
+		}
 
-			thisStrumline.unspawnNotes.push(note);
+		if(songHasTaiko) {
+			var taikoData = SongData.loadFromJson(daSong, "taiko");
+			var unspawnNotesTaiko:Array<Note> = ChartLoader.getChart(taikoData);
+
+			for(note in unspawnNotesTaiko)
+			{
+				var thisStrumline = taikoStrumline;
+				var noteAssetMod:String = assetModifier;
+				var whichcolor:Bool = thisStrumline.isPlayer;
+	
+				note.reloadNote(note.songTime, note.noteData, note.noteType, "taiko");
+	
+				// oop
+	
+				if(!note.isHold && !note.isHoldEnd) {
+					thisStrumline.addSplash(note);
+					thisStrumline.unspawnNotes.push(note);
+				}
+			}
 		}
 		
 		// sliding notes
@@ -609,6 +678,15 @@ class PlayState extends MusicBeatState
 		');
 
 		switch(daSong) {
+			case "sin":
+				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				camTaiko.alpha = 0;
+				dad.alpha = 0;
+				camHUD.alpha = 0;
+				vgblack.alpha = 0.8;
+				FlxG.camera.fade(0xFF000000, 0.01, false);
+				stageBuild.tweenStage(0, 0.01);
+				//camStrum.alpha = 0;
 			case 'convergence':
 				vgblack.alpha = 0.4;
 				camHUD.alpha = 0;
@@ -733,13 +811,15 @@ class PlayState extends MusicBeatState
 				startedCountdown = true;
 				for(strumline in strumlines.members)
 				{
-					for(strum in strumline.strumGroup)
-					{
-						var strumData:Int = (strumline.isPlayer ? strum.strumData : 3 - strum.strumData);
-						FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeOut,
-							startDelay: Conductor.crochet / 2 / 1000 * strumData,
-						});
+					if(!strumline.isTaiko) {
+						for(strum in strumline.strumGroup)
+						{
+							var strumData:Int = (strumline.isPlayer ? strum.strumData : 3 - strum.strumData);
+							FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeOut,
+								startDelay: Conductor.crochet / 2 / 1000 * strumData,
+							});
+						}
 					}
 				}
 
@@ -895,6 +975,8 @@ class PlayState extends MusicBeatState
 			onNoteMiss(note, strumline);
 	}
 	
+	var helicaPunch:Bool = false;
+	var breePunch:Bool = false;
 	// actual note functions
 	function onNoteHit(note:Note, strumline:Strumline)
 	{
@@ -950,19 +1032,40 @@ class PlayState extends MusicBeatState
 							bellasings = true;
 						}
 					default:
-						thisChar.playAnim(thisChar.singAnims[note.noteData], true);
-						thisChar.holdTimer = 0;
-						bellasings = false;
+						if(strumline.isTaiko) {
+							switch(note.noteData) {
+								case 0 | 1:
+									boyfriend.playAnim((breePunch ? "pright" : "pleft"), true);
+									boyfriend.holdTimer = 0;
+			
+									dad.playAnim("block", true);
+									dad.holdTimer = 0;
+									breePunch = !breePunch;
+								case 2 | 3:
+									dad.playAnim((helicaPunch ? "pright" : "pleft"), true);
+									dad.holdTimer = 0;
+			
+									boyfriend.playAnim("block", true);
+									boyfriend.holdTimer = 0;
+									helicaPunch = !helicaPunch;
+							}
 
-						if(daSong == "desertion" && !strumline.isPlayer) {
-							if (health > 0.1)
-							{
-								if (note.isHold || note.isHoldEnd)
+						}
+						else {
+							thisChar.playAnim(thisChar.singAnims[note.noteData], true);
+							thisChar.holdTimer = 0;
+							bellasings = false;
+	
+							if(daSong == "desertion" && !strumline.isPlayer) {
+								if (health > 0.1)
 								{
-									health -= 0.010;
+									if (note.isHold || note.isHoldEnd)
+									{
+										health -= 0.010;
+									}
+									else
+										health -= 0.050;
 								}
-								else
-									health -= 0.050;
 							}
 						}
 				}
@@ -992,23 +1095,34 @@ class PlayState extends MusicBeatState
 		{
 			vocals.volume = 0;
 
-			FlxG.sound.play(Paths.sound('miss/missnote' + FlxG.random.int(1, 3)), 0.55);
+			if(!strumline.isTaiko)
+				FlxG.sound.play(Paths.sound('miss/missnote' + FlxG.random.int(1, 3)), 0.55);
 
 			if(thisChar != null && note.noteType != "no animation" && !singList.contains(thisChar.animation.curAnim.name))
 			{
-				switch (note.noteType) {
-					case 'beam':
-						health -= 0.25;
+				if(strumline.isTaiko) {
+					boyfriend.playAnim("hit", true);
+					boyfriend.holdTimer = 0;
 
-						dad.playAnim("shoot", true);
-						dad.holdTimer = 0;
-
-						stageBuild.objectMap.get("bex").animation.play("flinch");
-
-						FlxG.sound.play(Paths.sound("thunder"));
+					dad.playAnim((helicaPunch ? "pright" : "pleft"), true);
+					dad.holdTimer = 0;
+					helicaPunch = !helicaPunch;
 				}
-
-				thisChar.miss(note.noteData);
+				else {
+					switch (note.noteType) {
+						case 'beam':
+							health -= 0.25;
+	
+							dad.playAnim("shoot", true);
+							dad.holdTimer = 0;
+	
+							stageBuild.objectMap.get("bex").animation.play("flinch");
+	
+							FlxG.sound.play(Paths.sound("thunder"));
+					}
+	
+					thisChar.miss(note.noteData);
+				}
 			}
 
 			// when the player misses notes
@@ -1254,7 +1368,10 @@ class PlayState extends MusicBeatState
 
 				if(unsNote.songTime - Conductor.songPos <= spawnTime && !unsNote.spawned)
 				{
-					unsNote.y = FlxG.height * 4;
+					if(strumline.isTaiko)
+						unsNote.x = FlxG.height * 4;
+					else
+						unsNote.y = FlxG.height * 4;
 					unsNote.spawned = true;
 					strumline.addNote(unsNote);
 				}
@@ -1280,12 +1397,20 @@ class PlayState extends MusicBeatState
 				var thisStrum = strumline.strumGroup.members[note.noteData];
 				
 				// follows the strum
-				note.x = thisStrum.x + note.noteOffset.x;
-				note.y = thisStrum.y + (thisStrum.height / 12 * downMult) + (note.noteOffset.y * downMult);
-				
-				// adjusting according to the song position
-				note.y += downMult * ((note.songTime - Conductor.songPos) * (strumline.scrollSpeed * 0.45));
-				
+				if(strumline.isTaiko) {
+					note.y = playArea.y + note.noteOffset.y;
+					note.x = playArea.x + (thisStrum.width / 12 * downMult) + (note.noteOffset.x * downMult);
+					
+					// adjusting according to the song position
+					note.x += ((note.songTime - Conductor.songPos) * (strumline.scrollSpeed * 0.45));
+				}
+				else {
+					note.x = thisStrum.x + note.noteOffset.x;
+					note.y = thisStrum.y + (thisStrum.height / 12 * downMult) + (note.noteOffset.y * downMult);
+					
+					// adjusting according to the song position
+					note.y += downMult * ((note.songTime - Conductor.songPos) * (strumline.scrollSpeed * 0.45));
+				}
 				
 				if(strumline.botplay)
 				{
@@ -1411,60 +1536,127 @@ class PlayState extends MusicBeatState
 				}
 			}
 
+			// this right here is the input code
 			if(justPressed.contains(true) && !strumline.botplay && strumline.isPlayer)
 			{
-				for(i in 0...justPressed.length)
-				{
-					if(justPressed[i])
+				if(!strumline.isTaiko) {
+					for(i in 0...justPressed.length)
 					{
-						var possibleHitNotes:Array<Note> = []; // gets the possible ones
-						var canHitNote:Note = null;
-						
-						for(note in strumline.noteGroup)
+						if(justPressed[i])
 						{
-							var noteDiff:Float = (note.songTime - Conductor.songPos);
+							var possibleHitNotes:Array<Note> = []; // gets the possible ones
+							var canHitNote:Note = null;
 							
-							var minTiming:Float = Timings.minTiming;
-							if(note.mustMiss)
-								minTiming = Timings.timingsMap.get("good")[0];
-
-							if(noteDiff <= minTiming && !note.missed && !note.gotHit && note.noteData == i)
+							for(note in strumline.noteGroup)
 							{
-								if(note.mustMiss && Conductor.songPos >= note.songTime + Timings.timingsMap.get("sick")[0])
+								var noteDiff:Float = (note.songTime - Conductor.songPos);
+								
+								var minTiming:Float = Timings.minTiming;
+								if(note.mustMiss)
+									minTiming = Timings.timingsMap.get("good")[0];
+	
+								if(noteDiff <= minTiming && !note.missed && !note.gotHit && note.noteData == i)
 								{
-									continue;
-								}
-								possibleHitNotes.push(note);
-								canHitNote = note;
-							}
-						}
-						
-						// if the note actually exists then you got it
-						if(canHitNote != null)
-						{
-							for(note in possibleHitNotes)
-							{
-								if(note.songTime < canHitNote.songTime)
+									if(note.mustMiss && Conductor.songPos >= note.songTime + Timings.timingsMap.get("sick")[0])
+									{
+										continue;
+									}
+									possibleHitNotes.push(note);
 									canHitNote = note;
+								}
 							}
-
-							checkNoteHit(canHitNote, strumline);
+							
+							// if the note actually exists then you got it
+							if(canHitNote != null)
+							{
+								for(note in possibleHitNotes)
+								{
+									if(note.songTime < canHitNote.songTime)
+										canHitNote = note;
+								}
+	
+								checkNoteHit(canHitNote, strumline);
+							}
+							else
+							{
+								var thisChar = strumline.character;
+								if(thisChar != null)
+								{
+									thisChar.miss(i);
+								}
+								// you ghost tapped lol
+								if(!SaveData.data.get("Ghost Tapping") && startedCountdown)
+								{
+									vocals.volume = 0;
+	
+									var note = new Note();
+									note.reloadNote(0, i, "none", assetModifier);
+									onNoteMiss(note, strumline);
+								}
+							}
 						}
-						else
+					}
+				}
+				else{
+					for(i in 0...justPressed.length)
+					{
+						if(justPressed[i])
 						{
-							var thisChar = strumline.character;
-							if(thisChar != null)
-							{
-								thisChar.miss(i);
-							}
-							// you ghost tapped lol
-							if(!SaveData.data.get("Ghost Tapping") && startedCountdown)
-							{
-								vocals.volume = 0;
+							var possibleHitNotes:Array<Note> = []; // gets the possible ones
+							var canHitNote:Note = null;
 
-								var note = new Note();
-								note.reloadNote(0, i, "none", assetModifier);
-								onNoteMiss(note, strumline);
+							var noteIndex:Int = taikoShit(i);
+
+							if(noteIndex == -1)
+								continue;
+							
+							for(note in strumline.noteGroup)
+							{
+								var noteDiff:Float = (note.songTime - Conductor.songPos);
+								
+								var minTiming:Float = Timings.minTiming;
+								if(note.mustMiss)
+									minTiming = Timings.timingsMap.get("good")[0];
+	
+								if(noteDiff <= minTiming && !note.missed && !note.gotHit && note.noteData == noteIndex)
+								{
+									if(note.mustMiss && Conductor.songPos >= note.songTime + Timings.timingsMap.get("sick")[0])
+									{
+										continue;
+									}
+									possibleHitNotes.push(note);
+									canHitNote = note;
+								}
+							}
+							
+							// if the note actually exists then you got it
+							if(canHitNote != null)
+							{
+								for(note in possibleHitNotes)
+								{
+									if(note.songTime < canHitNote.songTime)
+										canHitNote = note;
+								}
+	
+								checkNoteHit(canHitNote, strumline);
+							}
+							else
+							{
+								// you ghost tapped lol
+								if(!SaveData.data.get("Ghost Tapping") && startedCountdown)
+								{
+									var thisChar = strumline.character;
+									if(thisChar != null)
+									{
+										thisChar.miss(i);
+									}
+
+									vocals.volume = 0;
+	
+									var note = new Note();
+									note.reloadNote(0, i, "none", assetModifier);
+									onNoteMiss(note, strumline);
+								}
 							}
 						}
 					}
@@ -1704,6 +1896,55 @@ class PlayState extends MusicBeatState
 		syncSong();
 
 		switch(daSong) {
+			case 'sin':
+				switch(curStep) {
+					case 64:
+						FlxG.camera.fade(0x00000000, 1.6, true);
+					case 192:
+						CoolUtil.flash(camOther, 0.5);
+						vgblack.alpha = 0;
+						camHUD.alpha = 1;
+						defaultCamZoom = 0.4;
+						dad.alpha = 1;
+						stageBuild.tweenStage(1, 0.001);
+						beatZoom = 0.01;
+					case 320:
+						defaultCamZoom = 0.5;
+					case 352:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.6;
+						beatSpeed = 1;
+					case 704:
+						defaultCamZoom = 0.7;
+						beatSpeed = 4;
+					case 736:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.5;
+						beatSpeed = 1;
+					case 992:
+						defaultCamZoom = 0.6;
+						beatSpeed = 2;
+					case 1056:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.5;
+						beatSpeed = 1;
+					case 1312:
+						//EYES
+						CoolUtil.flash(camOther, 0.5);
+						beatSpeed = 4;
+					case 1328:
+						//OPEN
+						camTaiko.alpha = 1;
+						for(strum in taikoStrumline.strumGroup) {
+							FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeOut
+							});
+						}
+					case 1344:
+						//taiko start
+						CoolUtil.flash(camOther, 0.5);
+						beatSpeed = 1;
+				}
 			case 'intimidate':
 				switch(curStep) {
 					case 1:
@@ -2469,7 +2710,7 @@ class PlayState extends MusicBeatState
 		blueballed++;
 		activateTimers(false);
 		persistentDraw = false;
-		openSubState(new GameOverSubState(boyfriend));
+		openSubState(new GameOverSubState(bfStrumline.character.curChar));
 	}
 
 	public function zoomCamera(gameZoom:Float = 0, hudZoom:Float = 0)
@@ -2674,5 +2915,35 @@ class PlayState extends MusicBeatState
 		}
 
 		dadStrumline.noteAlpha = 0.5;
+	}
+
+	function taikoShit(index:Int):Int
+	{
+		if(index == 0) {
+			if(pressed[3])
+				return 3;
+			else
+				return 2;
+		}
+		else if(index == 1) {
+			if(pressed[2])
+				return 0;
+			else
+				return 1;
+		}
+		else if(index == 2) {
+			if(pressed[1])
+				return 0;
+			else
+				return 1;
+		}
+		else if(index == 3) {
+			if(pressed[0])
+				return 3;
+			else
+				return 2;
+		}
+		else
+			return -1;
 	}
 }

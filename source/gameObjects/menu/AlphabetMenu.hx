@@ -1,20 +1,27 @@
 package gameObjects.menu;
 
+import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxMath;
 import gameObjects.hud.HealthIcon;
+import gameObjects.menu.Alphabet;
 
 /*
 **	instead of it being all mashed into one place
 **	i've separated the Alphabet into two classes
 **	use this one for menus such as Pause or Freeplay
 */
-class AlphabetMenu extends Alphabet
+
+class AlphabetMenu extends FlxText
 {
 	public function new(x:Float = 0, y:Float = 0, ?text:String = "", bold:Bool = false)
 	{
-		super(x, y, text, bold);
+		super(x, y, 0, text.toUpperCase());
+
+		setFormat(Main.gFont, 80, 0xFFFFFFFF);
+		setBorderStyle(OUTLINE, 0xFF000000, 4.2);
+		updateHitbox();
 	}
 
 	public var xTo:Float = 100;
@@ -26,8 +33,12 @@ class AlphabetMenu extends Alphabet
 
 	public var posUpdate:Bool = true;
 
-	// freeplay
+	public final boxHeight:Float = 70;
+
+	public var nuhuh:Bool = false;
+
 	public var icon:HealthIcon = null;
+	public var align:AlphabetAlign = LEFT;
 
 	override function update(elapsed:Float)
 	{
@@ -38,6 +49,8 @@ class AlphabetMenu extends Alphabet
 
 	public function updatePos(lerp:Float = 1)
 	{
+		if (nuhuh)
+			return;
 		x = FlxMath.lerp(x, xTo + (spaceX * focusY * scale.x), lerp);
 		y = FlxMath.lerp(y, yTo + (spaceY * focusY * scale.y), lerp);
 	}

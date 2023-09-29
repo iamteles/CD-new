@@ -7,6 +7,8 @@ import flixel.math.FlxPoint;
 import shaders.ColorSwap;
 import states.PlayState;
 import sys.io.File;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 
 typedef StageInfo =
 {
@@ -241,6 +243,11 @@ class Stage extends FlxGroup
 		}
 	}
 
+	public function tweenStage(alpha:Float, time:Float) {
+		for (obj in this) {
+			FlxTween.tween(obj, {alpha: alpha}, time, {ease: FlxEase.expoOut});
+		}
+	}
 	public function red(yeah:Bool = true) {
 		if(yeah) {
 			for(obj in this) {

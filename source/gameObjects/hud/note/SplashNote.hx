@@ -32,7 +32,7 @@ class SplashNote extends FlxSprite
 	public var noteType:String = "";
 	public var noteData:Int = 0;
 
-	var unavailable:Array<String> = ["pixel"];
+	var unavailable:Array<String> = ["pixel", "taiko"];
 
 	var colorSwap:ColorSwap;
 	public function reloadSplash(note:Note, noteColor:Array<Int>)
