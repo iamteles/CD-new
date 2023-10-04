@@ -52,7 +52,7 @@ class FreeplayState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		CoolUtil.playMusic("freakyMenu");
+		CoolUtil.playMusic("overTheHorizon");
 		bg = new FlxSprite().loadGraphic(Paths.image('menu/backgrounds/menuDesat'));
 		bg.scale.set(1.2,1.2); bg.updateHitbox();
 		bg.screenCenter();
@@ -65,7 +65,7 @@ class FreeplayState extends MusicBeatState
 		addSong("irritation", "watts");
 		addSong("intimidate", "bex");
 		addSong("exotic", "cute");
-		addSong("zanta", "cute");
+		addSong("ripple", "wave");
 
 		grpItems = new FlxGroup();
 		add(grpItems);
@@ -129,14 +129,14 @@ class FreeplayState extends MusicBeatState
 			}
 			catch(e)
 			{
-				FlxG.sound.play(Paths.sound('menu/cancelMenu'));
+				FlxG.sound.play(Paths.sound('menu/back'));
 			}
 		}
 
 		if(Controls.justPressed("BACK"))
 		{
-			FlxG.sound.play(Paths.sound('menu/cancelMenu'));
-			Main.switchState(new MenuState());
+			FlxG.sound.play(Paths.sound('menu/back'));
+			Main.switchState(new states.cd.MainMenu());
 		}
 
 		for(rawItem in grpItems.members)
@@ -181,7 +181,7 @@ class FreeplayState extends MusicBeatState
 		bgTween = FlxTween.color(bg, 0.4, bg.color, songList[curSelected][2]);
 
 		if(change != 0)
-			FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+			FlxG.sound.play(Paths.sound("menu/scroll"));
 		
 		updateScoreCount();
 	}

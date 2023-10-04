@@ -16,6 +16,7 @@ class Note extends FlxSprite
 
 	public var noteSize:Float = 1.0;
 	public var assetModifier:String = "base";
+	private var colArray:Array<String> = ['purple', 'blue', 'green', 'red']; // for classic psych like noteskins
 	
 	public function reloadNote(songTime:Float, noteData:Int, ?noteType:String = "default", ?assetModifier:String = "base", ?noteColor:Array<Int>):Note
 	{
@@ -70,7 +71,39 @@ class Note extends FlxSprite
 				}
 				antialiasing = false;
 				animation.play(direction);
+			case "tails":
+				noteSize = 0.7;
+				var randomPick:String = (FlxG.random.bool(0.01) ? "pick" : "notes");
+				frames = Paths.getSparrowAtlas('notes/$assetModifier/$randomPick');
 
+				var typeName:String = (isHold ? (isHoldEnd ? " hold end" : " hold") : "");
+
+				animation.addByPrefix('${direction} hold', colArray[noteData] + ' hold piece');
+
+				if(noteData == 0)
+					animation.addByPrefix('${direction} hold end', 'pruple end hold');
+				else
+					animation.addByPrefix('${direction} hold end', colArray[noteData] + ' hold end');
+
+				animation.addByPrefix('${direction}', colArray[noteData] + '0', 24, true);
+
+				animation.play('${direction}${typeName}');
+			case "shack" | "fitdon":
+				noteSize = 0.7;
+				frames = Paths.getSparrowAtlas('notes/$assetModifier/notes');
+
+				var typeName:String = (isHold ? (isHoldEnd ? " hold end" : " hold") : "");
+
+				animation.addByPrefix('${direction} hold', colArray[noteData] + ' hold piece');
+
+				if(noteData == 0)
+					animation.addByPrefix('${direction} hold end', 'pruple end hold');
+				else
+					animation.addByPrefix('${direction} hold end', colArray[noteData] + ' hold end');
+
+				animation.addByPrefix('${direction}', colArray[noteData] + '0', 24, true);
+
+				animation.play('${direction}${typeName}');
 			default:
 				switch(noteType)
 				{

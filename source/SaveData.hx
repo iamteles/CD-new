@@ -11,6 +11,8 @@ enum SettingType
 	CHECKMARK;
 	SELECTOR;
 }
+
+@:allow(flixel.util.FlxSharedObject)
 class SaveData
 {
 	public static var data:Map<String, Dynamic> = [];
@@ -18,27 +20,32 @@ class SaveData
 		"Ghost Tapping" => [
 			true,
 			CHECKMARK,
-			"Makes you able to press keys freely without missing notes"
+			"Makes you able to press keys freely without missing notes."
 		],
 		"Downscroll" => [
 			false,
 			CHECKMARK,
-			"Makes the notes go down instead of up"
+			"Makes the notes scroll down instead of up."
 		],
 		"Middlescroll" => [
 			false,
 			CHECKMARK,
-			"Disables the opponent's notes and moves yours to the middle"
+			"Moves your notes to the center of the screen and hides the opponent's."
 		],
 		"Antialiasing" => [
 			true,
 			CHECKMARK,
-			"Disabling it might increase the fps at the cost of smoother sprites"
+			"Disables smoothing in scaling sprites. Might increase performance."
+		],
+		"Shaders" => [
+			true,
+			CHECKMARK,
+			"Whether to display graphical shaders. Disabling them improves performance."
 		],
 		"Note Splashes" => [
 			"ON",
 			SELECTOR,
-			"Whether a splash appear when you hit a note perfectly",
+			"Whether a splash appear when you hit a note perfectly.",
 			["ON", "PLAYER ONLY", "OFF"],
 		],
 		"Skin" => [
@@ -50,35 +57,35 @@ class SaveData
 		"Ratings on HUD" => [
 			false,
 			CHECKMARK,
-			"Makes the ratings stick on the HUD"
+			"Makes the ratings stick on the HUD."
 		],
 		"Framerate Cap"	=> [
 			120,
 			SELECTOR,
-			"Self explanatory",
+			"How many frames appear on screen in a second.",
 			[30, 360]
 		],
 		
 		"Split Holds" => [
 			false,
 			CHECKMARK,
-			"Cuts the end of each hold note like classic engines did"
+			"Cuts the end of each hold note like classic engines did."
 		],
 		"Smooth Healthbar" => [
 			true,
 			CHECKMARK,
-			"Makes the healthbar go up and down smoothly"
+			"Makes the healthbar move smoothly."
 		],
 		"Song Timer" => [
 			true,
 			CHECKMARK,
-			"Makes the song timer visible"
+			"Whether the song timer appears or not."
 		],
 		
 		"Cutscenes" => [
 			"ON",
 			SELECTOR,
-			"Decides if the song cutscenes should play",
+			"Whether to play song cutscenes or dialogues.",
 			["ON", "FREEPLAY OFF", "OFF"],
 		],
 
@@ -90,7 +97,9 @@ class SaveData
 	];
 
 	public static var progression:Map<String, Dynamic> = [
-		"shopentrance" => false
+		"shopentrance" => false,
+		"week2" => false,
+		"week1" => false
 	];
 	public static var money:Int = 0;
 	public static var shop:Map<String, Dynamic> = [];
@@ -135,6 +144,22 @@ class SaveData
 			false,
 			"Only for the biggest gamers. Not liable for any injures caused to your fingers."
 		],
+		"fitdon" => [
+			false,
+			"secret"
+		],
+		"ylyl" => [
+			false,
+			"secret"
+		],
+		"cd" => [
+			true,
+			"default"
+		],
+		"doido" => [
+			true,
+			"default"
+		]
 	];
 	
 	public static var saveFile:FlxSave;
@@ -150,6 +175,7 @@ class SaveData
 		progressionFile.bind("progression",	"teles/CD");
 
 		FlxG.save.bind("save-data", "teles/CD"); // these are for other stuff
+
 		load();
 
 		Controls.load();
@@ -195,7 +221,51 @@ class SaveData
 		shop = progressionFile.data.shop;
 		progression = progressionFile.data.progression;
 		data = saveFile.data.settings;
+
+		if(findMod("gameSettings", "fitdon"))
+		{
+			buyItem("fitdon");
+			trace("found fitdon");
+		}
+		else {
+			trace("not found fitdon");
+		}
+
 		save();
+	}
+
+	public static function findMod(file:String, localPath:String) {
+		var directory = lime.system.System.applicationStorageDirectory;
+		var path = haxe.io.Path.normalize('$directory/../../../$localPath') + "/";
+		
+		file = StringTools.replace(file, "//", "/");
+		file = StringTools.replace(file, "//", "/");
+		
+		if (StringTools.startsWith(file, "/"))
+		{
+			file = file.substr(1);
+		}
+		
+		if (StringTools.endsWith(file, "/"))
+		{
+			file = file.substring(0, file.length - 1);
+		}
+		
+		if (file.indexOf("/") > -1)
+		{
+			var split = file.split("/");
+			file = "";
+			
+			for (i in 0...(split.length - 1))
+			{
+				file += "#" + split[i] + "/";
+			}
+			
+			file += split[split.length - 1];
+		}
+
+		var yeah = path + file + ".sol";
+		return sys.FileSystem.exists(yeah);
 	}
 	
 	public static function save()
@@ -237,5 +307,24 @@ class SaveData
 		string = skinCodes[index];
 		trace('current skin is $string');
 		return string;
+	}
+
+	public static function skinFromCode(code:String):String {
+		var index:Int = skinCodes.indexOf(code);
+		var skin = displaySettings.get("Skin")[3][index];
+		return skin;
+	}
+
+	public static function returnSkins():Array<String> {
+		var skinArray:Array<String> = [];
+		for(i in skinCodes) {
+			if(shop.get(i)) {
+				skinArray.push(skinFromCode(i));
+				if(i == "base")
+					skinArray.push("Pixel Classic");
+			}
+		}
+
+		return skinArray;
 	}
 }

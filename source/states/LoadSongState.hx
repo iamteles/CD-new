@@ -53,13 +53,13 @@ class LoadSongState extends MusicBeatState
 		add(color);
 		
 		// loading image
-		bg = new FlxSprite().loadGraphic(Paths.image('loading/loading-screen-bg'));
+		bg = new FlxSprite().loadGraphic(Paths.image('menu/main/bg'));
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.alpha = 0.3;
 		add(bg);
 
-		logo = new FlxSprite().loadGraphic(Paths.image('loading/loading'));
+		logo = new FlxSprite().loadGraphic(Paths.image('menu/loading'));
 		logo.updateHitbox();
 		logo.screenCenter();
 		var storeY:Float = logo.y;

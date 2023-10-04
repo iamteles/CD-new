@@ -58,7 +58,7 @@ class StoryMenuState extends MusicBeatState
 	{
 		super.create();
 		preloadAssets();
-		CoolUtil.playMusic("freakyMenu");
+		CoolUtil.playMusic("overTheHorizon");
 		addWeek(
 			"tutorial",
 			"funky beginnings",
@@ -152,14 +152,14 @@ class StoryMenuState extends MusicBeatState
 			if(Controls.justPressed("BACK"))
 			{
 				canSelect = false;
-				FlxG.sound.play(Paths.sound('menu/cancelMenu'));
-				Main.switchState(new states.MenuState());
+				FlxG.sound.play(Paths.sound('menu/back'));
+				Main.switchState(new states.cd.MainMenu());
 			}
 			
 			if(Controls.justPressed("ACCEPT"))
 			{
 				canSelect = false;
-				FlxG.sound.play(Paths.sound('menu/confirmMenu'));
+				FlxG.sound.play(Paths.sound('menu/select'));
 				grpChars.members[1].playAnim("select");
 				
 				// FLICK FLICK
@@ -237,7 +237,7 @@ class StoryMenuState extends MusicBeatState
 	public function changeWeek(change:Int = 0)
 	{
 		if(change != 0)
-			FlxG.sound.play(Paths.sound('menu/scrollMenu'));
+			FlxG.sound.play(Paths.sound('menu/scroll'));
 	
 		curWeek += change;
 		curWeek = FlxMath.wrap(curWeek, 0, weekList.length - 1);
@@ -288,7 +288,7 @@ class StoryMenuState extends MusicBeatState
 	public function changeDiff(change:Int = 0)
 	{
 		if(change != 0)
-			FlxG.sound.play(Paths.sound('menu/scrollMenu'));
+			FlxG.sound.play(Paths.sound('menu/scroll'));
 		
 		diffInt += change;
 		diffInt = FlxMath.wrap(diffInt, 0, 2);

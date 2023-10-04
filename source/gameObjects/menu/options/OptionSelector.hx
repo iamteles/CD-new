@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
+import flixel.text.FlxText;
 
 class OptionSelector extends FlxTypedGroup<FlxSprite>
 {
@@ -14,7 +15,7 @@ class OptionSelector extends FlxTypedGroup<FlxSprite>
 	public var xTo:Float = 0;
 
 	public var arrowL:FlxSprite;
-	public var text:Alphabet;
+	public var text:FlxText;
 	public var arrowR:FlxSprite;
 
 	public function new(label:String, value:Dynamic, bounds:Array<Dynamic>)
@@ -24,23 +25,21 @@ class OptionSelector extends FlxTypedGroup<FlxSprite>
 		this.value = value;
 		this.bounds = bounds;
 
-		arrowL = new FlxSprite();
-		arrowL.frames = Paths.getSparrowAtlas("menu/menuArrows");
-		arrowL.animation.addByPrefix("idle", "arrow left", 0, false);
-		arrowL.animation.addByPrefix("push", "arrow push left", 0, false);
-		arrowL.scale.set(0.6,0.6); arrowL.updateHitbox();
-		arrowL.animation.play("idle");
+        arrowL = new FlxSprite().loadGraphic(Paths.image('menu/arrow'));
+		arrowL.scale.set(0.4,0.4); arrowL.updateHitbox();
 
-		arrowR = new FlxSprite();
-		arrowR.frames = Paths.getSparrowAtlas("menu/menuArrows");
-		arrowR.animation.addByPrefix("idle", "arrow right", 0, false);
-		arrowR.animation.addByPrefix("push", "arrow push right", 0, false);
-		arrowR.scale.set(0.6,0.6); arrowR.updateHitbox();
-		arrowR.animation.play("idle");
+        arrowR = new FlxSprite().loadGraphic(Paths.image('menu/arrow'));
+		arrowR.scale.set(0.4,0.4); arrowR.updateHitbox();
+
+		arrowL.flipX = true;
+        arrowR.flipX = false;
 
 		// value display
-		text = new Alphabet(0, 0, Std.string(value), true);
-		text.scale.set(0.7,0.7);
+		text = new FlxText(0, 0, 0, "");
+		text.setFormat(Main.gFont, 49, 0xFFFFFFFF, CENTER);
+		text.setBorderStyle(OUTLINE, 0xFF000000, 2.7);
+		text.text = label;
+		//text.scale.set(0.7,0.7);
 		text.updateHitbox();
 
 		add(arrowL);

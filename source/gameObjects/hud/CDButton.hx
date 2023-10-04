@@ -50,6 +50,12 @@ class CDButton extends FlxGroup
         updateLabel();
     }
 
+    public inline function pos(nx:Float = 0, ny:Float = 0) {
+        button.x += nx;
+        button.y += ny;
+        updateLabel();
+    }
+
     function updateLabel() {
         label.x = (button.x + (button.width/2) - (label.width/2));
         label.y = (button.y + (button.height/2) - (label.height/2));

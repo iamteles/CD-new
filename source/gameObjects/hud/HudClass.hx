@@ -87,6 +87,8 @@ class HudClass extends FlxGroup
 				centeric = 'bolt';
 			case 'irritation' | 'conservation':
 				centeric = 'cent';
+			case 'ripple':
+				centeric = 'disk';
 
 		}
 		iconCenter.setIcon(centeric, false);
@@ -249,10 +251,18 @@ class HudClass extends FlxGroup
 			iconCenter.y = (healthBarBG.y - iconBf.height/ 2) + (healthBarBG.height/2);
 			iconCenter.x = barX - (iconCenter.width/2);
 
-			if(!icon.isPlayer)
-				icon.setAnim(2 - health);
-			else
-				icon.setAnim(health);
+			if(invertedIcons) {
+				if(icon.isPlayer)
+					icon.setAnim(2 - health);
+				else
+					icon.setAnim(health);
+			}
+			else {
+				if(!icon.isPlayer)
+					icon.setAnim(2 - health);
+				else
+					icon.setAnim(health);
+			}
 		}
 
 		healthBar.flipX = invertedIcons;

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Ripple splashscreen.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ripple splashscreen0000" x="11" y="11" width="774" height="362" pivotX="0" pivotY="0" frameX="-2" frameY="0" frameWidth="776" frameHeight="362"/>
+	<SubTexture name="ripple splashscreen0001" x="814" y="11" width="776" height="362"/>
+	<SubTexture name="ripple splashscreen0002" x="11" y="402" width="772" height="362" frameX="-4" frameY="0" frameWidth="776" frameHeight="362"/>
+	<SubTexture name="ripple splashscreen0003" x="812" y="402" width="767" height="362" frameX="-9" frameY="0" frameWidth="776" frameHeight="362"/>
+	<SubTexture name="ripple splashscreen0004" x="11" y="793" width="774" height="362" frameX="-2" frameY="0" frameWidth="776" frameHeight="362"/>
+	<SubTexture name="ripple splashscreen0005" x="814" y="793" width="776" height="362"/>
+	<SubTexture name="ripple splashscreen0006" x="11" y="1184" width="772" height="362" frameX="-4" frameY="0" frameWidth="776" frameHeight="362"/>
+	<SubTexture name="ripple splashscreen0007" x="812" y="1184" width="767" height="362" frameX="-9" frameY="0" frameWidth="776" frameHeight="362"/>
+</TextureAtlas>

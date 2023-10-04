@@ -1,0 +1,122 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-55,
+				90
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Drown Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-25,
+				93
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Drown Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-36,
+				17
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Drown Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-64,
+				103
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Drown Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				101
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Drown Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-26,
+				93
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "Drown Missleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-36,
+				17
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "Drown Missdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-67,
+				104
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "Drown Missup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-61,
+				101
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "Drown Missright",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/drown/Drown",
+	"position": [
+		80,
+		300
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		80,
+		-70
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

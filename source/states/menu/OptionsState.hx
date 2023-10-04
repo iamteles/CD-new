@@ -21,62 +21,42 @@ class OptionsState extends MusicBeatState
 	var optionShit:Map<String, Array<String>> =
 	[
 		"main" => [
-			"gameplay",
-			"appearance",
-			"controls",
+			"Gameplay",
+			"Appearance",
+			"Controls",
 		],
 		"gameplay" => [
 			"Ghost Tapping",
 			"Downscroll",
 			"Cutscenes",
 			"Framerate Cap",
-			
-			// dont ask
-			/*"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",
-			"Framerate Cap",*/
 		],
 		"appearance" => [
 			"Skin",
 			"Antialiasing",
-			"Note Splashes",
 			"Song Timer",
+			"Note Splashes",
 			"Smooth Healthbar",
 			"Split Holds",
+			"Shaders"
 		],
 	];
 
 	public static var bgColors:Map<String, FlxColor> = [
-		"main" 		=> 0xFFcf68f7,
+		"main" 		=> 0xFFF85E4D,
 		"gameplay"	=> 0xFF83e6aa,
-		"appearence"=> 0xFFf58ea9,
+		"appearance"=> 0xFFFEC404,
 		"controls"  => 0xFF8295f5,
 	];
 
-	public static var curCat:String = "gameplay";
+	public static var curCat:String = "main";
 
 	static var curSelected:Int = 0;
 	static var storedSelected:Map<String, Int> = [];
 
-	var grpTexts:FlxTypedGroup<AlphabetMenu>;
+	var grpTexts:FlxTypedGroup<FlxText>;
 	var grpAttachs:FlxTypedGroup<FlxBasic>;
 	var infoTxt:FlxText;
-	var catChanger:FlxText;
 
 	// objects
 	var bg:FlxSprite;
@@ -88,7 +68,7 @@ class OptionsState extends MusicBeatState
 		super();
 		if(newBackTarget == null)
 		{
-			newBackTarget = new states.MenuState();
+			newBackTarget = new states.cd.MainMenu();
 			if(backTarget == null)
 				backTarget = newBackTarget;
 		}
@@ -99,13 +79,13 @@ class OptionsState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		CoolUtil.playMusic("lilBitBack");
+		CoolUtil.playMusic("movement");
 		bg = new FlxSprite().loadGraphic(Paths.image('menu/backgrounds/menuDesat'));
 		bg.scale.set(1.2,1.2); bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
 
-		grpTexts = new FlxTypedGroup<AlphabetMenu>();
+		grpTexts = new FlxTypedGroup<FlxText>();
 		grpAttachs = new FlxTypedGroup<FlxBasic>();
 
 		add(grpTexts);
@@ -116,15 +96,10 @@ class OptionsState extends MusicBeatState
 		infoTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		add(infoTxt);
 
-		catChanger = new FlxText(0, 0, FlxG.width * 0.92, "");
-		catChanger.setFormat(Main.gFont, 100, 0xFFFFFFFF, CENTER);
-		catChanger.setBorderStyle(OUTLINE, FlxColor.BLACK, 4.5);
-		add(catChanger);
-
 		reloadCat();
 	}
 
-	public function reloadCat(curCat:String = "gameplay")
+	public function reloadCat(curCat:String = "main")
 	{
 		storedSelected.set(OptionsState.curCat, curSelected);
 
@@ -142,28 +117,27 @@ class OptionsState extends MusicBeatState
 		else
 			bg.color = bgColors.get("main");
 
-		FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+		FlxG.sound.play(Paths.sound("menu/scroll"));
 
 		if(curCat == "main")
 		{
 			for(i in 0...optionShit.get(curCat).length)
 			{
-				var item = new AlphabetMenu(0,0, optionShit.get(curCat)[i], true);
+				var item = new FlxText(0, 0, FlxG.width * 0.92, "");
+				item.setFormat(Main.gFont, 70, 0xFFFFFFFF, CENTER);
+				item.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
+				item.text = optionShit.get(curCat)[i];
 				grpTexts.add(item);
 
 				item.ID = i;
-
-				item.align = CENTER;
 				item.updateHitbox();
-
-				item.posUpdate = false;
 
 				var spaceY:Float = 36;
 
-				item.x = FlxG.width / 2;
+				item.screenCenter(X);
 				item.y = (FlxG.height / 2) + ((item.height + spaceY) * i);
 				item.y -= (item.height + spaceY) * (optionShit.get(curCat).length - 1) / 2;
-				item.y -= (item.boxHeight / 2);
+				item.y -= (item.height / 2);
 			}
 		}
 		else
@@ -171,34 +145,26 @@ class OptionsState extends MusicBeatState
 			for(i in 0...optionShit.get(curCat).length)
 			{
 				var daOption:String = optionShit.get(curCat)[i];
-				var item = new AlphabetMenu(0,0, daOption, true);
+				var item = new FlxText(0, 0, FlxG.width * 0.92, "");
+				item.setFormat(Main.gFont, 70, 0xFFFFFFFF, LEFT);
+				item.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
+				item.text = daOption;
 				grpTexts.add(item);
 
 				item.ID = i;
-				item.focusY = i;
 
-				item.align = LEFT;
 				item.scale.set(0.7,0.7);
 				item.updateHitbox();
-				
-				item.xTo = 128;
-				item.spaceX = 0;
 
-				item.yTo = 48;
-				item.spaceX = 0;
-				item.spaceY = (item.boxHeight + 12);
-
-				item.updatePos();
-
+				item.x += 128;
 				if(optionShit.get(curCat).length <= 9)
 				{
-					item.posUpdate = false;
 
 					var spaceY:Float = 12;
 
 					item.y = (FlxG.height / 2) + ((item.height + spaceY) * i);
 					item.y -= (item.height + spaceY) * (optionShit.get(curCat).length - 1) / 2;
-					item.y -= (item.boxHeight / 2);
+					item.y -= (item.height / 2);
 				}
 
 				if(SaveData.displaySettings.exists(daOption))
@@ -214,10 +180,13 @@ class OptionsState extends MusicBeatState
 							grpAttachs.add(daCheck);
 
 						case SELECTOR:
+							var array:Array<Dynamic> = daDisplay[3];
+							if(daOption == "Skin")
+								array = SaveData.returnSkins();
 							var daSelec = new OptionSelector(
 								daOption,
 								SaveData.data.get(daOption),
-								daDisplay[3]
+								array
 							);
 							daSelec.xTo = FlxG.width - 128;
 							daSelec.updateValue();
@@ -241,16 +210,16 @@ class OptionsState extends MusicBeatState
 
 		for(item in grpTexts.members)
 		{
-			item.focusY = item.ID;
+			//item.focusY = item.ID;
 			item.alpha = 0.4;
 			if(item.ID == curSelected)
 			{
 				item.alpha = 1;
 			}
-			if(curSelected > 9)
-			{
-				item.focusY -= curSelected - 9;
-			}
+			//if(curSelected > 9)
+			//{
+			//	item.focusY -= curSelected - 9;
+			//}
 		}
 		for(item in grpAttachs.members)
 		{
@@ -277,8 +246,6 @@ class OptionsState extends MusicBeatState
 		infoTxt.text = "";
 		if(curCat != "main")
 		{
-			catChanger.text = "< " + curCat.toUpperCase() + " >";
-			catChanger.screenCenter(X);
 			try{
 				
 				infoTxt.text = SaveData.displaySettings.get(optionShit.get(curCat)[curSelected])[2];
@@ -293,7 +260,7 @@ class OptionsState extends MusicBeatState
 		}
 
 		if(change != 0)
-			FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+			FlxG.sound.play(Paths.sound("menu/scroll"));
 
 		// uhhh
 		selectorTimer = Math.NEGATIVE_INFINITY;
@@ -337,7 +304,7 @@ class OptionsState extends MusicBeatState
 			if(curCat == "main")
 			{
 				storedSelected.set("main", curSelected);
-				FlxG.sound.play(Paths.sound("menu/cancelMenu"));
+				FlxG.sound.play(Paths.sound("menu/back"));
 				Main.switchState(backTarget);
 				backTarget = null;
 			}
@@ -381,7 +348,7 @@ class OptionsState extends MusicBeatState
 					SaveData.data.set(optionShit[curCat][curSelected], checkmark.value);
 					SaveData.save();
 
-					FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+					FlxG.sound.play(Paths.sound("menu/scroll"));
 				}
 			}
 		}
@@ -396,7 +363,7 @@ class OptionsState extends MusicBeatState
 				if(Controls.justPressed("UI_LEFT") || Controls.justPressed("UI_RIGHT"))
 				{
 					selectorTimer = -0.5;
-					FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+					FlxG.sound.play(Paths.sound("menu/scroll"));
 
 					if(Controls.justPressed("UI_LEFT"))
 						selector.updateValue(-1);
@@ -405,10 +372,10 @@ class OptionsState extends MusicBeatState
 				}
 
 				if(Controls.pressed("UI_LEFT"))
-					selector.arrowL.animation.play("push");
+					selector.arrowL.alpha = 1;
 
 				if(Controls.pressed("UI_RIGHT"))
-					selector.arrowR.animation.play("push");
+					selector.arrowR.alpha = 1;
 
 				if(selectorTimer != Math.NEGATIVE_INFINITY && !Std.isOfType(selector.bounds[0], String))
 				{

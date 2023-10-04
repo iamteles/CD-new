@@ -35,7 +35,7 @@ class CoolUtil
 	{
 		return switch(week)
 		{
-			default: ["normal"];
+			default: ["normal", "mania"];
 		}
 	}
 

@@ -93,7 +93,9 @@ class HealthIcon extends FlxSprite
 			"duo"	=> 0xffffffff,
 			"cute"		=> 0xffffffff,
 			"evil"	=> 0xFF262932,
-			"helica" => 0xFFe39a78
+			"helica" => 0xFFe39a78,
+			"drown" => 0xFF448499,
+			"wave" => 0xFFEE6D48
 		];
 
 		function loopMap()

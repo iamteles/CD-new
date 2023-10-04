@@ -61,6 +61,8 @@ class ChartingState extends MusicBeatState
 		'none',
 		'no animation',
 		'bomb',
+		'bella',
+		'thunder'
 	];
 
 	var selectSquare:FlxSprite;

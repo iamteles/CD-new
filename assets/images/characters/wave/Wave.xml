@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Wave.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Wave Down0000" x="11" y="11" width="420" height="596" pivotX="14.65" pivotY="-115.2" frameX="0" frameY="-7" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0001" x="11" y="11" width="420" height="596" frameX="0" frameY="-7" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0002" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0003" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0004" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0005" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0006" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0007" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0008" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0009" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0010" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0011" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0012" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0013" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0014" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0015" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0016" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0017" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0018" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0019" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0020" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0021" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0022" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0023" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Down0024" x="460" y="11" width="406" height="603" frameX="-7" frameY="0" frameWidth="420" frameHeight="603"/>
+	<SubTexture name="Wave Idle0000" x="895" y="11" width="399" height="716" pivotX="4" pivotY="0" frameX="-4" frameY="-2" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0001" x="895" y="11" width="399" height="716" frameX="-4" frameY="-2" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0002" x="1323" y="11" width="411" height="702" frameX="0" frameY="-16" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0003" x="1323" y="11" width="411" height="702" frameX="0" frameY="-16" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0004" x="1763" y="11" width="392" height="697" frameX="-2" frameY="-21" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0005" x="1763" y="11" width="392" height="697" frameX="-2" frameY="-21" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0006" x="2184" y="11" width="389" height="701" frameX="-4" frameY="-17" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0007" x="2184" y="11" width="389" height="701" frameX="-4" frameY="-17" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0008" x="2602" y="11" width="391" height="710" frameX="-4" frameY="-8" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0009" x="2602" y="11" width="391" height="710" frameX="-4" frameY="-8" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0010" x="3022" y="11" width="396" height="717" frameX="-4" frameY="-1" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0011" x="3022" y="11" width="396" height="717" frameX="-4" frameY="-1" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0012" x="3447" y="11" width="397" height="718" frameX="-4" frameY="0" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0013" x="3447" y="11" width="397" height="718" frameX="-4" frameY="0" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Idle0014" x="3447" y="11" width="397" height="718" frameX="-4" frameY="0" frameWidth="411" frameHeight="718"/>
+	<SubTexture name="Wave Left0000" x="11" y="758" width="418" height="722" pivotX="39.5" pivotY="4.85" frameX="0" frameY="0" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0001" x="11" y="758" width="418" height="722" frameX="0" frameY="0" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0002" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0003" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0004" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0005" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0006" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0007" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0008" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0009" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0010" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0011" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0012" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0013" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0014" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0015" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0016" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0017" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0018" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0019" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0020" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0021" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0022" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0023" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Left0024" x="458" y="758" width="415" height="721" frameX="-19" frameY="-1" frameWidth="434" frameHeight="722"/>
+	<SubTexture name="Wave Missup0000" x="2658" y="758" width="405" height="728" pivotX="30" pivotY="10.75"/>
+	<SubTexture name="Wave Missup0001" x="902" y="758" width="408" height="719" frameX="0" frameY="-13" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0002" x="902" y="758" width="408" height="719" frameX="0" frameY="-13" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0003" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0004" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0005" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0006" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0007" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0008" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0009" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0010" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0011" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0012" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0013" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0014" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0015" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0016" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0017" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0018" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0019" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0020" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0021" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0022" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0023" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Missup0024" x="1339" y="758" width="408" height="725" frameX="0" frameY="-7" frameWidth="408" frameHeight="732"/>
+	<SubTexture name="Wave Right0000" x="1776" y="758" width="407" height="715" pivotX="-2.25" pivotY="-3" frameX="0" frameY="0" frameWidth="417" frameHeight="715"/>
+	<SubTexture name="Wave Right0001" x="1776" y="758" width="407" height="715" frameX="0" frameY="0" frameWidth="417" frameHeight="715"/>
+	<SubTexture name="Wave Right0002" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0003" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0004" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0005" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0006" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0007" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0008" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0009" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0010" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0011" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0012" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0013" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0014" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0015" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0016" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0017" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0018" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0019" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0020" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0021" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0022" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0023" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Right0024" x="2212" y="758" width="417" height="715"/>
+	<SubTexture name="Wave Up0000" x="2658" y="758" width="405" height="728" pivotX="30" pivotY="10.75"/>
+	<SubTexture name="Wave Up0001" x="2658" y="758" width="405" height="728"/>
+	<SubTexture name="Wave Up0002" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0003" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0004" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0005" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0006" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0007" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0008" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0009" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0010" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0011" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0012" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0013" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0014" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0015" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0016" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0017" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0018" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0019" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0020" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0021" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0022" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0023" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+	<SubTexture name="Wave Up0024" x="3092" y="758" width="398" height="721" frameX="-7" frameY="-7" frameWidth="405" frameHeight="728"/>
+</TextureAtlas>

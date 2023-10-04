@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Empitri.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Empitri Idle0000" x="11" y="11" width="478" height="864" pivotX="13.3" pivotY="0.1" frameX="-14" frameY="-5" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0001" x="518" y="11" width="478" height="864" frameX="-14" frameY="-5" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0002" x="1025" y="11" width="475" height="855" frameX="-3" frameY="-14" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0003" x="1529" y="11" width="475" height="855" frameX="-3" frameY="-14" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0004" x="2033" y="11" width="476" height="863" frameX="0" frameY="-6" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0005" x="2538" y="11" width="476" height="863" frameX="0" frameY="-6" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0006" x="3043" y="11" width="475" height="864" frameX="-6" frameY="-5" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0007" x="3547" y="11" width="476" height="866" frameX="-10" frameY="-3" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0008" x="3547" y="11" width="476" height="866" frameX="-10" frameY="-3" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0009" x="4052" y="11" width="476" height="866" frameX="-10" frameY="-3" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0010" x="4557" y="11" width="476" height="869" frameX="-11" frameY="0" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0011" x="5062" y="11" width="476" height="869" frameX="-11" frameY="0" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0012" x="5062" y="11" width="476" height="869" frameX="-11" frameY="0" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0013" x="5567" y="11" width="476" height="869" frameX="-13" frameY="0" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0014" x="5567" y="11" width="476" height="869" frameX="-13" frameY="0" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0015" x="6072" y="11" width="480" height="863" frameX="-13" frameY="-6" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0016" x="6581" y="11" width="480" height="863" frameX="-13" frameY="-6" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0017" x="7090" y="11" width="485" height="842" frameX="-14" frameY="-27" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0018" x="7604" y="11" width="485" height="842" frameX="-14" frameY="-27" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0019" x="11" y="909" width="490" height="844" frameX="-15" frameY="-25" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0020" x="530" y="909" width="483" height="846" frameX="-22" frameY="-25" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0021" x="1042" y="909" width="483" height="846" frameX="-24" frameY="-25" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0022" x="1554" y="909" width="478" height="859" frameX="-24" frameY="-10" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0023" x="1554" y="909" width="478" height="859" frameX="-24" frameY="-10" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0024" x="2061" y="909" width="478" height="859" frameX="-24" frameY="-10" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0025" x="2568" y="909" width="478" height="866" frameX="-14" frameY="-3" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0026" x="3075" y="909" width="478" height="866" frameX="-14" frameY="-3" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0027" x="3075" y="909" width="478" height="866" frameX="-14" frameY="-3" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0028" x="5567" y="11" width="476" height="869" frameX="-13" frameY="0" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri Idle0029" x="5567" y="11" width="476" height="869" frameX="-13" frameY="0" frameWidth="507" frameHeight="871"/>
+	<SubTexture name="Empitri sneeze0000" x="3582" y="909" width="504" height="856" pivotX="29.4" pivotY="-9.4" frameX="0" frameY="-4" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0001" x="3582" y="909" width="504" height="856" frameX="0" frameY="-4" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0002" x="4115" y="909" width="479" height="860" frameX="-26" frameY="0" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0003" x="4115" y="909" width="479" height="860" frameX="-26" frameY="0" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0004" x="4623" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0005" x="4623" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0006" x="4623" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0007" x="5139" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0008" x="5139" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0009" x="5139" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0010" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0011" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0012" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0013" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0014" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0015" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0016" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0017" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0018" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0019" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0020" x="5655" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0021" x="6171" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0022" x="6171" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0023" x="6171" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0024" x="6687" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0025" x="6687" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0026" x="7203" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0027" x="7203" y="909" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0028" x="11" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0029" x="11" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0030" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0031" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0032" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0033" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0034" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0035" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0036" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0037" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0038" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0039" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0040" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0041" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0042" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0043" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+	<SubTexture name="Empitri sneeze0044" x="527" y="1804" width="487" height="859" frameX="-16" frameY="-1" frameWidth="505" frameHeight="860"/>
+</TextureAtlas>

@@ -32,7 +32,7 @@ class SplashNote extends FlxSprite
 	public var noteType:String = "";
 	public var noteData:Int = 0;
 
-	var unavailable:Array<String> = ["pixel", "taiko"];
+	var unavailable:Array<String> = ["pixel", "taiko", "fitdon"];
 
 	var colorSwap:ColorSwap;
 	public function reloadSplash(note:Note, noteColor:Array<Int>)
@@ -60,6 +60,16 @@ class SplashNote extends FlxSprite
 						frames = Paths.getSparrowAtlas('notes/$assetModifier/splashes');
 
 						switch (assetModifier) {
+							case "mlc":
+								animation.addByPrefix("splash1", '$direction splash', 24, false);
+								animation.addByPrefix("splash2", '$direction splash', 24, false);
+		
+							case "shack":
+								animation.addByPrefix("splash1", '$direction spr', 24, false);
+								animation.addByPrefix("splash2", '$direction spr', 24, false);
+							case "tails":
+								animation.addByPrefix("splash1", 'note splash $direction', 24, false);
+								animation.addByPrefix("splash2", 'note splash $direction', 24, false);
 							case "ylyl":
 								animation.addByPrefix("splash1", '$direction splash', 24, false);
 								animation.addByPrefix("splash2", '$direction splash', 24, false);

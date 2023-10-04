@@ -63,7 +63,7 @@ class ControlsState extends MusicBeatState
 		grpControlsA.clear();
 		grpControlsB.clear();
 
-		FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+		FlxG.sound.play(Paths.sound("menu/scroll"));
 
 		switch(curMenu)
 		{
@@ -150,7 +150,7 @@ class ControlsState extends MusicBeatState
 	{
 		if(change)
 		{
-			FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+			FlxG.sound.play(Paths.sound("menu/scroll"));
 			curMainSelected = (curMainSelected == 0) ? 1 : 0;
 		}
 
@@ -167,7 +167,7 @@ class ControlsState extends MusicBeatState
 	function changeSelection(?changeX:Int = 0, ?changeY:Int = 0)
 	{
 		if(changeX + changeY != 0)
-			FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+			FlxG.sound.play(Paths.sound("menu/scroll"));
 
 		curSelectedX += changeX;
 		curSelectedY += changeY;
@@ -258,7 +258,7 @@ class ControlsState extends MusicBeatState
 					{
 						waitingInput = true;
 						selectedItem.visible = false;
-						FlxG.sound.play(Paths.sound("menu/scrollMenu"));
+						FlxG.sound.play(Paths.sound("menu/scroll"));
 					}
 				}
 				else
@@ -304,7 +304,7 @@ class ControlsState extends MusicBeatState
 
 								reloadAsGamepad(selectedItem);
 							}
-							FlxG.sound.play(Paths.sound("menu/cancelMenu"));
+							FlxG.sound.play(Paths.sound("menu/back"));
 						}
 					}
 					else
@@ -323,7 +323,7 @@ class ControlsState extends MusicBeatState
 
 								selectedItem.text = formatKey(daKey);
 							}
-							FlxG.sound.play(Paths.sound("menu/cancelMenu"));
+							FlxG.sound.play(Paths.sound("menu/back"));
 						}
 					}
 				}

@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-558,
+				20
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Wave Idle"
+		},
+		{
+			"offsets": [
+				-532,
+				29
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Wave Up"
+		},
+		{
+			"offsets": [
+				-547,
+				-94
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Wave Down"
+		},
+		{
+			"offsets": [
+				-524,
+				25
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Wave Left"
+		},
+		{
+			"offsets": [
+				-563,
+				18
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Wave Right"
+		},
+		{
+			"offsets": [
+				-533,
+				30
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "Wave Missup"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/wave/Wave",
+	"position": [
+		-500,
+		90
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		620,
+		30
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

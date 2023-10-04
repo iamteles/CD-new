@@ -229,6 +229,10 @@ class PlayState extends MusicBeatState
 			third = new Character();
 			changeChar(third, "bella-2d");
 		}
+		else if(daSong == "ripple") {
+			third = new Character();
+			changeChar(third, "empitri");
+		}
 		
 		// also updates the characters positions
 		changeStage(stageBuild.curStage);
@@ -242,7 +246,7 @@ class PlayState extends MusicBeatState
 			characters.push(dad);
 		}
 
-		if(daSong == "desertion") {
+		if(daSong == "desertion" || daSong == "ripple") {
 			characters.push(third);
 		}
 		
@@ -261,7 +265,7 @@ class PlayState extends MusicBeatState
 		if(daSong == 'convergence') {
 			conTxt = new FlxSprite();
 			conTxt.frames = Paths.getSparrowAtlas("hud/base/shes going to kill you");
-			conTxt.animation.addByPrefix("idle", 'Breeh Idle', 16, true);
+			conTxt.animation.addByPrefix("idle", 'Breeh Idle', 24, true);
 			conTxt.animation.play("idle");
 			conTxt.scale.set(0.5, 0.5);
 			conTxt.updateHitbox();
@@ -319,6 +323,29 @@ class PlayState extends MusicBeatState
 			vhs.cameras = [camOther]; 
 			add(vhs);
 		}
+		else if(daSong == 'sin') {
+			conTxt = new FlxSprite();
+			conTxt.frames = Paths.getSparrowAtlas("backgrounds/helica/eyes");
+			conTxt.animation.addByPrefix("idle", 'helica eyes closed', 24, true);
+			conTxt.animation.play("idle");
+			conTxt.scale.set(0.7, 0.7);
+			conTxt.updateHitbox();
+			conTxt.screenCenter();
+			conTxt.alpha = 0;
+			conTxt.cameras = [camOther];
+			add(conTxt);
+
+			divTxt = new FlxSprite();
+			divTxt.frames = Paths.getSparrowAtlas("backgrounds/helica/eyes");
+			divTxt.animation.addByPrefix("idle", 'helica eyes open', 24, false);
+			divTxt.animation.play("idle");
+			divTxt.scale.set(0.7, 0.7);
+			divTxt.updateHitbox();
+			divTxt.screenCenter();
+			divTxt.alpha = 0;
+			divTxt.cameras = [camOther];
+			add(divTxt);
+		}
 		
 		hudBuild.cameras = [camHUD];
 		add(hudBuild);
@@ -344,7 +371,7 @@ class PlayState extends MusicBeatState
 		barUp.cameras = [camVg];
 		barDown.cameras = [camVg];
 
-		var barsByDefault = ['allegro', 'euphoria', 'nefarious', 'divergence', "intimidate", "exotic"];
+		var barsByDefault = ['allegro', 'euphoria', 'nefarious', 'divergence', "intimidate", "exotic", "ripple"];
 		if(barsByDefault.contains(daSong)) {
 			barUp.y = 0-55;
 			barDown.y = FlxG.height - barDown.height+55;
@@ -376,7 +403,7 @@ class PlayState extends MusicBeatState
 		dadStrumline.ID = 0;
 		strumlines.add(dadStrumline);
 		
-		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, true, false, assetModifier, true);
+		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, true, false, assetModifier);
 		bfStrumline.ID = 1;
 		strumlines.add(bfStrumline);
 
@@ -423,7 +450,7 @@ class PlayState extends MusicBeatState
 		}
 		else if(daSong == 'divergence')
 			noteSwap(true);
-		else if(daSong == 'intimidate' || daSong == 'sin')
+		else if(daSong == 'intimidate' || daSong == 'sin' || daSong == 'ripple')
 			dadStrumline.x -= 2000;
 		
 		for(strumline in strumlines.members)
@@ -678,6 +705,12 @@ class PlayState extends MusicBeatState
 		');
 
 		switch(daSong) {
+			case "ripple":
+				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				zoomInOpp = true;
+				zoomOppVal = -0.2;
+				camHUD.alpha = 0;
+				//camStrum.alpha = 0;
 			case "sin":
 				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				camTaiko.alpha = 0;
@@ -842,13 +875,15 @@ class PlayState extends MusicBeatState
 					startedCountdown = true;
 					for(strumline in strumlines.members)
 					{
-						for(strum in strumline.strumGroup)
-						{
-							var strumData:Int = (strumline.isPlayer ? strum.strumData : 3 - strum.strumData);
-							FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
-								ease: FlxEase.cubeOut,
-								startDelay: Conductor.crochet / 2 / 1000 * strumData,
-							});
+						if(!strumline.isTaiko) {
+							for(strum in strumline.strumGroup)
+							{
+								var strumData:Int = (strumline.isPlayer ? strum.strumData : 3 - strum.strumData);
+								FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeOut,
+									startDelay: Conductor.crochet / 2 / 1000 * strumData,
+								});
+							}
 						}
 					}
 				}
@@ -1054,7 +1089,7 @@ class PlayState extends MusicBeatState
 						else {
 							thisChar.playAnim(thisChar.singAnims[note.noteData], true);
 							thisChar.holdTimer = 0;
-							bellasings = false;
+							if(daSong != "ripple") bellasings = false;
 	
 							if(daSong == "desertion" && !strumline.isPlayer) {
 								if (health > 0.1)
@@ -1169,7 +1204,7 @@ class PlayState extends MusicBeatState
 				default:
 					thisChar.playAnim(thisChar.singAnims[note.noteData], true);
 					thisChar.holdTimer = 0;
-					bellasings = false;
+					if(daSong != "ripple") bellasings = false;
 			}
 		}
 	}
@@ -1272,6 +1307,9 @@ class PlayState extends MusicBeatState
 		if(botplay && startedSong)
 			validScore = false;
 
+		if(FlxG.keys.justPressed.ONE) {
+			endSong();
+		}
 		if(FlxG.keys.justPressed.SEVEN)
 		{
 			if(ChartingState.SONG.song != SONG.song)
@@ -1579,19 +1617,21 @@ class PlayState extends MusicBeatState
 							}
 							else
 							{
-								var thisChar = strumline.character;
-								if(thisChar != null)
-								{
-									thisChar.miss(i);
-								}
-								// you ghost tapped lol
-								if(!SaveData.data.get("Ghost Tapping") && startedCountdown)
-								{
-									vocals.volume = 0;
-	
-									var note = new Note();
-									note.reloadNote(0, i, "none", assetModifier);
-									onNoteMiss(note, strumline);
+								if(!songHasTaiko) {
+									var thisChar = strumline.character;
+									if(thisChar != null)
+									{
+										thisChar.miss(i);
+									}
+									// you ghost tapped lol
+									if(!SaveData.data.get("Ghost Tapping") && startedCountdown)
+									{
+										vocals.volume = 0;
+		
+										var note = new Note();
+										note.reloadNote(0, i, "none", assetModifier);
+										onNoteMiss(note, strumline);
+									}
 								}
 							}
 						}
@@ -1748,7 +1788,10 @@ class PlayState extends MusicBeatState
 			//if(daSong == 'nefarious' || daSong == 'divergence')
 			//	mustHit = !sect.mustHitSection;
 			if(mustHit) {
-				followCamera(bfStrumline.character);
+				if(bellasings && daSong == "ripple")
+					followCamera(third);
+				else
+					followCamera(bfStrumline.character);
 
 				extraCamZoom = 0;
 
@@ -1794,7 +1837,10 @@ class PlayState extends MusicBeatState
 				}
 			}
 			else {
-				followCamera(dadStrumline.character);
+				if(bellasings && daSong == "ripple")
+					followCamera(third);
+				else
+					followCamera(dadStrumline.character);
 
 				if(zoomInOpp)
 					extraCamZoom = zoomOppVal;
@@ -1896,6 +1942,67 @@ class PlayState extends MusicBeatState
 		syncSong();
 
 		switch(daSong) {
+			case 'ripple':
+				switch(curStep) {
+					case 128:
+						CoolUtil.flash(camOther, 0.5);
+						camHUD.alpha = 1;
+						defaultCamZoom = 0.7;
+						zoomOppVal = -0.1;
+					case 436:
+						dad.miss(2);
+						boyfriend.miss(3);
+					case 448:
+						bellasings = false;
+					case 512:
+						defaultCamZoom = 0.8;
+					case 528:
+						defaultCamZoom = 0.7;
+					case 560:
+						defaultCamZoom = 0.9;
+					case 576:
+						defaultCamZoom = 0.8;
+					case 592:
+						defaultCamZoom = 0.7;
+					case 624:
+						defaultCamZoom = 0.9;
+					case 640:
+						defaultCamZoom = 0.7;
+					case 648:
+						defaultCamZoom = 0.8;
+					case 656:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.7;
+					case 788:
+						defaultCamZoom = 0.9;
+					case 800:
+						defaultCamZoom = 0.7;
+					case 916:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.9;
+						FlxG.camera.setFilters([new ShaderFilter(bloom), new ShaderFilter(echo)]);
+					case 1172:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.8;
+						FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+					case 1300:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.7;
+						beatSpeed = 1;
+						beatZoom = 0.01;
+					case 1556:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.9;
+						beatSpeed = 4;
+						beatZoom = 0;
+					case 1620:
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.8;
+					case 1752:
+						CoolUtil.flash(camOther, 0.5);
+						camHUD.alpha = 0;
+						camStrum.alpha = 0;
+				}
 			case 'sin':
 				switch(curStep) {
 					case 64:
@@ -1928,22 +2035,70 @@ class PlayState extends MusicBeatState
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.5;
 						beatSpeed = 1;
-					case 1312:
+					case 1312: //1312
 						//EYES
 						CoolUtil.flash(camOther, 0.5);
+						FlxG.camera.fade(0x00000000, 0.01, false);
 						beatSpeed = 4;
-					case 1328:
+						conTxt.alpha = 1;
+						camStrum.alpha = 0;
+					case 1328: //1328
 						//OPEN
+						conTxt.alpha = 0;
+						divTxt.alpha = 1;
+						divTxt.animation.play("idle");
 						camTaiko.alpha = 1;
+						changeStage("sin2");
 						for(strum in taikoStrumline.strumGroup) {
 							FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
 								ease: FlxEase.cubeOut
 							});
 						}
-					case 1344:
+					case 1344: //1344
 						//taiko start
 						CoolUtil.flash(camOther, 0.5);
+						FlxG.camera.fade(0x00000000, 0.01, true);
 						beatSpeed = 1;
+						divTxt.alpha = 0;
+
+					case 1856:
+						beatSpeed = 4;
+						CoolUtil.flash(camOther, 0.5);
+						changeStage("sin");
+						camTaiko.alpha = 0;
+						camStrum.alpha = 1;
+						defaultCamZoom = 0.4;
+					case 1888: 
+						CoolUtil.flash(camOther, 0.5);
+						beatSpeed = 1;
+						defaultCamZoom = 0.4;
+					case 1892: //1892
+						//fall - lich
+						FlxTween.tween(stageBuild.objectMap.get("city"), {y: stageBuild.objectMap.get("city").y + 2000}, 3, {
+							ease: FlxEase.cubeInOut,
+							startDelay: 0
+						});
+
+						FlxTween.tween(stageBuild.objectMap.get("island"), {y: stageBuild.objectMap.get("island").y + 2000}, 2.7, {
+							ease: FlxEase.cubeInOut,
+							startDelay: 0.3
+						});
+
+						FlxTween.tween(stageBuild.objectMap.get("island-2"), {y: stageBuild.objectMap.get("island-2").y + 2000}, 2.6, {
+							ease: FlxEase.cubeInOut,
+							startDelay: 0.5
+						});
+
+					case 2144:
+						defaultCamZoom = 0.6;
+					case 2400: 
+						CoolUtil.flash(camOther, 0.5);
+						defaultCamZoom = 0.5;
+						beatSpeed = 4;
+					case 2528:
+						FlxG.camera.fade(0x00000000, 1, false);
+						defaultCamZoom = 0.5;
+
 				}
 			case 'intimidate':
 				switch(curStep) {
@@ -2103,7 +2258,7 @@ class PlayState extends MusicBeatState
 			case 'divergence':
 				switch(curStep) {
 					case 1:
-						CoolUtil.flash(camGame, 20);
+						CoolUtil.flash(camOther, 20);
 					//case 8:
 					//	noteSwap(true);
 					case 256:
@@ -2648,7 +2803,7 @@ class PlayState extends MusicBeatState
 						{
 							if(isStoryMode)
 							{
-								Highscore.addScore('week-$curWeek-$songDiff', {
+								Highscore.addScore('$curWeek-$songDiff', {
 									score: 		weekScore,
 									accuracy: 	0,
 									misses: 	0,
@@ -2797,11 +2952,27 @@ class PlayState extends MusicBeatState
 		if(isStoryMode)
 		{
 			isStoryMode = false;
-			Main.switchState(new StoryMenuState());
+
+			//give me a break cmon
+			if(playList.length <= 0) {
+				switch(curWeek) {
+					case "week1":
+						SaveData.progression.set("week1", true);
+						Main.switchState(new states.cd.StoryMode());
+					case "week2":
+						SaveData.progression.set("week2", true);
+						Main.switchState(new states.cd.MainMenu());
+					default:
+						Main.switchState(new states.cd.MainMenu());
+				}
+			}
+			else {
+				Main.switchState(new states.cd.StoryMode());
+			}
 		}
 		else
 		{
-			Main.switchState(new FreeplayState());
+			Main.switchState(new states.cd.Freeplay());
 		}
 	}
 

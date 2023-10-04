@@ -270,7 +270,7 @@ class ShopTalk extends FlxGroup
                                 resetDial("sel");
                             }
                             if(Controls.justPressed("BACK")) {
-                                Main.switchState(new states.MenuState());
+                                Main.switchState(new states.cd.MainMenu());
                             }
 
                     }
@@ -618,14 +618,14 @@ class ShopItem extends FlxGroup
                 if(FlxG.mouse.justPressed) {
                     trace('PRESSED' + info[0]);
 
-                    if(info[0] == 'mic') {
-                        ShopState.exitShop(true);
-                    }
-
                     if(!SaveData.shop.get(info[0]) && SaveData.money >= info[2]) {
                         FlxG.sound.play(Paths.sound("csin"));
                         SaveData.buyItem(info[0]);
                         SaveData.transaction(-Std.int(info[2]));
+                    }
+
+                    if(info[0] == 'mic' && (SaveData.money >= info[2] || SaveData.shop.get(info[0]))) {
+                        ShopState.exitShop(true);
                     }
                 }
             }

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="eyes.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="helica eyes closed0000" x="1437" y="2356" width="1320" height="649" frameX="-6" frameY="0" frameWidth="1332" frameHeight="649"/>
+	<SubTexture name="helica eyes closed0001" x="1437" y="2356" width="1320" height="649" frameX="-6" frameY="0" frameWidth="1332" frameHeight="649"/>
+	<SubTexture name="helica eyes closed0002" x="34" y="2371" width="1324" height="645" frameX="-4" frameY="-2" frameWidth="1332" frameHeight="649"/>
+	<SubTexture name="helica eyes closed0003" x="34" y="2371" width="1324" height="645" frameX="-4" frameY="-2" frameWidth="1332" frameHeight="649"/>
+	<SubTexture name="helica eyes closed0004" x="34" y="830" width="1332" height="649"/>
+	<SubTexture name="helica eyes closed0005" x="34" y="830" width="1332" height="649"/>
+	<SubTexture name="helica eyes open0000" x="34" y="34" width="1364" height="778" frameX="-24" frameY="0" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0001" x="34" y="34" width="1364" height="778" frameX="-24" frameY="0" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0002" x="1437" y="1592" width="1405" height="746" frameX="0" frameY="-32" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0003" x="1437" y="1592" width="1405" height="746" frameX="0" frameY="-32" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0004" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0005" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0006" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0007" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0008" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0009" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0010" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0011" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0012" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0013" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0014" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0015" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0016" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0017" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0018" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0019" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0020" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0021" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0022" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0023" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0024" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0025" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0026" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0027" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0028" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0029" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0030" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0031" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0032" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0033" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0034" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0035" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0036" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0037" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0038" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0039" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0040" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0041" x="1416" y="34" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0042" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0043" x="1416" y="813" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0044" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+	<SubTexture name="helica eyes open0045" x="34" y="1592" width="1385" height="761" frameX="-10" frameY="-17" frameWidth="1405" frameHeight="778"/>
+</TextureAtlas>

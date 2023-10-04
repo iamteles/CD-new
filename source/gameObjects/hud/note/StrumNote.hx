@@ -68,7 +68,44 @@ class StrumNote extends FlxSprite
 				addOffset("static");
 				addOffset("pressed");
 				addOffset("confirm");
+			case "mlc":
+				strumSize = 0.7;
+				frames = Paths.getSparrowAtlas('notes/$assetModifier/strums');
 
+				addDefaultAnims();
+
+				if (!SaveData.data.get("Downscroll")) {
+					switch(strumData) {
+						case 0:
+							addOffset("static", 16, -14);
+							addOffset("pressed", 14, -16);
+							addOffset("confirm", 50, 22);
+						case 3:
+							addOffset("static", 0, -14);
+							addOffset("pressed", -2, -16);
+							addOffset("confirm", 36, 22);
+						default:
+							addOffset("static", 0, 0);
+							addOffset("pressed", -2, -2);
+							addOffset("confirm", 36, 36);
+					}
+				}
+				else {
+					switch(strumData) {
+						case 0:
+							addOffset("static", 16, 6);
+							addOffset("pressed", 14, 4);
+							addOffset("confirm", 50, 42);
+						case 3:
+							addOffset("static", 0, 6);
+							addOffset("pressed", -2, 4);
+							addOffset("confirm", 36, 42);
+						default:
+							addOffset("static", 0, 0);
+							addOffset("pressed", -2, -2);
+							addOffset("confirm", 36, 36);
+					}
+				}
 			case "anime":
 				strumSize = 0.7;
 				frames = Paths.getSparrowAtlas('notes/$assetModifier/notes');
@@ -97,7 +134,21 @@ class StrumNote extends FlxSprite
 						addOffset("pressed", -2, -2);
 						addOffset("confirm", 36, 36);
 				}
+			case "tails" | "shack" | "fitdon":
+				strumSize = 0.7;
+				frames = Paths.getSparrowAtlas('notes/$assetModifier/notes');
 
+				addDefaultAnims();
+				
+				addOffset("static", 0, 0);
+				addOffset("pressed", -2, -2);
+				addOffset("confirm", 36, 36);
+				
+				// i hate up and down strum
+				if(strumData == 1)
+					addOffset("confirm", 37, 38);
+				if(strumData == 2)
+					addOffset("confirm", 38, 36);
 			default:
 				strumSize = 0.7;
 				frames = Paths.getSparrowAtlas('notes/$assetModifier/strums');
@@ -138,6 +189,26 @@ class StrumNote extends FlxSprite
 	public function addDefaultAnims()
 	{
 		switch(assetModifier) {
+			case "tails" | "shack" | "fitdon":
+				switch (strumData)
+				{
+					case 0:
+						animation.addByPrefix('static', 'arrowLEFT');
+						animation.addByPrefix('pressed', 'left press', 24, false);
+						animation.addByPrefix('confirm', 'left confirm', 24, false);
+					case 1:
+						animation.addByPrefix('static', 'arrowDOWN');
+						animation.addByPrefix('pressed', 'down press', 24, false);
+						animation.addByPrefix('confirm', 'down confirm', 24, false);
+					case 2:
+						animation.addByPrefix('static', 'arrowUP');
+						animation.addByPrefix('pressed', 'up press', 24, false);
+						animation.addByPrefix('confirm', 'up confirm', 24, false);
+					case 3:
+						animation.addByPrefix('static', 'arrowRIGHT');
+						animation.addByPrefix('pressed', 'right press', 24, false);
+						animation.addByPrefix('confirm', 'right confirm', 24, false);
+				}
 			case "anime": 
 				animation.addByPrefix("static",  'strum',  24, false);
 				animation.addByPrefix("pressed", 'press', 12, false);

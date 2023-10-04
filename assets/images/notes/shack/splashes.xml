@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="splackes.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="left spr0000" x="452" y="544" width="175" height="151" frameX="-21" frameY="-14" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="left spr0001" x="452" y="384" width="178" height="153" frameX="-19" frameY="-13" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="left spr0002" x="898" y="6" width="213" height="182" frameX="-2" frameY="-1" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="left spr0003" x="6" y="6" width="217" height="183"/>
+	<SubTexture name="left spr0004" x="230" y="196" width="215" height="182" frameX="-1" frameY="-1" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="up spr0000" x="816" y="544" width="175" height="151" frameX="-21" frameY="-14" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="up spr0001" x="822" y="384" width="178" height="153" frameX="-19" frameY="-13" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="up spr0002" x="674" y="195" width="213" height="182" frameX="-2" frameY="-1" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="up spr0003" x="230" y="6" width="217" height="183"/>
+	<SubTexture name="up spr0004" x="230" y="385" width="215" height="182" frameX="-1" frameY="-1" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="right spr0000" x="998" y="544" width="175" height="151" frameX="-21" frameY="-14" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="right spr0001" x="1007" y="384" width="178" height="153" frameX="-19" frameY="-13" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="right spr0002" x="894" y="195" width="213" height="182" frameX="-2" frameY="-1" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="right spr0003" x="6" y="386" width="217" height="183"/>
+	<SubTexture name="right spr0004" x="676" y="6" width="215" height="182" frameX="-1" frameY="-1" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="down spr0000" x="634" y="544" width="175" height="151" frameX="-21" frameY="-14" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="down spr0001" x="637" y="384" width="178" height="153" frameX="-19" frameY="-13" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="down spr0002" x="454" y="195" width="213" height="182" frameX="-2" frameY="-1" frameWidth="217" frameHeight="183"/>
+	<SubTexture name="down spr0003" x="6" y="196" width="217" height="183"/>
+	<SubTexture name="down spr0004" x="454" y="6" width="215" height="182" frameX="-1" frameY="-1" frameWidth="217" frameHeight="183"/>
+</TextureAtlas>
