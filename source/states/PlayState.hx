@@ -2944,7 +2944,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 	
-	// substates also use this
+	// substates also use thiss
 	public static function sendToMenu()
 	{
 		CoolUtil.playMusic();
