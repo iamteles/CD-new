@@ -1,5 +1,6 @@
 package states;
 
+import flixel.addons.ui.FlxUIGroup;
 import data.Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -11,6 +12,7 @@ import data.GameData.MusicBeatState;
 import data.SongData;
 import gameObjects.menu.Alphabet;
 import gameObjects.menu.Alphabet.AlphabetAlign;
+import gameObjects.android.FlxVirtualPad;
 
 using StringTools;
 
@@ -47,22 +49,48 @@ class DebugState extends MusicBeatState
 			optionGroup.add(item);
 		}
 
+        if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(UP_DOWN, A_B_C);
+            add(virtualPad);
+        }
+
 		changeSelection();
 	}
-
+    var virtualPad:FlxVirtualPad;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		if(Controls.justPressed("UI_UP"))
+
+		var up:Bool = Controls.justPressed("UI_UP");
+        if(SaveData.data.get("Touch Controls"))
+            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+
+        var down:Bool = Controls.justPressed("UI_DOWN");
+        if(SaveData.data.get("Touch Controls"))
+            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
+		var HAX:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            HAX = (Controls.justPressed("ACCEPT") || virtualPad.buttonC.justPressed);
+
+		if(up)
 			changeSelection(-1);
-		if(Controls.justPressed("UI_DOWN"))
+		if(down)
 			changeSelection(1);
 
-		if(FlxG.keys.justPressed.CONTROL) { // INFINITE MONEY HAX
+		if(HAX) { // INFINITE MONEY HAX
 			SaveData.transaction(99999);
 		}
 
-		if(Controls.justPressed("ACCEPT"))
+		if(accept)
 		{
 			switch(optionShit[curSelected])
 			{

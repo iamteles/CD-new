@@ -3,7 +3,6 @@ package gameObjects.hud;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
-import sys.FileSystem;
 
 class HealthIcon extends FlxSprite
 {
@@ -28,7 +27,7 @@ class HealthIcon extends FlxSprite
 			return setIcon("bella", isPlayer);
 
 		trace("attempt icon " + curIcon);
-		if(!FileSystem.exists('assets/images/icons/icon-${curIcon}.png'))
+		if(!Paths.fileExists('images/icons/icon-${curIcon}.png'))
 		{
 			if(curIcon.contains('-')) {
 				switch(curIcon) {

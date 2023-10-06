@@ -77,7 +77,7 @@ class CoolUtil
 	{
 		var list:Array<String> = [];
 
-		#if desktop
+		#if !html5
 		for (character in sys.FileSystem.readDirectory("assets/data/chars/"))
 		{
 			var path = haxe.io.Path.join(["assets/data/chars/", character]);

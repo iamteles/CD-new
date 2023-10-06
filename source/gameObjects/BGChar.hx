@@ -1,6 +1,5 @@
 package gameObjects;
 
-import cpp.Char;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;

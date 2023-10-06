@@ -3,7 +3,6 @@ package gameObjects;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
-import sys.io.File;
 
 using StringTools;
 
@@ -94,12 +93,12 @@ class Character extends FlxSprite
 
 		try
 		{
-			charData = haxe.Json.parse(File.getContent(Paths.getPath('data/chars/' + curChar + '.json')).trim());
+			charData = haxe.Json.parse(Paths.getContent(('data/chars/' + curChar + '.json')).trim());
 		}
 		catch (e)
 		{
 			trace(e);
-			charData = haxe.Json.parse(File.getContent(Paths.getPath('data/chars/' + "bella-2a" + '.json')).trim());
+			charData = haxe.Json.parse(Paths.getContent(('data/chars/' + "bella-2a" + '.json')).trim());
 		}
 
 		frames = Paths.getSparrowAtlas(charData.image);

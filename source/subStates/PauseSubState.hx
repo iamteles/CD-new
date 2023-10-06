@@ -13,6 +13,7 @@ import data.Conductor;
 import data.GameData.MusicBeatSubState;
 import gameObjects.menu.AlphabetMenu;
 import states.*;
+import gameObjects.android.FlxVirtualPad;
 
 class PauseSubState extends MusicBeatSubState
 {
@@ -83,6 +84,12 @@ class PauseSubState extends MusicBeatSubState
 		}
 		FlxG.sound.list.add(pauseSong);
 
+		if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(UP_DOWN, A_B);
+            add(virtualPad);
+        }
+
+
 		changeSelection();
 	}
 
@@ -91,6 +98,7 @@ class PauseSubState extends MusicBeatSubState
 		pauseSong.stop();
 		super.close();
 	}
+	var virtualPad:FlxVirtualPad;
 
 	override function update(elapsed:Float)
 	{
@@ -102,12 +110,28 @@ class PauseSubState extends MusicBeatSubState
 				cast(item, FlxBasic).cameras = [lastCam];
 		}
 
-		if(Controls.justPressed("UI_UP"))
+		var up:Bool = Controls.justPressed("UI_UP");
+        if(SaveData.data.get("Touch Controls"))
+            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+
+        var down:Bool = Controls.justPressed("UI_DOWN");
+        if(SaveData.data.get("Touch Controls"))
+            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
+		if(up)
 			changeSelection(-1);
-		if(Controls.justPressed("UI_DOWN"))
+		if(down)
 			changeSelection(1);
 
-		if(Controls.justPressed("ACCEPT"))
+		if(accept)
 		{
 			switch(optionShit[curSelected])
 			{
@@ -136,7 +160,7 @@ class PauseSubState extends MusicBeatSubState
 		}
 
 		// works the same as resume
-		if(Controls.justPressed("BACK"))
+		if(back)
 		{
 			PlayState.paused = false;
 			close();

@@ -22,7 +22,7 @@ import data.CharacterData;
 import data.GameData.MusicBeatState;
 import openfl.net.FileReference;
 import states.PlayState;
-import sys.io.File;
+//import sys.io.File;
 
 class CharacterEditorState extends MusicBeatState
 {

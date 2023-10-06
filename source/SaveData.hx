@@ -17,6 +17,15 @@ class SaveData
 {
 	public static var data:Map<String, Dynamic> = [];
 	public static var displaySettings:Map<String, Dynamic> = [
+		"Touch Controls" => [
+			#if mobile
+			true,
+			#else
+			false,
+			#end
+			CHECKMARK,
+			"Whether to use Mobile Touch Controls."
+		],
 		"Ghost Tapping" => [
 			true,
 			CHECKMARK,
@@ -240,6 +249,7 @@ class SaveData
 	}
 
 	public static function findMod(file:String, localPath:String) {
+		#if desktop
 		var directory = lime.system.System.applicationStorageDirectory;
 		var path = haxe.io.Path.normalize('$directory/../../../$localPath') + "/";
 		
@@ -271,6 +281,9 @@ class SaveData
 
 		var yeah = path + file + ".sol";
 		return sys.FileSystem.exists(yeah);
+		#else
+		return false;
+		#end
 	}
 	
 	public static function save()

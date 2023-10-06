@@ -6,7 +6,6 @@ import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import sys.FileSystem;
 import flixel.math.FlxPoint;
 import data.Conductor;
 

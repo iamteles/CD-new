@@ -1,8 +1,6 @@
 package states.cd;
 
-import cpp.abi.Abi;
 import haxe.io.Float64Array;
-import cpp.Function;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -18,6 +16,7 @@ import lime.app.Application;
 import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxMath;
 import data.GameData.MusicBeatState;
+import gameObjects.android.FlxVirtualPad;
 
 class Gallery extends MusicBeatState
 {
@@ -98,16 +97,34 @@ class Gallery extends MusicBeatState
 			tipText.borderSize = 2.4;
 			add(tipText);
 		}
+		if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(LEFT_RIGHT, A_B);
+            add(virtualPad);
+        }
 	}
+	var virtualPad:FlxVirtualPad;
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-        if(Controls.justPressed("UI_LEFT"))
+
+		var left:Bool = Controls.justPressed("UI_LEFT");
+        if(SaveData.data.get("Touch Controls"))
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+
+        var right:Bool = Controls.justPressed("UI_RIGHT");
+        if(SaveData.data.get("Touch Controls"))
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        if(left)
 			changeItem(-1);
-		if(Controls.justPressed("UI_RIGHT"))
+		if(right)
 			changeItem(1);
 
-        if(Controls.justPressed("BACK"))
+        if(back)
         {
             FlxG.sound.play(Paths.sound('menu/back'));
             Main.switchState(new states.cd.MainMenu());

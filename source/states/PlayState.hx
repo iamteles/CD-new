@@ -33,6 +33,7 @@ import subStates.*;
 import openfl.filters.ShaderFilter;
 import gameObjects.BGChar.CharGroup;
 import data.Highscore.ScoreData;
+import gameObjects.android.*;
 
 #if sys
 import sys.FileSystem;
@@ -363,9 +364,9 @@ class PlayState extends MusicBeatState
 		countdown.cameras = [camOther];
 		add(countdown);
 
-		barUp = new FlxSprite().loadGraphic(Paths.image("hud/base/blackBar"));
+		barUp = new FlxSprite().loadGraphic(Paths.image("hud/base/blackbar"));
 		barUp.y = 0 - barUp.height + 25;
-		barDown = new FlxSprite().loadGraphic(Paths.image("hud/base/blackBar"));
+		barDown = new FlxSprite().loadGraphic(Paths.image("hud/base/blackbar"));
 		barDown.y = FlxG.height -25;
 
 		barUp.cameras = [camVg];
@@ -832,7 +833,15 @@ class PlayState extends MusicBeatState
 		}
 		else
 			startCountdown();
+
+		if(SaveData.data.get("Touch Controls")) {
+			hitbox = new Hitbox();
+			hitbox.cameras = [camOther];
+			add(hitbox);
+		}
 	}
+
+	var hitbox:Hitbox;
 	
 	public var startedCountdown:Bool = false;
 	public var startedSong:Bool = false;
@@ -1356,24 +1365,54 @@ class PlayState extends MusicBeatState
 		if(startedCountdown)
 			Conductor.songPos += elapsed * 1000;
 
-		pressed = [
-			Controls.pressed("LEFT"),
-			Controls.pressed("DOWN"),
-			Controls.pressed("UP"),
-			Controls.pressed("RIGHT")
-		];
-		justPressed = [
-			Controls.justPressed("LEFT"),
-			Controls.justPressed("DOWN"),
-			Controls.justPressed("UP"),
-			Controls.justPressed("RIGHT")
-		];
-		released = [
-			Controls.released("LEFT"),
-			Controls.released("DOWN"),
-			Controls.released("UP"),
-			Controls.released("RIGHT")
-		];
+		#if mobile
+		if(FlxG.android.justReleased.BACK)
+		{
+			pauseSong();
+		}
+		#end
+
+		if(SaveData.data.get("Touch Controls")) {
+			pressed = [
+				hitbox.buttonLeft.pressed,
+				hitbox.buttonDown.pressed,
+				hitbox.buttonUp.pressed,
+				hitbox.buttonRight.pressed
+			];
+			justPressed = [
+				hitbox.buttonLeft.justPressed,
+				hitbox.buttonDown.justPressed,
+				hitbox.buttonUp.justPressed,
+				hitbox.buttonRight.justPressed
+			];
+			released = [
+				hitbox.buttonLeft.released,
+				hitbox.buttonDown.released,
+				hitbox.buttonUp.released,
+				hitbox.buttonRight.released
+			];
+		}
+		else {
+			pressed = [
+				Controls.pressed("LEFT"),
+				Controls.pressed("DOWN"),
+				Controls.pressed("UP"),
+				Controls.pressed("RIGHT")
+			];
+			justPressed = [
+				Controls.justPressed("LEFT"),
+				Controls.justPressed("DOWN"),
+				Controls.justPressed("UP"),
+				Controls.justPressed("RIGHT")
+			];
+			released = [
+				Controls.released("LEFT"),
+				Controls.released("DOWN"),
+				Controls.released("UP"),
+				Controls.released("RIGHT")
+			];
+		}
+
 		
 		playerSinging = false;
 		

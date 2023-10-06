@@ -10,8 +10,6 @@ import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
 import haxe.io.Path;
-import sys.FileSystem;
-import sys.io.File;
 import openfl.Lib;
 import data.Discord.DiscordClient;
 
@@ -24,7 +22,9 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+		#if desktop
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		#end
 
 		#if DISCORD_RPC
 		if (!DiscordClient.isInitialized) {
@@ -35,7 +35,7 @@ class Main extends Sprite
 		}
 		#end
 
-		addChild(new FlxGame(0, 0, Init, 120, 120, true));
+		addChild(new FlxGame(1280, 720, Init, 120, 120, true));
 
 		#if desktop
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
@@ -89,6 +89,7 @@ class Main extends Sprite
 		}
 	}
 
+	#if desktop
 	function onCrash(e:UncaughtErrorEvent):Void
 	{
 		var errMsg:String = "";
@@ -114,10 +115,10 @@ class Main extends Sprite
 
 		errMsg += "Uncaught Error: " + e.error + "\nPlease report this error to the developers! Crash Handler written by: sqirra-rng";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!sys.FileSystem.exists("./crash/"))
+			sys.FileSystem.createDirectory("./crash/");
 
-		File.saveContent(path, errMsg + "\n");
+		sys.io.File.saveContent(path, errMsg + "\n");
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
@@ -126,4 +127,5 @@ class Main extends Sprite
 		DiscordClient.shutdown();
 		Sys.exit(1);
 	}
+	#end
 }

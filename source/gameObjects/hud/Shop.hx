@@ -19,7 +19,6 @@ import flixel.system.FlxSound;
 import flixel.input.keyboard.FlxKey;
 import states.ShopState;
 import flixel.util.FlxTimer;
-import sys.io.File;
 import data.SongData;
 
 typedef WattsDialog =
@@ -109,7 +108,7 @@ class ShopTalk extends FlxGroup
         }
 
 
-        dialogData = haxe.Json.parse(File.getContent('assets/data/watts/$starting.json').trim());
+        dialogData = haxe.Json.parse(Paths.getContent('data/watts/$starting.json').trim());
         scrollText(dialogData.lines[curLine], dialogData.ident);
     }
 
@@ -151,7 +150,7 @@ class ShopTalk extends FlxGroup
     }
 
     public function resetDial(newd:String) {
-        dialogData = haxe.Json.parse(File.getContent('assets/data/watts/$newd.json').trim());
+        dialogData = haxe.Json.parse(Paths.getContent('data/watts/$newd.json').trim());
         curLine = 0;
         hasScrolled = false;
         scrollText(dialogData.lines[curLine], dialogData.ident);
@@ -165,26 +164,26 @@ class ShopTalk extends FlxGroup
                 if(curLine >= dialogData.lines.length) {
                     switch(dialogData.ident) {
                         case "sel":
-                            if(FlxG.keys.justPressed.A) {
+                            if(ShopState.A) {
                                 resetDial("bellasel");
                             }
-                            if(FlxG.keys.justPressed.B) {
+                            if(ShopState.B) {
                                 resetDial("bexsel");
                             }
-                            if(FlxG.keys.justPressed.C) {
+                            if(ShopState.C) {
                                 resetDial("bree");
                             }
-                            if(FlxG.keys.justPressed.D) {
+                            if(ShopState.X) {
                                 resetDial("wattssel");
                             }
-                            if(Controls.justPressed("BACK")) {
+                            if(ShopState.Y) {
                                 resetDial("post");
                             }
                         case "entersong":
-                            if(FlxG.keys.justPressed.A) {
+                            if(ShopState.A) {
                                 resetDial("conservation");
                             }
-                            if(FlxG.keys.justPressed.B) {
+                            if(ShopState.B) {
                                 resetDial("irritation");
                             }
                         case "conservation":
@@ -212,64 +211,64 @@ class ShopTalk extends FlxGroup
                                 });
                             }
                         case "bellasel":
-                            if(FlxG.keys.justPressed.A) {
+                            if(ShopState.A) {
                                 resetDial("bellaA");
                             }
-                            if(FlxG.keys.justPressed.B) {
+                            if(ShopState.B) {
                                 resetDial("bellaB");
                             }
-                            if(Controls.justPressed("BACK")) {
+                            if(ShopState.Y) {
                                 resetDial("sel");
                             }
                         case "bexsel":
-                            if(FlxG.keys.justPressed.A) {
+                            if(ShopState.A) {
                                 resetDial("bexA");
                             }
-                            if(FlxG.keys.justPressed.B) {
+                            if(ShopState.B) {
                                 resetDial("bexB");
                             }
-                            if(Controls.justPressed("BACK")) {
+                            if(ShopState.Y) {
                                 resetDial("sel");
                             }
                         case "wattssel":
-                            if(FlxG.keys.justPressed.A) {
+                            if(ShopState.A) {
                                 resetDial("wattsA");
                             }
-                            if(FlxG.keys.justPressed.B) {
+                            if(ShopState.B) {
                                 resetDial("wattsB");
                             }
-                            if(FlxG.keys.justPressed.C) {
+                            if(ShopState.C) {
                                 resetDial("wattsC");
                             }
-                            if(FlxG.keys.justPressed.D) {
+                            if(ShopState.X) {
                                 resetDial("wattsD");
                             }
-                            if(Controls.justPressed("BACK")) {
+                            if(ShopState.Y) {
                                 resetDial("sel");
                             }
                         case "wattsphoto":
-                            if(FlxG.keys.justPressed.A) {
+                            if(ShopState.A) {
                                 resetDial("wattsA");
                             }
-                            if(FlxG.keys.justPressed.B) {
+                            if(ShopState.B) {
                                 resetDial("wattsB");
                             }
-                            if(FlxG.keys.justPressed.C) {
+                            if(ShopState.C) {
                                 resetDial("wattsC");
                             }
-                            if(FlxG.keys.justPressed.D) {
+                            if(ShopState.X) {
                                 resetDial("wattsD");
                             }
-                            if(Controls.justPressed("BACK")) {
+                            if(ShopState.Y) {
                                 resetDial("sel");
                             }
                         case "buy":
-                            if(FlxG.keys.justPressed.SPACE)
+                            if(FlxG.keys.justPressed.SPACE || ShopState.A)
                                 ShopState.enterShop();
-                            if(FlxG.keys.justPressed.CONTROL) {
+                            if(FlxG.keys.justPressed.CONTROL || ShopState.B) {
                                 resetDial("sel");
                             }
-                            if(Controls.justPressed("BACK")) {
+                            if(ShopState.Y) {
                                 Main.switchState(new states.cd.MainMenu());
                             }
 
@@ -470,7 +469,7 @@ class ShopBuy extends FlxGroup
         super.update(elapsed);
 
         if(activeg) {
-            if(Controls.justPressed("BACK"))
+            if(ShopState.Y)
                 ShopState.exitShop();
     
             for(i in tabs) {

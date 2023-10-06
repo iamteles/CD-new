@@ -26,13 +26,14 @@ import data.SongData.SwagSong;
 import gameObjects.*;
 import gameObjects.hud.*;
 import gameObjects.hud.note.*;
-import sys.thread.Mutex;
-import sys.thread.Thread;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+import gameObjects.android.FlxVirtualPad;
 
 #if sys
 import sys.io.File;
+import sys.thread.Mutex;
+import sys.thread.Thread;
 #end
 
 using StringTools;
@@ -117,15 +118,55 @@ class ShopState extends MusicBeatState
         hudBuy.tweenAlpha(0,0.01);
 		add(hudBuy);
 
+        if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(BLANK, A_B_C_X_Y);
+            virtualPad.cameras = [camHUD];
+            add(virtualPad);
+        }
+
         //var bloom = new FlxRuntimeShader(File.getContent(Paths.shader('bloom')));
         //FlxG.camera.setFilters([new ShaderFilter(bloom)]);
     }
+    var virtualPad:FlxVirtualPad;
+
+    public static var A:Bool = false;
+    public static var B:Bool = false;
+    public static var C:Bool = false;
+    public static var X:Bool = false;
+    public static var Y:Bool = false;
+
     override function update(elapsed:Float)
     {
         super.update(elapsed);
 
         camGame.followLerp = elapsed * 3;
         camGame.zoom = FlxMath.lerp(camGame.zoom, zoom, elapsed * 6);
+
+        if(SaveData.data.get("Touch Controls"))
+            A = (FlxG.keys.justPressed.A || virtualPad.buttonA.justPressed);
+        else
+            A = FlxG.keys.justPressed.A;
+
+        if(SaveData.data.get("Touch Controls"))
+            B = (FlxG.keys.justPressed.B || virtualPad.buttonB.justPressed);
+        else
+            B = FlxG.keys.justPressed.B;
+
+
+        if(SaveData.data.get("Touch Controls"))
+            C = (FlxG.keys.justPressed.C || virtualPad.buttonC.justPressed);
+        else
+            C = FlxG.keys.justPressed.C;
+
+        if(SaveData.data.get("Touch Controls"))
+            X = (FlxG.keys.justPressed.D || virtualPad.buttonX.justPressed);
+        else
+            X = FlxG.keys.justPressed.D;
+
+        if(SaveData.data.get("Touch Controls"))
+            Y = (Controls.justPressed("BACK") || virtualPad.buttonY.justPressed);
+        else
+            Y = Controls.justPressed("BACK");
 
         //if(Controls.justPressed("BACK"))
 		//	Main.switchState(new MenuState());
@@ -167,7 +208,10 @@ class ShopState extends MusicBeatState
 class LoadShopState extends MusicBeatState
 {
 	var threadActive:Bool = true;
+
+    #if !html5
 	var mutex:Mutex;
+    #end
 	
 	//var behind:FlxGroup;
 	var bg:FlxSprite;
@@ -179,7 +223,9 @@ class LoadShopState extends MusicBeatState
 	override function create()
 	{
 		super.create();
+        #if !html5
 		mutex = new Mutex();
+        #end
 		
 		//behind = new FlxGroup();
 		//add(behind);
@@ -219,9 +265,11 @@ class LoadShopState extends MusicBeatState
 
         var songs:Array<SwagSong> = [conservation, irritation];
 
+        #if !html5
 		var preloadThread = Thread.create(function()
 		{
 			mutex.acquire();
+            #end
 			Paths.preloadPlayStuff();
 			Rating.preload(assetModifier);
 			Paths.preloadGraphic('hud/base/healthBar');
@@ -317,10 +365,13 @@ class LoadShopState extends MusicBeatState
 			
 			loadPercent = 1.0;
 			trace('finished loading');
-			threadActive = false;
 			FlxSprite.defaultAntialiasing = oldAnti;
-			mutex.release();
+
+            #if !html5
+            mutex.release();
+            threadActive = false;
 		});
+        #end
 	}
 	
 	var byeLol:Bool = false;
@@ -328,6 +379,8 @@ class LoadShopState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+        #if !html5
 		if(!threadActive && !byeLol && loadBar.scale.x >= 0.98)
 		{
 			byeLol = true;
@@ -339,5 +392,6 @@ class LoadShopState extends MusicBeatState
 
 		loadBar.scale.x = FlxMath.lerp(loadBar.scale.x, loadPercent, elapsed * 6);
 		loadBar.updateHitbox();
+        #end
 	}
 }

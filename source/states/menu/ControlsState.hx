@@ -9,6 +9,7 @@ import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
 import data.GameData.MusicBeatState;
 import gameObjects.menu.Alphabet;
+import gameObjects.android.FlxVirtualPad;
 
 using StringTools;
 
@@ -51,6 +52,11 @@ class ControlsState extends MusicBeatState
 		add(grpLabel);
 		add(grpControlsA);
 		add(grpControlsB);
+
+		if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(LEFT_FULL, A_B);
+            add(virtualPad);
+        }
 
 		reloadMenu();
 	}
@@ -163,7 +169,7 @@ class ControlsState extends MusicBeatState
 	}
 
 	var selectedItem:Alphabet = null;
-
+    var virtualPad:FlxVirtualPad;
 	function changeSelection(?changeX:Int = 0, ?changeY:Int = 0)
 	{
 		if(changeX + changeY != 0)
@@ -210,7 +216,31 @@ class ControlsState extends MusicBeatState
 		super.update(elapsed);
 		var flxGamepad = FlxG.gamepads.firstActive;
 
-		if(Controls.justPressed("BACK") && !waitingInput)
+		var up:Bool = Controls.justPressed("UI_UP");
+        if(SaveData.data.get("Touch Controls"))
+            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+
+        var down:Bool = Controls.justPressed("UI_DOWN");
+        if(SaveData.data.get("Touch Controls"))
+            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+
+        var left:Bool = Controls.justPressed("UI_LEFT");
+        if(SaveData.data.get("Touch Controls"))
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+
+        var right:Bool = Controls.justPressed("UI_RIGHT");
+        if(SaveData.data.get("Touch Controls"))
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
+		if(back && !waitingInput)
 		{
 			if(curMenu == "main")
 			{
@@ -227,7 +257,7 @@ class ControlsState extends MusicBeatState
 		switch(curMenu)
 		{
 			case "main":
-				if(Controls.justPressed("ACCEPT"))
+				if(accept)
 				{
 					if(curMainSelected == 0)
 						reloadMenu("keyboard");
@@ -238,23 +268,23 @@ class ControlsState extends MusicBeatState
 					}
 				}
 
-				if(Controls.justPressed("UI_UP")
-				|| Controls.justPressed("UI_DOWN"))
+				if(up
+				|| down)
 					changeMainSelection();
 
 			default:
 				if(!waitingInput)
 				{
-					if(Controls.justPressed("UI_UP"))
+					if(up)
 						changeSelection(0, -1);
-					if(Controls.justPressed("UI_DOWN"))
+					if(down)
 						changeSelection(0,  1);
-					if(Controls.justPressed("UI_LEFT"))
+					if(left)
 						changeSelection(-1, 0);
-					if(Controls.justPressed("UI_RIGHT"))
+					if(right)
 						changeSelection(1,  0);
 
-					if(Controls.justPressed("ACCEPT"))
+					if(accept)
 					{
 						waitingInput = true;
 						selectedItem.visible = false;

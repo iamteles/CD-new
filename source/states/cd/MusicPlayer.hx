@@ -18,6 +18,7 @@ import data.GameData.MusicBeatState;
 import flixel.system.FlxSound;
 import data.Conductor;
 import flixel.ui.FlxBar;
+import gameObjects.android.FlxVirtualPad;
 
 class MusicPlayer extends MusicBeatState
 {
@@ -210,6 +211,11 @@ class MusicPlayer extends MusicBeatState
         hints.y = 9;
         add(hints);
 
+        if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(BLANK, B);
+            add(virtualPad);
+        }
+
         changeSelection();
     }
 
@@ -223,15 +229,26 @@ class MusicPlayer extends MusicBeatState
     }
     
     var formatTime:Float = 0;
+    var virtualPad:FlxVirtualPad;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
-        if(Controls.justPressed("UI_LEFT"))
+        var left:Bool = Controls.justPressed("UI_LEFT");
+
+        var right:Bool = Controls.justPressed("UI_RIGHT");
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        var accept:Bool = FlxG.keys.justPressed.SPACE;
+
+        if(left)
             changeSelection(-1);
-        if(Controls.justPressed("UI_RIGHT"))
+        if(right)
             changeSelection(1);
 
-        if(Controls.justPressed("BACK"))
+        if(back)
         {
             FlxG.sound.play(Paths.sound('menu/back'));
             Main.switchState(new states.cd.MainMenu());
@@ -279,7 +296,7 @@ class MusicPlayer extends MusicBeatState
             Conductor.songPos += elapsed * 1000;
         }
 
-        if(FlxG.keys.justPressed.SPACE) {
+        if(accept) {
             playSong();
         }
 

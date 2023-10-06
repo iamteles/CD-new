@@ -15,6 +15,7 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.effects.FlxFlicker;
 import flixel.input.keyboard.FlxKey;
+import gameObjects.android.FlxVirtualPad;
 
 class MainMenu extends MusicBeatState
 {
@@ -38,6 +39,9 @@ class MainMenu extends MusicBeatState
     var arrowR:FlxSprite;
     var info:FlxText;
     var bar:FlxSprite;
+
+    public static var virtualPad:FlxVirtualPad;
+
 	override function create()
 	{
         super.create();
@@ -130,6 +134,11 @@ class MainMenu extends MusicBeatState
         add(info);
 
         changeSelection();
+
+        if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(LEFT_RIGHT, A_B);
+            add(virtualPad);
+        }
     }
 
     var shaking:Bool = false;
@@ -137,10 +146,23 @@ class MainMenu extends MusicBeatState
     override function update(elapsed:Float)
     {
         super.update(elapsed);
-        if(Controls.justPressed("UI_LEFT"))
-            changeSelection(-1);
-        if(Controls.justPressed("UI_RIGHT"))
-            changeSelection(1);
+
+        var left:Bool = Controls.justPressed("UI_LEFT");
+        if(SaveData.data.get("Touch Controls"))
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+
+        var right:Bool = Controls.justPressed("UI_RIGHT");
+        if(SaveData.data.get("Touch Controls"))
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
+		if(left)
+			changeSelection(-1);
+		if(right)
+			changeSelection(1);
 
         if(Controls.pressed("UI_LEFT") && !selected)
             arrowL.alpha = 1;
@@ -151,7 +173,7 @@ class MainMenu extends MusicBeatState
         else if(!selected)
             arrowR.alpha = 0.7;
 
-        if(Controls.justPressed("ACCEPT") && !selected)
+        if(accept && !selected)
         {
             if(returnMenu(curSelected)) {
                 selected = true;

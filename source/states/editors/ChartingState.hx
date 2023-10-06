@@ -39,7 +39,10 @@ import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import states.LoadSongState;
+
+#if !html5
 import sys.FileSystem;
+#end
 
 using StringTools;
 
@@ -253,7 +256,7 @@ class ChartingState extends MusicBeatState
 
 		var reloadJson = new FlxButton(200, 70, "Reload JSON", function() {
 			var daSong:String = SONG.song.toLowerCase();
-			if(FileSystem.exists(Paths.getPath('songs/$daSong/$daSong.json')))
+			if(Paths.fileExists(('songs/$daSong/$daSong.json')))
 			{
 				SONG = SongData.loadFromJson(daSong, songDiff);
 				curSection = 0;

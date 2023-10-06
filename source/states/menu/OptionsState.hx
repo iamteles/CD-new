@@ -15,6 +15,7 @@ import data.GameData.MusicBeatState;
 import gameObjects.menu.AlphabetMenu;
 import gameObjects.menu.options.*;
 import SaveData.SettingType;
+import gameObjects.android.FlxVirtualPad;
 
 class OptionsState extends MusicBeatState
 {
@@ -30,7 +31,8 @@ class OptionsState extends MusicBeatState
 			"Downscroll",
 			"Cutscenes",
 			"Framerate Cap",
-			"Preload Songs"
+			"Preload Songs",
+			"Touch Controls"
 		],
 		"appearance" => [
 			"Skin",
@@ -77,6 +79,7 @@ class OptionsState extends MusicBeatState
 			backTarget = newBackTarget;
 	}
 
+	var virtualPad:FlxVirtualPad;
 	override function create()
 	{
 		super.create();
@@ -96,6 +99,12 @@ class OptionsState extends MusicBeatState
 		infoTxt.setFormat(Main.gFont, 28, 0xFFFFFFFF, CENTER);
 		infoTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		add(infoTxt);
+
+		if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(LEFT_FULL, A_B);
+            add(virtualPad);
+        }
+
 
 		reloadCat();
 	}
@@ -296,11 +305,52 @@ class OptionsState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		var up:Bool = Controls.justPressed("UI_UP");
+        if(SaveData.data.get("Touch Controls"))
+            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+
+        var down:Bool = Controls.justPressed("UI_DOWN");
+        if(SaveData.data.get("Touch Controls"))
+            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+
+        var left:Bool = Controls.justPressed("UI_LEFT");
+        if(SaveData.data.get("Touch Controls"))
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+
+        var right:Bool = Controls.justPressed("UI_RIGHT");
+        if(SaveData.data.get("Touch Controls"))
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+
+		var leftP:Bool = Controls.pressed("UI_LEFT");
+        if(SaveData.data.get("Touch Controls"))
+            leftP = (Controls.pressed("UI_LEFT") || virtualPad.buttonLeft.pressed);
+
+        var rightP:Bool = Controls.pressed("UI_RIGHT");
+        if(SaveData.data.get("Touch Controls"))
+            rightP = (Controls.pressed("UI_RIGHT") || virtualPad.buttonRight.pressed);
+
+		var leftR:Bool = Controls.released("UI_LEFT");
+        if(SaveData.data.get("Touch Controls"))
+            leftR = (Controls.released("UI_LEFT") || virtualPad.buttonLeft.released);
+
+        var rightR:Bool = Controls.justPressed("UI_RIGHT");
+        if(SaveData.data.get("Touch Controls"))
+            rightR = (Controls.released("UI_RIGHT") || virtualPad.buttonRight.released);
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
 		updateAttachPos();
 		if(infoTxt.text != "")
 			infoTxt.y = FlxMath.lerp(infoTxt.y, FlxG.height - infoTxt.height - 16, elapsed * 8);
 
-		if(Controls.justPressed("BACK"))
+		if(back)
 		{
 			if(curCat == "main")
 			{
@@ -313,12 +363,12 @@ class OptionsState extends MusicBeatState
 				reloadCat("main");
 		}
 
-		if(Controls.justPressed("UI_UP"))
+		if(up)
 			changeSelection(-1);
-		if(Controls.justPressed("UI_DOWN"))
+		if(down)
 			changeSelection(1);
 
-		if(Controls.justPressed("ACCEPT"))
+		if(accept)
 		{
 			if(curCat == "main")
 			{
@@ -354,28 +404,28 @@ class OptionsState extends MusicBeatState
 			}
 		}
 		
-		if(Controls.pressed("UI_LEFT") || Controls.pressed("UI_RIGHT"))
+		if(leftP || rightP)
 		{
 			var curAttach = grpAttachs.members[curSelected];
 			if(Std.isOfType(curAttach, OptionSelector))
 			{
 				var selector = cast(curAttach, OptionSelector);
 
-				if(Controls.justPressed("UI_LEFT") || Controls.justPressed("UI_RIGHT"))
+				if(left || right)
 				{
 					selectorTimer = -0.5;
 					FlxG.sound.play(Paths.sound("menu/scroll"));
 
-					if(Controls.justPressed("UI_LEFT"))
+					if(leftP)
 						selector.updateValue(-1);
 					else
 						selector.updateValue(1);
 				}
 
-				if(Controls.pressed("UI_LEFT"))
+				if(leftP)
 					selector.arrowL.alpha = 1;
 
-				if(Controls.pressed("UI_RIGHT"))
+				if(rightP)
 					selector.arrowR.alpha = 1;
 
 				if(selectorTimer != Math.NEGATIVE_INFINITY && !Std.isOfType(selector.bounds[0], String))
@@ -384,15 +434,15 @@ class OptionsState extends MusicBeatState
 					if(selectorTimer >= 0.02)
 					{
 						selectorTimer = 0;
-						if(Controls.pressed("UI_LEFT"))
+						if(leftP)
 							selector.updateValue(-1);
-						if(Controls.pressed("UI_RIGHT"))
+						if(rightP)
 							selector.updateValue(1);
 					}
 				}
 			}
 		}
-		if(Controls.released("UI_LEFT") || Controls.released("UI_RIGHT"))
+		if(leftR || rightR)
 		{
 			selectorTimer = Math.NEGATIVE_INFINITY;
 			for(attach in grpAttachs.members)
@@ -400,10 +450,10 @@ class OptionsState extends MusicBeatState
 				if(Std.isOfType(attach, OptionSelector))
 				{
 					var selector = cast(attach, OptionSelector);
-					if(Controls.released("UI_LEFT"))
+					if(leftR)
 						selector.arrowL.animation.play("idle");
 
-					if(Controls.released("UI_RIGHT"))
+					if(rightR)
 						selector.arrowR.animation.play("idle");
 				}
 			}

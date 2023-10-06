@@ -16,6 +16,9 @@ class Init extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		FlxG.mouse.useSystemCursor = true;
 		//FlxG.mouse.visible = false;
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 		FlxGraphic.defaultPersist = true;
 		
 		Main.switchState(new MainMenu());

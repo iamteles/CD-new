@@ -14,8 +14,11 @@ import data.SongData.SwagSong;
 import gameObjects.*;
 import gameObjects.hud.*;
 import gameObjects.hud.note.*;
+
+#if !html5
 import sys.thread.Mutex;
 import sys.thread.Thread;
+#end
 
 /*
 *	preloads all the stuff before going into playstate
@@ -24,7 +27,10 @@ import sys.thread.Thread;
 class LoadSongState extends MusicBeatState
 {
 	var threadActive:Bool = true;
+
+	#if !html5
 	var mutex:Mutex;
+	#end
 	
 	//var behind:FlxGroup;
 	var behind:FlxGroup;
@@ -43,8 +49,11 @@ class LoadSongState extends MusicBeatState
 	override function create()
 	{
 		super.create();
+
+		#if !html5
 		mutex = new Mutex();
-		
+		#end
+
 		behind = new FlxGroup();
 		add(behind);
 		
@@ -78,10 +87,12 @@ class LoadSongState extends MusicBeatState
 		PlayState.resetStatics();
 		var assetModifier = PlayState.assetModifier;
 		var SONG = PlayState.SONG;
-		
+
+		#if !html5
 		var preloadThread = Thread.create(function()
 		{
 			mutex.acquire();
+			#end
 			Paths.preloadPlayStuff();
 			Rating.preload(assetModifier);
 			Paths.preloadGraphic('hud/base/healthBar');
@@ -196,10 +207,16 @@ class LoadSongState extends MusicBeatState
 			
 			loadPercent = 1.0;
 			trace('finished loading');
-			threadActive = false;
+
 			FlxSprite.defaultAntialiasing = oldAnti;
+			#if !html5
+			threadActive = false;
 			mutex.release();
 		});
+		#else
+		Main.skipClearMemory = true;
+		Main.switchState(new PlayState());
+		#end
 	}
 	
 	var byeLol:Bool = false;
@@ -207,6 +224,8 @@ class LoadSongState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		#if !html5
 		if(!threadActive && !byeLol && loadBar.scale.x >= 0.98)
 		{
 			byeLol = true;
@@ -218,5 +237,6 @@ class LoadSongState extends MusicBeatState
 
 		loadBar.scale.x = FlxMath.lerp(loadBar.scale.x, loadPercent, elapsed * 6);
 		loadBar.updateHitbox();
+		#end
 	}
 }

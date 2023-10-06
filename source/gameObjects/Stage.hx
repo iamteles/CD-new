@@ -6,7 +6,6 @@ import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
 import shaders.ColorSwap;
 import states.PlayState;
-import sys.io.File;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
@@ -228,7 +227,7 @@ class Stage extends FlxGroup
 			default:
 				try
 				{
-					stageData = haxe.Json.parse(File.getContent('assets/data/stage/' + curStage + '.json').trim());
+					stageData = haxe.Json.parse(Paths.getContent('data/stage/' + curStage + '.json').trim());
 					loadFromJson();
 				}
 				catch (e)

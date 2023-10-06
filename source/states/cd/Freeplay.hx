@@ -15,7 +15,7 @@ import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.effects.FlxFlicker;
-import sys.FileSystem;
+import gameObjects.android.FlxVirtualPad;
 import data.Highscore;
 import data.Highscore.ScoreData;
 import states.*;
@@ -86,9 +86,9 @@ class Freeplay extends MusicBeatState
             var song:String = songs[i][0];
             var charN:String = songs[i][1];
 
-            if(!FileSystem.exists('assets/images/menu/freeplay/names/${song}.png'))
+            if(!Paths.fileExists('images/menu/freeplay/names/${song}.png'))
                 song = "euphoria";
-            if(!FileSystem.exists('assets/images/menu/freeplay/characters/${charN}.png'))
+            if(!Paths.fileExists('images/menu/freeplay/characters/${charN}.png'))
                 charN = "bella";
 
             var char = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/characters/${charN}'));
@@ -138,22 +138,53 @@ class Freeplay extends MusicBeatState
         arrows.y = 637.2;
 		add(arrows);
 
+        if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(LEFT_FULL, A_B);
+            add(virtualPad);
+        }
+
         changeSelection();
         changeDiff();
     }
+    var virtualPad:FlxVirtualPad;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
-        if(Controls.justPressed("UI_UP"))
+
+        var up:Bool = Controls.justPressed("UI_UP");
+        if(SaveData.data.get("Touch Controls"))
+            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+
+        var down:Bool = Controls.justPressed("UI_DOWN");
+        if(SaveData.data.get("Touch Controls"))
+            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+
+        var left:Bool = Controls.justPressed("UI_LEFT");
+        if(SaveData.data.get("Touch Controls"))
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+
+        var right:Bool = Controls.justPressed("UI_RIGHT");
+        if(SaveData.data.get("Touch Controls"))
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
+        if(up)
             changeSelection(-1);
-        if(Controls.justPressed("UI_DOWN"))
+        if(down)
             changeSelection(1);
-        if(Controls.justPressed("UI_LEFT"))
+        if(left)
 			changeDiff(-1);
-		if(Controls.justPressed("UI_RIGHT"))
+		if(right)
 			changeDiff(1);
 
-        if(Controls.justPressed("BACK"))
+        if(back)
         {
             FlxG.sound.play(Paths.sound('menu/back'));
             Main.switchState(new states.cd.MainMenu());
@@ -179,7 +210,7 @@ class Freeplay extends MusicBeatState
                 item.alpha = 0;
         }
 
-        if(Controls.justPressed("ACCEPT"))
+        if(accept)
         {
             try
             {
