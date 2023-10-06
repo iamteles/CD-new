@@ -53,7 +53,7 @@ class FreeplayState extends MusicBeatState
 	{
 		super.create();
 		CoolUtil.playMusic("overTheHorizon");
-		bg = new FlxSprite().loadGraphic(Paths.image('menu/backgrounds/menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('menu/menuDesat'));
 		bg.scale.set(1.2,1.2); bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);

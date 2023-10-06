@@ -117,8 +117,8 @@ class ShopState extends MusicBeatState
         hudBuy.tweenAlpha(0,0.01);
 		add(hudBuy);
 
-        var bloom = new FlxRuntimeShader(File.getContent(Paths.shader('bloom')));
-        FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+        //var bloom = new FlxRuntimeShader(File.getContent(Paths.shader('bloom')));
+        //FlxG.camera.setFilters([new ShaderFilter(bloom)]);
     }
     override function update(elapsed:Float)
     {
@@ -313,7 +313,7 @@ class LoadShopState extends MusicBeatState
             for (i in Paths.readDir("data/watts", ".json"))
                 Paths.json("data/watts/" + i);
 
-            Paths.shader("shaders/bloom");
+            //Paths.shader("shaders/bloom");
 			
 			loadPercent = 1.0;
 			trace('finished loading');

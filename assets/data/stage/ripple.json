@@ -1,13 +1,14 @@
 {
-    "zoom": 0.7,
-    "bfPos": [100, 100, -200, 0],
-    "dadPos": [200, 0, 0, 0],
+    "zoom": 0.8,
+    "bfPos": [1750, 420, 250, 0],
+    "dadPos": [700, 500, 0, 0],
+    "thirdPos": [1000,800,60,-200],
     "objects": [
         {
             "objName": "cd",
-            "path": "backgrounds/exotic/background",
+            "path": "backgrounds/shack/shop",
             "position": [-600, -700],
-            "scrollFactor": [0.7, 0.7]
+            "scrollFactor": [1, 1]
         }
     ]
 }

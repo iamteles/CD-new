@@ -125,7 +125,7 @@ class PlayState extends MusicBeatState
 
 	var bellasings:Bool = false;
 
-	var bloom:FlxRuntimeShader;
+	//var bloom:FlxRuntimeShader;
 	var chrom:FlxRuntimeShader;
 	var echo:FlxRuntimeShader;
 
@@ -641,78 +641,80 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		bloom = new FlxRuntimeShader(File.getContent(Paths.shader('bloom')));
-		chrom = new FlxRuntimeShader('
-		#pragma header
-
-		void main()
-		{
-			vec4 col1 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
-			vec4 col2 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.0, 0.0));
-			vec4 col3 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
-			vec4 toUse = texture2D(bitmap, openfl_TextureCoordv);
-			toUse.r = col1.r;
-			toUse.g = col2.g;
-			toUse.b = col3.b;
-			//float someshit = col4.r + col4.g + col4.b;
-
-			gl_FragColor = toUse;
-		}
-		');
-		echo = new FlxRuntimeShader('
-		#pragma header
-		vec2 uv = openfl_TextureCoordv.xy;
-		vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-		vec2 iResolution = openfl_TextureSize;
-		uniform float iTime;
-		#define iChannel0 bitmap
-		#define texture flixel_texture2D
-		#define fragColor gl_FragColor
-		#define mainImage main
-		
-		int sampleCount = 50;
-		float blur = 0.25; 
-		float falloff = 3.0; 
-		
-		// use iChannel0 for video, iChannel1 for test grid
-		#define INPUT iChannel0
-		
-		void mainImage()
-		{
-			vec2 destCoord = fragCoord.xy / iResolution.xy;
-		
-			vec2 direction = normalize(destCoord - 0.5); 
-			vec2 velocity = direction * blur * pow(length(destCoord - 0.5), falloff);
-			float inverseSampleCount = 1.0 / float(sampleCount); 
-			
-			mat3x2 increments = mat3x2(velocity * 1.0 * inverseSampleCount,
-									   velocity * 2.0 * inverseSampleCount,
-									   velocity * 4.0 * inverseSampleCount);
-		
-			vec3 accumulator = vec3(0);
-			mat3x2 offsets = mat3x2(0); 
-			
-			for (int i = 0; i < sampleCount; i++) {
-				accumulator.r += texture(INPUT, destCoord + offsets[0]).r; 
-				accumulator.g += texture(INPUT, destCoord + offsets[1]).g; 
-				accumulator.b += texture(INPUT, destCoord + offsets[2]).b; 
-				
-				offsets -= increments;
+		if(SaveData.data.get("Shaders")) {
+			//bloom = new FlxRuntimeShader(File.getContent(Paths.shader('bloom')));
+			chrom = new FlxRuntimeShader('
+			#pragma header
+	
+			void main()
+			{
+				vec4 col1 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
+				vec4 col2 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.0, 0.0));
+				vec4 col3 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
+				vec4 toUse = texture2D(bitmap, openfl_TextureCoordv);
+				toUse.r = col1.r;
+				toUse.g = col2.g;
+				toUse.b = col3.b;
+				//float someshit = col4.r + col4.g + col4.b;
+	
+				gl_FragColor = toUse;
 			}
-		
-			fragColor = vec4(accumulator / float(sampleCount), 1.0);
+			');
+			echo = new FlxRuntimeShader('
+			#pragma header
+			vec2 uv = openfl_TextureCoordv.xy;
+			vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+			vec2 iResolution = openfl_TextureSize;
+			uniform float iTime;
+			#define iChannel0 bitmap
+			#define texture flixel_texture2D
+			#define fragColor gl_FragColor
+			#define mainImage main
+			
+			int sampleCount = 50;
+			float blur = 0.25; 
+			float falloff = 3.0; 
+			
+			// use iChannel0 for video, iChannel1 for test grid
+			#define INPUT iChannel0
+			
+			void mainImage()
+			{
+				vec2 destCoord = fragCoord.xy / iResolution.xy;
+			
+				vec2 direction = normalize(destCoord - 0.5); 
+				vec2 velocity = direction * blur * pow(length(destCoord - 0.5), falloff);
+				float inverseSampleCount = 1.0 / float(sampleCount); 
+				
+				mat3x2 increments = mat3x2(velocity * 1.0 * inverseSampleCount,
+										   velocity * 2.0 * inverseSampleCount,
+										   velocity * 4.0 * inverseSampleCount);
+			
+				vec3 accumulator = vec3(0);
+				mat3x2 offsets = mat3x2(0); 
+				
+				for (int i = 0; i < sampleCount; i++) {
+					accumulator.r += texture(INPUT, destCoord + offsets[0]).r; 
+					accumulator.g += texture(INPUT, destCoord + offsets[1]).g; 
+					accumulator.b += texture(INPUT, destCoord + offsets[2]).b; 
+					
+					offsets -= increments;
+				}
+			
+				fragColor = vec4(accumulator / float(sampleCount), 1.0);
+			}
+			');
 		}
-		');
 
 		switch(daSong) {
 			case "ripple":
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				zoomInOpp = true;
 				zoomOppVal = -0.2;
 				camHUD.alpha = 0;
 				//camStrum.alpha = 0;
 			case "sin":
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				camTaiko.alpha = 0;
 				dad.alpha = 0;
 				camHUD.alpha = 0;
@@ -725,7 +727,7 @@ class PlayState extends MusicBeatState
 				camHUD.alpha = 0;
 				camStrum.alpha = 0;
 				camVg.fade(0x00000000, 0.01, false);
-				FlxG.camera.setFilters([new ShaderFilter(bloom), new ShaderFilter(chrom)]);
+				if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(chrom)]);
 				zoomInOpp = true;
 				zoomOppVal = 0.97 - 0.8;
 			case 'desertion':
@@ -735,19 +737,19 @@ class PlayState extends MusicBeatState
 				camVg.fade(0x00000000, 0.01, false);
 				zoomInOpp = true;
 				zoomOppVal = 0.2;
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 			case 'irritation':
 				boyfriend.alpha = 0;
 				camHUD.alpha = 0;
 				camStrum.alpha = 0;
 				camVg.alpha = 0;
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 			case 'conservation':
 				boyfriend.alpha = 0;
 				camHUD.alpha = 0;
 				camStrum.alpha = 0;
 				camVg.alpha = 0;
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				zoomInOpp = true;
 				zoomOppVal = 0.06;
 			case 'panic-attack':
@@ -756,14 +758,14 @@ class PlayState extends MusicBeatState
 				zoomInOpp = true;
 				zoomOppVal = 0.05;
 				FlxG.camera.fade(0xFF000000, 0.01, false);
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 			case 'intimidate':
 				dad.alpha = 0;
 				vgblack.alpha = 0.8;
 				FlxG.camera.fade(0xFF000000, 0.01, false);
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 			default:
-				FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 		}
 
 		
@@ -1068,6 +1070,7 @@ class PlayState extends MusicBeatState
 						}
 					default:
 						if(strumline.isTaiko) {
+							FlxG.sound.play(Paths.sound('punch/punch_' + FlxG.random.int(1, 4)), 0.55);
 							switch(note.noteData) {
 								case 0 | 1:
 									boyfriend.playAnim((breePunch ? "pright" : "pleft"), true);
@@ -1255,6 +1258,7 @@ class PlayState extends MusicBeatState
 
 		var daRating = new Rating(rating, Timings.combo, note.assetModifier);
 
+		/*
 		if(SaveData.data.get("Ratings on HUD"))
 		{
 			hudBuild.add(daRating);
@@ -1269,14 +1273,14 @@ class PlayState extends MusicBeatState
 			daRating.setPos(daX, FlxG.height / 2);
 		}
 		else
-		{
+		{*/
 			add(daRating);
 
 			daRating.setPos(
 				boyfriend.x + boyfriend.ratingsOffset.x,
 				boyfriend.y + boyfriend.ratingsOffset.y
 			);
-		}
+		//}
 
 		hudBuild.updateText();
 	}
@@ -1980,11 +1984,11 @@ class PlayState extends MusicBeatState
 					case 916:
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.9;
-						FlxG.camera.setFilters([new ShaderFilter(bloom), new ShaderFilter(echo)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(echo)]);
 					case 1172:
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.8;
-						FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
 					case 1300:
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.7;
@@ -2118,12 +2122,12 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.6;
 						CoolUtil.flash(camOther, 0.5);
 						beatSpeed = 1;
-						FlxG.camera.setFilters([new ShaderFilter(bloom), new ShaderFilter(echo)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(echo)]);
 					case 912:
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.7;
 						beatSpeed = 4;
-						FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/]);
 					case 928:
 						defaultCamZoom = 0.8;
 					case 944:
@@ -2318,7 +2322,7 @@ class PlayState extends MusicBeatState
 					case 1472:
 						FlxG.camera.fade(0x00000000, 0.001, true);
 						CoolUtil.flash(camOther, 1);
-						FlxG.camera.setFilters([new ShaderFilter(bloom), new ShaderFilter(echo)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(echo)]);
 						changeChar(dad, "bella-1alt");
 						beatSpeed = 2;
 					case 1600:
@@ -2331,7 +2335,7 @@ class PlayState extends MusicBeatState
 					case 1728:
 						defaultCamZoom = 0.7;
 						beatSpeed = 1;
-						FlxG.camera.setFilters([new ShaderFilter(bloom)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/]);
 						CoolUtil.flash(camOther, 1);
 					case 2240:
 						defaultCamZoom = 0.6;

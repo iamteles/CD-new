@@ -30,6 +30,7 @@ class OptionsState extends MusicBeatState
 			"Downscroll",
 			"Cutscenes",
 			"Framerate Cap",
+			"Preload Songs"
 		],
 		"appearance" => [
 			"Skin",
@@ -80,7 +81,7 @@ class OptionsState extends MusicBeatState
 	{
 		super.create();
 		CoolUtil.playMusic("movement");
-		bg = new FlxSprite().loadGraphic(Paths.image('menu/backgrounds/menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('menu/menuDesat'));
 		bg.scale.set(1.2,1.2); bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);

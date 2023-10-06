@@ -94,6 +94,11 @@ class SaveData
 			0,
 			[-500, 500]
 		],
+		"Preload Songs" => [
+			true,
+			CHECKMARK,
+			"Whether to preload music for the Music Player."
+		]
 	];
 
 	public static var progression:Map<String, Dynamic> = [

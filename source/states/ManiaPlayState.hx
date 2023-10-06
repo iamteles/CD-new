@@ -92,7 +92,7 @@ class ManiaPlayState extends MusicBeatState
 		backGroup = new FlxGroup();
 		add(backGroup);
 
-		bg = new FlxSprite().loadGraphic(Paths.image("menu/backgrounds/menuDesat"));
+		bg = new FlxSprite().loadGraphic(Paths.image("menu/menuDesat"));
 		bg.scrollFactor.set();
         bg.alpha = 0.4;
 		backGroup.add(bg);

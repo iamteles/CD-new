@@ -107,7 +107,7 @@ class ChartingState extends MusicBeatState
 		hitsound.stop();
 		FlxG.sound.list.add(hitsound);
 
-		var bg = new FlxSprite().loadGraphic(Paths.image("menu/backgrounds/menuDesat"));
+		var bg = new FlxSprite().loadGraphic(Paths.image("menu/menuDesat"));
 		bg.screenCenter();
 		bg.scrollFactor.set();
 		bg.alpha = 0.4;

@@ -29,13 +29,15 @@ class Freeplay extends MusicBeatState
         ["allegro", "duo", 0xFF0C2E55],
         ["panic-attack", "bree", 0xFFF85EA4],
         ["convergence", "bree", 0xFFB6318E],
-        ["desertion", "bree-angry", 0xFF350072],
+        ["desertion", "bree-angry", 0xFFFF0000],
         ["sin", "helica", 0xFFE17B00],
         ["conservation", "watts", 0xFFFEC404],
-        ["irritation", "watts-pissed", 0xFFFEC404],
-        ["intimidate", "bex", 0xFF040D18],
+        ["irritation", "watts", 0xFFFEC404],
+        ["kaboom", "spicy", 0xFFFF006A],
+        ["intimidate", "bex-scared", 0xFF0A203B],
+        ["heartpounder", "duo", 0xFFF85EA4],
+        ["ripple", "drown", 0xFF049AFE],
         ["exotic", "cutenevil", 0xFFFFFFFF],
-        ["ripple", "wave", 0xFFFE6004],
     ];
     static var curSelected:Int = 0;
     static var curDiff:Int = 0;
@@ -96,8 +98,12 @@ class Freeplay extends MusicBeatState
             char.alpha = 0;
             characters.add(char);
 
-            if(charN == "cutenevil")
+            if(charN == "cutenevil" || charN == "duo")
                 char.offset.set(50,0);
+            else if(charN == "bex" || charN == "bex-scared")
+                char.offset.set(-50,0);
+            else if(charN == "spicy")
+                char.offset.set(100,50);
                 
             var text = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/names/${song}'));
             text.ID = i;

@@ -35,7 +35,7 @@ class ControlsState extends MusicBeatState
 		super.create();
 		controlList = Controls.changeableControls;
 		
-		var bg = new FlxSprite().loadGraphic(Paths.image('menu/backgrounds/menuDesat'));
+		var bg = new FlxSprite().loadGraphic(Paths.image('menu/menuDesat'));
 		bg.scale.set(1.2,1.2); bg.updateHitbox();
 		bg.screenCenter();
 		bg.color = OptionsState.bgColors.get("controls");

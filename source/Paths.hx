@@ -236,4 +236,13 @@ class Paths
 		what.play();
 		what.stop();
 	}
+
+	public static function preloadMusicPlayer(key:String)
+	{
+		if(renderedSounds.exists(key)) return;
+
+		var what = new FlxSound().loadEmbedded(getPath(key) + ".ogg", false, false);
+		what.play();
+		what.stop();
+	}
 }

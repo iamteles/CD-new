@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="buttons.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Loop0000" x="189" y="34" width="137" height="115"/>
+	<SubTexture name="last track0000" x="34" y="34" width="137" height="115"/>
+	<SubTexture name="next track0000" x="34" y="167" width="137" height="115"/>
+	<SubTexture name="pause button0000" x="34" y="300" width="137" height="115"/>
+	<SubTexture name="play button0000" x="189" y="167" width="137" height="115"/>
+</TextureAtlas>
