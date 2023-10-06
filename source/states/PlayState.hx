@@ -1135,6 +1135,8 @@ class PlayState extends MusicBeatState
 
 			if(!strumline.isTaiko)
 				FlxG.sound.play(Paths.sound('miss/missnote' + FlxG.random.int(1, 3)), 0.55);
+			else
+				FlxG.sound.play(Paths.sound('punch/punch_' + FlxG.random.int(1, 4)), 0.55);
 
 			if(thisChar != null && note.noteType != "no animation" && !singList.contains(thisChar.animation.curAnim.name))
 			{
