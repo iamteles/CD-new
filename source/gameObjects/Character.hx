@@ -179,6 +179,7 @@ class Character extends FlxSprite
 
 	private var curDance:Int = 0;
 
+	var banList:Array<String> = ['snap', 'panic', 'neck'];
 	public function dance(forced:Bool = false)
 	{
 		if(specialAnim) return;
@@ -202,6 +203,11 @@ class Character extends FlxSprite
 		{
 			holdTimer += elapsed;
 		}
+
+		if(banList.contains(animation.curAnim.name))
+			specialAnim = true;
+		else
+			specialAnim = false;
 
 		if(loop && animation.curAnim.finished && singAnims.contains(animation.curAnim.name)) {
 			dance();

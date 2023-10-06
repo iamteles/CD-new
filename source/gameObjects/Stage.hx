@@ -19,6 +19,7 @@ typedef StageInfo =
 	var dadPos:Array<Float>;
 	var bfPos:Array<Float>;
 	var thirdPos:Array<Float>;
+	var middle:Array<Float>;
 }
 
 typedef StageObject =
@@ -55,6 +56,8 @@ class Stage extends FlxGroup
 
 	public var thirdCam:FlxPoint  = new FlxPoint();
 	public var thirdPos:FlxPoint = new FlxPoint();
+
+	public var camMiddle:FlxPoint  = new FlxPoint();
 
 	public var objectMap:Map<String, FlxSprite> = new Map<String, FlxSprite>();
 	public var foreground:FlxGroup;
@@ -105,6 +108,11 @@ class Stage extends FlxGroup
 
 			thirdCam.x = stageData.thirdPos[2];
 			thirdCam.y = stageData.thirdPos[3];
+		}
+
+		if(stageData.middle != null) {
+			camMiddle.x = stageData.middle[0];
+			camMiddle.y = stageData.middle[1];
 		}
 
 		if (stageData.objects != null)

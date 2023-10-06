@@ -713,6 +713,9 @@ class PlayState extends MusicBeatState
 				zoomOppVal = -0.2;
 				camHUD.alpha = 0;
 				//camStrum.alpha = 0;
+			case "divergence":
+				camHUD.alpha = 0;
+				camStrum.alpha = 0;
 			case "sin":
 				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				camTaiko.alpha = 0;
@@ -1873,36 +1876,41 @@ class PlayState extends MusicBeatState
 			}
 		}
 	}
-
+	var focusMiddle:Bool = false;
 	public function followCamera(?char:Character, ?offsetX:Float = 0, ?offsetY:Float = 0)
 	{
 		camFollow.setPosition(0,0);
 
-		if(char != null && (daSong == "irritation" || daSong == "conservation")) {
-			camFollow.setPosition(dad.getMidpoint().x, dad.getMidpoint().y + bleh);
+		if(focusMiddle) {
+			camFollow.setPosition(stageBuild.camMiddle.x, stageBuild.camMiddle.y);
 		}
-		else if(char != null)
-		{
-			var playerMult:Int = (char.isPlayer ? -1 : 1);
-			var which:FlxPoint = (char.isPlayer ? stageBuild.bfCam : stageBuild.dadCam);
-
-			if(char == third)
-				which = stageBuild.thirdCam;
-
-			camFollow.setPosition(char.getMidpoint().x + (200 * playerMult), char.getMidpoint().y - 20);
-
-			camFollow.x += char.cameraOffset.x * playerMult;
-			camFollow.y += char.cameraOffset.y;
-
-			camFollow.x += which.x;
-			camFollow.y += which.y;
+		else {
+			if(char != null && (daSong == "irritation" || daSong == "conservation")) {
+				camFollow.setPosition(dad.getMidpoint().x, dad.getMidpoint().y + bleh);
+			}
+			else if(char != null)
+			{
+				var playerMult:Int = (char.isPlayer ? -1 : 1);
+				var which:FlxPoint = (char.isPlayer ? stageBuild.bfCam : stageBuild.dadCam);
+	
+				if(char == third)
+					which = stageBuild.thirdCam;
+	
+				camFollow.setPosition(char.getMidpoint().x + (200 * playerMult), char.getMidpoint().y - 20);
+	
+				camFollow.x += char.cameraOffset.x * playerMult;
+				camFollow.y += char.cameraOffset.y;
+	
+				camFollow.x += which.x;
+				camFollow.y += which.y;
+			}
+	
+			camFollow.x += offsetX;
+			camFollow.y += offsetY;
+	
+			camFollow.x += camDisplaceX;
+			camFollow.y += camDisplaceY;
 		}
-
-		camFollow.x += offsetX;
-		camFollow.y += offsetY;
-
-		camFollow.x += camDisplaceX;
-		camFollow.y += camDisplaceY;
 	}
 
 	var banList:Array<String> = ['snap', 'panic', 'neck'];
@@ -2264,7 +2272,9 @@ class PlayState extends MusicBeatState
 			case 'divergence':
 				switch(curStep) {
 					case 1:
-						CoolUtil.flash(camOther, 20);
+						CoolUtil.flash(camTaiko, 20);
+						camHUD.alpha = 1;
+						camStrum.alpha = 1;
 					//case 8:
 					//	noteSwap(true);
 					case 256:
@@ -2298,6 +2308,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.76;
 					case 1184:
 						FlxG.camera.fade(0x00000000, 0.33, false);
+						beatSpeed = 4;
 					case 1312:
 						FlxG.camera.fade(0x00000000, 1.3, true);
 					case 1440:
@@ -2343,6 +2354,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.6;
 						beatSpeed = 4;
 						beatZoom = 0;
+						focusMiddle = true;
 					case 2635:
 						FlxG.camera.fade(0x00000000, 0.33, false);
 				}
@@ -2382,10 +2394,13 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.7;
 						beatSpeed = 1;
 						changeChar(boyfriend, "bex-1alt");
+						for (strum in strumlines)
+							FlxTween.tween(strum, {scrollSpeed: 3.3}, 0.4, {ease: FlxEase.linear});
 					case 1696:
 						CoolUtil.flash(camOther);
 						defaultCamZoom = 0.6;
 						beatSpeed = 4;
+						focusMiddle = true;
 				}
 			case 'euphoria':
 				switch (curStep) {
@@ -2436,6 +2451,7 @@ class PlayState extends MusicBeatState
 						CoolUtil.flash(camOther);
 						defaultCamZoom = 0.6;
 						beatSpeed = 4;
+						focusMiddle = true;
 
 				}
 			case 'desertion':
@@ -2684,14 +2700,15 @@ class PlayState extends MusicBeatState
 						changeChar(boyfriend, "bex-2bf");
 						changeChar(dad, "bree-2bf");
 						changeStage("nan");
-					case 1440:
+					case 1440: // 1440
 						CoolUtil.flash(camOther, 0.5);
 						camVg.fade(0x00ffffff, 0.01, true);
 					case 1664:
 						FlxTween.tween(dad, {alpha: 0}, 0.6, {ease: FlxEase.sineInOut});
-					case 1680: //1680
+					case 1685: //1680
 						defaultCamZoom = 0.72;
 						boyfriend.playAnim("neck", true);
+						focusMiddle = true;
 					case 1696: //1696
 						dad.alpha = 1;
 						CoolUtil.flash(camOther, 0.5);
@@ -2702,6 +2719,10 @@ class PlayState extends MusicBeatState
 						stageBuild.objectMap.get("rain").alpha = 0.16;
 						stageBuild.objectMap.get("outsidenight").animation.play("thunder");
 						boyfriend.playAnim("panic", true);
+						focusMiddle = false;
+						cameraSpeed = 500;
+					case 1697: 
+						cameraSpeed = 1;
 					case 2000:
 						defaultCamZoom = 0.72;
 					case 2016:
@@ -2724,6 +2745,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.6;
 						CoolUtil.flash(camOther);
 					case 1296:
+						focusMiddle = true;
 						defaultCamZoom = 0.7;
 					case 1302:
 						defaultCamZoom = 0.6;
@@ -2785,10 +2807,10 @@ class PlayState extends MusicBeatState
 				if(validScore)
 				{
 					var oldScore:ScoreData = Highscore.getScore(daSong);
-					var givenMoney:Int = 25;
+					var givenMoney:Int = 10;
 					var timer:Float = 1.4;
 					if(Timings.score >= oldScore.score) {
-						givenMoney = 50;
+						givenMoney = 25;
 						timer = 2;
 					}
 

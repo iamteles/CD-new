@@ -7,7 +7,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxCamera;
 import gameObjects.hud.note.Note;
-import sys.FileSystem;
 
 using StringTools;
 
@@ -78,7 +77,8 @@ class CoolUtil
 	{
 		var list:Array<String> = [];
 
-		for (character in FileSystem.readDirectory("assets/data/chars/"))
+		#if desktop
+		for (character in sys.FileSystem.readDirectory("assets/data/chars/"))
 		{
 			var path = haxe.io.Path.join(["assets/data/chars/", character]);
 			if (!sys.FileSystem.isDirectory(path) && !list.contains(character) && character.endsWith(".json")) {
@@ -86,7 +86,7 @@ class CoolUtil
 				list.push(dat[0]);
 			}
 		}
-
+		#end
 		return list;
 	}
 
