@@ -23,6 +23,7 @@ class StoryMode extends MusicBeatState
     var bg:FlxSprite;
     var week1:FlxSprite;
     var week2:FlxSprite;
+    var text:FlxSprite;
 
     var weeks:FlxTypedGroup<FlxSprite>;
     public static var weekData:Array<Array<Dynamic>> = [
@@ -55,6 +56,10 @@ class StoryMode extends MusicBeatState
         week2.updateHitbox();
         week2.ID = 1;
         weeks.add(week2);
+
+        text = new FlxSprite(127, 15).loadGraphic(Paths.image('menu/story/text')); //i have not put a position here in a while lol
+        text.updateHitbox();
+        add(text);
 
         //enterWeek(["euphoria", "nefarious", "divergence"], "week1");
     }
@@ -101,11 +106,11 @@ class StoryMode extends MusicBeatState
     function updatePos() {
         week1.screenCenter();
         week1.x -= 300;
-        week1.y += 50;
+        week1.y += 150;
 
         week2.screenCenter();
         week2.x += 300;
-        week2.y += 50;
+        week2.y += 150;
     }
 
     public static function enterWeek(id:Int) {
@@ -150,7 +155,7 @@ class SliderL extends MusicBeatSubState
 
         weekName = new FlxText(0, 0, 0, "Week 2");
 		weekName.setFormat(Main.gFont, 120, 0xFFFFFFFF, CENTER);
-        weekName.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
+        weekName.setBorderStyle(OUTLINE, FlxColor.BLACK, 5);
         weekName.screenCenter(X);
         weekName.x -= 320;
         weekName.y += 70;
@@ -159,7 +164,7 @@ class SliderL extends MusicBeatSubState
 
         songs = new FlxText(0, 0, 0, "Allegro\nPanic Attack\nConvergence\n???\n");
 		songs.setFormat(Main.gFont, 60, 0xFFFFFFFF, CENTER);
-        songs.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
+        songs.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
         songs.screenCenter();
         songs.x -= 320;
         songs.y -= 30;
@@ -235,7 +240,7 @@ class SliderR extends MusicBeatSubState
 
         weekName = new FlxText(0, 0, 0, "Week 1");
 		weekName.setFormat(Main.gFont, 120, 0xFFFFFFFF, CENTER);
-        weekName.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
+        weekName.setBorderStyle(OUTLINE, FlxColor.BLACK, 5);
         weekName.screenCenter(X);
         weekName.x += 320;
         weekName.y += 70;
@@ -244,7 +249,7 @@ class SliderR extends MusicBeatSubState
 
         songs = new FlxText(0, 0, 0, "Euphoria\nNefarious\nDivergence\n");
 		songs.setFormat(Main.gFont, 60, 0xFFFFFFFF, CENTER);
-        songs.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
+        songs.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
         songs.screenCenter();
         songs.x += 320;
         songs.y -= 30;

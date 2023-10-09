@@ -307,43 +307,43 @@ class OptionsState extends MusicBeatState
 		super.update(elapsed);
 
 		var up:Bool = Controls.justPressed("UI_UP");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
 
         var down:Bool = Controls.justPressed("UI_DOWN");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
 
         var left:Bool = Controls.justPressed("UI_LEFT");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
 
         var right:Bool = Controls.justPressed("UI_RIGHT");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
 
 		var leftP:Bool = Controls.pressed("UI_LEFT");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             leftP = (Controls.pressed("UI_LEFT") || virtualPad.buttonLeft.pressed);
 
         var rightP:Bool = Controls.pressed("UI_RIGHT");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             rightP = (Controls.pressed("UI_RIGHT") || virtualPad.buttonRight.pressed);
 
 		var leftR:Bool = Controls.released("UI_LEFT");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             leftR = (Controls.released("UI_LEFT") || virtualPad.buttonLeft.released);
 
         var rightR:Bool = Controls.justPressed("UI_RIGHT");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             rightR = (Controls.released("UI_RIGHT") || virtualPad.buttonRight.released);
 
         var back:Bool = Controls.justPressed("BACK");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
 
         var accept:Bool = Controls.justPressed("ACCEPT");
-        if(SaveData.data.get("Touch Controls"))
+        if(virtualPad != null)
             accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
 
 		updateAttachPos();

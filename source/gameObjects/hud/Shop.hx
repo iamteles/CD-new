@@ -74,18 +74,22 @@ class ShopTalk extends FlxGroup
 
         watts1 = new FlxSound();
         watts1.loadEmbedded(Paths.sound("dialog/watts/watts1"), false, false);
+        watts1.volume = 0.7;
         FlxG.sound.list.add(watts1);
 
         watts2 = new FlxSound();
         watts2.loadEmbedded(Paths.sound("dialog/watts/watts2"), false, false);
+        watts2.volume = 0.7;
         FlxG.sound.list.add(watts2);
 
         watts3 = new FlxSound();
         watts3.loadEmbedded(Paths.sound("dialog/watts/watts3"), false, false);
+        watts3.volume = 0.7;
         FlxG.sound.list.add(watts3);
 
         watts4 = new FlxSound();
         watts4.loadEmbedded(Paths.sound("dialog/watts/watts4"), false, false);
+        watts4.volume = 0.7;
         FlxG.sound.list.add(watts4);
 
         tex = new FlxTypeText(icon.x + icon.width + 25, icon.y, Std.int(dialogBig.width - (icon.x + icon.width + 25) - 50), '', true);
@@ -312,11 +316,6 @@ class ShopBuy extends FlxGroup
 
     public static var activeg:Bool = false;
 
-    var watts1:FlxSound;
-    var watts2:FlxSound;
-    var watts3:FlxSound;
-    var watts4:FlxSound;
-
     public function new()
     {
         super();
@@ -373,27 +372,10 @@ class ShopBuy extends FlxGroup
         icon.y = dialogBig.y + 60;
         add(icon);
 
-        watts1 = new FlxSound();
-        watts1.loadEmbedded(Paths.sound("dialog/watts/watts1"), false, false);
-        FlxG.sound.list.add(watts1);
-
-        watts2 = new FlxSound();
-        watts2.loadEmbedded(Paths.sound("dialog/watts/watts2"), false, false);
-        FlxG.sound.list.add(watts2);
-
-        watts3 = new FlxSound();
-        watts3.loadEmbedded(Paths.sound("dialog/watts/watts3"), false, false);
-        FlxG.sound.list.add(watts3);
-
-        watts4 = new FlxSound();
-        watts4.loadEmbedded(Paths.sound("dialog/watts/watts4"), false, false);
-        FlxG.sound.list.add(watts4);
-
         tex = new FlxTypeText(icon.x + icon.width + 25, icon.y, Std.int(dialogBig.width - (icon.x + icon.width + 25) - 50), '* What are you looking for?', true);
 		tex.alpha = 1;
 		tex.setFormat(Paths.font("sylfaen.ttf"), 24, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		tex.borderSize = 1.4;
-        tex.sounds = [watts1, watts2, watts3, watts4];
 		tex.skipKeys = [];
 		tex.delay = 0.05;
 		tex.finishSounds = false;

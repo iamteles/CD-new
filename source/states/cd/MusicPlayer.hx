@@ -40,7 +40,7 @@ class MusicPlayer extends MusicBeatState
         ["Over the Horizon", "Coco Puffs", "music/overTheHorizon"],
         ["Over the Horizon (BREE-MIX)", "CharaWhy", "music/overTheHorizonBree"],
         ["Shopkeeper", "teles", "music/shopkeeper"],
-        ["Over the Horizon (HELICA-MIX)", "YaBoiJustin", "music/overTheHorizonHelica"],
+        ["Over the Clouds", "YaBoiJustin", "music/overTheHorizonHelica"],
         ["Movement", "CharaWhy", "music/movement"],
         ["Reiterate", "teles", "music/death/reiterate"],
         ["THUNDEROUS", "teles", "music/death/bree"],
@@ -101,7 +101,7 @@ class MusicPlayer extends MusicBeatState
         for(i in 0...songs.length)
         {
             var num:String = Std.string(i+1) + ". ";
-            if(i <= 10)
+            if(i <= 8)
                 num = "0" + num;
 
             var holder = new FlxSprite().loadGraphic(Paths.image('menu/music/song'));

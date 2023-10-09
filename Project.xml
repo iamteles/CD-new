@@ -3,7 +3,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Characteristic Disparity" file="CDv2" packageName="com.teles.cdv2" package="com.teles.cdv2" main="Main" version="2.0.0" company="teles" />
+	<app title="Characteristic Disparity" file="CD" packageName="com.teles.cdv2" package="com.teles.cdv2" main="Main" version="2.0.0" company="teles" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->

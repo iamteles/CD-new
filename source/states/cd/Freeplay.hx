@@ -96,6 +96,8 @@ class Freeplay extends MusicBeatState
             char.x = 30;
             char.y = 0;
             char.alpha = 0;
+            if(!SaveData.songs.get(songs[i][0]))
+                char.color = 0xFF000000;
             characters.add(char);
 
             if(charN == "cutenevil" || charN == "duo")
@@ -110,6 +112,8 @@ class Freeplay extends MusicBeatState
             text.y = 40;
             text.x = FlxG.width - text.width - 60;
             text.alpha = 0;
+            if(!SaveData.songs.get(songs[i][0]))
+                text.color = 0xFF000000;
             texts.add(text);
         }
 

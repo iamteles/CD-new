@@ -12,7 +12,6 @@ enum SettingType
 	SELECTOR;
 }
 
-@:allow(flixel.util.FlxSharedObject)
 class SaveData
 {
 	public static var data:Map<String, Dynamic> = [];
@@ -114,6 +113,27 @@ class SaveData
 		"shopentrance" => false,
 		"week2" => false,
 		"week1" => false
+	];
+	public static var songs:Map<String, Dynamic> = [
+		"euphoria" => false,
+		"nefarious" => false,
+		"divergence" => false,
+		"allegro" => false,
+		"panic-attack" => false,
+		"convergence" => false,
+		"desertion" => false,
+		"sin" => false,
+		"conservation" => false,
+		"irritation" => false,
+		"kaboom" => false,
+		"intimidate" => false,
+		"heartpounder" => false,
+		"ripple" => false,
+		"exotic" => false,
+		"customer-service" => false,
+		"euphoria-vip" => false,
+		"nefarious-vip" => false,
+		"divergence-vip" => false,
 	];
 	public static var money:Int = 0;
 	public static var shop:Map<String, Dynamic> = [];
@@ -231,6 +251,12 @@ class SaveData
 			progressionFile.data.progression = progression;
 		}
 		
+		if(progressionFile.data.songs == null)
+		{
+			progressionFile.data.songs = songs;
+		}
+
+		songs = progressionFile.data.songs;
 		money = progressionFile.data.money;
 		shop = progressionFile.data.shop;
 		progression = progressionFile.data.progression;
@@ -294,6 +320,7 @@ class SaveData
 		progressionFile.data.money = money;
 		progressionFile.data.shop = shop;
 		progressionFile.data.progression = progression;
+		progressionFile.data.songs = songs;
 		progressionFile.flush();
 		update();
 	}

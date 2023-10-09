@@ -100,6 +100,14 @@ class GameOverSubState extends MusicBeatSubState
 
 			if(Controls.justPressed("ACCEPT"))
 				endBullshit();
+
+			#if mobile
+			for (touch in FlxG.touches.list)
+			{
+				if (touch.justPressed)
+					endBullshit();
+			}
+			#end
 		}
 	}
 

@@ -26,7 +26,7 @@ class DebugState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		CoolUtil.playMusic("overTheHorizon");
+		CoolUtil.playMusic("MENU");
 
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Song Selection", null);

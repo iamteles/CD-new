@@ -71,6 +71,10 @@ class Gallery extends MusicBeatState
         leftArrow = new FlxSprite().loadGraphic(Paths.image("menu/gallery/arrow"));
 		rightArrow = new FlxSprite().loadGraphic(Paths.image("menu/gallery/arrow"));
 		rightArrow.flipX = true;
+		leftArrow.scale.set(0.7, 0.7);
+		rightArrow.scale.set(0.7, 0.7);
+		leftArrow.updateHitbox();
+		rightArrow.updateHitbox();
         leftArrow.screenCenter(Y);
         rightArrow.screenCenter(Y);
         rightArrow.x = FlxG.width - rightArrow.width;
@@ -92,9 +96,9 @@ class Gallery extends MusicBeatState
 		for (i in 0...tipTextArray.length-1)
 		{
 			var tipText:FlxText = new FlxText(FlxG.width - 320, FlxG.height - 15 - 16 * (tipTextArray.length - i), 300, tipTextArray[i], 12);
-			tipText.setFormat(Main.gFont, 24, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK);
+			tipText.setFormat(Main.gFont, 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE_FAST, FlxColor.BLACK);
 			tipText.scrollFactor.set();
-			tipText.borderSize = 2.4;
+			tipText.borderSize = 2;
 			add(tipText);
 		}
 		if(SaveData.data.get("Touch Controls")) {

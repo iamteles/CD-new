@@ -58,7 +58,7 @@ class StoryMenuState extends MusicBeatState
 	{
 		super.create();
 		preloadAssets();
-		CoolUtil.playMusic("overTheHorizon");
+		CoolUtil.playMusic("MENU");
 		addWeek(
 			"tutorial",
 			"funky beginnings",

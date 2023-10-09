@@ -18,7 +18,6 @@ using StringTools;
 class Main extends Sprite
 {
 	public static var fpsVar:FPSCounter;
-
 	public function new()
 	{
 		super();
@@ -87,6 +86,35 @@ class Main extends Sprite
 			FlxG.drawFramerate   = newFps;
 			FlxG.updateFramerate = newFps;
 		}
+	}
+
+	public static var possibleTitles:Array<Array<String>> = [
+		["main", "overTheHorizon"]
+	];
+	public static var randomized:Int = 0;
+
+	public static function randomizeTitle()
+	{
+		var temp:Array<Array<String>> = [
+			["main", "overTheHorizon"]
+		];
+
+		if(SaveData.progression.get("week2")) {
+			temp.push(["bree", "overTheHorizonBree"]);
+		}
+
+		if(SaveData.progression.get("shopentrance")) {
+			temp.push(["watts", "shopkeeper"]);
+		}
+
+		if(SaveData.progression.get("sinned"))
+			temp.push(["helica", "overTheHorizonHelica"]); // celica
+
+		possibleTitles = temp;
+		randomized = FlxG.random.int(0, possibleTitles.length-1);
+
+		trace(randomized);
+		trace(Main.possibleTitles);
 	}
 
 	#if desktop

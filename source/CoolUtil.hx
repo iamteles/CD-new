@@ -169,6 +169,19 @@ class CoolUtil
 			curMusic = "none";
 			FlxG.sound.music.stop();
 		}
+		else if(key == "MENU")
+		{
+			var song:String = Main.possibleTitles[Main.randomized][1];
+			Paths.dumpExclusions.push('music/' + song + '.ogg');
+
+			if(curMusic != song || force)
+			{
+				curMusic = song;
+				FlxG.sound.playMusic(Paths.music(song), vol);
+				//FlxG.sound.music.loadEmbedded(Paths.music(key), true, false);
+				FlxG.sound.music.play(true);
+			}
+		}
 		else
 		{
 			Paths.dumpExclusions.push('music/' + key + '.ogg');

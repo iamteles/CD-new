@@ -20,7 +20,9 @@ class Init extends MusicBeatState
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 		FlxGraphic.defaultPersist = true;
+
+		Main.randomizeTitle();
 		
-		Main.switchState(new MainMenu());
+		Main.switchState(new Intro());
 	}
 }

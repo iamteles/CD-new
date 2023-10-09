@@ -47,7 +47,7 @@ class MainMenu extends MusicBeatState
         super.create();
 
         DiscordClient.changePresence("In the Menus", null);
-        CoolUtil.playMusic("overTheHorizon");
+        CoolUtil.playMusic("MENU");
 
         bg = new FlxSprite().loadGraphic(Paths.image('menu/main/bg'));
 		bg.updateHitbox();
@@ -158,6 +158,16 @@ class MainMenu extends MusicBeatState
         var accept:Bool = Controls.justPressed("ACCEPT");
         if(SaveData.data.get("Touch Controls"))
             accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
+        var back:Bool = Controls.justPressed("BACK");
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+        if(back)
+        {
+            FlxG.sound.play(Paths.sound('menu/back'));
+            Main.switchState(new states.cd.TitleScreen());
+        }
 
 		if(left)
 			changeSelection(-1);

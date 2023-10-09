@@ -124,11 +124,14 @@ class PlayState extends MusicBeatState
 	var bexPop:FlxSprite;
 	var vhs:FlxSprite;
 
+	var songLogo:FlxSprite;
+	var underlay:FlxSprite;
+
 	var bellasings:Bool = false;
 
 	//var bloom:FlxRuntimeShader;
-	var chrom:FlxRuntimeShader;
-	var echo:FlxRuntimeShader;
+	var chrom:ShaderFilter;
+	var echo:ShaderFilter; //testing
 
 	var playArea:FlxSprite;
 
@@ -146,6 +149,7 @@ class PlayState extends MusicBeatState
 		paused = false;
 		botplay = false;
 		validScore = true;
+		endedSong = false;
 
 		Timings.init();
 		SplashNote.resetStatics();
@@ -163,11 +167,16 @@ class PlayState extends MusicBeatState
 	{
 		super.create();
 		CoolUtil.playMusic();
+
 		resetStatics();
 		if(SONG == null)
 			SONG = SongData.loadFromJson("ugh");
 		
 		daSong = SONG.song.toLowerCase();
+
+		SaveData.songs.set(daSong, true);
+		trace(SaveData.songs.get(daSong));
+		SaveData.save();
 		
 		// adjusting the conductor
 		Conductor.setBPM(SONG.bpm);
@@ -284,7 +293,7 @@ class PlayState extends MusicBeatState
 		else if(daSong == 'desertion') {
 			bexPop = new FlxSprite();
 			bexPop.frames = Paths.getSparrowAtlas("backgrounds/desertion/power up");
-			bexPop.animation.addByPrefix("idle", 'Bex Power Up', 24, true);
+			bexPop.animation.addByPrefix("idle", 'Bex Power Up0000', 24, true);
 			bexPop.animation.play('idle');
 			bexPop.scale.set(0.5, 0.5);
 			bexPop.updateHitbox();
@@ -295,7 +304,7 @@ class PlayState extends MusicBeatState
 
 			bellaPop = new FlxSprite();
 			bellaPop.frames = Paths.getSparrowAtlas("backgrounds/desertion/power up");
-			bellaPop.animation.addByPrefix("idle", 'Bella Power Up', 24, true);
+			bellaPop.animation.addByPrefix("idle", 'Bella Power Up0000', 24, true);
 			bellaPop.animation.play('idle');
 			bellaPop.scale.set(0.5, 0.5);
 			bellaPop.updateHitbox();
@@ -351,9 +360,31 @@ class PlayState extends MusicBeatState
 		hudBuild.cameras = [camHUD];
 		add(hudBuild);
 
-		moneyCount = new MoneyCounter(0, -70);
+		moneyCount = new MoneyCounter(0, -70); //shoutout to the day i accidentally deleted this
 		moneyCount.cameras = [camOther];
 		add(moneyCount);
+
+		var the:String = daSong;
+		var logoExists:Bool = true;
+		if(!Paths.fileExists('images/hud/songnames/${daSong}.png')) {
+			the = "allegro";
+			logoExists = false;
+		}
+
+		underlay = new FlxSprite().loadGraphic(Paths.image('hud/base/underlay 2'));
+		underlay.screenCenter(Y);
+		underlay.x = -2000;
+		underlay.cameras = [camOther];
+		underlay.visible = logoExists;
+		add(underlay);
+
+		songLogo = new FlxSprite().loadGraphic(Paths.image('hud/songnames/$daSong'));
+		songLogo.screenCenter(Y);
+		songLogo.x = -2000;
+		songLogo.cameras = [camOther];
+		songLogo.visible = logoExists;
+		add(songLogo);
+
 		
 		vgblack = new FlxSprite().loadGraphic(Paths.image("vignette"));
 		vgblack.alpha = 0;
@@ -451,7 +482,7 @@ class PlayState extends MusicBeatState
 		}
 		else if(daSong == 'divergence')
 			noteSwap(true);
-		else if(daSong == 'intimidate' || daSong == 'sin' || daSong == 'ripple')
+		else if(daSong == 'intimidate' || daSong == 'sin' || daSong == 'ripple' ||  daSong == 'convergence' || daSong == 'desertion')
 			dadStrumline.x -= 2000;
 		
 		for(strumline in strumlines.members)
@@ -644,7 +675,7 @@ class PlayState extends MusicBeatState
 
 		if(SaveData.data.get("Shaders")) {
 			//bloom = new FlxRuntimeShader(File.getContent(Paths.shader('bloom')));
-			chrom = new FlxRuntimeShader('
+			var chromR = new FlxRuntimeShader('
 			#pragma header
 	
 			void main()
@@ -661,7 +692,7 @@ class PlayState extends MusicBeatState
 				gl_FragColor = toUse;
 			}
 			');
-			echo = new FlxRuntimeShader('
+			var echoR = new FlxRuntimeShader('
 			#pragma header
 			vec2 uv = openfl_TextureCoordv.xy;
 			vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
@@ -705,6 +736,9 @@ class PlayState extends MusicBeatState
 				fragColor = vec4(accumulator / float(sampleCount), 1.0);
 			}
 			');
+
+			chrom = new ShaderFilter(chromR);
+			echo = new ShaderFilter(echoR);
 		}
 
 		switch(daSong) {
@@ -731,7 +765,7 @@ class PlayState extends MusicBeatState
 				camHUD.alpha = 0;
 				camStrum.alpha = 0;
 				camVg.fade(0x00000000, 0.01, false);
-				if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(chrom)]);
+				if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([chrom]);
 				zoomInOpp = true;
 				zoomOppVal = 0.97 - 0.8;
 			case 'desertion':
@@ -873,6 +907,8 @@ class PlayState extends MusicBeatState
 				hudBuild.setAlpha(1, Conductor.crochet * 2 / 1000);
 
 				startSong();
+
+				startLogo();
 			});
 		}
 		else {
@@ -911,6 +947,10 @@ class PlayState extends MusicBeatState
 				if(daCount == 4)
 				{
 					startSong();
+
+					if(daSong != "intimidate") {
+						startLogo();
+					}
 				}
 	
 				if(daCount != 4)
@@ -931,6 +971,33 @@ class PlayState extends MusicBeatState
 				daCount++;
 			}, 5);
 		}
+	}
+
+	function startLogo()
+	{
+		FlxTween.tween(songLogo, {x: (FlxG.width/2) - (songLogo.width/2)}, 1.3, {
+			ease: FlxEase.cubeOut,
+			startDelay: 0.2,
+			onComplete: function(twn:FlxTween)
+			{
+				FlxTween.tween(songLogo, {x: 2000}, 1.3, {
+					ease: FlxEase.cubeIn,
+					startDelay: 1.3
+				});
+			}
+		});
+
+		FlxTween.tween(underlay, {x: (FlxG.width/2) - (underlay.width/2)}, 1.3, {
+			ease: FlxEase.cubeOut,
+			startDelay: 0.2,
+			onComplete: function(twn:FlxTween)
+			{
+				FlxTween.tween(underlay, {x: 2000}, 1.3, {
+					ease: FlxEase.cubeIn,
+					startDelay: 1.3
+				});
+			}
+		});
 	}
 	
 	public function startDialogue(dialData:DialogueData)
@@ -1968,7 +2035,6 @@ class PlayState extends MusicBeatState
 		if(curBeat % beatSpeed == 0)
 		{
 			zoomCamera(0.05, 0.025);
-			spinNote();
 		}
 		for(char in characters)
 		{
@@ -2033,7 +2099,7 @@ class PlayState extends MusicBeatState
 					case 916:
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.9;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(echo)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
 					case 1172:
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.8;
@@ -2171,7 +2237,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.6;
 						CoolUtil.flash(camOther, 0.5);
 						beatSpeed = 1;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(echo)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
 					case 912:
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.7;
@@ -2374,7 +2440,7 @@ class PlayState extends MusicBeatState
 					case 1472:
 						FlxG.camera.fade(0x00000000, 0.001, true);
 						CoolUtil.flash(camOther, 1);
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/ new ShaderFilter(echo)]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
 						changeChar(dad, "bella-1alt");
 						beatSpeed = 2;
 					case 1600:
@@ -2562,6 +2628,12 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(camStrum, {alpha: 0}, 0.7, {ease: FlxEase.sineInOut});
 						beatSpeed = 4;
 						powerUp(true);
+					case 1740:
+						bfStrumline.updatePls = true;
+						FlxTween.tween(bfStrumline, {x: strumPos[0]}, 0.01, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+						{
+							bfStrumline.updatePls = false;
+						}});
 					case 1744: //1744
 						powerUp(false);
 						beatSpeed = 1;
@@ -2569,6 +2641,7 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(camStrum, {alpha: 1}, 0.7, {ease: FlxEase.sineInOut});
 						CoolUtil.flash(camVg);
 						zoomInOpp = false;
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([chrom]);
 						changeChar(boyfriend, "bex-2dp");
 						changeChar(dad, "bree-2dp");
 						changeChar(third, "bella-2dp");
@@ -2614,10 +2687,15 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.8;
 						beatSpeed = 4;
 					case 864:
-						camVg.fade(0x00000000, 0.17, false);
+						camVg.fade(0x00000000, 0.4, false);
 					case 880:
-						dadStrumline.doSplash = false;
+						bfStrumline.updatePls = true;
+						FlxTween.tween(bfStrumline, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+						{
+							bfStrumline.updatePls = false;
+						}});
 
+						/*
 						for (strum in strumlines) {
 							strum.updatePls = true;
 							FlxTween.tween(strum, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
@@ -2634,6 +2712,7 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
 						}
 						dadStrumline.noteAlpha = 0.25;
+						*/
 					case 884:
 						FlxTween.tween(divTxt, {alpha: 1}, 0.3, {ease: FlxEase.expoOut});
 					case 896:
@@ -2832,7 +2911,7 @@ class PlayState extends MusicBeatState
 	}
 	
 	// ends it all
-	var endedSong:Bool = false;
+	public static var endedSong:Bool = false;
 	public function endSong()
 	{
 		if(endedSong) return;
@@ -3014,6 +3093,7 @@ class PlayState extends MusicBeatState
 	//substates also use this
 	public static function sendToMenu()
 	{
+		Main.randomizeTitle();
 		CoolUtil.playMusic();
 		resetSongStatics();
 		if(isStoryMode)
@@ -3021,7 +3101,7 @@ class PlayState extends MusicBeatState
 			isStoryMode = false;
 
 			//give me a break cmon
-			if(playList.length <= 0) {
+			if(playList.length <= 0 && endedSong && validScore) {
 				switch(curWeek) {
 					case "week1":
 						SaveData.progression.set("week1", true);
@@ -3075,30 +3155,6 @@ class PlayState extends MusicBeatState
 				{
 					FlxTween.tween(strum, {y: strum.initialPos.y}, time, {ease: FlxEase.cubeOut});
 				}
-			}
-		}
-	}
-
-	var count:Int = 0;
-	function spinNote()
-	{
-		if(daSong != 'convergence') return;
-
-		count++;
-
-		for(line in strumlines) 
-		{
-			for(strum in line.strumGroup)
-			{
-				if(count == 1)
-					strum.angle += 6;
-				else {
-					if(count % 2 == 1)
-						strum.angle += 12;
-					else
-						strum.angle -= 12;
-				}
-
 			}
 		}
 	}
