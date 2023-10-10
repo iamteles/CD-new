@@ -1,0 +1,31 @@
+{
+    "zoom": 0.54,
+    "bfPos": [1200, 1430, 0, 70],
+    "dadPos": [300, 1400, 0, 70],
+    "objects": [
+        {
+            "objName": "outside",
+            "path": "backgrounds/gfd/sky",
+            "position": [-304.05, -57.5],
+            "scrollFactor": [0.3, 0.3]
+        },
+        {
+            "objName": "stars",
+            "path": "backgrounds/gfd/stars",
+            "position": [-293.5, 104.8],
+            "scrollFactor": [0.5, 0.5]
+        },
+        {
+            "objName": "ocean",
+            "path": "backgrounds/gfd/ocean",
+            "position": [-294, 719.8],
+            "scrollFactor": [0.7, 0.7]
+        },
+        {
+            "objName": "grd",
+            "path": "backgrounds/gfd/tree",
+            "position": [-303.15, 399.7],
+            "scrollFactor": [1, 1]
+        }
+    ]
+}

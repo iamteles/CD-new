@@ -2,6 +2,7 @@
     "zoom": 0.7,
     "bfPos": [130, 825, -150, -50],
     "dadPos": [-500, 850, 60, -100],
+    "middle":  [20,200],
     "objects": [
         {
             "objName": "outside",

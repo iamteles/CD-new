@@ -34,7 +34,7 @@ class MusicPlayer extends MusicBeatState
         ["Conservation", "CharaWhy", "songs/conservation/Inst", "songs/conservation/Voices"],
         ["Irritation", "Coco Puffs ft. CharaWhy", "songs/irritation/Inst", "songs/irritation/Voices"],
         ["Intimidate", "Coco Puffs", "songs/intimidate/Inst", "songs/intimidate/Voices"],
-        ["Heartpumper", "Coco Puffs", "songs/heartpumper/Inst", "songs/heartpumper/Voices"],
+        ["HeartPounder", "Coco Puffs", "songs/heartpounder/Inst", "songs/heartpounder/Voices"],
         ["Ripple", "CharaWhy", "songs/ripple/Inst", "songs/ripple/Voices"],
         ["Exotic", "Coco Puffs", "songs/exotic/Inst"],
         ["Over the Horizon", "Coco Puffs", "music/overTheHorizon"],

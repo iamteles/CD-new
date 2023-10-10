@@ -129,9 +129,10 @@ class PlayState extends MusicBeatState
 
 	var bellasings:Bool = false;
 
-	//var bloom:FlxRuntimeShader;
+	var bloom:ShaderFilter;
 	var chrom:ShaderFilter;
-	var echo:ShaderFilter; //testing
+	var echo:ShaderFilter;
+	var anime:ShaderFilter;
 
 	var playArea:FlxSprite;
 
@@ -356,9 +357,28 @@ class PlayState extends MusicBeatState
 			divTxt.cameras = [camOther];
 			add(divTxt);
 		}
+		else if(daSong == "heartpounder")
+		{
+			var sideBars = new FlxSprite().loadGraphic(Paths.image('hud/base/sidebars'));
+			sideBars.screenCenter();
+			sideBars.cameras = [camOther];
+			add(sideBars);
+
+			var sd = new FlxSprite().loadGraphic(Paths.image('backgrounds/gfd/sd-tv'));
+			sd.x = FlxG.width - sd.width - (160 + 25);
+			if(!SaveData.data.get("Downscroll"))
+				sd.y = FlxG.height - sd.height - 16;
+			else
+				sd.y = 16;
+			sd.cameras = [camOther];
+			sd.alpha = 0.5;
+			add(sd);
+		}
 		
 		hudBuild.cameras = [camHUD];
 		add(hudBuild);
+
+
 
 		moneyCount = new MoneyCounter(0, -70); //shoutout to the day i accidentally deleted this
 		moneyCount.cameras = [camOther];
@@ -408,6 +428,10 @@ class PlayState extends MusicBeatState
 			barUp.y = 0-55;
 			barDown.y = FlxG.height - barDown.height+55;
 		}
+		else if(daSong == "heartpounder") {
+			barUp.alpha = 0;
+			barDown.alpha = 0;
+		}
 
 		var taikoSongs = ['sin', 'zanta'];
 		if(taikoSongs.contains(daSong)) {
@@ -424,6 +448,8 @@ class PlayState extends MusicBeatState
 		
 		//strumline.scrollSpeed = 4.0; // 2.8
 		strumPos = [FlxG.width / 2, FlxG.width / 4];
+		if(daSong == "heartpounder")
+			strumPos = [160 + (960 / 2), 960 / 4]; //lmao?
 		var downscroll:Bool = SaveData.data.get("Downscroll");
 		var isSwapped:Bool = (daSong == 'nefarious' || daSong == 'divergence');
 		var noteColors:Array<Array<Int>> = [dad.noteColor, boyfriend.noteColor];
@@ -674,7 +700,97 @@ class PlayState extends MusicBeatState
 		}
 
 		if(SaveData.data.get("Shaders")) {
-			//bloom = new FlxRuntimeShader(File.getContent(Paths.shader('bloom')));
+			var animeR = new FlxRuntimeShader('
+			#pragma header
+			vec2 uv = openfl_TextureCoordv.xy;
+			vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+			vec2 iResolution = openfl_TextureSize;
+			uniform float iTime;
+			#define iChannel0 bitmap
+			#define texture flixel_texture2D
+			#define fragColor gl_FragColor
+			#define mainImage main
+			
+			int sampleCount = 50;
+			float blur = 0.25; 
+			float falloff = 3.0; 
+			
+			// use iChannel0 for video, iChannel1 for test grid
+			#define INPUT iChannel0
+
+			highp float rand(vec2 co)
+			{
+				highp float a = 12.9898;
+				highp float b = 78.233;
+				highp float c = 43758.5453;
+				highp float dt= dot(co.xy ,vec2(a,b));
+				highp float sn= mod(dt,3.14);
+				return fract(sin(sn) * c);
+			}
+
+			void main()
+			{
+				vec2 uv = fragCoord.xy / iResolution.xy;
+				// Flip Y Axis
+				//uv.y = -uv.y;
+				
+				highp float magnitude = 0.0009;
+				
+				
+				// Set up offset
+				vec2 offsetRedUV = uv;
+				offsetRedUV.x = uv.x + rand(vec2(iTime*0.03,uv.y*0.42)) * 0.001;
+				offsetRedUV.x += sin(rand(vec2(iTime*0.2, uv.y)))*magnitude;
+				
+				vec2 offsetGreenUV = uv;
+				offsetGreenUV.x = uv.x + rand(vec2(iTime*0.004,uv.y*0.002)) * 0.004;
+				offsetGreenUV.x += sin(iTime*9.0)*magnitude;
+				
+				vec2 offsetBlueUV = uv;
+				offsetBlueUV.x = uv.y;
+				offsetBlueUV.x += rand(vec2(cos(iTime*0.01),sin(uv.y)));
+				
+				// Load Texture
+				float r = texture(iChannel0, offsetRedUV).r;
+				float g = texture(iChannel0, offsetGreenUV).g;
+				float b = texture(iChannel0, uv).b;
+				
+				fragColor = vec4(r,g,b,0);
+				
+			}');
+			var bloomR = new FlxRuntimeShader('
+				#pragma header
+
+				const float amount = 2.0;
+
+				// GAUSSIAN BLUR SETTINGS
+				float dim = 1.8;
+				float Directions = 16.0;
+				float Quality = 8.0;
+				float Size = 8.0;
+
+				vec2 Radius = Size/openfl_TextureSize.xy;
+
+				void main(void)
+				{
+					vec2 uv = openfl_TextureCoordv.xy;
+					vec2 pixel  = uv * openfl_TextureSize.xy;
+				float Pi = 6.28318530718; // Pi*2
+				vec4 Color = texture2D(bitmap, uv);
+				for(float d = 0.0; d < Pi; d += Pi / Directions)
+				{
+					for(float i=1.0/Quality; i <= 1.0; i += 1.0 / Quality)
+					{		
+					float ex = (cos(d) * Size * i) / openfl_TextureSize.x;
+					float why = (sin(d) * Size * i) / openfl_TextureSize.y;
+					Color += flixel_texture2D(bitmap, uv + vec2(ex, why));	
+					}
+				}
+				Color /= (dim * Quality) * Directions - 15.0;
+				vec4 bloom =  (flixel_texture2D( bitmap, uv) / dim) + Color;
+				gl_FragColor = bloom;
+				}
+			');
 			var chromR = new FlxRuntimeShader('
 			#pragma header
 	
@@ -737,29 +853,29 @@ class PlayState extends MusicBeatState
 			}
 			');
 
+			bloom = new ShaderFilter(bloomR);
+			anime = new ShaderFilter(animeR);
 			chrom = new ShaderFilter(chromR);
 			echo = new ShaderFilter(echoR);
 		}
 
 		switch(daSong) {
+			case "heartpounder":
+				if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([bloom]);
 			case "ripple":
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				zoomInOpp = true;
 				zoomOppVal = -0.2;
 				camHUD.alpha = 0;
-				//camStrum.alpha = 0;
 			case "divergence":
 				camHUD.alpha = 0;
 				camStrum.alpha = 0;
 			case "sin":
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				camTaiko.alpha = 0;
 				dad.alpha = 0;
 				camHUD.alpha = 0;
 				vgblack.alpha = 0.8;
 				FlxG.camera.fade(0xFF000000, 0.01, false);
 				stageBuild.tweenStage(0, 0.01);
-				//camStrum.alpha = 0;
 			case 'convergence':
 				vgblack.alpha = 0.4;
 				camHUD.alpha = 0;
@@ -775,19 +891,16 @@ class PlayState extends MusicBeatState
 				camVg.fade(0x00000000, 0.01, false);
 				zoomInOpp = true;
 				zoomOppVal = 0.2;
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 			case 'irritation':
 				boyfriend.alpha = 0;
 				camHUD.alpha = 0;
 				camStrum.alpha = 0;
 				camVg.alpha = 0;
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 			case 'conservation':
 				boyfriend.alpha = 0;
 				camHUD.alpha = 0;
 				camStrum.alpha = 0;
 				camVg.alpha = 0;
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 				zoomInOpp = true;
 				zoomOppVal = 0.06;
 			case 'panic-attack':
@@ -796,14 +909,10 @@ class PlayState extends MusicBeatState
 				zoomInOpp = true;
 				zoomOppVal = 0.05;
 				FlxG.camera.fade(0xFF000000, 0.01, false);
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 			case 'intimidate':
 				dad.alpha = 0;
 				vgblack.alpha = 0.8;
 				FlxG.camera.fade(0xFF000000, 0.01, false);
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
-			default:
-				//if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([new ShaderFilter(bloom)]);
 		}
 
 		
@@ -2061,6 +2170,58 @@ class PlayState extends MusicBeatState
 		syncSong();
 
 		switch(daSong) {
+			case "heartpounder":
+				switch(curStep) {
+					case 128:
+						CoolUtil.flash(camStrum, 0.5); 
+						defaultCamZoom = 0.64;
+						beatSpeed = 1;
+					case 512:
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.72;
+						beatSpeed = 2;
+					case 768:
+						CoolUtil.flash(camStrum, 0.5); 
+						defaultCamZoom = 0.64;
+						beatSpeed = 1;
+					case 912:
+						defaultCamZoom = 0.75;
+						beatSpeed = 4;
+					case 928:
+						defaultCamZoom = 0.64;
+						beatSpeed = 1;
+					case 976:
+						defaultCamZoom = 0.75;
+						beatSpeed = 2;
+					case 988:
+						beatSpeed = 1;
+						defaultCamZoom = 0.64;
+					case 1280:
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.72;
+						beatSpeed = 2;
+					case 1376:
+						beatSpeed = 1;
+						defaultCamZoom = 0.75;
+					case 1408:
+						CoolUtil.flash(camStrum, 0.5); 
+						defaultCamZoom = 0.54;
+						beatSpeed = 1;
+					case 1616:
+						beatSpeed = 2;
+						defaultCamZoom = 0.64;
+					case 1632:
+						defaultCamZoom = 0.70;
+					case 1648:
+						defaultCamZoom = 0.75;
+					case 1664:
+						CoolUtil.flash(camStrum, 0.5); 
+						defaultCamZoom = 0.54;
+						beatSpeed = 4;
+					case 1792:
+						CoolUtil.flash(camStrum, 0.5); 
+						defaultCamZoom = 0.64;
+				}
 			case 'ripple':
 				switch(curStep) {
 					case 128:
@@ -2242,7 +2403,7 @@ class PlayState extends MusicBeatState
 						CoolUtil.flash(camOther, 0.5);
 						defaultCamZoom = 0.7;
 						beatSpeed = 4;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
 					case 928:
 						defaultCamZoom = 0.8;
 					case 944:
@@ -2453,7 +2614,7 @@ class PlayState extends MusicBeatState
 					case 1728:
 						defaultCamZoom = 0.7;
 						beatSpeed = 1;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([/*new ShaderFilter(bloom),*/]);
+						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
 						CoolUtil.flash(camOther, 1);
 					case 2240:
 						defaultCamZoom = 0.6;

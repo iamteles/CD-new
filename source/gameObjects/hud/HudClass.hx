@@ -37,11 +37,19 @@ class HudClass extends FlxGroup
 	var botplayTxt:FlxText;
 	var badScoreTxt:FlxText;
 
+	var simpleInfo:Bool = false;
+	var alignment:FlxTextAlign = CENTER;
+
 	public function new()
 	{
 		super();
 
+		simpleInfo = (PlayState.SONG.song.toLowerCase() == 'heartpounder');
+		if(simpleInfo)
+			alignment = LEFT;
+
 		healthBarBG = new FlxSprite().loadGraphic(Paths.image("hud/base/healthBar"));
+		healthBarBG.visible = !simpleInfo;
 
 		if(PlayState.SONG.song.toLowerCase() == 'nefarious' || PlayState.SONG.song.toLowerCase() == 'divergence')
 			invertedIcons = true;
@@ -63,6 +71,7 @@ class HudClass extends FlxGroup
 		);
 		healthBar.createFilledBar(0xFFFF0000, 0xFF00FF00);
 		healthBar.updateBar();
+		healthBar.visible = !simpleInfo;
 
 		add(healthBar);
 		add(healthBarBG);
@@ -71,12 +80,14 @@ class HudClass extends FlxGroup
 
 		iconDad = new HealthIcon();
 		iconDad.setIcon(PlayState.SONG.player2, false);
+		iconDad.visible = !simpleInfo;
 		iconDad.ID = 0;
 		add(iconDad);
 
 		iconBf = new HealthIcon();
 		iconBf.setIcon(PlayState.SONG.player1, true);
 		iconBf.ID = 1;
+		iconBf.visible = !simpleInfo;
 		add(iconBf);
 
 		var centeric:String = "heart";
@@ -92,13 +103,17 @@ class HudClass extends FlxGroup
 
 		}
 		iconCenter.setIcon(centeric, false);
+		iconCenter.visible = !simpleInfo;
 		//iconCenter.ID = 0;
 		add(iconCenter);
 
 		changeIcon(0, iconDad.curIcon);
 
+		var size:Int = 20;
+		if(simpleInfo)
+			size = 32;
 		infoTxt = new FlxText(0, 0, 0, "hi there! i am using whatsapp");
-		infoTxt.setFormat(Main.gFont, 20, 0xFFFFFFFF, CENTER);
+		infoTxt.setFormat(Main.gFont, size, 0xFFFFFFFF, alignment);
 		infoTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		add(infoTxt);
 		
@@ -109,7 +124,7 @@ class HudClass extends FlxGroup
 		add(timeTxt);
 
 		badScoreTxt = new FlxText(0,0,0,"SAVING SCORES DISABLED");
-		badScoreTxt.setFormat(Main.gFont, 20, 0xFFFF0000, CENTER);
+		badScoreTxt.setFormat(Main.gFont, size, 0xFFFF0000, alignment);
 		badScoreTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		badScoreTxt.screenCenter(X);
 		badScoreTxt.visible = false;
@@ -125,17 +140,31 @@ class HudClass extends FlxGroup
 		health = PlayState.health;
 	}
 
-	public final separator:String = " | ";
+	var separator:String = " | ";
 
 	public function updateText()
 	{
 		infoTxt.text = "";
 		
+		if(simpleInfo) {
+			separator = "\n";
+		}
+
 		infoTxt.text += 			'Score: '		+ Timings.score;
 		infoTxt.text += separator + 'Accuracy: '	+ Timings.accuracy + "%" + ' [${Timings.getRank()}]';
 		infoTxt.text += separator + 'Breaks: '		+ Timings.misses;
 
-		infoTxt.screenCenter(X);
+		if(simpleInfo) {
+			infoTxt.x =  160 + 25 + (healthBarBG.x - healthBarBG.width / 2);
+			if(!SaveData.data.get("Downscroll"))
+				infoTxt.y = FlxG.height - infoTxt.height - 16;
+			else
+				infoTxt.y = 16;
+		}
+		else {
+			infoTxt.screenCenter(X);
+			infoTxt.y = healthBarBG.y + healthBarBG.height + 4;
+		}
 	}
 	
 	public function updateTimeTxt()
@@ -161,8 +190,6 @@ class HudClass extends FlxGroup
 		updateIconPos();
 
 		updateText();
-		infoTxt.screenCenter(X);
-		infoTxt.y = healthBarBG.y + healthBarBG.height + 4;
 		
 		badScoreTxt.y = infoTxt.y + infoTxt.height;
 
