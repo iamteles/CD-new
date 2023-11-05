@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="FR_x_CD.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bigscreen0000" x="34" y="34" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0001" x="34" y="34" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0002" x="34" y="34" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0003" x="1649" y="34" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0004" x="1649" y="34" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0005" x="34" y="1096" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0006" x="34" y="1096" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0007" x="1649" y="1096" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0008" x="34" y="2158" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0009" x="34" y="2158" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0010" x="1649" y="2158" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0011" x="1649" y="2158" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0012" x="34" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0013" x="34" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0014" x="34" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0015" x="34" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0016" x="34" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0017" x="34" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0018" x="1649" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0019" x="1649" y="3220" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0020" x="34" y="4282" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0021" x="34" y="4282" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0022" x="1649" y="1096" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0023" x="34" y="5344" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0024" x="34" y="5344" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0025" x="1649" y="4282" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0026" x="1649" y="4282" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0027" x="34" y="34" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0028" x="34" y="34" width="1597" height="1044"/>
+	<SubTexture name="bigscreen0029" x="34" y="34" width="1597" height="1044"/>
+</TextureAtlas>

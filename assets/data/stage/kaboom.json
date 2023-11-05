@@ -1,0 +1,69 @@
+{
+    "zoom": 0.55,
+    "bfPos": [1360, 900, 0, 20],
+    "dadPos": [0, 840, 40, -260],
+    "objects": [
+        {
+            "objName": "bg",
+            "path": "backgrounds/fr/back",
+            "position": [-301.1, -347.1],
+            "scrollFactor": [0.5, 0.5]
+        },
+        {
+            "objName": "screen",
+            "path": "backgrounds/fr/FR_x_CD",
+            "position": [179.1, -276.8],
+            "animations": [
+                {
+                    "name": "idle",
+                    "prefix": "bigscreen",
+                    "framerate": 24,
+                    "looped": true
+                }
+            ],
+            "scrollFactor": [1, 1]
+        },
+        {
+            "objName": "curtains",
+            "path": "backgrounds/fr/curtains",
+            "position": [-548.6, -430.15]
+        },
+        {
+            "objName": "stage",
+            "path": "backgrounds/fr/stage",
+            "position": [-720, -574.6]
+        }
+    ],
+    "foreground": [
+        {
+            "objName": "crowd1",
+            "path": "backgrounds/fr/crowds",
+            "position": [-1079.1, 676.8],
+            "animations": [
+                {
+                    "name": "idle",
+                    "prefix": "fg cheer 1",
+                    "framerate": 24,
+                    "looped": true
+                }
+            ],
+            "scale": 1.3,
+            "scrollFactor": [1.1, 1.3]
+        },
+        {
+            "objName": "crowd1",
+            "path": "backgrounds/fr/crowds",
+            "position": [-1079.1, 876.8],
+            "animations": [
+                {
+                    "name": "idle",
+                    "prefix": "fg cheer 2",
+                    "framerate": 24,
+                    "looped": true
+                }
+            ],
+            "scale": 1.3,
+            "scrollFactor": [1.3, 1.5]
+        }
+    ]
+}

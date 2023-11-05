@@ -18,8 +18,8 @@ using StringTools;
 class Main extends Sprite
 {
 	public static var fpsVar:FPSCounter;
-	public function new()
-	{
+	public function new() {
+	
 		super();
 		#if desktop
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
@@ -36,12 +36,15 @@ class Main extends Sprite
 
 		addChild(new FlxGame(1280, 720, Init, 120, 120, true));
 
-		#if desktop
-		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
-		addChild(fpsVar);
-		#end
-	}
+		if(false) {
+			#if desktop
+			fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
+			addChild(fpsVar);
+			#end
+		}
 
+	
+	}
 	public static var gFont:String = Paths.font("matsaleh.ttf");
 	
 	public static var skipClearMemory:Bool = false; // dont

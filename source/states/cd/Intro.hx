@@ -70,6 +70,21 @@ class Intro extends MusicBeatState
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+
+		var click:Bool = FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed;
+
+		#if mobile
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed && SaveData.progression.get("firstboot"))
+				finish();
+		}
+		#end
+
+		if (click && SaveData.progression.get("firstboot"))
+		{
+			finish();
+		}
 	}
 	
 	private function finish():Void

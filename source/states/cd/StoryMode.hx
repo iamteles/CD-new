@@ -26,14 +26,16 @@ class StoryMode extends MusicBeatState
     var text:FlxSprite;
 
     var weeks:FlxTypedGroup<FlxSprite>;
-    public static var weekData:Array<Array<Dynamic>> = [
-        [["euphoria", "nefarious", "divergence"], "week1"],
-        [["allegro", "panic-attack", "convergence", "desertion"], "week2"]
-    ];
+    public static var weekData:Array<Array<Dynamic>> = [];
     public static var sliderActive:Int = -1; // -1 = none, 0 = w1, 1 = w2
     override function create()
     {
         super.create();
+
+        weekData = [
+            [["euphoria", "nefarious", "divergence"], "week1"],
+            [["allegro", "panic-attack", "convergence", "desertion"], "week2"]
+        ];
 
         sliderActive = -1;
 
@@ -114,8 +116,15 @@ class StoryMode extends MusicBeatState
     }
 
     public static function enterWeek(id:Int) {
+        PlayState.playList = [];
+
+        trace(PlayState.playList);
+
         var week = weekData[id][0];
         var name = weekData[id][1];
+
+        trace(week);
+
         PlayState.curWeek = name;
         PlayState.songDiff = "normal";
         PlayState.isStoryMode = true;
@@ -124,6 +133,8 @@ class StoryMode extends MusicBeatState
         PlayState.SONG = SongData.loadFromJson(week[0], "normal");
         PlayState.playList = week;
         PlayState.playList.remove(week[0]);
+
+        trace(PlayState.playList);
         
         //CoolUtil.playMusic();
         Main.switchState(new LoadSongState());

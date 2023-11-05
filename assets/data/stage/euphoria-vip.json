@@ -1,0 +1,13 @@
+{
+    "zoom": 0.55,
+    "bfPos": [1300, -130, -420, -360],
+    "dadPos": [300, -140, 200, -360],
+    "middle":  [1150,-530],
+    "objects": [
+        {
+            "objName": "sky",
+            "path": "backgrounds/vip/subway",
+            "position": [-200, -1300]
+        }
+    ]
+}

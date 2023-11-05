@@ -51,7 +51,7 @@ class HudClass extends FlxGroup
 		healthBarBG = new FlxSprite().loadGraphic(Paths.image("hud/base/healthBar"));
 		healthBarBG.visible = !simpleInfo;
 
-		if(PlayState.SONG.song.toLowerCase() == 'nefarious' || PlayState.SONG.song.toLowerCase() == 'divergence')
+		if(PlayState.SONG.song.toLowerCase() == 'nefarious' || PlayState.SONG.song.toLowerCase() == 'divergence' || PlayState.invertedCharacters)
 			invertedIcons = true;
 		else if(PlayState.SONG.song.toLowerCase() == "desertion") {
 			beamBar = new FlxSprite();
@@ -98,8 +98,12 @@ class HudClass extends FlxGroup
 				centeric = 'bolt';
 			case 'irritation' | 'conservation':
 				centeric = 'cent';
-			case 'ripple':
+			case 'ripple' | 'customer-service':
 				centeric = 'disk';
+			case 'kaboom':
+				centeric = "star";
+			case 'divergence-vip' | 'nefarious-vip' | 'euphoria-vip':
+				centeric = "vip";
 
 		}
 		iconCenter.setIcon(centeric, false);

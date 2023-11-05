@@ -208,9 +208,9 @@ class Character extends FlxSprite
 		else
 			specialAnim = false;
 
-		if(loop && animation.curAnim.finished && singAnims.contains(animation.curAnim.name)) {
-			dance();
-		}
+		//if(loop && animation.curAnim.finished && singAnims.contains(animation.curAnim.name)) {
+		//	dance();
+		//}
 	}
 
 	// animation handler

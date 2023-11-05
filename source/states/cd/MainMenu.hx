@@ -147,6 +147,8 @@ class MainMenu extends MusicBeatState
     {
         super.update(elapsed);
 
+        //info.text = CoolUtil.posToTimer(SaveData.curTime());
+
         var left:Bool = Controls.justPressed("UI_LEFT");
         if(SaveData.data.get("Touch Controls"))
             left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);

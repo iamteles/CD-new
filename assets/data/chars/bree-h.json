@@ -3,8 +3,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				94,
-				-4
+				68,
+				-48
 			],
 			"anim": "singDOWN",
 			"fps": 24,
@@ -14,7 +14,7 @@
 		{
 			"loop": false,
 			"offsets": [
-				48,
+				46,
 				63
 			],
 			"anim": "singUP",
@@ -37,7 +37,7 @@
 			"loop": false,
 			"offsets": [
 				53,
-				7
+				8
 			],
 			"anim": "block",
 			"fps": 24,
@@ -47,19 +47,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				134,
-				22
-			],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left0",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-30,
-				-4
+				-28,
+				-3
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
@@ -80,8 +69,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				189,
-				44
+				186,
+				45
 			],
 			"anim": "pright",
 			"fps": 24,
@@ -91,20 +80,119 @@
 		{
 			"loop": false,
 			"offsets": [
-				59,
-				48
+				60,
+				50
 			],
 			"anim": "hit",
 			"fps": 24,
 			"name": "hit",
 			"indices": []
+		},
+		{
+			"offsets": [
+				67,
+				-55
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "MISSdown"
+		},
+		{
+			"offsets": [
+				50,
+				63
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "MISSup"
+		},
+		{
+			"offsets": [
+				-30,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "MISSright0"
+		},
+		{
+			"offsets": [
+				165,
+				34
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "MISSleft0"
+		},
+		{
+			"offsets": [
+				163,
+				34
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left0"
+		},
+		{
+			"offsets": [
+				278,
+				62
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTalt",
+			"loop": false,
+			"name": "altLEFT"
+		},
+		{
+			"offsets": [
+				-4,
+				127
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTalt",
+			"loop": false,
+			"name": "altRIGHT"
+		},
+		{
+			"offsets": [
+				201,
+				-32
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNalt",
+			"loop": false,
+			"name": "altDOWN"
+		},
+		{
+			"offsets": [
+				10,
+				150
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPalt",
+			"loop": false,
+			"name": "altUP"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/helica/bree",
 	"position": [
 		0,
-		0
+		-55
 	],
 	"healthicon": "pat",
 	"flip_x": true,

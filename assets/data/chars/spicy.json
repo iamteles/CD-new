@@ -1,0 +1,166 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-28,
+				-58
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				10,
+				37
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-58,
+				-3
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right0"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-23,
+				-55
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "MISSdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-7,
+				34
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "MISSup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-87,
+				-2
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "MISSright0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				65,
+				-1
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "MISSleft0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				94,
+				-1
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				91,
+				-2
+			],
+			"anim": "singLEFTalt",
+			"fps": 24,
+			"name": "altLEFT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-60,
+				-3
+			],
+			"anim": "singRIGHTalt",
+			"fps": 24,
+			"name": "altRIGHT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-29,
+				-59
+			],
+			"anim": "singDOWNalt",
+			"fps": 24,
+			"name": "altDOWN",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				10,
+				36
+			],
+			"anim": "singUPalt",
+			"fps": 24,
+			"name": "altUP",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/spicy/spicy",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "pat",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		161,
+		161
+	],
+	"camera_position": [
+		-100,
+		310
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

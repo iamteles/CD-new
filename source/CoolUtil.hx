@@ -39,8 +39,16 @@ class CoolUtil
 	}
 
 	public static function flash(camera:FlxCamera, ?duration:Float = 0.5, ?color:FlxColor) {
-		//if(!SaveData.data.get("Flashing Lights")) return; -- implement later please
-		camera.flash(color, duration, null, true);
+
+		if(SaveData.data.get("Flashing Lights") == "OFF") return;
+
+		var color2:FlxColor = color;
+		if(color == null)
+			color2 = 0xFFFFFFFF;
+		if(SaveData.data.get("Flashing Lights") == "REDUCED")
+			color2.alphaFloat = 0.4;
+
+		camera.flash(color2, duration, null, true);
 	}
 
 	inline public static function boundTo(value:Float, min:Float, max:Float):Float {

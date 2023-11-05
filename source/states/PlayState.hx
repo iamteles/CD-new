@@ -138,6 +138,8 @@ class PlayState extends MusicBeatState
 
 	var songHasTaiko:Bool = false;
 
+	public static var invertedCharacters:Bool = false;
+
 	public static function resetStatics()
 	{
 		beatSpeed = 4;
@@ -174,6 +176,9 @@ class PlayState extends MusicBeatState
 			SONG = SongData.loadFromJson("ugh");
 		
 		daSong = SONG.song.toLowerCase();
+
+		if(daSong != "kaboom" || songDiff == "mania")
+			invertedCharacters = false;
 
 		SaveData.songs.set(daSong, true);
 		trace(SaveData.songs.get(daSong));
@@ -223,7 +228,12 @@ class PlayState extends MusicBeatState
 		{
 			charGroup = new CharGroup();
 			add(charGroup);
-		} 
+		}
+		else if(daSong == 'euphoria-vip' || daSong == 'nefarious-vip' || daSong == 'divergence-vip')
+		{
+			charGroup = new CharGroup(true);
+			add(charGroup);
+		}
 		
 		camGame.zoom = defaultCamZoom + extraCamZoom;
 		hudBuild = new HudClass();
@@ -244,6 +254,10 @@ class PlayState extends MusicBeatState
 			third = new Character();
 			changeChar(third, "empitri");
 		}
+		else if(daSong == "customer-service") {
+			third = new Character();
+			changeChar(third, "empitri-cs");
+		}
 		
 		// also updates the characters positions
 		changeStage(stageBuild.curStage);
@@ -257,7 +271,7 @@ class PlayState extends MusicBeatState
 			characters.push(dad);
 		}
 
-		if(daSong == "desertion" || daSong == "ripple") {
+		if(daSong == "desertion" || daSong == "ripple" || daSong == "customer-service") {
 			characters.push(third);
 		}
 		
@@ -423,7 +437,7 @@ class PlayState extends MusicBeatState
 		barUp.cameras = [camVg];
 		barDown.cameras = [camVg];
 
-		var barsByDefault = ['allegro', 'euphoria', 'nefarious', 'divergence', "intimidate", "exotic", "ripple"];
+		var barsByDefault = ['allegro', 'euphoria', 'nefarious', 'divergence', "intimidate", "exotic", "ripple", 'euphoria-vip', 'nefarious-vip', 'divergence-vip', "customer-service"];
 		if(barsByDefault.contains(daSong)) {
 			barUp.y = 0-55;
 			barDown.y = FlxG.height - barDown.height+55;
@@ -450,18 +464,19 @@ class PlayState extends MusicBeatState
 		strumPos = [FlxG.width / 2, FlxG.width / 4];
 		if(daSong == "heartpounder")
 			strumPos = [160 + (960 / 2), 960 / 4]; //lmao?
+
 		var downscroll:Bool = SaveData.data.get("Downscroll");
-		var isSwapped:Bool = (daSong == 'nefarious' || daSong == 'divergence');
+		var isSwapped:Bool = ((daSong == 'nefarious' || daSong == 'divergence'));
 		var noteColors:Array<Array<Int>> = [dad.noteColor, boyfriend.noteColor];
 
 		if(isSwapped)
 			noteColors = [boyfriend.noteColor, dad.noteColor];
 		
-		dadStrumline = new Strumline(strumPos[0] - strumPos[1], (isSwapped ? boyfriend : dad), downscroll, false, true, assetModifier);
+		dadStrumline = new Strumline(strumPos[0] - strumPos[1], (isSwapped ? boyfriend : dad), downscroll, invertedCharacters, !invertedCharacters, assetModifier);
 		dadStrumline.ID = 0;
 		strumlines.add(dadStrumline);
 		
-		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, true, false, assetModifier);
+		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, !invertedCharacters, invertedCharacters, assetModifier);
 		bfStrumline.ID = 1;
 		strumlines.add(bfStrumline);
 
@@ -508,7 +523,7 @@ class PlayState extends MusicBeatState
 		}
 		else if(daSong == 'divergence')
 			noteSwap(true);
-		else if(daSong == 'intimidate' || daSong == 'sin' || daSong == 'ripple' ||  daSong == 'convergence' || daSong == 'desertion')
+		else if(daSong == 'intimidate' || daSong == 'sin' || daSong == 'ripple' ||  daSong == 'convergence' || daSong == 'desertion' || daSong == 'customer-service')
 			dadStrumline.x -= 2000;
 		
 		for(strumline in strumlines.members)
@@ -959,7 +974,7 @@ class PlayState extends MusicBeatState
 						
 						FlxG.sound.play(Paths.sound('dialogue/senpai/senpai_dies'), 1, false, null, true, function()
 						{
-							camHUD.flash(0xFFff1b31, 0.6, null, true);
+							CoolUtil.flash(camHUD, 0.6, 0xFFff1b31); 
 							remove(red);
 							remove(spirit);
 							
@@ -1256,6 +1271,9 @@ class PlayState extends MusicBeatState
 							third.holdTimer = 0;
 							bellasings = true;
 						}
+					case 'alt':
+						thisChar.playAnim(thisChar.singAnims[note.noteData] + "alt", true);
+						thisChar.holdTimer = 0;
 					default:
 						if(strumline.isTaiko) {
 							FlxG.sound.play(Paths.sound('punch/punch_' + FlxG.random.int(1, 4)), 0.55);
@@ -2019,7 +2037,7 @@ class PlayState extends MusicBeatState
 
 				extraCamZoom = 0;
 
-				if(third != null && bellasings) {
+				if(third != null && bellasings && daSong != "customer-service") {
 					switch (third.animation.curAnim.name)
 					{
 						case 'singLEFT':
@@ -2070,23 +2088,46 @@ class PlayState extends MusicBeatState
 					extraCamZoom = zoomOppVal;
 				else
 					extraCamZoom = 0;
-				switch (dadStrumline.character.animation.curAnim.name)
-				{
-					case 'singLEFT':
-						camDisplaceX = - cameraMoveItensity;
-						camDisplaceY = 0;
-					case 'singRIGHT':
-						camDisplaceX = cameraMoveItensity;
-						camDisplaceY = 0;
-					case 'singUP':
-						camDisplaceX = 0;
-						camDisplaceY = -cameraMoveItensity;
-					case 'singDOWN':
-						camDisplaceX = 0;
-						camDisplaceY = cameraMoveItensity;
-					default:
-						camDisplaceX = 0;
-						camDisplaceY = 0;
+
+				if(third != null && bellasings && daSong == "customer-service") {
+					switch (third.animation.curAnim.name)
+					{
+						case 'singLEFT':
+							camDisplaceX = - cameraMoveItensity;
+							camDisplaceY = 0;
+						case 'singRIGHT':
+							camDisplaceX = cameraMoveItensity;
+							 camDisplaceY = 0;
+						case 'singUP':
+							camDisplaceX = 0;
+							camDisplaceY = -cameraMoveItensity;
+						case 'singDOWN':
+							camDisplaceX = 0;
+							camDisplaceY = cameraMoveItensity;
+						default:
+							camDisplaceX = 0;
+							camDisplaceY = 0;
+					}
+				}
+				else {
+					switch (dadStrumline.character.animation.curAnim.name)
+					{
+						case 'singLEFT':
+							camDisplaceX = - cameraMoveItensity;
+							camDisplaceY = 0;
+						case 'singRIGHT':
+							camDisplaceX = cameraMoveItensity;
+							camDisplaceY = 0;
+						case 'singUP':
+							camDisplaceX = 0;
+							camDisplaceY = -cameraMoveItensity;
+						case 'singDOWN':
+							camDisplaceX = 0;
+							camDisplaceY = cameraMoveItensity;
+						default:
+							camDisplaceX = 0;
+							camDisplaceY = 0;
+					}
 				}
 			}
 		}
@@ -3167,6 +3208,7 @@ class PlayState extends MusicBeatState
 	public function startGameOver()
 	{
 		if(isDead || !startedCountdown) return;
+		if(daSong == "heartpounder") return;
 		
 		isDead = true;
 		blueballed++;

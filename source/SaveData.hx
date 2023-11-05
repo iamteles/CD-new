@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 import data.Highscore;
+import data.ColorFilters;
 
 enum SettingType
 {
@@ -102,6 +103,18 @@ class SaveData
 			0,
 			[-500, 500]
 		],
+		'Colorblind Filter' => [
+			'NONE',
+			SELECTOR,
+			'Filters to aid people with colorblindness.',
+			['NONE', 'PROTANOPIA', 'PROTANOMALY', 'DEUTERANOPIA', 'DEUTERANOMALY', 'TRITANOPIA', 'TRITANOMALY', 'ACHROMATOPSIA', 'ACHROMATOMALY']
+		],
+		'Flashing Lights' => [
+			"ON",
+			SELECTOR,
+			"Whether to show flashing lights and colors.",
+			["ON", "REDUCED", "OFF"]
+		],
 		"Preload Songs" => [
 			true,
 			CHECKMARK,
@@ -111,6 +124,7 @@ class SaveData
 
 	public static var progression:Map<String, Dynamic> = [
 		"shopentrance" => false,
+		"firstboot" => false,
 		"week2" => false,
 		"week1" => false
 	];
@@ -195,7 +209,9 @@ class SaveData
 			"default"
 		]
 	];
-	
+
+	public static var initialTicks:Int = 0;
+
 	public static var saveFile:FlxSave;
 	public static var progressionFile:FlxSave;
 
@@ -229,6 +245,10 @@ class SaveData
 			saveFile.data.settings = data;
 		}
 
+		if(progressionFile.data.ticks == null) {
+			progressionFile.data.ticks = 0;
+		}
+
 		if(progressionFile.data.money == null) {
 			progressionFile.data.money = money;
 		}
@@ -256,6 +276,7 @@ class SaveData
 			progressionFile.data.songs = songs;
 		}
 
+		initialTicks = progressionFile.data.ticks;
 		songs = progressionFile.data.songs;
 		money = progressionFile.data.money;
 		shop = progressionFile.data.shop;
@@ -317,6 +338,7 @@ class SaveData
 		saveFile.data.settings = data;
 		saveFile.flush();
 
+		progressionFile.data.ticks = curTime();
 		progressionFile.data.money = money;
 		progressionFile.data.shop = shop;
 		progressionFile.data.progression = progression;
@@ -328,7 +350,7 @@ class SaveData
 	public static function update()
 	{
 		Main.changeFramerate(data.get("Framerate Cap"));
-
+		ColorFilter.reload();
 		FlxSprite.defaultAntialiasing = data.get("Antialiasing");
 	}
 
@@ -371,5 +393,9 @@ class SaveData
 		}
 
 		return skinArray;
+	}
+
+	public static function curTime():Int {
+		return initialTicks + FlxG.game.ticks;
 	}
 }

@@ -128,6 +128,9 @@ class Paths
 	public static function font(key:String):String
 		return getPath('fonts/$key');
 
+	public static function video(key:String):String
+		return getPath('videos/$key.mp4');
+
 	public static function text(key:String):String
 		return Assets.getText(getPath('$key.txt')).trim();
 

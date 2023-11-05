@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="crowds.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fg cheer 10000" x="34" y="34" width="3155" height="538" frameX="-17" frameY="0" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10001" x="34" y="34" width="3155" height="538" frameX="-17" frameY="0" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10002" x="34" y="34" width="3155" height="538" frameX="-17" frameY="0" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10003" x="34" y="1674" width="3190" height="518" frameX="0" frameY="-20" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10004" x="34" y="1674" width="3190" height="518" frameX="0" frameY="-20" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10005" x="34" y="1674" width="3190" height="518" frameX="0" frameY="-20" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10006" x="34" y="590" width="3173" height="527" frameX="-8" frameY="-11" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10007" x="34" y="590" width="3173" height="527" frameX="-8" frameY="-11" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10008" x="34" y="590" width="3173" height="527" frameX="-8" frameY="-11" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10009" x="34" y="1674" width="3190" height="518" frameX="0" frameY="-20" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10010" x="34" y="1674" width="3190" height="518" frameX="0" frameY="-20" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10011" x="34" y="1674" width="3190" height="518" frameX="0" frameY="-20" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10012" x="34" y="1135" width="3185" height="521" frameX="-2" frameY="-17" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10013" x="34" y="1135" width="3185" height="521" frameX="-2" frameY="-17" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 10014" x="34" y="1135" width="3185" height="521" frameX="-2" frameY="-17" frameWidth="3190" frameHeight="538"/>
+	<SubTexture name="fg cheer 20000" x="34" y="2585" width="3223" height="357" frameX="-5" frameY="0" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20001" x="34" y="2585" width="3223" height="357" frameX="-5" frameY="0" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20002" x="34" y="2585" width="3223" height="357" frameX="-5" frameY="0" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20003" x="34" y="3333" width="3234" height="352" frameX="0" frameY="-5" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20004" x="34" y="3333" width="3234" height="352" frameX="0" frameY="-5" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20005" x="34" y="3333" width="3234" height="352" frameX="0" frameY="-5" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20006" x="34" y="2210" width="3229" height="357" frameX="-2" frameY="0" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20007" x="34" y="2210" width="3229" height="357" frameX="-2" frameY="0" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20008" x="34" y="2210" width="3229" height="357" frameX="-2" frameY="0" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20009" x="34" y="3333" width="3234" height="352" frameX="0" frameY="-5" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20010" x="34" y="3333" width="3234" height="352" frameX="0" frameY="-5" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20011" x="34" y="3333" width="3234" height="352" frameX="0" frameY="-5" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20012" x="34" y="2960" width="3232" height="355" frameX="-1" frameY="-2" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20013" x="34" y="2960" width="3232" height="355" frameX="-1" frameY="-2" frameWidth="3234" frameHeight="357"/>
+	<SubTexture name="fg cheer 20014" x="34" y="2960" width="3232" height="355" frameX="-1" frameY="-2" frameWidth="3234" frameHeight="357"/>
+</TextureAtlas>

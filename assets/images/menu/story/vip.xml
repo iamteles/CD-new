@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="vip.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="vip locked0000" x="379" y="194" width="134" height="121"/>
+	<SubTexture name="vip off0000" x="531" y="197" width="134" height="121"/>
+	<SubTexture name="vip selected0000" x="379" y="34" width="146" height="142" frameX="-12" frameY="-12" frameWidth="165" frameHeight="167"/>
+	<SubTexture name="vip selected0001" x="203" y="34" width="158" height="153" frameX="-3" frameY="-5" frameWidth="165" frameHeight="167"/>
+	<SubTexture name="vip selected0002" x="34" y="34" width="151" height="163" frameX="0" frameY="0" frameWidth="165" frameHeight="167"/>
+	<SubTexture name="vip selected0003" x="543" y="34" width="141" height="145" frameX="-17" frameY="-22" frameWidth="165" frameHeight="167"/>
+	<SubTexture name="vip selected0004" x="702" y="190" width="144" height="135" frameX="-17" frameY="-19" frameWidth="165" frameHeight="167"/>
+	<SubTexture name="vip selected0005" x="702" y="34" width="148" height="138" frameX="-17" frameY="-16" frameWidth="165" frameHeight="167"/>
+	<SubTexture name="vip selected0006" x="203" y="205" width="134" height="121" frameX="-17" frameY="-33" frameWidth="165" frameHeight="167"/>
+</TextureAtlas>

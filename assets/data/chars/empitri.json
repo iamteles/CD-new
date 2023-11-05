@@ -1,13 +1,14 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-350,
 				160
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceLeft",
+			"fps": 24,
+			"name": "Idle",
 			"indices": [
 				30,
 				0,
@@ -25,17 +26,17 @@
 				12,
 				13,
 				14
-			],
-			"name": "Empitri Idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-350,
 				161
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceRight",
+			"fps": 24,
+			"name": "Idle",
 			"indices": [
 				15,
 				16,
@@ -52,19 +53,18 @@
 				27,
 				28,
 				29
-			],
-			"name": "Empitri Idle"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-334,
 				151
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Empitri sneeze"
+			"fps": 24,
+			"name": "Sneeze",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,

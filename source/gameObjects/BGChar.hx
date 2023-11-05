@@ -10,12 +10,15 @@ class BGChar extends FlxSprite
 {
     public var speed:Int = 300;
     public var side:String = "right";
-    public function new(anim:String, side:String) {
+    public function new(anim:String, side:String, vip:Bool = false) {
         super();
 
         this.side = side;
 
-        frames = Paths.getSparrowAtlas('backgrounds/week1/bgchars');
+        if(vip)
+            frames = Paths.getSparrowAtlas('backgrounds/vip/vip bg');
+        else
+            frames = Paths.getSparrowAtlas('backgrounds/week1/bgchars');
         animation.addByPrefix("idle", anim, 24, true);
         animation.play('idle');
         scale.set(1.1,1.1);
@@ -71,11 +74,16 @@ class CharGroup extends FlxTypedGroup<BGChar>
 {
     var right:Array<String> = ['Justin', 'Antony', 'Crimson', 'Starry', 'Yair'];
     var left:Array<String> = ['Wave', 'SourSweet', 'Shaya', 'Leo', 'Astro'];
-    public function new() {
+    public function new(vip:Bool = false) {
 		super();
 
+        if(vip) {
+            right = ['Whisper', 'Sam', 'Nyako', 'Evelyn', 'Abi'];
+            left = ['Nobodi', 'Jewel', 'Drown', 'Dorothy', 'Claire'];
+        }
+
         for(i in 0...right.length) {
-            var char = new BGChar(right[i], "right");
+            var char = new BGChar(right[i], "right", vip);
             if(right[i] == 'Crimson')
                 char.speed = 800;
             char.ID = i;
@@ -83,9 +91,9 @@ class CharGroup extends FlxTypedGroup<BGChar>
         }
 
         for(i in 0...left.length) {
-            var char = new BGChar(left[i], "left");
+            var char = new BGChar(left[i], "left", vip);
             char.speed = -300;
-            if(left[i] == 'Shaya')
+            if(left[i] == 'Shaya' || left[i] == 'Claire')
                 char.speed = -700;
             char.ID = 5+i;
             add(char);
@@ -103,7 +111,7 @@ class CharGroup extends FlxTypedGroup<BGChar>
             for(char in this) {
                 if(char.ID == which) {
                     if(canWalk) {
-                        var random:Float = FlxG.random.int(-80, 200);
+                        var random:Float = FlxG.random.int(-20, 200);
                         char.velocity.x = -(char.speed+random);
                     }
 

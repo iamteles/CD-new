@@ -24,6 +24,7 @@ class OptionsState extends MusicBeatState
 		"main" => [
 			"Gameplay",
 			"Appearance",
+			"Accessibility",
 			"Controls",
 		],
 		"gameplay" => [
@@ -43,6 +44,10 @@ class OptionsState extends MusicBeatState
 			"Split Holds",
 			"Shaders"
 		],
+		"accessibility" => [
+			"Flashing Lights",
+			"Colorblind Filter",
+		]
 	];
 
 	public static var bgColors:Map<String, FlxColor> = [
