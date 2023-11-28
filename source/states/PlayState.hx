@@ -233,6 +233,14 @@ class PlayState extends MusicBeatState
 		{
 			charGroup = new CharGroup(true);
 			add(charGroup);
+
+			conTxt = new FlxSprite(-700, -300);
+			conTxt.loadGraphic(Paths.image("backgrounds/vip/nef"));
+			conTxt.setGraphicSize(Std.int(conTxt.width * 1.5));
+			conTxt.updateHitbox();
+			conTxt.alpha = 0;
+			conTxt.scrollFactor.set(0, 0);
+			add(conTxt);
 		}
 		
 		camGame.zoom = defaultCamZoom + extraCamZoom;
@@ -466,7 +474,7 @@ class PlayState extends MusicBeatState
 			strumPos = [160 + (960 / 2), 960 / 4]; //lmao?
 
 		var downscroll:Bool = SaveData.data.get("Downscroll");
-		var isSwapped:Bool = ((daSong == 'nefarious' || daSong == 'divergence'));
+		var isSwapped:Bool = ((daSong == 'nefarious' || daSong == 'divergence') || (daSong == 'euphoria-vip'));
 		var noteColors:Array<Array<Int>> = [dad.noteColor, boyfriend.noteColor];
 
 		if(isSwapped)
@@ -479,6 +487,46 @@ class PlayState extends MusicBeatState
 		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, !invertedCharacters, invertedCharacters, assetModifier);
 		bfStrumline.ID = 1;
 		strumlines.add(bfStrumline);
+
+		var you:FlxSprite = new FlxSprite().loadGraphic(Paths.image("hud/base/you"));
+		you.scale.set(0.35, 0.35);
+		you.updateHitbox();
+		if(isSwapped || invertedCharacters)
+			you.x = dadStrumline.x - (you.width/2);
+		else
+			you.x = bfStrumline.x - (you.width/2);
+		you.y = 430;
+		you.alpha = 0;
+		you.cameras = [camStrum];
+		add(you);
+
+		if(daSong == "nefarious" || daSong == "kaboom") {
+			FlxTween.tween(you, {alpha: 1}, 0.6, {
+				ease: FlxEase.cubeOut,
+				startDelay: 0.8,
+				onComplete: function(twn:FlxTween)
+				{
+					FlxTween.tween(you, {alpha: 0}, 0.6, {
+						ease: FlxEase.cubeIn,
+						startDelay: 2.8
+					});
+				}
+			});
+		}
+
+		if(daSong == "divergence") {
+			FlxTween.tween(you, {alpha: 1}, 0.6, {
+				ease: FlxEase.cubeOut,
+				startDelay: 0.5,
+				onComplete: function(twn:FlxTween)
+				{
+					FlxTween.tween(you, {alpha: 0}, 0.6, {
+						ease: FlxEase.cubeIn,
+						startDelay: 3.7
+					});
+				}
+			});
+		}
 
 		if(songHasTaiko) {
 			taikoStrumline = new Strumline(100, boyfriend, downscroll, true, false, "taiko", true);
@@ -1032,7 +1080,8 @@ class PlayState extends MusicBeatState
 
 				startSong();
 
-				startLogo();
+				if(daSong != "desertion")
+					startLogo();
 			});
 		}
 		else {
@@ -1040,7 +1089,7 @@ class PlayState extends MusicBeatState
 			{
 				Conductor.songPos = -Conductor.crochet * (4 - daCount);
 	
-				if(daCount == 1 && daSong == "nefarious") {
+				if(daCount == 1 && (daSong == "nefarious")) {
 					noteSwap(false);
 				}
 	
@@ -1357,7 +1406,7 @@ class PlayState extends MusicBeatState
 				else {
 					switch (note.noteType) {
 						case 'beam':
-							health -= 0.25;
+							health -= 0.16;
 	
 							dad.playAnim("shoot", true);
 							dad.holdTimer = 0;
@@ -2211,6 +2260,56 @@ class PlayState extends MusicBeatState
 		syncSong();
 
 		switch(daSong) {
+			case "nefarious-vip":
+				switch(curStep) {
+					case 1:
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.64;
+					case 128:
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.55;
+						beatSpeed = 1;
+					case 256:
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.62;
+					case 376:
+						FlxG.camera.fade(0xFFFFFFFF, 1, false);
+					case 384:
+						beatSpeed = 4;
+					case 420:
+						FlxG.camera.fade(0xFFFFFFFF, 0.01, true);
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.55;
+						beatSpeed = 1;
+						beatZoom = 0.02;
+					case 548:
+						CoolUtil.flash(camStrum, 0.5);
+					case 676:
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.62;
+					case 932:
+						CoolUtil.flash(camStrum, 0.5); // nef event
+						beatSpeed = 4;
+						conTxt.alpha = 1;
+					case 1176:
+						FlxG.camera.fade(0xFFFFFFFF, 1, false);
+					case 1200:
+						conTxt.alpha = 0;
+					case 1220:
+						FlxG.camera.fade(0xFFFFFFFF, 0.01, true);
+						CoolUtil.flash(camStrum, 0.5);
+						defaultCamZoom = 0.55;
+						beatSpeed = 1;
+						beatZoom = 0.02;
+					case 1472:
+						CoolUtil.flash(camStrum, 0.5);
+					case 1600:
+						CoolUtil.flash(camStrum, 0.5);
+						beatSpeed = 4;
+						FlxTween.tween(camHUD, {alpha: 0}, 0.8, {ease: FlxEase.expoOut});
+						FlxTween.tween(camStrum, {alpha: 0}, 0.8, {ease: FlxEase.expoOut});
+						
+				}
 			case "heartpounder":
 				switch(curStep) {
 					case 128:
@@ -2783,6 +2882,7 @@ class PlayState extends MusicBeatState
 						beatSpeed = 2;
 						beatZoom = 0.02;
 						CoolUtil.flash(camOther);
+						startLogo();
 					case 400:
 						defaultCamZoom = 0.72;
 						beatSpeed = 1;

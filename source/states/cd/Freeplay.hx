@@ -189,10 +189,10 @@ class Freeplay extends MusicBeatState
             changeSelection(-1);
         if(down)
             changeSelection(1);
-        if(left)
-			changeDiff(-1);
-		if(right)
-			changeDiff(1);
+        //if(left)
+		//	changeDiff(-1);
+		//if(right)
+		//	changeDiff(1);
 
         if(back)
         {
@@ -305,7 +305,7 @@ class Freeplay extends MusicBeatState
         curDiff += change;
         curDiff = FlxMath.wrap(curDiff, 0, CoolUtil.getDiffs().length - 1);
 
-        diff.text = '< ' + CoolUtil.getDiffs()[curDiff].toUpperCase() + ' >';
+        diff.text = CoolUtil.getDiffs()[curDiff].toUpperCase();
         diff.x = box.x + (box.width/2 - diff.width/2);
         
         updateScoreCount();

@@ -500,7 +500,7 @@ class ShopTab extends FlxTypedGroup<ShopItem>
             ["mlc", "Mirror Life Crisis", 15]
         ],
         "extras" => [
-            ["mania", "Mania Mode", 75],
+            //["mania", "Mania Mode", 75],
             ["music", "Legit Disc", 25],
             ["gallery", "Gallery", 25]
         ]

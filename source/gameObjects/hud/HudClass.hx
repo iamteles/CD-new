@@ -51,7 +51,7 @@ class HudClass extends FlxGroup
 		healthBarBG = new FlxSprite().loadGraphic(Paths.image("hud/base/healthBar"));
 		healthBarBG.visible = !simpleInfo;
 
-		if(PlayState.SONG.song.toLowerCase() == 'nefarious' || PlayState.SONG.song.toLowerCase() == 'divergence' || PlayState.invertedCharacters)
+		if(PlayState.SONG.song.toLowerCase() == 'nefarious' || PlayState.SONG.song.toLowerCase() == 'nefarious-vip' || PlayState.SONG.song.toLowerCase() == 'divergence' || PlayState.invertedCharacters)
 			invertedIcons = true;
 		else if(PlayState.SONG.song.toLowerCase() == "desertion") {
 			beamBar = new FlxSprite();

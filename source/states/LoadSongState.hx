@@ -60,25 +60,18 @@ class LoadSongState extends MusicBeatState
 		var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFF000000);
 		color.screenCenter();
 		add(color);
-		
-		// loading image
-		bg = new FlxSprite().loadGraphic(Paths.image('menu/main/bg'));
-		bg.updateHitbox();
-		bg.screenCenter();
-		bg.alpha = 0.3;
-		add(bg);
 
 		logo = new FlxSprite().loadGraphic(Paths.image('menu/loading'));
+		logo.scale.set(0.3,0.3);
 		logo.updateHitbox();
-		logo.screenCenter();
-		var storeY:Float = logo.y;
-		logo.y -= 50;
-		FlxTween.tween(logo, {y: storeY + 50}, 1.6, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+		logo.x = FlxG.width - logo.width - 10;
+		logo.y = FlxG.height - logo.height - 10;
 		add(logo);
 
 		loadBar = new FlxSprite().makeGraphic(FlxG.width, 20, 0xFFFFFFFF);
 		loadBar.y = FlxG.height - loadBar.height + 10;
 		loadBar.scale.x = 0;
+		loadBar.alpha = 0;
 		add(loadBar);
 		
 		var oldAnti:Bool = FlxSprite.defaultAntialiasing;

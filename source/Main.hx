@@ -110,7 +110,7 @@ class Main extends Sprite
 			temp.push(["watts", "shopkeeper"]);
 		}
 
-		if(SaveData.progression.get("sinned"))
+		if(SaveData.songs.get("sin"))
 			temp.push(["helica", "overTheHorizonHelica"]); // celica
 
 		possibleTitles = temp;
