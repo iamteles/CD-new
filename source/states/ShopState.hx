@@ -234,6 +234,12 @@ class LoadShopState extends MusicBeatState
 		color.screenCenter();
 		add(color);
 
+        var tiles = new FlxBackdrop(Paths.image('all'), XY, 0, 0);
+        tiles.velocity.set(30, 30);
+        tiles.screenCenter();
+		tiles.alpha = 0.7;
+        add(tiles);
+
 		logo = new FlxSprite().loadGraphic(Paths.image('menu/loading'));
 		logo.scale.set(0.3,0.3);
 		logo.updateHitbox();

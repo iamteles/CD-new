@@ -186,11 +186,11 @@ class SaveData
 		],
 		"gallery" => [
 			false,
-			"Makes you able to press keys freely without missing notes."
+			"Pretty nifty collection of art."
 		],
-		"mania" => [
+		"bio" => [
 			false,
-			"Only for the biggest gamers. Not liable for any injures caused to your fingers."
+			"Don't ask me how I got these. Special price since i need to get rid of these ASAP."
 		],
 		"fitdon" => [
 			false,
@@ -216,6 +216,7 @@ class SaveData
 	public static var progressionFile:FlxSave;
 
 	public static var skinCodes:Array<String> = ["cd", "tails", "shack", "mlc", "base", "pixel", "ylyl", "fitdon", "doido"];
+	public static var menuBg:String = 'menu/main/bg';
 	public static function init()
 	{
 		saveFile = new FlxSave();
@@ -243,6 +244,11 @@ class SaveData
 				data[key] = values[0];
 			
 			saveFile.data.settings = data;
+		}
+
+		if(saveFile.data.menuBg == null)
+		{
+			saveFile.data.menuBg = menuBg;
 		}
 
 		if(progressionFile.data.ticks == null) {
@@ -282,6 +288,7 @@ class SaveData
 		shop = progressionFile.data.shop;
 		progression = progressionFile.data.progression;
 		data = saveFile.data.settings;
+		menuBg = saveFile.data.menuBg;
 
 		if(findMod("gameSettings", "fitdon"))
 		{
@@ -336,6 +343,7 @@ class SaveData
 	public static function save()
 	{
 		saveFile.data.settings = data;
+		saveFile.data.menuBg = menuBg;
 		saveFile.flush();
 
 		progressionFile.data.ticks = curTime();

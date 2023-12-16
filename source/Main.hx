@@ -46,6 +46,7 @@ class Main extends Sprite
 	
 	}
 	public static var gFont:String = Paths.font("matsaleh.ttf");
+	public static var dsFont:String = Paths.font("ds.ttf");
 	
 	public static var skipClearMemory:Bool = false; // dont
 	public static var skipTrans:Bool = true; // starts on but it turns false inside Init

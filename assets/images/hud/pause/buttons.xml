@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="buttons.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="resume0000" x="34" y="34" width="1122" height="333"/>
+	<SubTexture name="exit0000" x="34" y="385" width="1122" height="333"/>
+	<SubTexture name="restart0000" x="1174" y="34" width="527" height="334"/>
+	<SubTexture name="options0000" x="1174" y="386" width="527" height="333"/>
+</TextureAtlas>

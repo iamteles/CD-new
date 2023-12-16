@@ -101,7 +101,7 @@ class OptionsState extends MusicBeatState
 		add(grpAttachs);
 		
 		infoTxt = new FlxText(0, 0, FlxG.width * 0.92, "");
-		infoTxt.setFormat(Main.gFont, 28, 0xFFFFFFFF, CENTER);
+		infoTxt.setFormat(Main.dsFont, 28, 0xFFFFFFFF, CENTER);
 		infoTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		add(infoTxt);
 

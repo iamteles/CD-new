@@ -86,7 +86,7 @@ class HealthIcon extends FlxSprite
 			"watts" 		=> 0xFFe5e07f,
 			"bree" 		=> 0xFF7f7387,
 			"angry-bree" 		=> 0xFF7f7387,
-			"bella"		=> 0xffffffff,
+			"bella"		=> 0xffFFD6D6,
 			"bex"	=> 0xFF262932,
 			"spicy"	=> 0xFFc65343,
 			"duo"	=> 0xffffffff,
@@ -94,7 +94,9 @@ class HealthIcon extends FlxSprite
 			"evil"	=> 0xFF262932,
 			"helica" => 0xFFe39a78,
 			"drown" => 0xFF448499,
-			"wave" => 0xFFEE6D48
+			"wave" => 0xFFEE6D48,
+			"empitri" => 0xFFF1ABAB,
+			"duo2" => 0xFFF1ABAB
 		];
 
 		function loopMap()

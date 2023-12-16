@@ -37,7 +37,7 @@ class Freeplay extends MusicBeatState
         ["sin", "helica", 0xFFE17B00],
         ["conservation", "watts", 0xFFFEC404],
         ["irritation", "watts", 0xFFFEC404],
-        ["kaboom", "spicy", 0xFFFF006A],
+        ["kaboom", "spicy-v2", 0xFFFF006A],
         ["intimidate", "bex-scared", 0xFF0A203B],
         ["heartpounder", "duo", 0xFFF85EA4],
         ["ripple", "drown", 0xFF049AFE],
@@ -59,6 +59,9 @@ class Freeplay extends MusicBeatState
     var arrows:FlxSprite;
     var shaking:Bool = false;
     var selected:Bool = false;
+
+    var fr:FlxSprite;
+    var shack:FlxSprite;
 
     var bgTween:FlxTween;
 
@@ -112,8 +115,10 @@ class Freeplay extends MusicBeatState
                 char.offset.set(50,0);
             else if(charN == "bex" || charN == "bex-scared")
                 char.offset.set(-50,0);
-            else if(charN == "spicy")
-                char.offset.set(100,50);
+            else if(charN == "spicy-v2")
+                char.offset.set(100,100);
+            else if(charN == "empitri")
+                char.offset.set(50,50);
                 
             var text = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/names/${song}'));
             text.ID = i;
@@ -147,6 +152,16 @@ class Freeplay extends MusicBeatState
         arrows.x = 11.95;
         arrows.y = 637.2;
 		add(arrows);
+
+        fr = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/fr_collab'));
+        fr.scale.set(0.66, 0.66);
+        fr.updateHitbox();
+		add(fr);
+
+        shack = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/fs_collab'));
+        shack.scale.set(0.66, 0.66);
+        shack.updateHitbox();
+		add(shack);
 
         if(SaveData.data.get("Touch Controls")) {
             virtualPad = new FlxVirtualPad(LEFT_FULL, A_B);
@@ -279,6 +294,16 @@ class Freeplay extends MusicBeatState
 
         scores.x = box.x + (box.width/2 - scores.width/2);
         scores.y = box.y + 64;
+
+        if(songs[curSelected][0] == "kaboom")
+            fr.alpha = 1;
+        else
+            fr.alpha = 0;
+
+        if(songs[curSelected][0] == "ripple" || songs[curSelected][0] == "customer-service")
+            shack.alpha = 1;
+        else
+            shack.alpha = 0;
     }
 
     public function changeSelection(change:Int = 0)

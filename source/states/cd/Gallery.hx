@@ -26,25 +26,26 @@ class Gallery extends MusicBeatState
 	var tipTextArray:Array<String> = "E/Q - Camera Zoom
 	\nR - Reset Camera Zoom
 	\nArrow Keys - Scroll
-    \nENTER - Set as Menu Background\n".split('\n');
+    \nENTER - Set as Menu
+	\nSPACE - Reset Background\n".split('\n');
 
 	var zoomAmmount:Int = 100;
 
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
 
-	var itemScale:Float = 0.5;
+	var itemScale:Float = 0.7;
 
 	var descText:FlxText;
 	var descTextTwo:FlxText;
     var bg:FlxSprite;
 
     var items:Array<Array<String>> = [
-        ["daiseydraws", "", "@daiseydraws on Instagram"],
-        ["sammy_jiru", "", "@sammy_jiru on Instagram"],
-        ["Pankiepoo", "", "@Pankiepoo on Twitter"],
-        ["Spamtune", "", "@thesound_crows (Spamtune) on Twitter"],
-        ["OOBO3310", "", "@OOBO3310 on Twitter"]
+        ["menu/gallery/fanart/" + "daiseydraws", "", "@daiseydraws on Instagram"],
+        ["menu/gallery/fanart/" + "sammy_jiru", "", "@sammy_jiru on Instagram"],
+        ["menu/gallery/fanart/" + "Pankiepoo", "", "@Pankiepoo on Twitter"],
+        ["menu/gallery/fanart/" + "Spamtune", "", "@thesound_crows (Spamtune) on Twitter"],
+        ["menu/gallery/fanart/" + "OOBO3310", "", "@OOBO3310 on Twitter"]
     ];
 	public override function create()
 	{
@@ -58,7 +59,7 @@ class Gallery extends MusicBeatState
 
 		for(i in 0...items.length)
 		{
-			var item:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image("menu/gallery/fanart/" + items[i][0]));
+			var item:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image(items[i][0]));
 			item.screenCenter(X);
 			item.screenCenter(Y);
 			menuItems.add(item);
@@ -93,6 +94,12 @@ class Gallery extends MusicBeatState
 		descTextTwo.borderSize = 2.4;
 		add(descTextTwo);
 
+		if(SaveData.data.get("Touch Controls")) {
+			tipTextArray = "A - Set as Menu Background
+			\nB - Back
+			\nC - Reset Background\n".split('\n');
+        }
+
 		for (i in 0...tipTextArray.length-1)
 		{
 			var tipText:FlxText = new FlxText(FlxG.width - 320, FlxG.height - 15 - 16 * (tipTextArray.length - i), 300, tipTextArray[i], 12);
@@ -102,7 +109,7 @@ class Gallery extends MusicBeatState
 			add(tipText);
 		}
 		if(SaveData.data.get("Touch Controls")) {
-            virtualPad = new FlxVirtualPad(LEFT_RIGHT, A_B);
+            virtualPad = new FlxVirtualPad(LEFT_RIGHT, A_B_C);
             add(virtualPad);
         }
 	}
@@ -122,6 +129,14 @@ class Gallery extends MusicBeatState
         var back:Bool = Controls.justPressed("BACK");
         if(SaveData.data.get("Touch Controls"))
             back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+
+		var set:Bool = FlxG.keys.pressed.ENTER;
+        if(SaveData.data.get("Touch Controls"))
+            set = (FlxG.keys.pressed.ENTER || virtualPad.buttonA.justPressed);
+
+		var reset:Bool = FlxG.keys.pressed.SPACE;
+        if(SaveData.data.get("Touch Controls"))
+            reset = (FlxG.keys.pressed.SPACE || virtualPad.buttonC.justPressed);
 
         if(left)
 			changeItem(-1);
@@ -145,6 +160,18 @@ class Gallery extends MusicBeatState
 		if (FlxG.keys.pressed.Q && itemScale > 0.1) {
 			itemScale -= elapsed * itemScale;
 			if(itemScale < 0.1) itemScale = 0.1;
+		}
+
+		if (set)
+		{
+			SaveData.menuBg = items[curSelected][0];
+			SaveData.save();
+		}
+
+		if (reset)
+		{
+			SaveData.menuBg = 'menu/main/bg';
+			SaveData.save();
 		}
 
 		menuItems.forEach(function(item:FlxSprite)

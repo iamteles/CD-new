@@ -14,6 +14,7 @@ import data.SongData.SwagSong;
 import gameObjects.*;
 import gameObjects.hud.*;
 import gameObjects.hud.note.*;
+import flixel.addons.display.FlxBackdrop;
 
 #if !html5
 import sys.thread.Mutex;
@@ -60,6 +61,12 @@ class LoadSongState extends MusicBeatState
 		var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFF000000);
 		color.screenCenter();
 		add(color);
+
+		var tiles = new FlxBackdrop(Paths.image('all'), XY, 0, 0);
+        tiles.velocity.set(30, 30);
+        tiles.screenCenter();
+		tiles.alpha = 0.7;
+        add(tiles);
 
 		logo = new FlxSprite().loadGraphic(Paths.image('menu/loading'));
 		logo.scale.set(0.3,0.3);

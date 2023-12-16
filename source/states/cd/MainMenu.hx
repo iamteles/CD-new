@@ -19,13 +19,14 @@ import gameObjects.android.FlxVirtualPad;
 
 class MainMenu extends MusicBeatState
 {
-	var list:Array<String> = ["story mode", "freeplay", "shop", "music", "gallery", "credits", "options"];
+	var list:Array<String> = ["story mode", "freeplay", "shop", "music", "gallery", "bio", "credits", "options"];
     var hints:Array<String> = [
         "Play the main storyline!", 
         "Replay story songs or play some bonus ones!", 
         "Buy songs, skins and other extras!", 
         "Listen to our OST!", 
         "Lots of bonus art!", 
+        "Learn more about the protagonists of the mod!",
         "The awesome people who made the mod!", 
         "Tinker the mod to your liking!"
     ];
@@ -49,7 +50,7 @@ class MainMenu extends MusicBeatState
         DiscordClient.changePresence("In the Menus", null);
         CoolUtil.playMusic("MENU");
 
-        bg = new FlxSprite().loadGraphic(Paths.image('menu/main/bg'));
+        bg = new FlxSprite().loadGraphic(Paths.image(SaveData.menuBg));
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
@@ -124,7 +125,7 @@ class MainMenu extends MusicBeatState
 		add(arrowR);
 
         info = new FlxText(0,0,0,"Loading...");
-		info.setFormat(Main.gFont, 30, 0xFFFFFFFF, CENTER);
+		info.setFormat(Main.dsFont, 30, 0xFFFFFFFF, CENTER);
 		info.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
         info.y = FlxG.height - info.height - 5;
 
@@ -209,6 +210,8 @@ class MainMenu extends MusicBeatState
                                     Main.switchState(new states.cd.Freeplay());
                                 case "gallery":
                                     Main.switchState(new states.cd.Gallery());
+                                case "bio":
+                                    Main.switchState(new states.cd.Bios());
                                 case "shop":
                                     Main.switchState(new states.ShopState.LoadShopState());
                                 case "music":
@@ -314,7 +317,7 @@ class MainMenu extends MusicBeatState
         info.screenCenter(X);
     }
 
-    var unlockables:Array<String> = ["music", "gallery"];
+    var unlockables:Array<String> = ["music", "gallery", "bio"];
     function returnMenu(num:Int):Bool
     {
         if(unlockables.contains(list[num]))

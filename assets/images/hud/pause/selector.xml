@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="selector.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="selectors left0000" x="34" y="34" width="60" height="368"/>
+	<SubTexture name="selectors right0000" x="112" y="34" width="60" height="368"/>
+</TextureAtlas>

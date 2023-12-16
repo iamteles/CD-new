@@ -23,6 +23,7 @@ class StoryMode extends MusicBeatState
     var bg:FlxSprite;
     var week1:FlxSprite;
     var week2:FlxSprite;
+    var epilogue:FlxSprite;
     var text:FlxSprite;
 
     var weeks:FlxTypedGroup<FlxSprite>;
@@ -34,7 +35,9 @@ class StoryMode extends MusicBeatState
 
         weekData = [
             [["euphoria", "nefarious", "divergence"], "week1"],
-            [["allegro", "panic-attack", "convergence", "desertion"], "week2"]
+            [["allegro", "panic-attack", "convergence", "desertion"], "week2"],
+            [["euphoria-vip", "nefarious-vip", "divergence-vip"], "week-vip"],
+            [["sin"], "epilogue"],
         ];
 
         sliderActive = -1;
@@ -58,6 +61,12 @@ class StoryMode extends MusicBeatState
         week2.updateHitbox();
         week2.ID = 1;
         weeks.add(week2);
+
+        epilogue = new FlxSprite().loadGraphic(Paths.image('menu/story/epilogue'));
+        epilogue.scale.set(0.4,0.4);
+        epilogue.updateHitbox();
+        epilogue.visible = SaveData.progression.get("week2");
+        add(epilogue);
 
         text = new FlxSprite(127, 15).loadGraphic(Paths.image('menu/story/text')); //i have not put a position here in a while lol
         text.updateHitbox();
@@ -95,6 +104,23 @@ class StoryMode extends MusicBeatState
             }
         }
 
+        if(SaveData.progression.get("week2")) {
+            if(CoolUtil.mouseOverlap(epilogue, FlxG.camera)) {
+                epilogue.scale.x = FlxMath.lerp(epilogue.scale.x, 0.4, elapsed*6);
+                epilogue.scale.y = FlxMath.lerp(epilogue.scale.y, 0.4, elapsed*6);
+                if(FlxG.mouse.justPressed) {
+                    FlxG.sound.play(Paths.sound("menu/select"));
+                    enterWeek(3);
+                }
+                    
+            }
+            else {
+                epilogue.scale.x = FlxMath.lerp(epilogue.scale.x, 0.3, elapsed*6);
+                epilogue.scale.y = FlxMath.lerp(epilogue.scale.y, 0.3, elapsed*6);
+            }
+        }
+
+
         if(Controls.justPressed("BACK") && sliderActive == -1)
         {
             FlxG.sound.play(Paths.sound('menu/back'));
@@ -113,6 +139,9 @@ class StoryMode extends MusicBeatState
         week2.screenCenter();
         week2.x += 300;
         week2.y += 150;
+
+        epilogue.screenCenter();
+        epilogue.y += 320;
     }
 
     public static function enterWeek(id:Int) {
@@ -229,6 +258,7 @@ class SliderR extends MusicBeatSubState
 {
     var thing:FlxSprite;
     var button:FlxSprite;
+    var vipButton:FlxSprite;
     var weekID:Int = 0;
 
     var weekName:FlxText;
@@ -248,6 +278,17 @@ class SliderR extends MusicBeatSubState
         button.y += 171;
         button.alpha = 0;
         add(button);
+
+        vipButton = new FlxSprite();
+		vipButton.frames = Paths.getSparrowAtlas('menu/story/vip');
+		vipButton.animation.addByPrefix('lock',  "vip locked", 24, true);
+		vipButton.animation.addByPrefix('on',  "vip selected", 14, true);
+        if(SaveData.shop.get("crown"))
+		    vipButton.animation.play('on');
+        else
+            vipButton.animation.play('lock');
+		vipButton.updateHitbox();
+		add(vipButton);
 
         weekName = new FlxText(0, 0, 0, "Week 1");
 		weekName.setFormat(Main.gFont, 120, 0xFFFFFFFF, CENTER);
@@ -274,7 +315,11 @@ class SliderR extends MusicBeatSubState
     function updatePos() {
         button.screenCenter();
         button.y += 201;
-        button.x += 320;
+        button.x += 410;
+
+        vipButton.screenCenter();
+        vipButton.y += 211;
+        vipButton.x += 140;
     }
 
     override function update(elapsed:Float)
@@ -296,6 +341,24 @@ class SliderR extends MusicBeatSubState
             else {
                 button.scale.x = FlxMath.lerp(button.scale.x, 1, elapsed*6);
                 button.scale.y = FlxMath.lerp(button.scale.y, 1, elapsed*6);
+            }
+
+            if(SaveData.shop.get("crown")) {
+                if(CoolUtil.mouseOverlap(vipButton, FlxG.camera)) {
+                    vipButton.scale.x = FlxMath.lerp(vipButton.scale.x, 1.1, elapsed*6);
+                    vipButton.scale.y = FlxMath.lerp(vipButton.scale.y, 1.1, elapsed*6);
+                    if(FlxG.mouse.justPressed) {
+                        FlxG.sound.play(Paths.sound("menu/select"));
+                        StoryMode.enterWeek(2);
+                        //sliderActive = true;
+                        //openSubState(new SliderL());
+                    }
+                        //enterWeek(weekData[item.ID][0], weekData[item.ID][1]);
+                }
+                else {
+                    vipButton.scale.x = FlxMath.lerp(vipButton.scale.x, 1, elapsed*6);
+                    vipButton.scale.y = FlxMath.lerp(vipButton.scale.y, 1, elapsed*6);
+                }
             }
     
             updatePos();

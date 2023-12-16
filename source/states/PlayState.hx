@@ -137,6 +137,8 @@ class PlayState extends MusicBeatState
 	var playArea:FlxSprite;
 
 	var songHasTaiko:Bool = false;
+	var taikoTutorial:FlxSprite;
+	var sinStarted:Null<Bool>;
 
 	public static var invertedCharacters:Bool = false;
 
@@ -264,7 +266,7 @@ class PlayState extends MusicBeatState
 		}
 		else if(daSong == "customer-service") {
 			third = new Character();
-			changeChar(third, "empitri-cs");
+			changeChar(third, "bella-cs");
 		}
 		
 		// also updates the characters positions
@@ -925,6 +927,11 @@ class PlayState extends MusicBeatState
 		switch(daSong) {
 			case "heartpounder":
 				if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([bloom]);
+			case "customer-service":
+				third.alpha = 0;
+				camHUD.alpha = 0;
+				camStrum.alpha = 0;
+				bellasings = false;
 			case "ripple":
 				zoomInOpp = true;
 				zoomOppVal = -0.2;
@@ -983,6 +990,17 @@ class PlayState extends MusicBeatState
 		{
 			switch(SONG.song)
 			{
+				case "sin":
+					var thing:String = "menu/story/Taiko-tutorial";
+					if(SaveData.data.get("Touch Controls"))
+						thing += "-touch";
+					taikoTutorial = new FlxSprite().loadGraphic(Paths.image(thing));
+					taikoTutorial.cameras = [camOther];
+					taikoTutorial.scrollFactor.set();
+					taikoTutorial.screenCenter();
+					add(taikoTutorial);
+
+					sinStarted = false;
 				case 'senpai'|'roses':
 					CoolUtil.playMusic('dialogue/lunchbox');
 					startDialogue(DialogueUtil.loadFromSong(SONG.song));
@@ -1318,7 +1336,7 @@ class PlayState extends MusicBeatState
 						if(third != null) {
 							third.playAnim(third.singAnims[note.noteData], true);
 							third.holdTimer = 0;
-							bellasings = true;
+							if(daSong != "customer-service") bellasings = true;
 						}
 					case 'alt':
 						thisChar.playAnim(thisChar.singAnims[note.noteData] + "alt", true);
@@ -1347,7 +1365,7 @@ class PlayState extends MusicBeatState
 						else {
 							thisChar.playAnim(thisChar.singAnims[note.noteData], true);
 							thisChar.holdTimer = 0;
-							if(daSong != "ripple") bellasings = false;
+							if(daSong != "ripple" && daSong != "customer-service") bellasings = false;
 	
 							if(daSong == "desertion" && !strumline.isPlayer) {
 								if (health > 0.1)
@@ -1459,12 +1477,12 @@ class PlayState extends MusicBeatState
 					if(third != null) {
 						third.playAnim(third.singAnims[note.noteData], true);
 						third.holdTimer = 0;
-						bellasings = true;
+						if(daSong != "customer-service") bellasings = true;
 					}
 				default:
 					thisChar.playAnim(thisChar.singAnims[note.noteData], true);
 					thisChar.holdTimer = 0;
-					if(daSong != "ripple") bellasings = false;
+					if(daSong != "ripple" && daSong != "customer-service") bellasings = false;
 			}
 		}
 	}
@@ -1547,6 +1565,8 @@ class PlayState extends MusicBeatState
 	var released:Array<Bool> 	= [];
 	
 	var playerSinging:Bool = false;
+
+	var isTouch:Bool = false;
 	
 	override public function update(elapsed:Float)
 	{
@@ -1588,6 +1608,27 @@ class PlayState extends MusicBeatState
 				char = boyfriend;
 
 			Main.switchState(new CharacterEditorState(char.curChar));
+		}
+
+		if(sinStarted != null) {
+			if(!sinStarted) {
+				#if mobile
+				for (touch in FlxG.touches.list)
+				{
+					if (touch.justPressed)
+						isTouch = true;
+				}
+				#end
+		
+				if(Controls.justPressed("ACCEPT") || isTouch) {
+					FlxTween.tween(taikoTutorial, {alpha: 0}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+					{
+						startCountdown();
+					}});
+
+					sinStarted = true;
+				}
+			}
 		}
 
 		/*if(FlxG.keys.justPressed.SPACE)
@@ -2130,6 +2171,8 @@ class PlayState extends MusicBeatState
 			else {
 				if(bellasings && daSong == "ripple")
 					followCamera(third);
+				else if(daSong == "customer-service" && bellasings)
+					followCamera(third);
 				else
 					followCamera(dadStrumline.character);
 
@@ -2246,6 +2289,8 @@ class PlayState extends MusicBeatState
 
 				if(banList.contains(char.animation.curAnim.name))
 					canIdle = false;
+				else if(daSong == "customer-service" && (curStep > 607 && curStep < 647))
+					canIdle = false;
 
 				if(canIdle)
 					char.dance();
@@ -2361,6 +2406,28 @@ class PlayState extends MusicBeatState
 					case 1792:
 						CoolUtil.flash(camStrum, 0.5); 
 						defaultCamZoom = 0.64;
+				}
+			case "customer-service":
+				switch(curStep) {
+					case 128:
+						CoolUtil.flash(camOther, 0.5);
+						FlxTween.tween(camHUD, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
+						FlxTween.tween(camStrum, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
+					case 608:
+						dad.playAnim("ring");
+					case 648:
+						FlxTween.tween(third, {alpha: 1}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeOut
+						});
+						bellasings = true;
+					case 656:
+						CoolUtil.flash(camOther, 0.5);
+						hudBuild.changeIcon(0, "duo2");
+					case 912:
+						CoolUtil.flash(camOther, 0.5);
+					case 1296:
+						FlxTween.tween(camHUD, {alpha: 0}, 3.5, {ease: FlxEase.expoOut});
+						FlxTween.tween(camStrum, {alpha: 0}, 3.5, {ease: FlxEase.expoOut});
 				}
 			case 'ripple':
 				switch(curStep) {

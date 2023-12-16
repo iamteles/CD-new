@@ -7,7 +7,7 @@
 	<SubTexture name="shack0000" x="1190" y="34" width="271" height="236"/>
 	<SubTexture name="crown0000" x="34" y="288" width="271" height="236"/>
 	<SubTexture name="gallery0000" x="323" y="34" width="271" height="236"/>
-	<SubTexture name="mania0000" x="323" y="288" width="271" height="236"/>
+	<SubTexture name="bio0000" x="323" y="288" width="271" height="236"/>
 	<SubTexture name="mic0000" x="612" y="34" width="271" height="236"/>
 	<SubTexture name="music0000" x="901" y="34" width="271" height="236"/>
 	<SubTexture name="tails0000" x="901" y="288" width="271" height="236"/>

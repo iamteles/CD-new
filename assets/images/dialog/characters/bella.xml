@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bella.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="blush0000" x="1360" y="34" width="568" height="873"/>
+	<SubTexture name="excited0000" x="34" y="924" width="667" height="877"/>
+	<SubTexture name="neutral0000" x="719" y="929" width="568" height="873"/>
+	<SubTexture name="playful0000" x="34" y="34" width="697" height="872"/>
+	<SubTexture name="realization0000" x="1305" y="929" width="568" height="873"/>
+	<SubTexture name="shock0000" x="749" y="34" width="593" height="877"/>
+</TextureAtlas>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="botplay.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="off0000" x="34" y="34" width="236" height="226"/>
+	<SubTexture name="on0000" x="288" y="34" width="236" height="226"/>
+</TextureAtlas>

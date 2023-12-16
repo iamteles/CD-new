@@ -18,7 +18,7 @@ using StringTools;
 
 class DebugState extends MusicBeatState
 {
-	var optionShit:Array<String> = ["menu", "video", "shop", "intimidating"];
+	var optionShit:Array<String> = ["menu", "video", "dialog", "intimidating"];
 	static var curSelected:Int = 0;
 
 	var optionGroup:FlxTypedGroup<Alphabet>;
@@ -98,6 +98,8 @@ class DebugState extends MusicBeatState
 					Main.switchState(new states.menu.StoryMenuState());
 				case "menu":
 					Main.switchState(new states.cd.MainMenu());
+				case "dialog":
+					Main.switchState(new states.cd.Dialog());
 				case "freeplay":
 					Main.switchState(new states.menu.FreeplayState());
 				case "intimidating":
