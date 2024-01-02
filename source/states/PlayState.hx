@@ -25,7 +25,6 @@ import data.GameData.MusicBeatState;
 import gameObjects.*;
 import gameObjects.hud.*;
 import gameObjects.hud.note.*;
-import gameObjects.Dialogue.DialogueData;
 import shaders.*;
 import states.editors.*;
 import states.menu.*;
@@ -183,7 +182,7 @@ class PlayState extends MusicBeatState
 			invertedCharacters = false;
 
 		SaveData.songs.set(daSong, true);
-		trace(SaveData.songs.get(daSong));
+		//trace(SaveData.songs.get(daSong));
 		SaveData.save();
 		
 		// adjusting the conductor
@@ -226,23 +225,25 @@ class PlayState extends MusicBeatState
 		stageBuild.reloadStageFromSong(SONG.song);
 		add(stageBuild);
 
-		if(daSong == 'euphoria' || daSong == 'nefarious' || daSong == 'divergence')
-		{
-			charGroup = new CharGroup();
-			add(charGroup);
-		}
-		else if(daSong == 'euphoria-vip' || daSong == 'nefarious-vip' || daSong == 'divergence-vip')
-		{
-			charGroup = new CharGroup(true);
-			add(charGroup);
-
-			conTxt = new FlxSprite(-700, -300);
-			conTxt.loadGraphic(Paths.image("backgrounds/vip/nef"));
-			conTxt.setGraphicSize(Std.int(conTxt.width * 1.5));
-			conTxt.updateHitbox();
-			conTxt.alpha = 0;
-			conTxt.scrollFactor.set(0, 0);
-			add(conTxt);
+		if(!SaveData.data.get("Low Quality")) {
+			if(daSong == 'euphoria' || daSong == 'nefarious' || daSong == 'divergence')
+			{
+				charGroup = new CharGroup();
+				add(charGroup);
+			}
+			else if(daSong == 'euphoria-vip' || daSong == 'nefarious-vip' || daSong == 'divergence-vip')
+			{
+				charGroup = new CharGroup(true);
+				add(charGroup);
+	
+				conTxt = new FlxSprite(-700, -300);
+				conTxt.loadGraphic(Paths.image("backgrounds/vip/" + daSong));
+				conTxt.setGraphicSize(Std.int(conTxt.width * 1.5));
+				conTxt.updateHitbox();
+				conTxt.alpha = 0;
+				conTxt.scrollFactor.set(0, 0);
+				add(conTxt);
+			}
 		}
 		
 		camGame.zoom = defaultCamZoom + extraCamZoom;
@@ -297,90 +298,94 @@ class PlayState extends MusicBeatState
 		for(item in addList)
 			add(item);
 
-		if(daSong == 'convergence') {
-			conTxt = new FlxSprite();
-			conTxt.frames = Paths.getSparrowAtlas("hud/base/shes going to kill you");
-			conTxt.animation.addByPrefix("idle", 'Breeh Idle', 24, true);
-			conTxt.animation.play("idle");
-			conTxt.scale.set(0.5, 0.5);
-			conTxt.updateHitbox();
-			conTxt.screenCenter();
-			conTxt.alpha = 0;
-			conTxt.cameras = [camHUD];
-			add(conTxt);
+		if(!SaveData.data.get("Low Quality")) {
+			if(daSong == 'convergence') {
+				conTxt = new FlxSprite();
+				conTxt.frames = Paths.getSparrowAtlas("hud/base/shes going to kill you");
+				conTxt.animation.addByPrefix("idle", 'Breeh Idle', 24, true);
+				conTxt.animation.play("idle");
+				conTxt.scale.set(0.5, 0.5);
+				conTxt.updateHitbox();
+				conTxt.screenCenter();
+				conTxt.alpha = 0;
+				conTxt.cameras = [camHUD];
+				add(conTxt);
+	
+				divTxt = new FlxSprite().loadGraphic(Paths.image("hud/base/convergence"));
+				divTxt.screenCenter();
+				divTxt.cameras = [camHUD];
+				divTxt.alpha = 0;
+				add(divTxt);
+			}
+			else if(daSong == 'desertion') {
+				bexPop = new FlxSprite();
+				bexPop.frames = Paths.getSparrowAtlas("backgrounds/desertion/power up");
+				bexPop.animation.addByPrefix("idle", 'Bex Power Up0000', 24, true);
+				bexPop.animation.play('idle');
+				bexPop.scale.set(0.5, 0.5);
+				bexPop.updateHitbox();
+				bexPop.x -= bexPop.width;
+				bexPop.y += 50;
+				bexPop.cameras = [camOther];
+				add(bexPop);
+	
+				bellaPop = new FlxSprite();
+				bellaPop.frames = Paths.getSparrowAtlas("backgrounds/desertion/power up");
+				bellaPop.animation.addByPrefix("idle", 'Bella Power Up0000', 24, true);
+				bellaPop.animation.play('idle');
+				bellaPop.scale.set(0.5, 0.5);
+				bellaPop.updateHitbox();
+				bellaPop.x = FlxG.width;
+				bellaPop.y += 250;
+				bellaPop.cameras = [camOther];
+				add(bellaPop);
+			}
+			else if(daSong == 'divergence') {
+				divTxt = new FlxSprite().loadGraphic(Paths.image("hud/base/divergence"));
+				divTxt.screenCenter();
+				divTxt.cameras = [camHUD];
+				divTxt.alpha = 0;
+				add(divTxt);
+			}
+			else if(daSong == 'intimidate') {
+				vhs = new FlxSprite();
+				vhs.frames = Paths.getSparrowAtlas("backgrounds/cave/vhs");
+				vhs.animation.addByPrefix("idle", 'idle', 16, true);
+				vhs.animation.play('idle');
+				vhs.scale.set(3, 3);
+				vhs.updateHitbox();
+				vhs.screenCenter();
+				vhs.alpha = 0;
+				vhs.blend = LAYER;
+				vhs.cameras = [camOther]; 
+				add(vhs);
+			}
+			else if(daSong == 'sin') {
+				conTxt = new FlxSprite();
+				conTxt.frames = Paths.getSparrowAtlas("backgrounds/helica/eyes");
+				conTxt.animation.addByPrefix("idle", 'helica eyes closed', 24, true);
+				conTxt.animation.play("idle");
+				conTxt.scale.set(0.7, 0.7);
+				conTxt.updateHitbox();
+				conTxt.screenCenter();
+				conTxt.alpha = 0;
+				conTxt.cameras = [camOther];
+				add(conTxt);
+	
+				divTxt = new FlxSprite();
+				divTxt.frames = Paths.getSparrowAtlas("backgrounds/helica/eyes");
+				divTxt.animation.addByPrefix("idle", 'helica eyes open', 24, false);
+				divTxt.animation.play("idle");
+				divTxt.scale.set(0.7, 0.7);
+				divTxt.updateHitbox();
+				divTxt.screenCenter();
+				divTxt.alpha = 0;
+				divTxt.cameras = [camOther];
+				add(divTxt);
+			}
+		}
 
-			divTxt = new FlxSprite().loadGraphic(Paths.image("hud/base/convergence"));
-			divTxt.screenCenter();
-			divTxt.cameras = [camHUD];
-			divTxt.alpha = 0;
-			add(divTxt);
-		}
-		else if(daSong == 'desertion') {
-			bexPop = new FlxSprite();
-			bexPop.frames = Paths.getSparrowAtlas("backgrounds/desertion/power up");
-			bexPop.animation.addByPrefix("idle", 'Bex Power Up0000', 24, true);
-			bexPop.animation.play('idle');
-			bexPop.scale.set(0.5, 0.5);
-			bexPop.updateHitbox();
-			bexPop.x -= bexPop.width;
-			bexPop.y += 50;
-			bexPop.cameras = [camOther];
-			add(bexPop);
 
-			bellaPop = new FlxSprite();
-			bellaPop.frames = Paths.getSparrowAtlas("backgrounds/desertion/power up");
-			bellaPop.animation.addByPrefix("idle", 'Bella Power Up0000', 24, true);
-			bellaPop.animation.play('idle');
-			bellaPop.scale.set(0.5, 0.5);
-			bellaPop.updateHitbox();
-			bellaPop.x = FlxG.width;
-			bellaPop.y += 250;
-			bellaPop.cameras = [camOther];
-			add(bellaPop);
-		}
-		else if(daSong == 'divergence') {
-			divTxt = new FlxSprite().loadGraphic(Paths.image("hud/base/divergence"));
-			divTxt.screenCenter();
-			divTxt.cameras = [camHUD];
-			divTxt.alpha = 0;
-			add(divTxt);
-		}
-		else if(daSong == 'intimidate') {
-			vhs = new FlxSprite();
-			vhs.frames = Paths.getSparrowAtlas("backgrounds/cave/vhs");
-			vhs.animation.addByPrefix("idle", 'idle', 16, true);
-			vhs.animation.play('idle');
-			vhs.scale.set(3, 3);
-			vhs.updateHitbox();
-			vhs.screenCenter();
-			vhs.alpha = 0;
-			vhs.blend = LAYER;
-			vhs.cameras = [camOther]; 
-			add(vhs);
-		}
-		else if(daSong == 'sin') {
-			conTxt = new FlxSprite();
-			conTxt.frames = Paths.getSparrowAtlas("backgrounds/helica/eyes");
-			conTxt.animation.addByPrefix("idle", 'helica eyes closed', 24, true);
-			conTxt.animation.play("idle");
-			conTxt.scale.set(0.7, 0.7);
-			conTxt.updateHitbox();
-			conTxt.screenCenter();
-			conTxt.alpha = 0;
-			conTxt.cameras = [camOther];
-			add(conTxt);
-
-			divTxt = new FlxSprite();
-			divTxt.frames = Paths.getSparrowAtlas("backgrounds/helica/eyes");
-			divTxt.animation.addByPrefix("idle", 'helica eyes open', 24, false);
-			divTxt.animation.play("idle");
-			divTxt.scale.set(0.7, 0.7);
-			divTxt.updateHitbox();
-			divTxt.screenCenter();
-			divTxt.alpha = 0;
-			divTxt.cameras = [camOther];
-			add(divTxt);
-		}
 		else if(daSong == "heartpounder")
 		{
 			var sideBars = new FlxSprite().loadGraphic(Paths.image('hud/base/sidebars'));
@@ -388,21 +393,21 @@ class PlayState extends MusicBeatState
 			sideBars.cameras = [camOther];
 			add(sideBars);
 
-			var sd = new FlxSprite().loadGraphic(Paths.image('backgrounds/gfd/sd-tv'));
-			sd.x = FlxG.width - sd.width - (160 + 25);
-			if(!SaveData.data.get("Downscroll"))
-				sd.y = FlxG.height - sd.height - 16;
-			else
-				sd.y = 16;
-			sd.cameras = [camOther];
-			sd.alpha = 0.5;
-			add(sd);
+			if(!SaveData.data.get("Low Quality")) {
+				var sd = new FlxSprite().loadGraphic(Paths.image('backgrounds/gfd/sd-tv'));
+				sd.x = FlxG.width - sd.width - (160 + 25);
+				if(!SaveData.data.get("Downscroll"))
+					sd.y = FlxG.height - sd.height - 16;
+				else
+					sd.y = 16;
+				sd.cameras = [camOther];
+				sd.alpha = 0.5;
+				add(sd);
+			}
 		}
 		
 		hudBuild.cameras = [camHUD];
 		add(hudBuild);
-
-
 
 		moneyCount = new MoneyCounter(0, -70); //shoutout to the day i accidentally deleted this
 		moneyCount.cameras = [camOther];
@@ -430,10 +435,13 @@ class PlayState extends MusicBeatState
 		add(songLogo);
 
 		
-		vgblack = new FlxSprite().loadGraphic(Paths.image("vignette"));
-		vgblack.alpha = 0;
-		vgblack.cameras = [camOther];
-		add(vgblack);
+		if(!SaveData.data.get("Low Quality")) {
+			vgblack = new FlxSprite().loadGraphic(Paths.image("vignette"));
+			vgblack.alpha = 0;
+			vgblack.cameras = [camOther];
+			add(vgblack);
+		}
+
 
 		countdown = new Countdown();
 		countdown.cameras = [camOther];
@@ -481,23 +489,35 @@ class PlayState extends MusicBeatState
 
 		if(isSwapped)
 			noteColors = [boyfriend.noteColor, dad.noteColor];
+
+		var positions:Array<Float> = [strumPos[0] - strumPos[1], strumPos[0] + strumPos[1]];
+		if(daSong == "divergence")
+			positions = [strumPos[0] + strumPos[1], strumPos[0] - strumPos[1]];
 		
-		dadStrumline = new Strumline(strumPos[0] - strumPos[1], (isSwapped ? boyfriend : dad), downscroll, invertedCharacters, !invertedCharacters, assetModifier);
+		dadStrumline = new Strumline(positions[0], (isSwapped ? boyfriend : dad), downscroll, invertedCharacters, !invertedCharacters, assetModifier);
 		dadStrumline.ID = 0;
 		strumlines.add(dadStrumline);
 		
-		bfStrumline = new Strumline(strumPos[0] + strumPos[1], (isSwapped ? dad : boyfriend), downscroll, !invertedCharacters, invertedCharacters, assetModifier);
+		bfStrumline = new Strumline(positions[1], (isSwapped ? dad : boyfriend), downscroll, !invertedCharacters, invertedCharacters, assetModifier);
 		bfStrumline.ID = 1;
 		strumlines.add(bfStrumline);
 
-		var you:FlxSprite = new FlxSprite().loadGraphic(Paths.image("hud/base/you"));
+		var isit:String = "";
+		if(!SaveData.data.get("Downscroll"))
+			isit = "-upscroll";
+
+		var you:FlxSprite = new FlxSprite().loadGraphic(Paths.image("hud/base/you" + isit));
 		you.scale.set(0.35, 0.35);
 		you.updateHitbox();
-		if(isSwapped || invertedCharacters)
+		if((isSwapped || invertedCharacters) && daSong != "divergence")
 			you.x = dadStrumline.x - (you.width/2);
 		else
 			you.x = bfStrumline.x - (you.width/2);
-		you.y = 430;
+
+		if(SaveData.data.get("Downscroll"))
+			you.y = 430;
+		else
+			you.y = 165;
 		you.alpha = 0;
 		you.cameras = [camStrum];
 		add(you);
@@ -524,7 +544,7 @@ class PlayState extends MusicBeatState
 				{
 					FlxTween.tween(you, {alpha: 0}, 0.6, {
 						ease: FlxEase.cubeIn,
-						startDelay: 3.7
+						startDelay: 6.7
 					});
 				}
 			});
@@ -571,8 +591,18 @@ class PlayState extends MusicBeatState
 			camStrum.setFilters([new openfl.filters.ShaderFilter(cast guitar.shader)]);
 			*/
 		}
-		else if(daSong == 'divergence')
-			noteSwap(true);
+		else if(daSong == 'divergence') {
+
+			for (thing in dadStrumline.strumGroup) {
+				thing.alpha = 0.5;
+			}
+	
+			for (thing in dadStrumline.allNotes) {
+				thing.alpha = 0.5;
+			}
+	
+			dadStrumline.noteAlpha = 0.5;
+		}
 		else if(daSong == 'intimidate' || daSong == 'sin' || daSong == 'ripple' ||  daSong == 'convergence' || daSong == 'desertion' || daSong == 'customer-service')
 			dadStrumline.x -= 2000;
 		
@@ -764,225 +794,215 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		var bloomSongs:Array<String> = ["heartpounder"];
+		var echoSongs:Array<String> = ["ripple", "intimidate", "divergence", "divergence-vip"];
+		var chromSongs:Array<String> = ["convergence", "desertion"];
+
 		if(SaveData.data.get("Shaders")) {
-			var animeR = new FlxRuntimeShader('
-			#pragma header
-			vec2 uv = openfl_TextureCoordv.xy;
-			vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-			vec2 iResolution = openfl_TextureSize;
-			uniform float iTime;
-			#define iChannel0 bitmap
-			#define texture flixel_texture2D
-			#define fragColor gl_FragColor
-			#define mainImage main
-			
-			int sampleCount = 50;
-			float blur = 0.25; 
-			float falloff = 3.0; 
-			
-			// use iChannel0 for video, iChannel1 for test grid
-			#define INPUT iChannel0
+			if(bloomSongs.contains(daSong)){
+				var bloomR = new FlxRuntimeShader('
+					#pragma header
 
-			highp float rand(vec2 co)
-			{
-				highp float a = 12.9898;
-				highp float b = 78.233;
-				highp float c = 43758.5453;
-				highp float dt= dot(co.xy ,vec2(a,b));
-				highp float sn= mod(dt,3.14);
-				return fract(sin(sn) * c);
-			}
+					const float amount = 2.0;
 
-			void main()
-			{
-				vec2 uv = fragCoord.xy / iResolution.xy;
-				// Flip Y Axis
-				//uv.y = -uv.y;
-				
-				highp float magnitude = 0.0009;
-				
-				
-				// Set up offset
-				vec2 offsetRedUV = uv;
-				offsetRedUV.x = uv.x + rand(vec2(iTime*0.03,uv.y*0.42)) * 0.001;
-				offsetRedUV.x += sin(rand(vec2(iTime*0.2, uv.y)))*magnitude;
-				
-				vec2 offsetGreenUV = uv;
-				offsetGreenUV.x = uv.x + rand(vec2(iTime*0.004,uv.y*0.002)) * 0.004;
-				offsetGreenUV.x += sin(iTime*9.0)*magnitude;
-				
-				vec2 offsetBlueUV = uv;
-				offsetBlueUV.x = uv.y;
-				offsetBlueUV.x += rand(vec2(cos(iTime*0.01),sin(uv.y)));
-				
-				// Load Texture
-				float r = texture(iChannel0, offsetRedUV).r;
-				float g = texture(iChannel0, offsetGreenUV).g;
-				float b = texture(iChannel0, uv).b;
-				
-				fragColor = vec4(r,g,b,0);
-				
-			}');
-			var bloomR = new FlxRuntimeShader('
-				#pragma header
+					// GAUSSIAN BLUR SETTINGS
+					float dim = 1.8;
+					float Directions = 16.0;
+					float Quality = 8.0;
+					float Size = 8.0;
 
-				const float amount = 2.0;
+					vec2 Radius = Size/openfl_TextureSize.xy;
 
-				// GAUSSIAN BLUR SETTINGS
-				float dim = 1.8;
-				float Directions = 16.0;
-				float Quality = 8.0;
-				float Size = 8.0;
-
-				vec2 Radius = Size/openfl_TextureSize.xy;
-
-				void main(void)
-				{
-					vec2 uv = openfl_TextureCoordv.xy;
-					vec2 pixel  = uv * openfl_TextureSize.xy;
-				float Pi = 6.28318530718; // Pi*2
-				vec4 Color = texture2D(bitmap, uv);
-				for(float d = 0.0; d < Pi; d += Pi / Directions)
-				{
-					for(float i=1.0/Quality; i <= 1.0; i += 1.0 / Quality)
-					{		
-					float ex = (cos(d) * Size * i) / openfl_TextureSize.x;
-					float why = (sin(d) * Size * i) / openfl_TextureSize.y;
-					Color += flixel_texture2D(bitmap, uv + vec2(ex, why));	
+					void main(void)
+					{
+						vec2 uv = openfl_TextureCoordv.xy;
+						vec2 pixel  = uv * openfl_TextureSize.xy;
+					float Pi = 6.28318530718; // Pi*2
+					vec4 Color = texture2D(bitmap, uv);
+					for(float d = 0.0; d < Pi; d += Pi / Directions)
+					{
+						for(float i=1.0/Quality; i <= 1.0; i += 1.0 / Quality)
+						{		
+						float ex = (cos(d) * Size * i) / openfl_TextureSize.x;
+						float why = (sin(d) * Size * i) / openfl_TextureSize.y;
+						Color += flixel_texture2D(bitmap, uv + vec2(ex, why));	
+						}
 					}
-				}
-				Color /= (dim * Quality) * Directions - 15.0;
-				vec4 bloom =  (flixel_texture2D( bitmap, uv) / dim) + Color;
-				gl_FragColor = bloom;
-				}
-			');
-			var chromR = new FlxRuntimeShader('
-			#pragma header
-	
-			void main()
-			{
-				vec4 col1 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
-				vec4 col2 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.0, 0.0));
-				vec4 col3 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
-				vec4 toUse = texture2D(bitmap, openfl_TextureCoordv);
-				toUse.r = col1.r;
-				toUse.g = col2.g;
-				toUse.b = col3.b;
-				//float someshit = col4.r + col4.g + col4.b;
-	
-				gl_FragColor = toUse;
+					Color /= (dim * Quality) * Directions - 15.0;
+					vec4 bloom =  (flixel_texture2D( bitmap, uv) / dim) + Color;
+					gl_FragColor = bloom;
+					}
+				');
+				bloom = new ShaderFilter(bloomR);
 			}
-			');
-			var echoR = new FlxRuntimeShader('
-			#pragma header
-			vec2 uv = openfl_TextureCoordv.xy;
-			vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-			vec2 iResolution = openfl_TextureSize;
-			uniform float iTime;
-			#define iChannel0 bitmap
-			#define texture flixel_texture2D
-			#define fragColor gl_FragColor
-			#define mainImage main
 			
-			int sampleCount = 50;
-			float blur = 0.25; 
-			float falloff = 3.0; 
-			
-			// use iChannel0 for video, iChannel1 for test grid
-			#define INPUT iChannel0
-			
-			void mainImage()
-			{
-				vec2 destCoord = fragCoord.xy / iResolution.xy;
-			
-				vec2 direction = normalize(destCoord - 0.5); 
-				vec2 velocity = direction * blur * pow(length(destCoord - 0.5), falloff);
-				float inverseSampleCount = 1.0 / float(sampleCount); 
-				
-				mat3x2 increments = mat3x2(velocity * 1.0 * inverseSampleCount,
-										   velocity * 2.0 * inverseSampleCount,
-										   velocity * 4.0 * inverseSampleCount);
-			
-				vec3 accumulator = vec3(0);
-				mat3x2 offsets = mat3x2(0); 
-				
-				for (int i = 0; i < sampleCount; i++) {
-					accumulator.r += texture(INPUT, destCoord + offsets[0]).r; 
-					accumulator.g += texture(INPUT, destCoord + offsets[1]).g; 
-					accumulator.b += texture(INPUT, destCoord + offsets[2]).b; 
-					
-					offsets -= increments;
+			if(chromSongs.contains(daSong)) {
+				var chromR = new FlxRuntimeShader('
+				#pragma header
+		
+				void main()
+				{
+					vec4 col1 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
+					vec4 col2 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.0, 0.0));
+					vec4 col3 = texture2D(bitmap, openfl_TextureCoordv.st - vec2(0.002, 0.0));
+					vec4 toUse = texture2D(bitmap, openfl_TextureCoordv);
+					toUse.r = col1.r;
+					toUse.g = col2.g;
+					toUse.b = col3.b;
+					//float someshit = col4.r + col4.g + col4.b;
+		
+					gl_FragColor = toUse;
 				}
-			
-				fragColor = vec4(accumulator / float(sampleCount), 1.0);
+				');
+				chrom = new ShaderFilter(chromR);
 			}
-			');
 
-			bloom = new ShaderFilter(bloomR);
-			anime = new ShaderFilter(animeR);
-			chrom = new ShaderFilter(chromR);
-			echo = new ShaderFilter(echoR);
+			if(echoSongs.contains(daSong)) {
+				var echoR = new FlxRuntimeShader('
+				#pragma header
+				vec2 uv = openfl_TextureCoordv.xy;
+				vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+				vec2 iResolution = openfl_TextureSize;
+				uniform float iTime;
+				#define iChannel0 bitmap
+				#define texture flixel_texture2D
+				#define fragColor gl_FragColor
+				#define mainImage main
+				
+				int sampleCount = 50;
+				float blur = 0.25; 
+				float falloff = 3.0; 
+				
+				// use iChannel0 for video, iChannel1 for test grid
+				#define INPUT iChannel0
+				
+				void mainImage()
+				{
+					vec2 destCoord = fragCoord.xy / iResolution.xy;
+				
+					vec2 direction = normalize(destCoord - 0.5); 
+					vec2 velocity = direction * blur * pow(length(destCoord - 0.5), falloff);
+					float inverseSampleCount = 1.0 / float(sampleCount); 
+					
+					mat3x2 increments = mat3x2(velocity * 1.0 * inverseSampleCount,
+											   velocity * 2.0 * inverseSampleCount,
+											   velocity * 4.0 * inverseSampleCount);
+				
+					vec3 accumulator = vec3(0);
+					mat3x2 offsets = mat3x2(0); 
+					
+					for (int i = 0; i < sampleCount; i++) {
+						accumulator.r += texture(INPUT, destCoord + offsets[0]).r; 
+						accumulator.g += texture(INPUT, destCoord + offsets[1]).g; 
+						accumulator.b += texture(INPUT, destCoord + offsets[2]).b; 
+						
+						offsets -= increments;
+					}
+				
+					fragColor = vec4(accumulator / float(sampleCount), 1.0);
+				}
+				');
+				echo = new ShaderFilter(echoR);
+			}
 		}
 
 		switch(daSong) {
 			case "heartpounder":
 				if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([bloom]);
 			case "customer-service":
-				third.alpha = 0;
-				camHUD.alpha = 0;
-				camStrum.alpha = 0;
-				bellasings = false;
+				if(!SaveData.data.get("Low Quality")) {
+					camHUD.alpha = 0;
+					camStrum.alpha = 0;
+					third.alpha = 0;
+					bellasings = false;
+				}
+				else {
+					bellasings = true;
+				}
 			case "ripple":
+				if(!SaveData.data.get("Low Quality")) {
+					camHUD.alpha = 0;
+				}
 				zoomInOpp = true;
 				zoomOppVal = -0.2;
-				camHUD.alpha = 0;
+
 			case "divergence":
-				camHUD.alpha = 0;
-				camStrum.alpha = 0;
+				if(!SaveData.data.get("Low Quality")) {
+					camHUD.alpha = 0;
+					camStrum.alpha = 0;
+				}
+
 			case "sin":
+				if(!SaveData.data.get("Low Quality")) {
+					dad.alpha = 0;
+					camHUD.alpha = 0;
+					vgblack.alpha = 0.8;
+					FlxG.camera.fade(0xFF000000, 0.01, false);
+					stageBuild.tweenStage(0, 0.01);
+				}
+
 				camTaiko.alpha = 0;
-				dad.alpha = 0;
-				camHUD.alpha = 0;
-				vgblack.alpha = 0.8;
-				FlxG.camera.fade(0xFF000000, 0.01, false);
-				stageBuild.tweenStage(0, 0.01);
+
 			case 'convergence':
-				vgblack.alpha = 0.4;
-				camHUD.alpha = 0;
-				camStrum.alpha = 0;
-				camVg.fade(0x00000000, 0.01, false);
+				if(!SaveData.data.get("Low Quality")) {
+					vgblack.alpha = 0.4;
+					camHUD.alpha = 0;
+					camStrum.alpha = 0;
+					camVg.fade(0x00000000, 0.01, false);
+				}
+
 				if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([chrom]);
 				zoomInOpp = true;
 				zoomOppVal = 0.97 - 0.8;
 			case 'desertion':
-				vgblack.alpha = 0.6;
-				dad.alpha = 0;
-				camHUD.alpha = 0;
-				camVg.fade(0x00000000, 0.01, false);
+				if(!SaveData.data.get("Low Quality")) {
+					vgblack.alpha = 0.6;
+					dad.alpha = 0;
+					camHUD.alpha = 0;
+					camVg.fade(0x00000000, 0.01, false);
+				}
+
 				zoomInOpp = true;
 				zoomOppVal = 0.2;
 			case 'irritation':
+				if(!SaveData.data.get("Low Quality")) {
+					camHUD.alpha = 0;
+					camStrum.alpha = 0;
+					camVg.alpha = 0;
+				}
 				boyfriend.alpha = 0;
-				camHUD.alpha = 0;
-				camStrum.alpha = 0;
-				camVg.alpha = 0;
 			case 'conservation':
+				if(!SaveData.data.get("Low Quality")) {
+					camHUD.alpha = 0;
+					camStrum.alpha = 0;
+					camVg.alpha = 0;
+				}
+
 				boyfriend.alpha = 0;
-				camHUD.alpha = 0;
-				camStrum.alpha = 0;
-				camVg.alpha = 0;
 				zoomInOpp = true;
 				zoomOppVal = 0.06;
 			case 'panic-attack':
-				camHUD.alpha = 0;
-				camStrum.alpha = 0;
+				if(!SaveData.data.get("Low Quality")) {
+					camHUD.alpha = 0;
+					camStrum.alpha = 0;
+					FlxG.camera.fade(0xFF000000, 0.01, false);
+				}
+
 				zoomInOpp = true;
 				zoomOppVal = 0.05;
-				FlxG.camera.fade(0xFF000000, 0.01, false);
+
 			case 'intimidate':
-				dad.alpha = 0;
-				vgblack.alpha = 0.8;
-				FlxG.camera.fade(0xFF000000, 0.01, false);
+				if(!SaveData.data.get("Low Quality")) {
+					dad.alpha = 0;
+					vgblack.alpha = 0.8;
+					FlxG.camera.fade(0xFF000000, 0.01, false);
+				}
+
+			case 'divergence-vip':
+				if(!SaveData.data.get("Low Quality")) {
+					FlxG.camera.fade(0xFF000000, 0.01, false);
+				}
+
 		}
 
 		
@@ -1001,56 +1021,7 @@ class PlayState extends MusicBeatState
 					add(taikoTutorial);
 
 					sinStarted = false;
-				case 'senpai'|'roses':
-					CoolUtil.playMusic('dialogue/lunchbox');
-					startDialogue(DialogueUtil.loadFromSong(SONG.song));
-					
-					if(SONG.song == 'roses')
-						FlxG.sound.play(Paths.sound('dialogue/senpai/roses_sfx'));
-				
-				case 'thorns':
-					CoolUtil.playMusic('dialogue/lunchbox-scary');
-					Paths.preloadSound('sounds/dialogue/senpai/senpai_dies');
-					var red = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFff1b31);
-					red.cameras = [camHUD];
-					red.scrollFactor.set();
-					red.screenCenter();
-					add(red);
-					
-					var spirit = new FlxSprite();
-					spirit.frames = Paths.getSparrowAtlas('cutscenes/thorns/senpaiCrazy');
-					spirit.animation.addByPrefix('dies', 'Senpai Pre Explosion', 24, false);
-					spirit.antialiasing = false;
-					spirit.scale.set(5,5);
-					spirit.updateHitbox();
-					spirit.cameras = [camHUD];
-					spirit.scrollFactor.set();
-					spirit.screenCenter();
-					spirit.x += 80;
-					spirit.y -= 20;
-					add(spirit);
-					
-					spirit.alpha = 0;
-					
-					new FlxTimer().start(0.6, function(tmr:FlxTimer)
-					{
-						spirit.animation.play('dies');
-						FlxTween.tween(spirit, {alpha: 1}, 0.5);
-						FlxTween.tween(spirit, {alpha: 0}, 1.0, {startDelay: 3.2});
-						
-						FlxG.sound.play(Paths.sound('dialogue/senpai/senpai_dies'), 1, false, null, true, function()
-						{
-							CoolUtil.flash(camHUD, 0.6, 0xFFff1b31); 
-							remove(red);
-							remove(spirit);
-							
-							new FlxTimer().start(0.8, function(tmr:FlxTimer)
-							{
-								startDialogue(DialogueUtil.loadFromSong('thorns'));
-							});
-						});
-					});
-					
+
 				default:
 					startCountdown();
 			}
@@ -1155,7 +1126,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('countdown/$soundPath/$soundName'));
 				}
 	
-				//trace(daCount);
+				////trace(daCount);
 
 				countdown.cycle(daCount);
 	
@@ -1188,22 +1159,6 @@ class PlayState extends MusicBeatState
 					startDelay: 1.3
 				});
 			}
-		});
-	}
-	
-	public function startDialogue(dialData:DialogueData)
-	{
-		new FlxTimer().start(0.45, function(tmr:FlxTimer)
-		{
-			var dial = new Dialogue();
-			dial.finishCallback = function() {
-				CoolUtil.playMusic();
-				startCountdown();
-				remove(dial);
-			};
-			dial.cameras = [camHUD];
-			dial.load(dialData);
-			add(dial);
 		});
 	}
 	
@@ -1407,7 +1362,7 @@ class PlayState extends MusicBeatState
 			vocals.volume = 0;
 
 			if(!strumline.isTaiko)
-				FlxG.sound.play(Paths.sound('miss/missnote' + FlxG.random.int(1, 3)), 0.55);
+				FlxG.sound.play(Paths.sound('miss/miss' + FlxG.random.int(1, 3)), 0.55);
 			else
 				FlxG.sound.play(Paths.sound('punch/punch_' + FlxG.random.int(1, 4)), 0.55);
 
@@ -1588,26 +1543,28 @@ class PlayState extends MusicBeatState
 		if(botplay && startedSong)
 			validScore = false;
 
-		if(FlxG.keys.justPressed.ONE) {
-			endSong();
-		}
-		if(FlxG.keys.justPressed.SEVEN)
-		{
-			if(ChartingState.SONG.song != SONG.song)
-				ChartingState.curSection = 0;
-			
-			ChartingState.songDiff = songDiff;
-
-			ChartingState.SONG = SONG;
-			Main.switchState(new ChartingState());
-		}
-		if(FlxG.keys.justPressed.EIGHT)
-		{
-			var char = dad;
-			if(FlxG.keys.pressed.SHIFT)
-				char = boyfriend;
-
-			Main.switchState(new CharacterEditorState(char.curChar));
+		if(SaveData.progression.get("debug")) {
+			if(FlxG.keys.justPressed.ONE) {
+				endSong();
+			}
+			if(FlxG.keys.justPressed.SEVEN)
+			{
+				if(ChartingState.SONG.song != SONG.song)
+					ChartingState.curSection = 0;
+				
+				ChartingState.songDiff = songDiff;
+	
+				ChartingState.SONG = SONG;
+				Main.switchState(new ChartingState());
+			}
+			if(FlxG.keys.justPressed.EIGHT)
+			{
+				var char = dad;
+				if(FlxG.keys.pressed.SHIFT)
+					char = boyfriend;
+	
+				Main.switchState(new CharacterEditorState(char.curChar));
+			}
 		}
 
 		if(sinStarted != null) {
@@ -2304,941 +2261,1171 @@ class PlayState extends MusicBeatState
 		stageBuild.stepHit(curStep);
 		syncSong();
 
-		switch(daSong) {
-			case "nefarious-vip":
-				switch(curStep) {
-					case 1:
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.64;
-					case 128:
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.55;
-						beatSpeed = 1;
-					case 256:
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.62;
-					case 376:
-						FlxG.camera.fade(0xFFFFFFFF, 1, false);
-					case 384:
-						beatSpeed = 4;
-					case 420:
-						FlxG.camera.fade(0xFFFFFFFF, 0.01, true);
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.55;
-						beatSpeed = 1;
-						beatZoom = 0.02;
-					case 548:
-						CoolUtil.flash(camStrum, 0.5);
-					case 676:
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.62;
-					case 932:
-						CoolUtil.flash(camStrum, 0.5); // nef event
-						beatSpeed = 4;
-						conTxt.alpha = 1;
-					case 1176:
-						FlxG.camera.fade(0xFFFFFFFF, 1, false);
-					case 1200:
-						conTxt.alpha = 0;
-					case 1220:
-						FlxG.camera.fade(0xFFFFFFFF, 0.01, true);
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.55;
-						beatSpeed = 1;
-						beatZoom = 0.02;
-					case 1472:
-						CoolUtil.flash(camStrum, 0.5);
-					case 1600:
-						CoolUtil.flash(camStrum, 0.5);
-						beatSpeed = 4;
-						FlxTween.tween(camHUD, {alpha: 0}, 0.8, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 0}, 0.8, {ease: FlxEase.expoOut});
-						
-				}
-			case "heartpounder":
-				switch(curStep) {
-					case 128:
-						CoolUtil.flash(camStrum, 0.5); 
-						defaultCamZoom = 0.64;
-						beatSpeed = 1;
-					case 512:
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.72;
-						beatSpeed = 2;
-					case 768:
-						CoolUtil.flash(camStrum, 0.5); 
-						defaultCamZoom = 0.64;
-						beatSpeed = 1;
-					case 912:
-						defaultCamZoom = 0.75;
-						beatSpeed = 4;
-					case 928:
-						defaultCamZoom = 0.64;
-						beatSpeed = 1;
-					case 976:
-						defaultCamZoom = 0.75;
-						beatSpeed = 2;
-					case 988:
-						beatSpeed = 1;
-						defaultCamZoom = 0.64;
-					case 1280:
-						CoolUtil.flash(camStrum, 0.5);
-						defaultCamZoom = 0.72;
-						beatSpeed = 2;
-					case 1376:
-						beatSpeed = 1;
-						defaultCamZoom = 0.75;
-					case 1408:
-						CoolUtil.flash(camStrum, 0.5); 
-						defaultCamZoom = 0.54;
-						beatSpeed = 1;
-					case 1616:
-						beatSpeed = 2;
-						defaultCamZoom = 0.64;
-					case 1632:
-						defaultCamZoom = 0.70;
-					case 1648:
-						defaultCamZoom = 0.75;
-					case 1664:
-						CoolUtil.flash(camStrum, 0.5); 
-						defaultCamZoom = 0.54;
-						beatSpeed = 4;
-					case 1792:
-						CoolUtil.flash(camStrum, 0.5); 
-						defaultCamZoom = 0.64;
-				}
-			case "customer-service":
-				switch(curStep) {
-					case 128:
-						CoolUtil.flash(camOther, 0.5);
-						FlxTween.tween(camHUD, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
-					case 608:
-						dad.playAnim("ring");
-					case 648:
-						FlxTween.tween(third, {alpha: 1}, Conductor.crochet / 1000, {
-							ease: FlxEase.cubeOut
-						});
-						bellasings = true;
-					case 656:
-						CoolUtil.flash(camOther, 0.5);
-						hudBuild.changeIcon(0, "duo2");
-					case 912:
-						CoolUtil.flash(camOther, 0.5);
-					case 1296:
-						FlxTween.tween(camHUD, {alpha: 0}, 3.5, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 0}, 3.5, {ease: FlxEase.expoOut});
-				}
-			case 'ripple':
-				switch(curStep) {
-					case 128:
-						CoolUtil.flash(camOther, 0.5);
-						camHUD.alpha = 1;
-						defaultCamZoom = 0.7;
-						zoomOppVal = -0.1;
-					case 436:
-						dad.miss(2);
-						boyfriend.miss(3);
-					case 448:
-						bellasings = false;
-					case 512:
-						defaultCamZoom = 0.8;
-					case 528:
-						defaultCamZoom = 0.7;
-					case 560:
-						defaultCamZoom = 0.9;
-					case 576:
-						defaultCamZoom = 0.8;
-					case 592:
-						defaultCamZoom = 0.7;
-					case 624:
-						defaultCamZoom = 0.9;
-					case 640:
-						defaultCamZoom = 0.7;
-					case 648:
-						defaultCamZoom = 0.8;
-					case 656:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.7;
-					case 788:
-						defaultCamZoom = 0.9;
-					case 800:
-						defaultCamZoom = 0.7;
-					case 916:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.9;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
-					case 1172:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.8;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
-					case 1300:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.7;
-						beatSpeed = 1;
-						beatZoom = 0.01;
-					case 1556:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.9;
-						beatSpeed = 4;
-						beatZoom = 0;
-					case 1620:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.8;
-					case 1752:
-						CoolUtil.flash(camOther, 0.5);
-						camHUD.alpha = 0;
-						camStrum.alpha = 0;
-				}
-			case 'sin':
-				switch(curStep) {
-					case 64:
-						FlxG.camera.fade(0x00000000, 1.6, true);
-					case 192:
-						CoolUtil.flash(camOther, 0.5);
-						vgblack.alpha = 0;
-						camHUD.alpha = 1;
-						defaultCamZoom = 0.4;
-						dad.alpha = 1;
-						stageBuild.tweenStage(1, 0.001);
-						beatZoom = 0.01;
-					case 320:
-						defaultCamZoom = 0.5;
-					case 352:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.6;
-						beatSpeed = 1;
-					case 704:
-						defaultCamZoom = 0.7;
-						beatSpeed = 4;
-					case 736:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.5;
-						beatSpeed = 1;
-					case 992:
-						defaultCamZoom = 0.6;
-						beatSpeed = 2;
-					case 1056:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.5;
-						beatSpeed = 1;
-					case 1312: //1312
-						//EYES
-						CoolUtil.flash(camOther, 0.5);
-						FlxG.camera.fade(0x00000000, 0.01, false);
-						beatSpeed = 4;
-						conTxt.alpha = 1;
-						camStrum.alpha = 0;
-					case 1328: //1328
-						//OPEN
-						conTxt.alpha = 0;
-						divTxt.alpha = 1;
-						divTxt.animation.play("idle");
-						camTaiko.alpha = 1;
-						changeStage("sin2");
-						for(strum in taikoStrumline.strumGroup) {
-							FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
+		if(!SaveData.data.get("Low Quality")) {
+			switch(daSong) {
+				case "kaboom":
+					switch(curStep) {
+						case 1:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.64;
+						case 256:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 1;
+							beatZoom = 0.02;
+						case 512:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.6;
+							beatSpeed = 2;
+						case 768:
+							//CoolUtil.flash(camStrum, 0.5);ill
+							defaultCamZoom = 0.65;
+							beatSpeed = 1;
+						case 1024:
+							defaultCamZoom = 0.6;
+							beatSpeed = 4;
+							FlxG.camera.fade(0xFF000000, 1.5, false);
+	
+							dadStrumline.doSplash = false;
+	
+							for (strum in strumlines) {
+								strum.updatePls = true;
+								FlxTween.tween(strum, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+								{
+									strum.updatePls = false;
+								}});
+							}
+	
+							for (thing in dadStrumline.strumGroup) {
+								FlxTween.tween(thing, {alpha: 0}, 1, {ease: FlxEase.circOut});
+							}
+	
+							for (thing in dadStrumline.allNotes) {
+								FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
+							}
+							dadStrumline.noteAlpha = 0.25;
+						case 1088:
+							FlxG.camera.fade(0xFF000000, 0.01, true);
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 2;
+						case 1600:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.65;
+							beatSpeed = 4;
+						case 1792:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 1;
+						case 2048:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.6;
+						case 2304:
+							CoolUtil.flash(camStrum, 0.5);
+							beatSpeed = 4;
+							defaultCamZoom = 0.55;
+						case 2336:
+							FlxG.camera.fade(0xFF000000, 3, false);
+							FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+	
+					}	
+				case "divergence-vip":
+					switch(curStep) {
+						case 64:
+							FlxG.camera.fade(0xFF000000, 1.5, true);
+						case 320:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.64;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.1}, 0.4, {ease: FlxEase.linear});
+						case 424:
+							FlxG.camera.fade(0xFFFFFFFF, 1, false);
+						case 432:
+							dadStrumline.doSplash = false;
+	
+							for (strum in strumlines) {
+								strum.updatePls = true;
+								FlxTween.tween(strum, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+								{
+									strum.updatePls = false;
+								}});
+							}
+	
+							for (thing in dadStrumline.strumGroup) {
+								FlxTween.tween(thing, {alpha: 0}, 1, {ease: FlxEase.circOut});
+							}
+	
+							for (thing in dadStrumline.allNotes) {
+								FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
+							}
+							dadStrumline.noteAlpha = 0.25;
+						case 448:
+							FlxG.camera.fade(0xFFFFFFFF, 0.01, true);
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 1;
+							beatZoom = 0.08;
+	
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.3}, 0.4, {ease: FlxEase.linear});
+						case 576:
+							defaultCamZoom = 0.6;
+							beatSpeed = 2;
+						case 640:
+							beatSpeed = 2;
+							defaultCamZoom = 0.55;
+						case 704:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+						case 816:
+							beatSpeed = 4;
+						case 832:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.64;
+							beatSpeed = 2;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3}, 0.4, {ease: FlxEase.linear});
+						case 960:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.3}, 0.4, {ease: FlxEase.linear});
+						case 1280:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.65;
+							beatSpeed = 1;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.6}, 0.4, {ease: FlxEase.linear});
+						case 1408:
+							defaultCamZoom = 0.55;
+							beatSpeed = 2;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.1}, 0.4, {ease: FlxEase.linear});
+						case 1472: 
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.65;
+							beatSpeed = 1;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.6}, 0.4, {ease: FlxEase.linear});
+						case 1608:
+							defaultCamZoom = 0.55;
+							beatSpeed = 2;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.1}, 0.4, {ease: FlxEase.linear});
+						case 1728:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.6;
+							beatSpeed = 4;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 2.7}, 0.4, {ease: FlxEase.linear});
+						case 1983:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 2;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.3}, 0.4, {ease: FlxEase.linear});
+						case 2272:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.62;
+							conTxt.alpha = 1;
+						case 2560:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							conTxt.alpha = 0;
+							beatSpeed = 4;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.5}, 0.4, {ease: FlxEase.linear});
+						case 2944:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.65;
+							beatSpeed = 1;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.7}, 0.4, {ease: FlxEase.linear});
+							if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
+						case 3488:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.69;
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.9}, 0.4, {ease: FlxEase.linear});
+						case 3584:
+							CoolUtil.flash(camStrum, 0.5);
+							beatSpeed = 4;
+							defaultCamZoom = 0.6;
+							FlxG.camera.fade(0xFF000000, 0.1, false);
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.1}, 0.4, {ease: FlxEase.linear});
+							if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
+						case 3648:
+							FlxG.camera.fade(0xFF000000, 1.5, true);
+						case 3904:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							FlxG.camera.fade(0xFF000000, 3, false);
+					}
+				case "nefarious-vip":
+					switch(curStep) {
+						case 1:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.64;
+						case 128:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 1;
+						case 256:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.62;
+						case 376:
+							FlxG.camera.fade(0xFFFFFFFF, 1, false);
+						case 384:
+							beatSpeed = 4;
+						case 420:
+							FlxG.camera.fade(0xFFFFFFFF, 0.01, true);
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 1;
+							beatZoom = 0.02;
+						case 548:
+							CoolUtil.flash(camStrum, 0.5);
+						case 676:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.62;
+						case 932:
+							CoolUtil.flash(camStrum, 0.5); // nef event
+							beatSpeed = 4;
+							conTxt.alpha = 1;
+						case 1176:
+							FlxG.camera.fade(0xFFFFFFFF, 1, false);
+						case 1200:
+							conTxt.alpha = 0;
+						case 1220:
+							FlxG.camera.fade(0xFFFFFFFF, 0.01, true);
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatSpeed = 1;
+							beatZoom = 0.02;
+						case 1472:
+							CoolUtil.flash(camStrum, 0.5);
+						case 1600:
+							CoolUtil.flash(camStrum, 0.5);
+							beatSpeed = 4;
+							FlxTween.tween(camHUD, {alpha: 0}, 0.8, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 0}, 0.8, {ease: FlxEase.expoOut});
+							
+					}
+				case "heartpounder":
+					switch(curStep) {
+						case 128:
+							CoolUtil.flash(camStrum, 0.5); 
+							defaultCamZoom = 0.64;
+							beatSpeed = 1;
+						case 512:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.72;
+							beatSpeed = 2;
+						case 768:
+							CoolUtil.flash(camStrum, 0.5); 
+							defaultCamZoom = 0.64;
+							beatSpeed = 1;
+						case 912:
+							defaultCamZoom = 0.75;
+							beatSpeed = 4;
+						case 928:
+							defaultCamZoom = 0.64;
+							beatSpeed = 1;
+						case 976:
+							defaultCamZoom = 0.75;
+							beatSpeed = 2;
+						case 988:
+							beatSpeed = 1;
+							defaultCamZoom = 0.64;
+						case 1280:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.72;
+							beatSpeed = 2;
+						case 1376:
+							beatSpeed = 1;
+							defaultCamZoom = 0.75;
+						case 1408:
+							CoolUtil.flash(camStrum, 0.5); 
+							defaultCamZoom = 0.54;
+							beatSpeed = 1;
+						case 1616:
+							beatSpeed = 2;
+							defaultCamZoom = 0.64;
+						case 1632:
+							defaultCamZoom = 0.70;
+						case 1648:
+							defaultCamZoom = 0.75;
+						case 1664:
+							CoolUtil.flash(camStrum, 0.5); 
+							defaultCamZoom = 0.54;
+							beatSpeed = 4;
+						case 1792:
+							CoolUtil.flash(camStrum, 0.5); 
+							defaultCamZoom = 0.64;
+					}
+				case "customer-service":
+					switch(curStep) {
+						case 128:
+							CoolUtil.flash(camOther, 0.5);
+							FlxTween.tween(camHUD, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
+						case 608:
+							dad.playAnim("ring");
+						case 648:
+							FlxTween.tween(third, {alpha: 1}, Conductor.crochet / 1000, {
 								ease: FlxEase.cubeOut
 							});
-						}
-					case 1344: //1344
-						//taiko start
-						CoolUtil.flash(camOther, 0.5);
-						FlxG.camera.fade(0x00000000, 0.01, true);
-						beatSpeed = 1;
-						divTxt.alpha = 0;
-
-					case 1856:
-						beatSpeed = 4;
-						CoolUtil.flash(camOther, 0.5);
-						changeStage("sin");
-						camTaiko.alpha = 0;
-						camStrum.alpha = 1;
-						defaultCamZoom = 0.4;
-					case 1888: 
-						CoolUtil.flash(camOther, 0.5);
-						beatSpeed = 1;
-						defaultCamZoom = 0.4;
-					case 1892: //1892
-						//fall - lich
-						FlxTween.tween(stageBuild.objectMap.get("city"), {y: stageBuild.objectMap.get("city").y + 2000}, 3, {
-							ease: FlxEase.cubeInOut,
-							startDelay: 0
-						});
-
-						FlxTween.tween(stageBuild.objectMap.get("island"), {y: stageBuild.objectMap.get("island").y + 2000}, 2.7, {
-							ease: FlxEase.cubeInOut,
-							startDelay: 0.3
-						});
-
-						FlxTween.tween(stageBuild.objectMap.get("island-2"), {y: stageBuild.objectMap.get("island-2").y + 2000}, 2.6, {
-							ease: FlxEase.cubeInOut,
-							startDelay: 0.5
-						});
-
-					case 2144:
-						defaultCamZoom = 0.6;
-					case 2400: 
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.5;
-						beatSpeed = 4;
-					case 2528:
-						FlxG.camera.fade(0x00000000, 1, false);
-						defaultCamZoom = 0.5;
-
-				}
-			case 'intimidate':
-				switch(curStep) {
-					case 1:
-						FlxG.camera.fade(0x00000000, 1.6, true);
-					case 16:
-						defaultCamZoom = 0.67;
-					case 272:
-						defaultCamZoom = 0.72;
-						CoolUtil.flash(camOther, 0.5);
-					case 446:
-						defaultCamZoom = 0.8;
-					case 464:
-						defaultCamZoom = 0.72;
-						CoolUtil.flash(camOther, 0.5);
-					case 656: //656
-						defaultCamZoom = 0.6;
-						CoolUtil.flash(camOther, 0.5);
-						beatSpeed = 1;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
-					case 912:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.7;
-						beatSpeed = 4;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
-					case 928:
-						defaultCamZoom = 0.8;
-					case 944:
-						defaultCamZoom = 0.72;
-						CoolUtil.flash(camOther, 0.5);
-					case 1200:
-						FlxG.camera.fade(0x00000000, 1.6, false);
-					case 1264: // 1264
-						CoolUtil.flash(camOther, 0.5);
-						FlxG.camera.fade(0x00000000, 0.01, true);
-						changeChar(boyfriend, "bex-1e");
-						dad.alpha = 1;
-						changeStage("divergence-e");
-						cameraSpeed = 500;
-						beatSpeed = 2;
-						vhs.alpha = 0.5;
-						vgblack.alpha = 0.4;
-					case 1265:
-						cameraSpeed = 1;
-					case 1392: //1392
-						CoolUtil.flash(camOther, 0.5);
-						changeChar(boyfriend, "bex-2e");
-						changeChar(dad, "bree-2e");
-						changeStage("panic-attack-e");
-						cameraSpeed = 500;
-						beatSpeed = 1;
-					case 1393:
-						cameraSpeed = 1;
-					case 1648:
-						beatSpeed = 2;
-						defaultCamZoom = 0.8;
-					case 1680: //1680
-						CoolUtil.flash(camOther, 0.5);
-						changeChar(boyfriend, "bex-e");
-						beatSpeed = 4;
-						dad.alpha = 0;
-						vhs.alpha = 0;
-						boyfriend.alpha = 0;
-						changeStage("wake");
-						stageBuild.objectMap.get("bex").animation.play("wake");
-						//end
-					case 1704:
-						FlxTween.tween(camHUD, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
-						FlxG.camera.fade(0x00000000, 1.6, false);
-				}
-			case 'conservation':
-				switch(curStep) {
-					case 128:
-						FlxTween.tween(camHUD, {alpha: 1}, 6, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 1}, 6, {ease: FlxEase.expoOut});
-						defaultCamZoom = 0.63;
-					case 384:
-						defaultCamZoom = 0.7;
-					case 416:
-						beatSpeed = 1;
-					case 512:
-						defaultCamZoom = 0.63;
-						beatSpeed = 2;
-					case 640:
-						beatSpeed = 1;
-					case 768:
-						beatSpeed = 2;
-					case 800:
-						beatSpeed = 1;
-					case 1024:
-						beatSpeed = 4;
-					case 1040:
-						FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 0}, 3, {ease: FlxEase.expoOut});
-				}
-			case 'irritation':
-				switch(curStep) {
-					case 1:
-						CoolUtil.flash(camGame, 0.5);
-						defaultCamZoom = 0.7;
-						FlxTween.tween(camHUD, {alpha: 1}, 3, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 1}, 3, {ease: FlxEase.expoOut});
-					case 128:
-						beatSpeed = 1;
-					case 256:
-						CoolUtil.flash(camOther, 0.5);
-						bleh = 80;
-						defaultCamZoom = 0.65;
-					case 512:
-						CoolUtil.flash(camOther, 0.5);
-						bleh = 60;
-						defaultCamZoom = 0.75;
-					case 640:
-						bleh = 50;
-						defaultCamZoom = 0.8;
-					case 768:
-						CoolUtil.flash(camOther, 0.5);
-						beatSpeed = 2;
-						bleh = 80;
-						defaultCamZoom = 0.65;
-					case 896:
-						CoolUtil.flash(camOther, 0.5);
-						bleh = 60;
-						defaultCamZoom = 0.75;
-						beatSpeed = 1;
-					case 1024:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.65;
-						bleh = 80;
-					case 1152:
-						CoolUtil.flash(camOther, 0.5);
-						beatSpeed = 2;
-						defaultCamZoom = 0.6;
-						bleh = 90;
-					case 1184:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.8;
-						bleh = 50;
-					case 1312:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.85;
-						bleh = 40;
-					case 1440:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.75;
-						bleh = 60;
-					case 1568:
-						defaultCamZoom = 0.7;
-					case 1696:
-						CoolUtil.flash(camOther, 0.5);
-						defaultCamZoom = 0.6;
-						bleh = 90;
-						FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 0}, 3, {ease: FlxEase.expoOut});
-				}
-			case 'divergence':
-				switch(curStep) {
-					case 1:
-						CoolUtil.flash(camTaiko, 20);
-						camHUD.alpha = 1;
-						camStrum.alpha = 1;
-					//case 8:
-					//	noteSwap(true);
-					case 256:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.7;
-					case 384:
-						beatSpeed = 1;
-						beatZoom = 0.01;
-						defaultCamZoom = 0.76;
-					case 512:
-						beatSpeed = 2;
-						defaultCamZoom = 0.66;
-					case 608:
-						beatSpeed = 1;
-						defaultCamZoom = 0.7;
-					case 640:
-						FlxG.camera.fade(0x00000000, 0.17, false);
-					case 644:
-						FlxTween.tween(divTxt, {alpha: 1}, 0.3, {ease: FlxEase.expoOut});
-					case 656:
-						FlxG.camera.fade(0x00000000, 0.05, true);
-						divTxt.alpha = 0;
-						CoolUtil.flash(camOther, 1);
-						defaultCamZoom = 0.76;
-						beatZoom = 0.02;
-					case 912:
-						defaultCamZoom = 0.63;
-						beatSpeed = 4;
-					case 928: 
-						beatSpeed = 1;
-						defaultCamZoom = 0.76;
-					case 1184:
-						FlxG.camera.fade(0x00000000, 0.33, false);
-						beatSpeed = 4;
-					case 1312:
-						FlxG.camera.fade(0x00000000, 1.3, true);
-					case 1440:
-						dadStrumline.doSplash = false;
-
-						for (strum in strumlines) {
-							strum.updatePls = true;
-							FlxTween.tween(strum, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+							bellasings = true;
+						case 656:
+							CoolUtil.flash(camOther, 0.5);
+							hudBuild.changeIcon(0, "duo2");
+						case 912:
+							CoolUtil.flash(camOther, 0.5);
+						case 1296:
+							FlxTween.tween(camHUD, {alpha: 0}, 3.5, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 0}, 3.5, {ease: FlxEase.expoOut});
+					}
+				case 'ripple':
+					switch(curStep) {
+						case 128:
+							CoolUtil.flash(camOther, 0.5);
+							camHUD.alpha = 1;
+							defaultCamZoom = 0.7;
+							zoomOppVal = -0.1;
+						case 436:
+							dad.miss(2);
+							boyfriend.miss(3);
+						case 448:
+							bellasings = false;
+						case 512:
+							defaultCamZoom = 0.8;
+						case 528:
+							defaultCamZoom = 0.7;
+						case 560:
+							defaultCamZoom = 0.9;
+						case 576:
+							defaultCamZoom = 0.8;
+						case 592:
+							defaultCamZoom = 0.7;
+						case 624:
+							defaultCamZoom = 0.9;
+						case 640:
+							defaultCamZoom = 0.7;
+						case 648:
+							defaultCamZoom = 0.8;
+						case 656:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.7;
+						case 788:
+							defaultCamZoom = 0.9;
+						case 800:
+							defaultCamZoom = 0.7;
+						case 916:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.9;
+							if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
+						case 1172:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.8;
+							if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
+						case 1300:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.7;
+							beatSpeed = 1;
+							beatZoom = 0.01;
+						case 1556:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.9;
+							beatSpeed = 4;
+							beatZoom = 0;
+						case 1620:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.8;
+						case 1752:
+							CoolUtil.flash(camOther, 0.5);
+							camHUD.alpha = 0;
+							camStrum.alpha = 0;
+					}
+				case 'sin':
+					switch(curStep) {
+						case 64:
+							FlxG.camera.fade(0x00000000, 1.6, true);
+						case 192:
+							CoolUtil.flash(camOther, 0.5);
+							vgblack.alpha = 0;
+							camHUD.alpha = 1;
+							defaultCamZoom = 0.4;
+							dad.alpha = 1;
+							stageBuild.tweenStage(1, 0.001);
+							beatZoom = 0.01;
+						case 320:
+							defaultCamZoom = 0.5;
+						case 352:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.6;
+							beatSpeed = 1;
+						case 704:
+							defaultCamZoom = 0.7;
+							beatSpeed = 4;
+						case 736:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.5;
+							beatSpeed = 1;
+						case 992:
+							defaultCamZoom = 0.6;
+							beatSpeed = 2;
+						case 1056:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.5;
+							beatSpeed = 1;
+						case 1312: //1312
+							//EYES
+							CoolUtil.flash(camOther, 0.5);
+							FlxG.camera.fade(0x00000000, 0.01, false);
+							beatSpeed = 4;
+							conTxt.alpha = 1;
+							camStrum.alpha = 0;
+						case 1328: //1328
+							//OPEN
+							conTxt.alpha = 0;
+							divTxt.alpha = 1;
+							divTxt.animation.play("idle");
+							camTaiko.alpha = 1;
+							changeStage("sin2");
+							for(strum in taikoStrumline.strumGroup) {
+								FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeOut
+								});
+							}
+						case 1344: //1344
+							//taiko start
+							CoolUtil.flash(camOther, 0.5);
+							FlxG.camera.fade(0x00000000, 0.01, true);
+							beatSpeed = 1;
+							divTxt.alpha = 0;
+	
+						case 1856:
+							beatSpeed = 4;
+							CoolUtil.flash(camOther, 0.5);
+							changeStage("sin");
+							camTaiko.alpha = 0;
+							camStrum.alpha = 1;
+							defaultCamZoom = 0.4;
+						case 1888: 
+							CoolUtil.flash(camOther, 0.5);
+							beatSpeed = 1;
+							defaultCamZoom = 0.4;
+						case 1892: //1892
+							//fall - lich
+							FlxTween.tween(stageBuild.objectMap.get("city"), {y: stageBuild.objectMap.get("city").y + 2000}, 3, {
+								ease: FlxEase.cubeInOut,
+								startDelay: 0
+							});
+	
+							FlxTween.tween(stageBuild.objectMap.get("island"), {y: stageBuild.objectMap.get("island").y + 2000}, 2.7, {
+								ease: FlxEase.cubeInOut,
+								startDelay: 0.3
+							});
+	
+							FlxTween.tween(stageBuild.objectMap.get("island-2"), {y: stageBuild.objectMap.get("island-2").y + 2000}, 2.6, {
+								ease: FlxEase.cubeInOut,
+								startDelay: 0.5
+							});
+	
+						case 2144:
+							defaultCamZoom = 0.6;
+						case 2400: 
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.5;
+							beatSpeed = 4;
+						case 2528:
+							FlxG.camera.fade(0x00000000, 1, false);
+							defaultCamZoom = 0.5;
+	
+					}
+				case 'intimidate':
+					switch(curStep) {
+						case 1:
+							FlxG.camera.fade(0x00000000, 1.6, true);
+						case 16:
+							defaultCamZoom = 0.67;
+						case 272:
+							defaultCamZoom = 0.72;
+							CoolUtil.flash(camOther, 0.5);
+						case 446:
+							defaultCamZoom = 0.8;
+						case 464:
+							defaultCamZoom = 0.72;
+							CoolUtil.flash(camOther, 0.5);
+						case 656: //656
+							defaultCamZoom = 0.6;
+							CoolUtil.flash(camOther, 0.5);
+							beatSpeed = 1;
+							if(SaveData.data.get("Shaders"))
+								FlxG.camera.setFilters([echo]);
+						case 912:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.7;
+							beatSpeed = 4;
+							if(SaveData.data.get("Shaders"))
+								FlxG.camera.setFilters([]);
+						case 928:
+							defaultCamZoom = 0.8;
+						case 944:
+							defaultCamZoom = 0.72;
+							CoolUtil.flash(camOther, 0.5);
+						case 1200:
+							FlxG.camera.fade(0x00000000, 1.6, false);
+						case 1264: // 1264
+							CoolUtil.flash(camOther, 0.5);
+							FlxG.camera.fade(0x00000000, 0.01, true);
+							changeChar(boyfriend, "bex-1e");
+							dad.alpha = 1;
+							changeStage("divergence-e");
+							cameraSpeed = 500;
+							beatSpeed = 2;
+							vhs.alpha = 0.5;
+							vgblack.alpha = 0.4;
+						case 1265:
+							cameraSpeed = 1;
+						case 1392: //1392
+							CoolUtil.flash(camOther, 0.5);
+							changeChar(boyfriend, "bex-2e");
+							changeChar(dad, "bree-2e");
+							changeStage("panic-attack-e");
+							cameraSpeed = 500;
+							beatSpeed = 1;
+						case 1393:
+							cameraSpeed = 1;
+						case 1648:
+							beatSpeed = 2;
+							defaultCamZoom = 0.8;
+						case 1680: //1680
+							CoolUtil.flash(camOther, 0.5);
+							changeChar(boyfriend, "bex-e");
+							beatSpeed = 4;
+							dad.alpha = 0;
+							vhs.alpha = 0;
+							boyfriend.alpha = 0;
+							changeStage("wake");
+							stageBuild.objectMap.get("bex").animation.play("wake");
+							//end
+						case 1704:
+							FlxTween.tween(camHUD, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 1}, 1.6, {ease: FlxEase.expoOut});
+							FlxG.camera.fade(0x00000000, 1.6, false);
+					}
+				case 'conservation':
+					switch(curStep) {
+						case 128:
+							FlxTween.tween(camHUD, {alpha: 1}, 6, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 1}, 6, {ease: FlxEase.expoOut});
+							defaultCamZoom = 0.63;
+						case 384:
+							defaultCamZoom = 0.7;
+						case 416:
+							beatSpeed = 1;
+						case 512:
+							defaultCamZoom = 0.63;
+							beatSpeed = 2;
+						case 640:
+							beatSpeed = 1;
+						case 768:
+							beatSpeed = 2;
+						case 800:
+							beatSpeed = 1;
+						case 1024:
+							beatSpeed = 4;
+						case 1040:
+							FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+					}
+				case 'irritation':
+					switch(curStep) {
+						case 1:
+							CoolUtil.flash(camGame, 0.5);
+							defaultCamZoom = 0.7;
+							FlxTween.tween(camHUD, {alpha: 1}, 3, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 1}, 3, {ease: FlxEase.expoOut});
+						case 128:
+							beatSpeed = 1;
+						case 256:
+							CoolUtil.flash(camOther, 0.5);
+							bleh = 80;
+							defaultCamZoom = 0.65;
+						case 512:
+							CoolUtil.flash(camOther, 0.5);
+							bleh = 60;
+							defaultCamZoom = 0.75;
+						case 640:
+							bleh = 50;
+							defaultCamZoom = 0.8;
+						case 768:
+							CoolUtil.flash(camOther, 0.5);
+							beatSpeed = 2;
+							bleh = 80;
+							defaultCamZoom = 0.65;
+						case 896:
+							CoolUtil.flash(camOther, 0.5);
+							bleh = 60;
+							defaultCamZoom = 0.75;
+							beatSpeed = 1;
+						case 1024:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.65;
+							bleh = 80;
+						case 1152:
+							CoolUtil.flash(camOther, 0.5);
+							beatSpeed = 2;
+							defaultCamZoom = 0.6;
+							bleh = 90;
+						case 1184:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.8;
+							bleh = 50;
+						case 1312:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.85;
+							bleh = 40;
+						case 1440:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.75;
+							bleh = 60;
+						case 1568:
+							defaultCamZoom = 0.7;
+						case 1696:
+							CoolUtil.flash(camOther, 0.5);
+							defaultCamZoom = 0.6;
+							bleh = 90;
+							FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+					}
+				case 'divergence':
+					switch(curStep) {
+						case 1:
+							CoolUtil.flash(camTaiko, 20);
+							camHUD.alpha = 1;
+							camStrum.alpha = 1;
+						//case 8:
+						//	noteSwap(true);
+						case 256:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.7;
+						case 384:
+							beatSpeed = 1;
+							beatZoom = 0.01;
+							defaultCamZoom = 0.76;
+						case 512:
+							beatSpeed = 2;
+							defaultCamZoom = 0.66;
+						case 608:
+							beatSpeed = 1;
+							defaultCamZoom = 0.7;
+						case 640:
+							FlxG.camera.fade(0x00000000, 0.17, false);
+						case 644:
+							FlxTween.tween(divTxt, {alpha: 1}, 0.3, {ease: FlxEase.expoOut});
+						case 656:
+							FlxG.camera.fade(0x00000000, 0.05, true);
+							divTxt.alpha = 0;
+							CoolUtil.flash(camOther, 1);
+							defaultCamZoom = 0.76;
+							beatZoom = 0.02;
+						case 912:
+							defaultCamZoom = 0.63;
+							beatSpeed = 4;
+						case 928: 
+							beatSpeed = 1;
+							defaultCamZoom = 0.76;
+						case 1184:
+							FlxG.camera.fade(0x00000000, 0.33, false);
+							beatSpeed = 4;
+						case 1312:
+							FlxG.camera.fade(0x00000000, 1.3, true);
+						case 1440:
+							dadStrumline.doSplash = false;
+	
+							for (strum in strumlines) {
+								strum.updatePls = true;
+								FlxTween.tween(strum, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+								{
+									strum.updatePls = false;
+								}});
+							}
+	
+							for (thing in dadStrumline.strumGroup) {
+								FlxTween.tween(thing, {alpha: 0}, 1, {ease: FlxEase.circOut});
+							}
+	
+							for (thing in dadStrumline.allNotes) {
+								FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
+							}
+							dadStrumline.noteAlpha = 0.25;
+							FlxG.camera.fade(0x00000000, 0.17, false);
+							//glitch
+						case 1472:
+							FlxG.camera.fade(0x00000000, 0.001, true);
+							CoolUtil.flash(camOther, 1);
+							if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
+							changeChar(dad, "bella-1alt");
+							beatSpeed = 2;
+						case 1600:
+							CoolUtil.flash(camOther, 1);
+							defaultCamZoom = 0.63;
+							beatSpeed = 1;
+						case 1712:
+							beatSpeed = 4;
+							defaultCamZoom = 0.8;
+						case 1728:
+							defaultCamZoom = 0.7;
+							beatSpeed = 1;
+							if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
+							CoolUtil.flash(camOther, 1);
+						case 2240:
+							defaultCamZoom = 0.6;
+							beatSpeed = 4;
+							beatZoom = 0;
+							focusMiddle = true;
+						case 2635:
+							FlxG.camera.fade(0x00000000, 0.33, false);
+					}
+				case 'nefarious':
+					switch(curStep) {
+						case 64:
+							defaultCamZoom = 0.65;
+						case 128:
+							beatSpeed = 2;
+							beatZoom = 0.01;
+						case 256:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.7;
+							beatSpeed = 1;
+						case 496:
+							defaultCamZoom = 0.8;
+							beatSpeed = 4;
+						case 512:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.65;
+							beatSpeed = 2;
+						case 1024:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.75;
+							beatSpeed = 4;
+						case 1152:
+							beatSpeed = 2;
+						case 1216:
+							beatSpeed = 1;
+						case 1280:
+							beatSpeed = 4;
+							defaultCamZoom = 0.8;
+						case 1296:
+							defaultCamZoom = 0.85;
+						case 1312:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.7;
+							beatSpeed = 1;
+							changeChar(boyfriend, "bex-1alt");
+							for (strum in strumlines)
+								FlxTween.tween(strum, {scrollSpeed: 3.3}, 0.4, {ease: FlxEase.linear});
+						case 1696:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.6;
+							beatSpeed = 4;
+							focusMiddle = true;
+					}
+				case 'euphoria':
+					switch (curStep) {
+						case 2:
+							defaultCamZoom = 0.65;
+						case 128:
+							beatSpeed = 1;
+						case 224:
+							beatSpeed = 4;
+							defaultCamZoom = 0.7;
+						case 256:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.6;
+							beatSpeed = 1;
+							beatZoom = 0.01;
+						case 512:
+							defaultCamZoom = 0.7;
+						case 640:
+							defaultCamZoom = 0.76;
+							beatSpeed = 4;
+						case 656:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.6;
+							beatSpeed = 1;
+						case 784:
+							defaultCamZoom = 0.65;
+						case 912: //fade vignette? -912
+							FlxTween.tween(vgblack, {alpha: 0.3}, 0.7, {ease: FlxEase.sineInOut});
+							defaultCamZoom = 0.76;
+							beatSpeed = 4;
+						case 1040:
+							beatSpeed = 2;
+						case 1168:
+							beatSpeed = 4;
+							defaultCamZoom = 0.8;
+						case 1184:
+							defaultCamZoom = 0.85;
+						case 1200:
+							FlxTween.tween(vgblack, {alpha: 0}, 0.7, {ease: FlxEase.sineInOut});
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.6;
+							beatSpeed = 1;
+						case 1456:
+							defaultCamZoom = 0.67;
+						case 1464:
+							defaultCamZoom = 0.73;
+						case 1472:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.6;
+							beatSpeed = 4;
+							focusMiddle = true;
+	
+					}
+				case 'desertion':
+					switch(curStep) {
+						case 1:
+							camVg.fade(0x00000000, 1, true);
+							
+						case 16:
+							CoolUtil.flash(camOther);
+						case 144:
+							defaultCamZoom = 0.65;
+						case 176:
+							defaultCamZoom = 0.7;
+						case 208:
+							defaultCamZoom = 0.75;
+						case 240:
+							defaultCamZoom = 0.8;
+						case 272:
+							defaultCamZoom = 0.6;
+							camHUD.alpha = 1;
+							dad.alpha = 1;
+							beatSpeed = 2;
+							beatZoom = 0.02;
+							CoolUtil.flash(camOther);
+							startLogo();
+						case 400:
+							defaultCamZoom = 0.72;
+							beatSpeed = 1;
+							CoolUtil.flash(camOther);
+						case 576:
+							beatSpeed = 4;
+							defaultCamZoom = 0.78;
+						case 592:
+							beatSpeed = 1;
+							defaultCamZoom = 0.72;
+						case 624:
+							beatSpeed = 4;
+							defaultCamZoom = 0.78;
+						case 656:
+							beatSpeed = 2;
+							defaultCamZoom = 0.75;
+						case 784:
+							beatSpeed = 1;
+						case 912:
+							beatSpeed = 4;
+							defaultCamZoom = 0.72;
+						case 928:
+							beatSpeed = 4;
+							defaultCamZoom = 0.63;
+							CoolUtil.flash(camOther);
+						case 1056:
+							beatSpeed = 2;
+							defaultCamZoom = 0.69;
+							CoolUtil.flash(camOther);
+						case 1184:
+							beatSpeed = 4;
+							defaultCamZoom = 0.60;
+						case 1200:
+							defaultCamZoom = 0.72;
+							beatSpeed = 1;
+							CoolUtil.flash(camOther);
+						case 1456:
+							defaultCamZoom = 0.6;
+							beatSpeed = 2;
+							CoolUtil.flash(camOther);
+						case 1648:
+							beatSpeed = 1;
+						case 1712: //1712
+							FlxTween.tween(camHUD, {alpha: 0}, 0.7, {ease: FlxEase.sineInOut});
+							FlxTween.tween(camStrum, {alpha: 0}, 0.7, {ease: FlxEase.sineInOut});
+							beatSpeed = 4;
+							powerUp(true);
+						case 1740:
+							bfStrumline.updatePls = true;
+							FlxTween.tween(bfStrumline, {x: strumPos[0]}, 0.01, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
 							{
-								strum.updatePls = false;
+								bfStrumline.updatePls = false;
 							}});
-						}
-
-						for (thing in dadStrumline.strumGroup) {
-							FlxTween.tween(thing, {alpha: 0}, 1, {ease: FlxEase.circOut});
-						}
-
-						for (thing in dadStrumline.allNotes) {
-							FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
-						}
-						dadStrumline.noteAlpha = 0.25;
-						FlxG.camera.fade(0x00000000, 0.17, false);
-						//glitch
-					case 1472:
-						FlxG.camera.fade(0x00000000, 0.001, true);
-						CoolUtil.flash(camOther, 1);
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([echo]);
-						changeChar(dad, "bella-1alt");
-						beatSpeed = 2;
-					case 1600:
-						CoolUtil.flash(camOther, 1);
-						defaultCamZoom = 0.63;
-						beatSpeed = 1;
-					case 1712:
-						beatSpeed = 4;
-						defaultCamZoom = 0.8;
-					case 1728:
-						defaultCamZoom = 0.7;
-						beatSpeed = 1;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([]);
-						CoolUtil.flash(camOther, 1);
-					case 2240:
-						defaultCamZoom = 0.6;
-						beatSpeed = 4;
-						beatZoom = 0;
-						focusMiddle = true;
-					case 2635:
-						FlxG.camera.fade(0x00000000, 0.33, false);
-				}
-			case 'nefarious':
-				switch(curStep) {
-					case 64:
-						defaultCamZoom = 0.65;
-					case 128:
-						beatSpeed = 2;
-						beatZoom = 0.01;
-					case 256:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.7;
-						beatSpeed = 1;
-					case 496:
-						defaultCamZoom = 0.8;
-						beatSpeed = 4;
-					case 512:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.65;
-						beatSpeed = 2;
-					case 1024:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.75;
-						beatSpeed = 4;
-					case 1152:
-						beatSpeed = 2;
-					case 1216:
-						beatSpeed = 1;
-					case 1280:
-						beatSpeed = 4;
-						defaultCamZoom = 0.8;
-					case 1296:
-						defaultCamZoom = 0.85;
-					case 1312:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.7;
-						beatSpeed = 1;
-						changeChar(boyfriend, "bex-1alt");
-						for (strum in strumlines)
-							FlxTween.tween(strum, {scrollSpeed: 3.3}, 0.4, {ease: FlxEase.linear});
-					case 1696:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.6;
-						beatSpeed = 4;
-						focusMiddle = true;
-				}
-			case 'euphoria':
-				switch (curStep) {
-					case 2:
-						defaultCamZoom = 0.65;
-					case 128:
-						beatSpeed = 1;
-					case 224:
-						beatSpeed = 4;
-						defaultCamZoom = 0.7;
-					case 256:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.6;
-						beatSpeed = 1;
-						beatZoom = 0.01;
-					case 512:
-						defaultCamZoom = 0.7;
-					case 640:
-						defaultCamZoom = 0.76;
-						beatSpeed = 4;
-					case 656:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.6;
-						beatSpeed = 1;
-					case 784:
-						defaultCamZoom = 0.65;
-					case 912: //fade vignette? -912
-						FlxTween.tween(vgblack, {alpha: 0.3}, 0.7, {ease: FlxEase.sineInOut});
-						defaultCamZoom = 0.76;
-						beatSpeed = 4;
-					case 1040:
-						beatSpeed = 2;
-					case 1168:
-						beatSpeed = 4;
-						defaultCamZoom = 0.8;
-					case 1184:
-						defaultCamZoom = 0.85;
-					case 1200:
-						FlxTween.tween(vgblack, {alpha: 0}, 0.7, {ease: FlxEase.sineInOut});
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.6;
-						beatSpeed = 1;
-					case 1456:
-						defaultCamZoom = 0.67;
-					case 1464:
-						defaultCamZoom = 0.73;
-					case 1472:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.6;
-						beatSpeed = 4;
-						focusMiddle = true;
-
-				}
-			case 'desertion':
-				switch(curStep) {
-					case 1:
-						camVg.fade(0x00000000, 1, true);
-						
-					case 16:
-						CoolUtil.flash(camOther);
-					case 144:
-						defaultCamZoom = 0.65;
-					case 176:
-						defaultCamZoom = 0.7;
-					case 208:
-						defaultCamZoom = 0.75;
-					case 240:
-						defaultCamZoom = 0.8;
-					case 272:
-						defaultCamZoom = 0.6;
-						camHUD.alpha = 1;
-						dad.alpha = 1;
-						beatSpeed = 2;
-						beatZoom = 0.02;
-						CoolUtil.flash(camOther);
-						startLogo();
-					case 400:
-						defaultCamZoom = 0.72;
-						beatSpeed = 1;
-						CoolUtil.flash(camOther);
-					case 576:
-						beatSpeed = 4;
-						defaultCamZoom = 0.78;
-					case 592:
-						beatSpeed = 1;
-						defaultCamZoom = 0.72;
-					case 624:
-						beatSpeed = 4;
-						defaultCamZoom = 0.78;
-					case 656:
-						beatSpeed = 2;
-						defaultCamZoom = 0.75;
-					case 784:
-						beatSpeed = 1;
-					case 912:
-						beatSpeed = 4;
-						defaultCamZoom = 0.72;
-					case 928:
-						beatSpeed = 4;
-						defaultCamZoom = 0.63;
-						CoolUtil.flash(camOther);
-					case 1056:
-						beatSpeed = 2;
-						defaultCamZoom = 0.69;
-						CoolUtil.flash(camOther);
-					case 1184:
-						beatSpeed = 4;
-						defaultCamZoom = 0.60;
-					case 1200:
-						defaultCamZoom = 0.72;
-						beatSpeed = 1;
-						CoolUtil.flash(camOther);
-					case 1456:
-						defaultCamZoom = 0.6;
-						beatSpeed = 2;
-						CoolUtil.flash(camOther);
-					case 1648:
-						beatSpeed = 1;
-					case 1712: //1712
-						FlxTween.tween(camHUD, {alpha: 0}, 0.7, {ease: FlxEase.sineInOut});
-						FlxTween.tween(camStrum, {alpha: 0}, 0.7, {ease: FlxEase.sineInOut});
-						beatSpeed = 4;
-						powerUp(true);
-					case 1740:
-						bfStrumline.updatePls = true;
-						FlxTween.tween(bfStrumline, {x: strumPos[0]}, 0.01, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
-						{
-							bfStrumline.updatePls = false;
-						}});
-					case 1744: //1744
-						powerUp(false);
-						beatSpeed = 1;
-						FlxTween.tween(camHUD, {alpha: 1}, 0.7, {ease: FlxEase.sineInOut});
-						FlxTween.tween(camStrum, {alpha: 1}, 0.7, {ease: FlxEase.sineInOut});
-						CoolUtil.flash(camVg);
-						zoomInOpp = false;
-						if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([chrom]);
-						changeChar(boyfriend, "bex-2dp");
-						changeChar(dad, "bree-2dp");
-						changeChar(third, "bella-2dp");
-						changeStage("desertion2");
-					case 2000:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.6;
-					case 2256:
-						beatSpeed = 2;
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.69;
-					case 2512:
-						beatSpeed = 4;
-						defaultCamZoom = 0.75;
-					case 2528:
-						defaultCamZoom = 0.83;
-					case 2544:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.5;
-					case 2568:
-						camVg.fade(0x00000000, 0.6, false);
-						FlxTween.tween(camHUD, {alpha: 0}, 0.6, {ease: FlxEase.sineInOut});
-				}
-			case 'convergence':
-				switch(curStep) {
-					case 1:
-						camVg.fade(0x00000000, 13, true);
-					case 224:
-						FlxTween.tween(camHUD, {alpha: 1}, 4, {ease: FlxEase.sineInOut});
-						FlxTween.tween(camStrum, {alpha: 1}, 4, {ease: FlxEase.sineInOut});
-					case 256:
-						CoolUtil.flash(camOther);
-						conTxt.alpha = 1;
-						camVg.fade(0x00000000, 0.01, false);
-					case 288:
-						conTxt.alpha = 0;
-						camVg.fade(0x00000000, 0.01, true);
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.72;
-						beatSpeed = 1;
-					case 544:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.8;
-						beatSpeed = 4;
-					case 864:
-						camVg.fade(0x00000000, 0.4, false);
-					case 880:
-						bfStrumline.updatePls = true;
-						FlxTween.tween(bfStrumline, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
-						{
-							bfStrumline.updatePls = false;
-						}});
-
-						/*
-						for (strum in strumlines) {
-							strum.updatePls = true;
-							FlxTween.tween(strum, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+						case 1744: //1744
+							powerUp(false);
+							beatSpeed = 1;
+							FlxTween.tween(camHUD, {alpha: 1}, 0.7, {ease: FlxEase.sineInOut});
+							FlxTween.tween(camStrum, {alpha: 1}, 0.7, {ease: FlxEase.sineInOut});
+							CoolUtil.flash(camVg);
+							zoomInOpp = false;
+							if(SaveData.data.get("Shaders"))FlxG.camera.setFilters([chrom]);
+							changeChar(boyfriend, "bex-2dp");
+							changeChar(dad, "bree-2dp");
+							changeChar(third, "bella-2dp");
+							changeStage("desertion2");
+						case 2000:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.6;
+						case 2256:
+							beatSpeed = 2;
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.69;
+						case 2512:
+							beatSpeed = 4;
+							defaultCamZoom = 0.75;
+						case 2528:
+							defaultCamZoom = 0.83;
+						case 2544:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.5;
+						case 2568:
+							camVg.fade(0x00000000, 0.6, false);
+							FlxTween.tween(camHUD, {alpha: 0}, 0.6, {ease: FlxEase.sineInOut});
+					}
+				case 'convergence':
+					switch(curStep) {
+						case 1:
+							camVg.fade(0x00000000, 13, true);
+						case 224:
+							FlxTween.tween(camHUD, {alpha: 1}, 4, {ease: FlxEase.sineInOut});
+							FlxTween.tween(camStrum, {alpha: 1}, 4, {ease: FlxEase.sineInOut});
+						case 256:
+							CoolUtil.flash(camOther);
+							conTxt.alpha = 1;
+							camVg.fade(0x00000000, 0.01, false);
+						case 288:
+							conTxt.alpha = 0;
+							camVg.fade(0x00000000, 0.01, true);
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.72;
+							beatSpeed = 1;
+						case 544:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.8;
+							beatSpeed = 4;
+						case 864:
+							camVg.fade(0x00000000, 0.4, false);
+						case 880:
+							bfStrumline.updatePls = true;
+							FlxTween.tween(bfStrumline, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
 							{
-								strum.updatePls = false;
+								bfStrumline.updatePls = false;
 							}});
-						}
-
-						for (thing in dadStrumline.strumGroup) {
-							FlxTween.tween(thing, {alpha: 0}, 1, {ease: FlxEase.circOut});
-						}
-
-						for (thing in dadStrumline.allNotes) {
-							FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
-						}
-						dadStrumline.noteAlpha = 0.25;
-						*/
-					case 884:
-						FlxTween.tween(divTxt, {alpha: 1}, 0.3, {ease: FlxEase.expoOut});
-					case 896:
-						camVg.fade(0x00000000, 0.01, true);
-						CoolUtil.flash(camOther);
-						divTxt.alpha = 0;
-						beatSpeed = 1;
-						defaultCamZoom = 0.72;
-						beatZoom = 0.02;
-					case 1152:
-						CoolUtil.flash(camOther);
-						defaultCamZoom = 0.8;
-						beatSpeed = 2;
-						bar(true, 0.3);
-					case 1392:
-						defaultCamZoom = 0.9;
-					case 1408:
-						defaultCamZoom = 0.72;
-						beatSpeed = 1;
-						CoolUtil.flash(camOther);
-						beatZoom = 0.03;
-						for (strum in strumlines) {
-							FlxTween.tween(strum, {scrollSpeed: 3}, 0.4, {ease: FlxEase.linear});
-						}
-						bar(false, 0.3);
-					case 1984:
-						for (strum in strumlines) {
-							FlxTween.tween(strum, {scrollSpeed: 3.2}, 0.4, {ease: FlxEase.linear});
-						}
-					case 1920:
-						CoolUtil.flash(camOther);
-						beatSpeed = 4;
-						beatZoom = 0;
-					case 2080:
-						CoolUtil.flash(camOther);
-						beatSpeed = 1;
-						beatZoom = 0.03;
-						defaultCamZoom = 0.8;
-					case 2592:
-						CoolUtil.flash(camOther);
-						beatSpeed = 4;
-						beatZoom = 0;
-						defaultCamZoom = 0.72;
-					case 2608:
-						camVg.fade(0x00000000, 0.6, false);
-						FlxTween.tween(camHUD, {alpha: 0}, 0.6, {ease: FlxEase.sineInOut});
+	
+							/*
+							for (strum in strumlines) {
+								strum.updatePls = true;
+								FlxTween.tween(strum, {x: strumPos[0]}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+								{
+									strum.updatePls = false;
+								}});
+							}
+	
+							for (thing in dadStrumline.strumGroup) {
+								FlxTween.tween(thing, {alpha: 0}, 1, {ease: FlxEase.circOut});
+							}
+	
+							for (thing in dadStrumline.allNotes) {
+								FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
+							}
+							dadStrumline.noteAlpha = 0.25;
+							*/
+						case 884:
+							FlxTween.tween(divTxt, {alpha: 1}, 0.3, {ease: FlxEase.expoOut});
+						case 896:
+							camVg.fade(0x00000000, 0.01, true);
+							CoolUtil.flash(camOther);
+							divTxt.alpha = 0;
+							beatSpeed = 1;
+							defaultCamZoom = 0.72;
+							beatZoom = 0.02;
+						case 1152:
+							CoolUtil.flash(camOther);
+							defaultCamZoom = 0.8;
+							beatSpeed = 2;
+							bar(true, 0.3);
+						case 1392:
+							defaultCamZoom = 0.9;
+						case 1408:
+							defaultCamZoom = 0.72;
+							beatSpeed = 1;
+							CoolUtil.flash(camOther);
+							beatZoom = 0.03;
+							for (strum in strumlines) {
+								FlxTween.tween(strum, {scrollSpeed: 3}, 0.4, {ease: FlxEase.linear});
+							}
+							bar(false, 0.3);
+						case 1984:
+							for (strum in strumlines) {
+								FlxTween.tween(strum, {scrollSpeed: 3.2}, 0.4, {ease: FlxEase.linear});
+							}
+						case 1920:
+							CoolUtil.flash(camOther);
+							beatSpeed = 4;
+							beatZoom = 0;
+						case 2080:
+							CoolUtil.flash(camOther);
+							beatSpeed = 1;
+							beatZoom = 0.03;
+							defaultCamZoom = 0.8;
+						case 2592:
+							CoolUtil.flash(camOther);
+							beatSpeed = 4;
+							beatZoom = 0;
+							defaultCamZoom = 0.72;
+						case 2608:
+							camVg.fade(0x00000000, 0.6, false);
+							FlxTween.tween(camHUD, {alpha: 0}, 0.6, {ease: FlxEase.sineInOut});
+					}
+				case 'panic-attack':
+					switch(curStep) {
+						case 1:
+							FlxG.camera.fade(0x00000000, 1.6, true);
+						case 120:
+							defaultCamZoom = 0.72;
+							FlxTween.tween(camHUD, {alpha: 1}, 1.5, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 1}, 1.5, {ease: FlxEase.expoOut});
+						case 128:
+							defaultCamZoom = 0.76;
+						case 256:
+							defaultCamZoom = 0.69;
+						case 272:
+							defaultCamZoom = 0.79;
+						case 336:
+							defaultCamZoom = 0.73;
+							CoolUtil.flash(camOther);
+							beatSpeed = 2;
+						case 496:
+							defaultCamZoom = 0.79;
+						case 502:
+							defaultCamZoom = 0.84;
+						case 508:
+							defaultCamZoom = 0.73;
+						case 560:
+							defaultCamZoom = 0.79;
+						case 566:
+							defaultCamZoom = 0.84;
+						case 572:
+							defaultCamZoom = 0.73;
+						case 592:
+							defaultCamZoom = 0.78;
+						case 848:
+							defaultCamZoom = 0.83;
+						case 880:
+							defaultCamZoom = 0.7;
+							CoolUtil.flash(camOther, 0.2);
+							bar(true, 0.3, 14);
+							beatSpeed = 1;
+						case 1136: //1136
+							bar(false, 0.3);
+							CoolUtil.flash(camOther, 0.2);
+							defaultCamZoom = 0.7;
+							beatSpeed = 4;
+							stageBuild.objectMap.get("outsidenight").alpha = 1;
+							stageBuild.objectMap.get("rain").alpha = 0.16;
+							stageBuild.objectMap.get("outsidenight").animation.play("thunder");
+							vgblack.alpha = 0.5;
+						case 1137:
+							dad.playAnim("snap", true);
+						case 1168:
+							defaultCamZoom = 0.78;
+						case 1424: // 1424
+							CoolUtil.flash(camOther, 0.5);
+							camVg.fade(0x00000000, 0.01, false);
+							//defaultCamZoom = 0.6;
+							changeChar(boyfriend, "bex-2bf");
+							changeChar(dad, "bree-2bf");
+							changeStage("nan");
+						case 1440: // 1440
+							CoolUtil.flash(camOther, 0.5);
+							camVg.fade(0x00ffffff, 0.01, true);
+						case 1664:
+							FlxTween.tween(dad, {alpha: 0}, 0.6, {ease: FlxEase.sineInOut});
+						case 1685: //1680
+							defaultCamZoom = 0.72;
+							boyfriend.playAnim("neck", true);
+							focusMiddle = true;
+						case 1696: //1696
+							dad.alpha = 1;
+							CoolUtil.flash(camOther, 0.5);
+							changeChar(dad, "bree-2b");
+							changeStage("panic-attack");
+							changeChar(boyfriend, "bex-2balt");
+							stageBuild.objectMap.get("outsidenight").alpha = 1;
+							stageBuild.objectMap.get("rain").alpha = 0.16;
+							stageBuild.objectMap.get("outsidenight").animation.play("thunder");
+							boyfriend.playAnim("panic", true);
+							focusMiddle = false;
+							cameraSpeed = 500;
+						case 1697: 
+							cameraSpeed = 1;
+						case 2000:
+							defaultCamZoom = 0.72;
+						case 2016:
+							defaultCamZoom = 0.76;
+							stageBuild.objectMap.get("outsidenight").animation.play("thunder");
+					}
+				case 'allegro':
+					switch(curStep) {
+						case 1:
+							defaultCamZoom = 0.6;
+						case 128:
+							defaultCamZoom = 0.7;
+							CoolUtil.flash(camOther);
+						case 384:
+							defaultCamZoom = 0.76;
+						case 672:
+							defaultCamZoom = 0.64;
+							CoolUtil.flash(camOther);
+						case 896:
+							defaultCamZoom = 0.6;
+							CoolUtil.flash(camOther);
+						case 1296:
+							focusMiddle = true;
+							defaultCamZoom = 0.7;
+						case 1302:
+							defaultCamZoom = 0.6;
+						case 1308:
+							defaultCamZoom = 0.8;
+					}
+			}
+		}
+		else {
+			switch(daSong) {
+				case "sin":
+					switch(curStep) {
+						case 1312: //1312
+							//EYES
+							CoolUtil.flash(camOther, 0.5);
+							camStrum.alpha = 0;
+						case 1328: //1328
+							camTaiko.alpha = 1;
+							changeStage("sin2");
+							for(strum in taikoStrumline.strumGroup) {
+								FlxTween.tween(strum, {y: strum.initialPos.y}, Conductor.crochet / 1000, {
+									ease: FlxEase.cubeOut
+								});
+							}
+		
+						case 1856:
+							CoolUtil.flash(camOther, 0.5);
+							changeStage("sin");
+							camTaiko.alpha = 0;
+							camStrum.alpha = 1;
 				}
-			case 'panic-attack':
-				switch(curStep) {
-					case 1:
-						FlxG.camera.fade(0x00000000, 1.6, true);
-					case 120:
-						defaultCamZoom = 0.72;
-						FlxTween.tween(camHUD, {alpha: 1}, 1.5, {ease: FlxEase.expoOut});
-						FlxTween.tween(camStrum, {alpha: 1}, 1.5, {ease: FlxEase.expoOut});
-					case 128:
-						defaultCamZoom = 0.76;
-					case 256:
-						defaultCamZoom = 0.69;
-					case 272:
-						defaultCamZoom = 0.79;
-					case 336:
-						defaultCamZoom = 0.73;
-						CoolUtil.flash(camOther);
-						beatSpeed = 2;
-					case 496:
-						defaultCamZoom = 0.79;
-					case 502:
-						defaultCamZoom = 0.84;
-					case 508:
-						defaultCamZoom = 0.73;
-					case 560:
-						defaultCamZoom = 0.79;
-					case 566:
-						defaultCamZoom = 0.84;
-					case 572:
-						defaultCamZoom = 0.73;
-					case 592:
-						defaultCamZoom = 0.78;
-					case 848:
-						defaultCamZoom = 0.83;
-					case 880:
-						defaultCamZoom = 0.7;
-						CoolUtil.flash(camOther, 0.2);
-						bar(true, 0.3, 14);
-						beatSpeed = 1;
-					case 1136: //1136
-						bar(false, 0.3);
-						CoolUtil.flash(camOther, 0.2);
-						defaultCamZoom = 0.7;
-						beatSpeed = 4;
-						stageBuild.objectMap.get("outsidenight").alpha = 1;
-						stageBuild.objectMap.get("rain").alpha = 0.16;
-						stageBuild.objectMap.get("outsidenight").animation.play("thunder");
-						dad.playAnim("snap", true);
-						vgblack.alpha = 0.5;
-					case 1168:
-						defaultCamZoom = 0.78;
-					case 1424: // 1424
-						CoolUtil.flash(camOther, 0.5);
-						camVg.fade(0x00000000, 0.01, false);
-						//defaultCamZoom = 0.6;
-						changeChar(boyfriend, "bex-2bf");
-						changeChar(dad, "bree-2bf");
-						changeStage("nan");
-					case 1440: // 1440
-						CoolUtil.flash(camOther, 0.5);
-						camVg.fade(0x00ffffff, 0.01, true);
-					case 1664:
-						FlxTween.tween(dad, {alpha: 0}, 0.6, {ease: FlxEase.sineInOut});
-					case 1685: //1680
-						defaultCamZoom = 0.72;
-						boyfriend.playAnim("neck", true);
-						focusMiddle = true;
-					case 1696: //1696
-						dad.alpha = 1;
-						CoolUtil.flash(camOther, 0.5);
-						changeChar(dad, "bree-2b");
-						changeStage("panic-attack");
-						changeChar(boyfriend, "bex-2balt");
-						stageBuild.objectMap.get("outsidenight").alpha = 1;
-						stageBuild.objectMap.get("rain").alpha = 0.16;
-						stageBuild.objectMap.get("outsidenight").animation.play("thunder");
-						boyfriend.playAnim("panic", true);
-						focusMiddle = false;
-						cameraSpeed = 500;
-					case 1697: 
-						cameraSpeed = 1;
-					case 2000:
-						defaultCamZoom = 0.72;
-					case 2016:
-						defaultCamZoom = 0.76;
-						stageBuild.objectMap.get("outsidenight").animation.play("thunder");
-				}
-			case 'allegro':
-				switch(curStep) {
-					case 1:
-						defaultCamZoom = 0.6;
-					case 128:
-						defaultCamZoom = 0.7;
-						CoolUtil.flash(camOther);
-					case 384:
-						defaultCamZoom = 0.76;
-					case 672:
-						defaultCamZoom = 0.64;
-						CoolUtil.flash(camOther);
-					case 896:
-						defaultCamZoom = 0.6;
-						CoolUtil.flash(camOther);
-					case 1296:
-						focusMiddle = true;
-						defaultCamZoom = 0.7;
-					case 1302:
-						defaultCamZoom = 0.6;
-					case 1308:
-						defaultCamZoom = 0.8;
-				}
+			}
 		}
 	}
 
@@ -3254,7 +3441,7 @@ class PlayState extends MusicBeatState
 			// syncs the conductor
 			if(Math.abs(Conductor.songPos - inst.time) >= 40 && Conductor.songPos - inst.time <= 5000)
 			{
-				trace('synced song ${Conductor.songPos} to ${inst.time}');
+				//trace('synced song ${Conductor.songPos} to ${inst.time}');
 				Conductor.songPos = inst.time;
 			}
 			
@@ -3311,48 +3498,75 @@ class PlayState extends MusicBeatState
 					});
 					
 					weekScore += Timings.score;
-		
+
 					var countTimer = new FlxTimer().start(timer, function(tmr:FlxTimer)
 					{
-						if(playList.length <= 0)
-						{
-							if(isStoryMode)
-							{
-								Highscore.addScore('$curWeek-$songDiff', {
-									score: 		weekScore,
-									accuracy: 	0,
-									misses: 	0,
-								});
-							}
-							
-							sendToMenu();
-						}
-						else
-						{
-							SONG = SongData.loadFromJson(playList[0], songDiff);
-							playList.remove(playList[0]);
-							
-							//trace(playList);
-							Main.switchState(new LoadSongState());
-						}
+						exit();
 					});
 				}
 				else {
-					if(playList.length <= 0) {
-						sendToMenu();
-					}
-					else
-					{
-						SONG = SongData.loadFromJson(playList[0], songDiff);
-						playList.remove(playList[0]);
-						
-						//trace(playList);
-						Main.switchState(new LoadSongState());
-					}
+					exit();
 				}
 			}
-		});
-	
+		});	
+		
+	}
+
+	function exit()
+	{
+		if(playList.length <= 0)
+		{
+			resetSongStatics();
+			if(isStoryMode)
+			{
+				switch(daSong) {
+					case "divergence-vip":
+						SaveData.progression.set("vip", true);
+						SaveData.save();
+						sendToMenu();
+					case "euphoria":
+						states.cd.Dialog.dialog = "nefarious";
+						Main.switchState(new states.cd.Dialog());
+					case "nefarious":
+						states.cd.Dialog.dialog = "divergence";
+						Main.switchState(new states.cd.Dialog());
+					case "divergence":
+						states.VideoState.name = "divergence";
+						Main.switchState(new states.VideoState());
+					case "allegro":
+						states.VideoState.name = "panic";
+						Main.switchState(new states.VideoState());
+					case "panic-attack":
+						states.cd.Dialog.dialog = "convergence";
+						states.cd.Dialog.introCenterAlpha = 0.6;
+						Main.switchState(new states.cd.Dialog());
+					case "convergence":
+						states.cd.Dialog.dialog = "desertion";
+						Main.switchState(new states.cd.Dialog());
+					case "desertion":
+						Main.switchState(new states.cd.Ending());
+					case "intimidate":
+						if(!SaveData.progression.get("intimidated"))
+							states.cd.MainMenu.unlocks.push("Song: Exotic! (FREEPLAY)");
+						SaveData.progression.set("intimidated", true);
+						SaveData.save();
+						Main.switchState(new states.cd.MainMenu());
+					case "sin":
+						Main.switchState(new states.cd.fault.MainMenu());
+					default:
+						sendToMenu();
+				}
+			}
+			else
+				sendToMenu();
+		}
+		else {
+			SONG = SongData.loadFromJson(playList[0], songDiff);
+			playList.remove(playList[0]);
+			
+			////trace(playList);
+			Main.switchState(new LoadSongState());
+		}
 	}
 
 	override function onFocusLost():Void
@@ -3381,7 +3595,16 @@ class PlayState extends MusicBeatState
 		blueballed++;
 		activateTimers(false);
 		persistentDraw = false;
-		openSubState(new GameOverSubState(bfStrumline.character.curChar));
+		var soundChar:String = bfStrumline.character.curChar;
+		if(invertedCharacters)
+			soundChar = dadStrumline.character.curChar + "-what";
+		switch(daSong) {
+			case 'customer-service' | 'ripple':
+				soundChar = "drown-what";
+			case "exotic":
+				soundChar = "bex-what";
+		}
+		openSubState(new GameOverSubState(soundChar));
 	}
 
 	public function zoomCamera(gameZoom:Float = 0, hudZoom:Float = 0)
@@ -3469,27 +3692,19 @@ class PlayState extends MusicBeatState
 		if(isStoryMode)
 		{
 			isStoryMode = false;
-
-			//give me a break cmon
-			if(playList.length <= 0 && endedSong && validScore) {
-				switch(curWeek) {
-					case "week1":
-						SaveData.progression.set("week1", true);
-						Main.switchState(new states.cd.StoryMode());
-					case "week2":
-						SaveData.progression.set("week2", true);
-						Main.switchState(new states.cd.MainMenu());
-					default:
-						Main.switchState(new states.cd.MainMenu());
-				}
-			}
-			else {
-				Main.switchState(new states.cd.StoryMode());
-			}
+			Main.switchState(new states.cd.StoryMode());
 		}
 		else
 		{
-			Main.switchState(new states.cd.Freeplay());
+			var watts:Array<String> = ["conservation", "irritation"];
+			if(watts.contains(daSong) && !SaveData.progression.get("oneofthem")) {
+				SaveData.progression.set("oneofthem", true);
+				SaveData.save();
+				states.cd.MainMenu.unlocks.push("Song: Conservation (FREEPLAY)\nSong: Irritation (FREEPLAY)");
+				Main.switchState(new states.cd.MainMenu());
+			}
+			else
+				Main.switchState(new states.cd.Freeplay());
 		}
 	}
 

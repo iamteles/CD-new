@@ -18,6 +18,7 @@ using StringTools;
 class Main extends Sprite
 {
 	public static var fpsVar:FPSCounter;
+	public static var activeState:FlxState;
 	public function new() {
 	
 		super();
@@ -36,14 +37,10 @@ class Main extends Sprite
 
 		addChild(new FlxGame(1280, 720, Init, 120, 120, true));
 
-		if(false) {
-			#if desktop
-			fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
-			addChild(fpsVar);
-			#end
-		}
-
-	
+		#if desktop
+		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
+		addChild(fpsVar);
+		#end
 	}
 	public static var gFont:String = Paths.font("matsaleh.ttf");
 	public static var dsFont:String = Paths.font("ds.ttf");
@@ -66,7 +63,9 @@ class Main extends Sprite
 			return trans.finishCallback();
 		}
 		
-		FlxG.state.openSubState(trans);
+		//FlxG.state.openSubState(trans);
+		if(activeState != null)
+			activeState.openSubState(trans);
 	}
 
 	// so you dont have to type it every time
@@ -117,8 +116,8 @@ class Main extends Sprite
 		possibleTitles = temp;
 		randomized = FlxG.random.int(0, possibleTitles.length-1);
 
-		trace(randomized);
-		trace(Main.possibleTitles);
+		//trace(randomized);
+		//trace(Main.possibleTitles);
 	}
 
 	#if desktop

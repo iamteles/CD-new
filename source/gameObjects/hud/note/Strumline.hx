@@ -1,7 +1,5 @@
 package gameObjects.hud.note;
 
-import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import gameObjects.Character;
 
@@ -128,7 +126,7 @@ class Strumline extends FlxGroup
 			splash.visible = false;
 			splashGroup.add(splash);
 			
-			//trace('added ${note.assetModifier + pref} ${note.noteType + pref}');
+			////trace('added ${note.assetModifier + pref} ${note.noteType + pref}');
 		}
 	}
 
@@ -141,7 +139,7 @@ class Strumline extends FlxGroup
 			if(splash.noteType == note.noteType
 			&& splash.noteData == note.noteData)
 			{
-				//trace("played");
+				////trace("played");
 				var thisStrum = strumGroup.members[splash.noteData];
 				splash.x = thisStrum.x + thisStrum.width / 2 - splash.width / 2;
 				splash.y = thisStrum.y + thisStrum.height/ 2 - splash.height/ 2;

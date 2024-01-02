@@ -1,9 +1,5 @@
 package data;
 
-import haxe.Json;
-import haxe.format.JsonParser;
-import lime.utils.Assets;
-
 using StringTools;
 
 typedef SwagSong =
@@ -68,7 +64,7 @@ class SongData
 		if(!Paths.fileExists(('songs/$jsonInput/$formatPath.json')))
 			formatPath = '$jsonInput';
 			
-		trace('$jsonInput/$formatPath');
+		//trace('$jsonInput/$formatPath');
 		
 		var daSong:SwagSong = cast Paths.json('songs/$jsonInput/$formatPath').song;
 		

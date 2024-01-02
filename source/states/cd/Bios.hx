@@ -1,7 +1,5 @@
 package states.cd;
 
-import gameObjects.Character;
-import flixel.tweens.misc.ShakeTween;
 import data.Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -10,16 +8,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
-import data.SongData;
-import flixel.util.FlxTimer;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import flixel.effects.FlxFlicker;
 import gameObjects.android.FlxVirtualPad;
-import data.Highscore;
-import data.Highscore.ScoreData;
-import data.GameData.MusicBeatSubState;
-import states.*;
 
 class Bios extends MusicBeatState
 {
@@ -33,7 +22,7 @@ class Bios extends MusicBeatState
         ["wave", "Wave", "17", "Female", "5'8", "Wave, short for Waverly Baker. The bully with a penchant for pranks. Wave loves to pick fights with everyone and everyone thing. She is a rowdy teen who doesn’t really know what she wants to do with her life. She works at a music store called “The Shack” since her parents wanted her to go outside and do literary anything else but sit at home. She has a crush on her coworker Empitri, but is too chicken to tell her."],
         ["empitri", "Empitri Palmer", "21", "Female", "6'4", "The chronically online cashier. Empitri is an employee at a music store called “The Shack”. She likes to play on her phone, talk on her phone, and watch her phone (I’m noticing a trend here). While it may look like she’s never paying attention she actually listens and will respect you. She quite enjoys her job and her life and is a really good friend. Break that trust though, and you’ll never see the end of her."],
         ["spicy-v2", "Spicy", "???", "Female", "???", "Woah! Looks like we don’t have much data on this character… They must be from some other universe…"],
-        ["cutenevil", "Cute n' Evil", "???", "Females", "???", "An alternate retro reality of Bella and Bex… Misterious…"]
+        ["cutenevil", "Cute n' Evil", "???", "Females", "???", "An alternate retro reality of Bella and Bex… Mysterious…"]
     ];
     static var curSelected:Int = 0;
 
@@ -49,8 +38,8 @@ class Bios extends MusicBeatState
     {
         super.create();
 
-        DiscordClient.changePresence("In the Freeplay Menu", null);
-        CoolUtil.playMusic("movement");
+        DiscordClient.changePresence("In the Bios Menu", null);
+        CoolUtil.playMusic("LoveLetter");
 
         bg = new FlxSprite().loadGraphic(Paths.image('menu/bios/bio-bg'));
 		bg.updateHitbox();
@@ -90,8 +79,10 @@ class Bios extends MusicBeatState
 		add(box);
 
         arrows = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/arrows'));
-        arrows.x = 19.95;
-        arrows.y = 637.2;
+        arrows.angle = 90;
+        arrows.updateHitbox();
+        arrows.x = 20;
+        arrows.y = FlxG.height - arrows.height + 8;
 		add(arrows);
 
         name = new FlxText(0,0,0,"Name");
@@ -120,33 +111,25 @@ class Bios extends MusicBeatState
     {
         super.update(elapsed);
 
-        var up:Bool = Controls.justPressed("UI_UP");
+        var left:Bool = Controls.justPressed("UI_LEFT") || (FlxG.mouse.wheel > 0);
         if(SaveData.data.get("Touch Controls"))
-            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed || (FlxG.mouse.wheel > 0));
 
-        var down:Bool = Controls.justPressed("UI_DOWN");
+        var right:Bool = Controls.justPressed("UI_RIGHT") || (FlxG.mouse.wheel < 0);
         if(SaveData.data.get("Touch Controls"))
-            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
-        var left:Bool = Controls.justPressed("UI_LEFT");
+        var accept:Bool = Controls.justPressed("ACCEPT") || FlxG.mouse.justPressed;
         if(SaveData.data.get("Touch Controls"))
-            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed || FlxG.mouse.justPressed);
 
-        var right:Bool = Controls.justPressed("UI_RIGHT");
+        var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))
-            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed) || FlxG.mouse.justPressedRight;
 
-        var back:Bool = Controls.justPressed("BACK");
-        if(SaveData.data.get("Touch Controls"))
-            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
-
-        var accept:Bool = Controls.justPressed("ACCEPT");
-        if(SaveData.data.get("Touch Controls"))
-            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
-
-        if(up)
+        if(left)
             changeSelection(-1);
-        if(down)
+        if(right)
             changeSelection(1);
 
         if(back)

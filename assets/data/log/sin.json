@@ -1,0 +1,63 @@
+{
+    "characters": ["helica", "bree-sin"],
+    "background": "black",
+    "finisher": "sin",
+    "song": "31",
+    "lines": [
+        {
+            "character": "right",
+            "frame": "annoyed",
+            "text": "..."
+        },
+        {
+            "character": "right",
+            "frame": "annoyed",
+            "text": "The hell did you call me here for."
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "You know why."
+        },
+        {
+            "character": "right",
+            "frame": "annoyed",
+            "text": "…It’s about the murdering isn’t it"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "You’re lucky I don’t report you to the higher ups, who knows what they’d do if they knew the “god of balance” was killing people."
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "But I’m doing my job, that’s just part of the process."
+        },
+        {
+            "character": "right",
+            "frame": "yap",
+            "text": "And I-"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "And those two lovebirds down there, don’t think I didn’t see you attack them for nothing."
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "They’re disrupting the balance, they’re nothing alike, it irks me to my core."
+        },
+        {
+            "character": "right",
+            "frame": "very mad",
+            "text": "And quit talkin like you’re gonna stop me"
+        },
+        {
+            "character": "left",
+            "frame": "angry",
+            "text": "funny... that’s exactly my intention."
+        }
+    ]
+}

@@ -1,6 +1,5 @@
 package gameObjects;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 
@@ -97,7 +96,7 @@ class Character extends FlxSprite
 		}
 		catch (e)
 		{
-			trace(e);
+			//trace(e);
 			charData = haxe.Json.parse(Paths.getContent(('data/chars/' + "bella-2a" + '.json')).trim());
 		}
 
@@ -144,6 +143,8 @@ class Character extends FlxSprite
 
 		if(animation.getByName('danceLeft') != null && animation.getByName('danceRight') != null) {
 			quickDancer = true;
+			if(curChar == "bella-vip-slow" || curChar == "bex-vip-slow")
+				quickDancer = false;
 			idleAnims = ['danceLeft', 'danceRight'];
 		}
 

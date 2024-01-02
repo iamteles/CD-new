@@ -1,7 +1,5 @@
 package states.cd;
 
-import haxe.io.Float64Array;
-import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionableState;
@@ -12,7 +10,6 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import lime.app.Application;
 import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxMath;
 import data.GameData.MusicBeatState;
@@ -118,17 +115,17 @@ class Gallery extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		var left:Bool = Controls.justPressed("UI_LEFT");
+        var left:Bool = Controls.justPressed("UI_LEFT") || (FlxG.mouse.wheel > 0);
         if(SaveData.data.get("Touch Controls"))
-            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed || (FlxG.mouse.wheel > 0));
 
-        var right:Bool = Controls.justPressed("UI_RIGHT");
+        var right:Bool = Controls.justPressed("UI_RIGHT") || (FlxG.mouse.wheel < 0);
         if(SaveData.data.get("Touch Controls"))
-            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
-        var back:Bool = Controls.justPressed("BACK");
+        var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))
-            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed) || FlxG.mouse.justPressedRight;
 
 		var set:Bool = FlxG.keys.pressed.ENTER;
         if(SaveData.data.get("Touch Controls"))

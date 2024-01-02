@@ -151,8 +151,8 @@ class PauseSubState extends MusicBeatSubState
 		}
 
 		// remainders from the old pause menu
-		var up:Bool = Controls.justPressed("UI_UP");
-        var down:Bool = Controls.justPressed("UI_DOWN");
+		var up:Bool = Controls.justPressed("UI_UP") || Controls.justPressed("UI_LEFT");
+        var down:Bool = Controls.justPressed("UI_DOWN") || Controls.justPressed("UI_RIGHT");
         var back:Bool = Controls.justPressed("BACK");
         var accept:Bool = Controls.justPressed("ACCEPT");
 
@@ -166,14 +166,14 @@ class PauseSubState extends MusicBeatSubState
 
 		for(item in buttons) {
 			if(CoolUtil.mouseOverlap(item, lastCam)) {
-				if(FlxG.mouse.justPressed) {
+				if(FlxG.mouse.justPressed && focused) {
 					select(item.ID);
 				}
 			}
         }
 
 		if(CoolUtil.mouseOverlap(bpButton, lastCam)) {
-			if(FlxG.mouse.justPressed) {
+			if(FlxG.mouse.justPressed && focused) {
 				botplay();
 			}
 		}
@@ -245,7 +245,9 @@ class PauseSubState extends MusicBeatSubState
 
 	function botplay()
 	{
-		FlxG.sound.play(Paths.sound("botplay"));
 		PlayState.botplay = !PlayState.botplay;
+
+		var thing:String = (PlayState.botplay ? "On" : "Off");
+		FlxG.sound.play(Paths.sound("botplay" + thing));
 	}
 }

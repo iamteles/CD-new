@@ -7,7 +7,8 @@
             "objName": "bg",
             "path": "backgrounds/fr/back",
             "position": [-301.1, -347.1],
-            "scrollFactor": [0.5, 0.5]
+            "scrollFactor": [0.5, 0.5],
+            "lq": true
         },
         {
             "objName": "screen",
@@ -26,12 +27,14 @@
         {
             "objName": "curtains",
             "path": "backgrounds/fr/curtains",
-            "position": [-548.6, -430.15]
+            "position": [-548.6, -430.15],
+            "lq": true
         },
         {
             "objName": "stage",
             "path": "backgrounds/fr/stage",
-            "position": [-720, -574.6]
+            "position": [-720, -574.6],
+            "lq": true
         }
     ],
     "foreground": [

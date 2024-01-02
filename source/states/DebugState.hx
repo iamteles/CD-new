@@ -1,24 +1,21 @@
 package states;
 
-import flixel.addons.ui.FlxUIGroup;
 import data.Discord.DiscordClient;
+import data.GameTransition;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
-import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
-import data.SongData;
 import gameObjects.menu.Alphabet;
-import gameObjects.menu.Alphabet.AlphabetAlign;
 import gameObjects.android.FlxVirtualPad;
 
 using StringTools;
 
 class DebugState extends MusicBeatState
 {
-	var optionShit:Array<String> = ["menu", "video", "dialog", "intimidating"];
+	var optionShit:Array<String> = ["menu", "video", "ending", "intimidating"];
 	static var curSelected:Int = 0;
 
 	var optionGroup:FlxTypedGroup<Alphabet>;
@@ -94,21 +91,24 @@ class DebugState extends MusicBeatState
 		{
 			switch(optionShit[curSelected])
 			{
-				case "story mode":
-					Main.switchState(new states.menu.StoryMenuState());
+				//case "story mode":
+				//	Main.switchState(new states.menu.StoryMenuState());
 				case "menu":
 					Main.switchState(new states.cd.MainMenu());
 				case "dialog":
 					Main.switchState(new states.cd.Dialog());
-				case "freeplay":
-					Main.switchState(new states.menu.FreeplayState());
+				case "ending":
+					Main.switchState(new states.cd.Ending());
+				//case "freeplay":
+				//	Main.switchState(new states.menu.FreeplayState());
 				case "intimidating":
 					Main.switchState(new states.cd.fault.MainMenu());
 				case "video":
 					Main.switchState(new states.VideoState());
 				case "shop":
 					Main.switchState(new states.ShopState.LoadShopState());
-
+				case "transition":
+					openSubState(new GameTransition(false));
 				case "options":
 					Main.switchState(new states.menu.OptionsState());
 			}

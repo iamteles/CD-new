@@ -15,20 +15,14 @@ import data.SongData;
 import flixel.FlxObject;
 import flixel.FlxCamera;
 import flixel.util.FlxTimer;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import flixel.FlxState;
-import openfl.filters.ShaderFilter;
-import data.FlxRuntimeShader;
 import data.ChartLoader;
 import data.GameData.MusicBeatState;
 import data.SongData.SwagSong;
 import gameObjects.*;
 import gameObjects.hud.*;
 import gameObjects.hud.note.*;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
 import gameObjects.android.FlxVirtualPad;
+import flixel.addons.display.FlxBackdrop;
 
 #if sys
 import sys.io.File;
@@ -274,11 +268,16 @@ class LoadShopState extends MusicBeatState
 			Paths.preloadGraphic('hud/base/healthBar');
 			Paths.preloadGraphic('hud/base/blackBar');
 			Paths.preloadGraphic('vignette');
+
+            Paths.preloadGraphic("hud/pause/botplay");
+			Paths.preloadGraphic("hud/pause/buttons");
+			Paths.preloadGraphic("hud/pause/pause");
+			Paths.preloadGraphic("hud/pause/selector");
 			
 			var stageBuild = new Stage();
 			stageBuild.reloadStageFromSong("irritation"); //just the one
 
-			trace('preloaded stage and hud');
+			//trace('preloaded stage and hud');
 			
 			loadPercent = 0.2;
 
@@ -290,7 +289,7 @@ class LoadShopState extends MusicBeatState
 				char.reloadChar(i);
 				//behind.add(char);
 				
-				//trace('preloaded $i');
+				////trace('preloaded $i');
 
 				loadPercent += (0.6 - 0.2) / charList.length;
 			}
@@ -300,7 +299,7 @@ class LoadShopState extends MusicBeatState
 				icon.setIcon(i, false);
             }
 			
-			trace('preloaded characters');
+			//trace('preloaded characters');
 			loadPercent = 0.6;
 			
             for (i in songs) {
@@ -310,7 +309,7 @@ class LoadShopState extends MusicBeatState
             }
 
 			
-			trace('preloaded music');
+			//trace('preloaded music');
 			loadPercent = 0.75;
 			
 			var thisStrumline = new Strumline(0, null, false, false, true, assetModifier);
@@ -330,7 +329,7 @@ class LoadShopState extends MusicBeatState
                 }
             }
 			
-			trace('preloaded notes');
+			//trace('preloaded notes');
 			loadPercent = 0.9;
 			
 			// shop preloads
@@ -363,7 +362,7 @@ class LoadShopState extends MusicBeatState
             //Paths.shader("shaders/bloom");
 			
 			loadPercent = 1.0;
-			trace('finished loading');
+			//trace('finished loading');
 			FlxSprite.defaultAntialiasing = oldAnti;
 
             #if !html5

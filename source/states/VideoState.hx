@@ -30,7 +30,23 @@ class VideoState extends MusicBeatState
     {
         audio.stop();
         video.dispose();
-        Main.switchState(new states.cd.MainMenu());
+
+        switch(name) {
+            case "divergence":
+                // pop up here?
+                //SaveData.progression.set("week1", true);
+                if(!SaveData.progression.get("week1"))
+                    states.cd.MainMenu.unlocks.push("Week 2!\nFreeplay!");
+                SaveData.progression.set("week1", true);
+                SaveData.save();
+                Main.switchState(new states.cd.MainMenu());
+            case "panic":
+                states.cd.Dialog.dialog = "panic-attack";
+                Main.switchState(new states.cd.Dialog());
+            default:
+                Main.switchState(new states.cd.MainMenu());
+        }
+
     }
 
     override function update(elapsed:Float) {

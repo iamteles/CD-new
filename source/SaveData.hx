@@ -119,14 +119,28 @@ class SaveData
 			true,
 			CHECKMARK,
 			"Whether to preload music for the Music Player."
+		],
+		"FPS Counter" => [
+			false,
+			CHECKMARK,
+			"Whether to display debug info such as FPS or Memory."
+		],
+		"Low Quality" => [
+			false,
+			CHECKMARK,
+			"Removes some assets from songs in order to make the mod a smoother experience for low end hardware."
 		]
 	];
 
 	public static var progression:Map<String, Dynamic> = [
 		"shopentrance" => false,
 		"firstboot" => false,
+		"intimidated" => false,
 		"week2" => false,
-		"week1" => false
+		"week1" => false,
+		"vip" => false,
+		"oneofthem" => false,
+		"debug" => false
 	];
 	public static var songs:Map<String, Dynamic> = [
 		"euphoria" => false,
@@ -265,7 +279,7 @@ class SaveData
 		
 		if(progressionFile.data.shop == null)
 		{
-			trace("shop save null");
+			//trace("shop save null");
 			for(key => values in displayShop)
 				shop[key] = values[0];
 			
@@ -293,10 +307,10 @@ class SaveData
 		if(findMod("gameSettings", "fitdon"))
 		{
 			buyItem("fitdon");
-			trace("found fitdon");
+			//trace("found fitdon");
 		}
 		else {
-			trace("not found fitdon");
+			//trace("not found fitdon");
 		}
 
 		save();
@@ -379,8 +393,8 @@ class SaveData
 		var curMain:String = data.get("Skin");
 		var skinArray = displaySettings.get("Skin")[3];
 		var index:Int = skinArray.indexOf(curMain);
-		string = skinCodes[index];
-		trace('current skin is $string');
+		string = skinCodes[index]; 
+		////trace('current skin is $string');
 		return string;
 	}
 
@@ -405,5 +419,56 @@ class SaveData
 
 	public static function curTime():Int {
 		return initialTicks + FlxG.game.ticks;
+	}
+
+	public static function wipe(?which:String = 'ALL'){
+		switch(which) {
+			case 'PROGRESS':
+				progressionFile.erase();
+				progression = [
+					"shopentrance" => false,
+					"firstboot" => false,
+					"intimidated" => false,
+					"week2" => false,
+					"week1" => false,
+					"vip" => false,
+					"oneofthem" => false,
+					"debug" => false
+				];
+				songs = [
+					"euphoria" => false,
+					"nefarious" => false,
+					"divergence" => false,
+					"allegro" => false,
+					"panic-attack" => false,
+					"convergence" => false,
+					"desertion" => false,
+					"sin" => false,
+					"conservation" => false,
+					"irritation" => false,
+					"kaboom" => false,
+					"intimidate" => false,
+					"heartpounder" => false,
+					"ripple" => false,
+					"exotic" => false,
+					"customer-service" => false,
+					"euphoria-vip" => false,
+					"nefarious-vip" => false,
+					"divergence-vip" => false,
+				];
+				money = 0;
+				////trace ("Wiping progress " + progressionSave.data.progression + ' ' + progressionSave.data.clowns);
+			case 'HIGHSCORE':
+				FlxG.save.erase();
+			case 'OPTIONS':
+				saveFile.erase();
+				data = [];
+			default:
+				wipe("PROGRESS");
+				wipe("HIGHSCORE");
+				wipe("OPTIONS");
+		}
+
+		load();
 	}
 }

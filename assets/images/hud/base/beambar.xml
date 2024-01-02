@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Desertion.png">
-	<!-- Created with Adobe Animate version 20.0.0.17400 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="bar0000" x="34" y="169" width="692" height="96" frameX="0" frameY="0" frameWidth="692" frameHeight="117"/>
-	<SubTexture name="bar0001" x="34" y="34" width="657" height="117" frameX="-29" frameY="0" frameWidth="692" frameHeight="117"/>
-	<SubTexture name="bar0002" x="34" y="283" width="670" height="96" frameX="-15" frameY="-16" frameWidth="692" frameHeight="117"/>
-</TextureAtlas>

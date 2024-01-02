@@ -1,6 +1,5 @@
 package gameObjects.menu.options;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;

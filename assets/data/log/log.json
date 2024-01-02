@@ -1,0 +1,82 @@
+{
+    "characters": ["bella", "bex"],
+    "background": "euphoria",
+    "finisher": "progjuke",
+    "lines": [
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "Hello? :0"
+        },
+        {
+            "character": "right",
+            "frame": "tired",
+            "text": "huh"
+        },
+        {
+            "character": "right",
+            "frame": "confused",
+            "text": "you talkin to me?"
+        },
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "I couldn’t help but notice you standing here every time I walked past this place! :<"
+        },
+        {
+            "character": "right",
+            "frame": "ooh",
+            "text": "..oh really?"
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "Yeah! :)"
+        },
+        {
+            "character": "right",
+            "frame": "shy",
+            "text": "yeah, I... noticed you walking by as well"
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "teehee ^^"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "So what brings you here??"
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "I’m waiting for a friend to pick me up. I’m supposed to play guitar at her dad’s bar but-"
+        },
+        {
+            "character": "left",
+            "frame": "excited",
+            "text": "WAIT PLAY???? :0"
+        },
+        {
+            "character": "left",
+            "frame": "excited",
+            "text": "Do you sing by chance??? I love singing!!! Do you wanna do a song????!?!? :D"
+        },
+        {
+            "character": "right",
+            "frame": "tired",
+            "text": "uhhmm... I don’t-"
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "Don’t have a mic? I happen to have 2 on me, don't worry bout it! X3"
+        },
+        {
+            "character": "right",
+            "frame": "tired",
+            "text": "oh uh... alright then"
+        }
+    ]
+}

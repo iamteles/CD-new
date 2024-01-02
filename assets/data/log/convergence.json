@@ -1,0 +1,88 @@
+{
+    "characters": ["bree", "bex-cv", "bella-cv"],
+    "background": "dark",
+    "finisher": "convergence",
+    "song": "23",
+    "lines": [
+        {
+            "character": "right",
+            "frame": "conv blank",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "Hey where’d that confidence from earlier go"
+        },
+        {
+            "character": "left",
+            "frame": "stun talk",
+            "text": "I cut your arm by the way, look right there"
+        },
+        {
+            "character": "right",
+            "frame": "conv blank",
+            "text": "........"
+        },
+        {
+            "character": "center",
+            "frame": "playful",
+            "text": "Hey baby I’m back! ^^"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "What’s goin o-"
+        },
+        {
+            "character": "center",
+            "frame": "realize",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "Bella Wright, so glad you could join us"
+        },
+        {
+            "character": "center",
+            "frame": "confused",
+            "text": "...did you hurt her"
+        },
+        {
+            "character": "left",
+            "frame": "yap",
+            "text": "I kinda need you two to break up and she didn’t comply soooooo.."
+        },
+        {
+            "character": "right",
+            "frame": "conv hurt",
+            "text": "bella we need to go."
+        },
+        {
+            "character": "center",
+            "frame": "annoyed",
+            "text": "Not yet."
+        },
+        {
+            "character": "left",
+            "frame": "annoyed",
+            "text": "Are you defying me as well?"
+        },
+        {
+            "character": "center",
+            "frame": "angry",
+            "text": "What I’m about to do is beat your ass for hurting my girlfriend."
+        },
+        {
+            "character": "center",
+            "frame": "annoyed",
+            "text": "Bex go sit and rest, I’ll take it from here."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "Well then!"
+        }
+    ]
+}

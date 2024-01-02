@@ -1,9 +1,6 @@
 package states.cd;
 
 import data.GameData.MusicBeatSubState;
-import flixel.tweens.misc.ShakeTween;
-import data.Discord.DiscordClient;
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
@@ -11,12 +8,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
 import data.SongData;
-import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import flixel.effects.FlxFlicker;
-import flixel.input.keyboard.FlxKey;
-import gameObjects.hud.CDButton;
 
 class StoryMode extends MusicBeatState
 {
@@ -32,6 +24,8 @@ class StoryMode extends MusicBeatState
     override function create()
     {
         super.create();
+
+        CoolUtil.playMusic("LoveLetter");
 
         weekData = [
             [["euphoria", "nefarious", "divergence"], "week1"],
@@ -56,11 +50,15 @@ class StoryMode extends MusicBeatState
         week1.ID = 0;
         weeks.add(week1);
 
-        week2 = new FlxSprite().loadGraphic(Paths.image('menu/story/week2'));
+        var huh:String = "";
+        if(!SaveData.progression.get("week1"))
+            huh = "lock";
+        week2 = new FlxSprite().loadGraphic(Paths.image('menu/story/week2' + huh));
         week2.scale.set(0.8,0.8);
         week2.updateHitbox();
         week2.ID = 1;
-        weeks.add(week2);
+        if(SaveData.progression.get("week1")) weeks.add(week2);
+        else add(week2);
 
         epilogue = new FlxSprite().loadGraphic(Paths.image('menu/story/epilogue'));
         epilogue.scale.set(0.4,0.4);
@@ -87,7 +85,7 @@ class StoryMode extends MusicBeatState
                 if(CoolUtil.mouseOverlap(item, FlxG.camera)) {
                     item.scale.x = FlxMath.lerp(item.scale.x, 0.9, elapsed*6);
                     item.scale.y = FlxMath.lerp(item.scale.y, 0.9, elapsed*6);
-                    if(FlxG.mouse.justPressed) {
+                    if(FlxG.mouse.justPressed && focused) {
                         FlxG.sound.play(Paths.sound("menu/select"));
                         sliderActive = item.ID;
                         if(item.ID == 1)
@@ -145,28 +143,42 @@ class StoryMode extends MusicBeatState
     }
 
     public static function enterWeek(id:Int) {
-        PlayState.playList = [];
+        if(id == 0) {
+            Dialog.dialog = "euphoria";
+            Main.switchState(new Dialog());
+        }
+        else if(id == 1) {
+            Dialog.dialog = "allegro";
+            Main.switchState(new Dialog());
+        }
+        else if(id == 3) {
+            Dialog.dialog = "sin";
+            Main.switchState(new Dialog());
+        }
+        else {
+            PlayState.playList = [];
 
-        trace(PlayState.playList);
-
-        var week = weekData[id][0];
-        var name = weekData[id][1];
-
-        trace(week);
-
-        PlayState.curWeek = name;
-        PlayState.songDiff = "normal";
-        PlayState.isStoryMode = true;
-        PlayState.weekScore = 0;
-        
-        PlayState.SONG = SongData.loadFromJson(week[0], "normal");
-        PlayState.playList = week;
-        PlayState.playList.remove(week[0]);
-
-        trace(PlayState.playList);
-        
-        //CoolUtil.playMusic();
-        Main.switchState(new LoadSongState());
+            //trace(PlayState.playList);
+    
+            var week = weekData[id][0];
+            var name = weekData[id][1];
+    
+            //trace(week);
+    
+            PlayState.curWeek = name;
+            PlayState.songDiff = "normal";
+            PlayState.isStoryMode = true;
+            PlayState.weekScore = 0;
+            
+            PlayState.SONG = SongData.loadFromJson(week[0], "normal");
+            PlayState.playList = week;
+            PlayState.playList.remove(week[0]);
+    
+            //trace(PlayState.playList);
+            
+            //CoolUtil.playMusic();
+            Main.switchState(new LoadSongState());
+        }
     }
 }
 
@@ -229,7 +241,7 @@ class SliderL extends MusicBeatSubState
             if(CoolUtil.mouseOverlap(button, FlxG.camera)) {
                 button.scale.x = FlxMath.lerp(button.scale.x, 1.1, elapsed*6);
                 button.scale.y = FlxMath.lerp(button.scale.y, 1.1, elapsed*6);
-                if(FlxG.mouse.justPressed) {
+                if(FlxG.mouse.justPressed && focused) {
                     FlxG.sound.play(Paths.sound("menu/select"));
                     StoryMode.enterWeek(weekID);
                     //sliderActive = true;
@@ -330,7 +342,7 @@ class SliderR extends MusicBeatSubState
             if(CoolUtil.mouseOverlap(button, FlxG.camera)) {
                 button.scale.x = FlxMath.lerp(button.scale.x, 1.1, elapsed*6);
                 button.scale.y = FlxMath.lerp(button.scale.y, 1.1, elapsed*6);
-                if(FlxG.mouse.justPressed) {
+                if(FlxG.mouse.justPressed && focused) {
                     FlxG.sound.play(Paths.sound("menu/select"));
                     StoryMode.enterWeek(weekID);
                     //sliderActive = true;
@@ -347,7 +359,7 @@ class SliderR extends MusicBeatSubState
                 if(CoolUtil.mouseOverlap(vipButton, FlxG.camera)) {
                     vipButton.scale.x = FlxMath.lerp(vipButton.scale.x, 1.1, elapsed*6);
                     vipButton.scale.y = FlxMath.lerp(vipButton.scale.y, 1.1, elapsed*6);
-                    if(FlxG.mouse.justPressed) {
+                    if(FlxG.mouse.justPressed && focused) {
                         FlxG.sound.play(Paths.sound("menu/select"));
                         StoryMode.enterWeek(2);
                         //sliderActive = true;

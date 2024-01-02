@@ -8,7 +8,8 @@
             "objName": "outside",
             "path": "backgrounds/desertion/desertion-one",
             "position": [-707, -225.65],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ]
 }

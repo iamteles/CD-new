@@ -4,7 +4,6 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 import data.Conductor;
-import shaders.ColorSwap;
 
 class Note extends FlxSprite
 {

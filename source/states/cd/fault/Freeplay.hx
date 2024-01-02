@@ -73,7 +73,7 @@ class Freeplay extends MusicBeatState
             var song:String = songs[i][0];
             var charN:String = songs[i][1];
 
-            if(!Paths.fileExists('images/menu/freeplay/names/${song}.png') || !SaveData.songs.get(songs[i][0]))
+            //if(!Paths.fileExists('images/menu/freeplay/names/${song}.png') || !SaveData.songs.get(songs[i][0]))
                 song = "nan";
             if(!Paths.fileExists('images/menu/freeplay/characters/${charN}.png'))
                 charN = "bella";
@@ -83,7 +83,7 @@ class Freeplay extends MusicBeatState
             char.x = 30;
             char.y = 0;
             char.alpha = 0;
-            if(!SaveData.songs.get(songs[i][0]))
+            //if(!SaveData.songs.get(songs[i][0]))
                 char.color = 0xFF000000;
             characters.add(char);
 
@@ -146,33 +146,25 @@ class Freeplay extends MusicBeatState
     {
         super.update(elapsed);
 
-        var up:Bool = Controls.justPressed("UI_UP");
+        var left:Bool = Controls.justPressed("UI_LEFT") || (FlxG.mouse.wheel > 0);
         if(SaveData.data.get("Touch Controls"))
-            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed || (FlxG.mouse.wheel > 0));
 
-        var down:Bool = Controls.justPressed("UI_DOWN");
+        var right:Bool = Controls.justPressed("UI_RIGHT") || (FlxG.mouse.wheel < 0);
         if(SaveData.data.get("Touch Controls"))
-            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
-        var left:Bool = Controls.justPressed("UI_LEFT");
+        var accept:Bool = Controls.justPressed("ACCEPT") || FlxG.mouse.justPressed;
         if(SaveData.data.get("Touch Controls"))
-            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed || FlxG.mouse.justPressed);
 
-        var right:Bool = Controls.justPressed("UI_RIGHT");
+        var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))
-            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed) || FlxG.mouse.justPressedRight;
 
-        var back:Bool = Controls.justPressed("BACK");
-        if(SaveData.data.get("Touch Controls"))
-            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
-
-        var accept:Bool = Controls.justPressed("ACCEPT");
-        if(SaveData.data.get("Touch Controls"))
-            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
-
-        if(up)
+        if(left)
             changeSelection(-1);
-        if(down)
+        if(right)
             changeSelection(1);
         //if(left)
 		//	changeDiff(-1);
@@ -205,38 +197,24 @@ class Freeplay extends MusicBeatState
                 item.alpha = 0;
         }
 
-        if(accept)
+        if(accept && focused)
         {
             try
             {
                 selected = true;
-                switch(CoolUtil.getDiffs()[curDiff]) {
-                    case "mania":
-                        var diff = CoolUtil.getDiffs()[curDiff];
+                var diff = CoolUtil.getDiffs()[curDiff];
+        
+                ////trace('$diff');
+                ////trace('songs/${songList[curSelected][0]}/${songList[curSelected][0]}-${diff}');
                 
-                        //trace('$diff');
-                        //trace('songs/${songList[curSelected][0]}/${songList[curSelected][0]}-${diff}');
-                        
-                        ManiaPlayState.SONG = SongData.loadFromJson(songs[curSelected][0], diff);
-                        
-                        Main.switchState(new ManiaPlayState());
-                    default:
-                        var diff = CoolUtil.getDiffs()[curDiff];
+                PlayState.playList = [];
+                PlayState.SONG = SongData.loadFromJson(songs[curSelected][0], diff);
+                PlayState.isStoryMode = true;
+                //CoolUtil.playMusic();
                 
-                        //trace('$diff');
-                        //trace('songs/${songList[curSelected][0]}/${songList[curSelected][0]}-${diff}');
-                        
-                        PlayState.playList = [];
-                        PlayState.SONG = SongData.loadFromJson(songs[curSelected][0], diff);
-                        //CoolUtil.playMusic();
-                        
-                        PlayState.songDiff = diff;
-                        
-                        if(songs[curSelected][0] == "kaboom")
-                            openSubState(new CharacterSelect());
-                        else
-                            Main.switchState(new LoadSongState());
-                }
+                PlayState.songDiff = diff;
+                
+                Main.switchState(new LoadSongState());
 
             }
             catch(e)

@@ -8,13 +8,15 @@
             "objName": "outside",
             "path": "backgrounds/allegro/outside",
             "position": [-1000, -400],
-            "scrollFactor": [0.5, 0.5]
+            "scrollFactor": [0.5, 0.5],
+            "lq": true
         },
         {
             "objName": "inside",
             "path": "backgrounds/allegro/Inside",
             "position": [-1500, -600],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ],
     "foreground": [
@@ -22,7 +24,8 @@
             "objName": "table",
             "path": "backgrounds/allegro/table",
             "position": [-500, 450],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ]
 }

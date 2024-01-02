@@ -2,7 +2,6 @@ package gameObjects.hud.note;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import shaders.ColorSwap;
 
 class SplashNote extends FlxSprite
 {
@@ -34,7 +33,6 @@ class SplashNote extends FlxSprite
 
 	var unavailable:Array<String> = ["pixel", "taiko", "fitdon"];
 
-	var colorSwap:ColorSwap;
 	public function reloadSplash(note:Note, noteColor:Array<Int>)
 	{
 		var direction:String = CoolUtil.getDirection(note.noteData);

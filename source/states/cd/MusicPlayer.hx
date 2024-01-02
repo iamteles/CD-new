@@ -1,18 +1,8 @@
 package states.cd;
 
-import flixel.FlxG;
-import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.addons.transition.FlxTransitionableState;
-import flixel.effects.FlxFlicker;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import lime.app.Application;
-import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxMath;
 import data.GameData.MusicBeatState;
 import flixel.system.FlxSound;
@@ -22,30 +12,45 @@ import gameObjects.android.FlxVirtualPad;
 
 class MusicPlayer extends MusicBeatState
 {
-    var songs:Array<Array<Dynamic>> = [
+    public static var songs:Array<Array<Dynamic>> = [
         ["Euphoria", "Coco Puffs", "songs/euphoria/Inst", "songs/euphoria/Voices"],
         ["Nefarious", "teles", "songs/nefarious/Inst", "songs/nefarious/Voices"],
         ["Divergence", "CharaWhy", "songs/divergence/Inst", "songs/divergence/Voices"],
         ["Allegro", "teles ft. Coco Puffs", "songs/allegro/Inst", "songs/allegro/Voices"],
-        ["Panic Attack", "Coco Puffs", "songs/panic-attack/Inst", "songs/nefarious/Voices"],
+        ["Panic Attack", "Coco Puffs", "songs/panic-attack/Inst", "songs/panic-attack/Voices"],
         ["Convergence", "CharaWhy", "songs/convergence/Inst", "songs/convergence/Voices"],
         ["Desertion", "Coco Puffs", "songs/desertion/Inst", "songs/desertion/Voices"],
         ["sin.", "teles ft. Coco Puffs", "songs/sin/Inst", "songs/sin/Voices"],
+        ["Intimidate", "Coco Puffs", "songs/intimidate/Inst", "songs/intimidate/Voices"],
         ["Conservation", "CharaWhy", "songs/conservation/Inst", "songs/conservation/Voices"],
         ["Irritation", "Coco Puffs ft. CharaWhy", "songs/irritation/Inst", "songs/irritation/Voices"],
-        ["Intimidate", "Coco Puffs", "songs/intimidate/Inst", "songs/intimidate/Voices"],
-        ["HeartPounder", "Coco Puffs", "songs/heartpounder/Inst", "songs/heartpounder/Voices"],
+        ["Euphoria VIP", "CharaWhy ft. Leebert", "songs/euphoria-vip/Inst", "songs/euphoria-vip/Voices"],
+        ["Nefarious VIP", "CharaWhy", "songs/nefarious-vip/Inst", "songs/nefarious-vip/Voices"],
+        ["Divergence VIP", "CharaWhy", "songs/divergence-vip/Inst", "songs/divergence-vip/Voices"],
+        ["Kaboom!", "teles ft. HighPoweredKeyz", "songs/kaboom/Inst", "songs/kaboom/Voices"],
         ["Ripple", "CharaWhy", "songs/ripple/Inst", "songs/ripple/Voices"],
+        ["Customer Service", "teles ft. Jospi", "songs/customer-service/Inst", "songs/customer-service/Voices"],
+        ["HeartPounder", "Coco Puffs", "songs/heartpounder/Inst", "songs/heartpounder/Voices"],
         ["Exotic", "Coco Puffs", "songs/exotic/Inst"],
         ["Over the Horizon", "Coco Puffs", "music/overTheHorizon"],
-        ["Over the Horizon (BREE-MIX)", "CharaWhy", "music/overTheHorizonBree"],
-        ["Shopkeeper", "teles", "music/shopkeeper"],
+        ["Over the Thunder", "CharaWhy", "music/overTheHorizonBree"],
+        ["Over the Counter", "teles", "music/shopkeeper"],
         ["Over the Clouds", "YaBoiJustin", "music/overTheHorizonHelica"],
         ["Movement", "CharaWhy", "music/movement"],
-        ["Reiterate", "teles", "music/death/reiterate"],
+        ["Love Letter (Bios Theme)", "Coco Puffs", "music/LoveLetter"],
+        ["Allegretto (Credits Theme)", "teles", "music/credits"],
+        ["Euphoria (Dialogue)", "Coco Puffs", "music/dialogue/11"],
+        ["Nefarious (Dialogue)", "Coco Puffs", "music/dialogue/12"],
+        ["Divergence (Dialogue)", "Coco Puffs", "music/dialogue/13"],
+        ["Allegro (Dialogue)", "Coco Puffs", "music/dialogue/21"],
+        ["Panic Attack (Dialogue)", "Coco Puffs", "music/dialogue/22"],
+        ["Convergence (Dialogue)", "teles", "music/dialogue/23"],
+        ["Desertion (Dialogue)", "teles", "music/dialogue/24"],
+        ["Godsend (Finale)", "Coco Puffs", "music/godsend"],
+        ["Reiterate (Game Over Theme)", "teles", "music/death/reiterate"],
         ["THUNDEROUS", "teles", "music/death/bree"],
         ["Speaker", "Coco Puffs", "music/speaker"],
-        ["Reiterate Retro", "teles", "music/death/reiterate-old"],
+        ["Reiterate Retro", "teles", "music/death/reiterate-old"]
     ];
     static var curSelected:Int = 0;
 
@@ -113,17 +118,11 @@ class MusicPlayer extends MusicBeatState
             var text = new FlxText(0,0,0,"");
             text.setFormat(Main.gFont, 30, 0xFF000000, CENTER);
             text.text = num + songs[i][0];
-            trace(num + songs[i][0]);
+            //trace(num + songs[i][0]);
             text.x = 774.85;
             text.y = holder.y + 10;
             text.ID = i;
             names.add(text);
-
-            if(SaveData.data.get("Preload Songs")) {
-                Paths.preloadMusicPlayer(songs[i][2]);
-                if(songs[i][3] != null)
-                    Paths.preloadMusicPlayer(songs[i][3]);
-            }
         }
 
         frame = new FlxSprite().loadGraphic(Paths.image('menu/music/list-overlay'));

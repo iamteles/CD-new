@@ -1,20 +1,14 @@
 package states.cd;
 
-import gameObjects.Character;
-import flixel.tweens.misc.ShakeTween;
 import data.Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
-import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
 import data.SongData;
-import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import flixel.effects.FlxFlicker;
 import gameObjects.android.FlxVirtualPad;
 import data.Highscore;
 import data.Highscore.ScoreData;
@@ -26,26 +20,8 @@ class Freeplay extends MusicBeatState
     var songs:Array<Array<Dynamic>> = [
         // default
         ["euphoria", "bella", 0xFFF85E4D],
-        // week 1
         ["nefarious", "bex", 0xFF5B7A9E],
         ["divergence", "duo", 0xFF970F00],
-        //week 2
-        ["allegro", "duo", 0xFF0C2E55],
-        ["panic-attack", "bree", 0xFFF85EA4],
-        ["convergence", "bree", 0xFFB6318E],
-        ["desertion", "bree-angry", 0xFFFF0000],
-        ["sin", "helica", 0xFFE17B00],
-        ["conservation", "watts", 0xFFFEC404],
-        ["irritation", "watts", 0xFFFEC404],
-        ["kaboom", "spicy-v2", 0xFFFF006A],
-        ["intimidate", "bex-scared", 0xFF0A203B],
-        ["heartpounder", "duo", 0xFFF85EA4],
-        ["ripple", "drown", 0xFF049AFE],
-        ["customer-service", "empitri", 0xFFfdacbc],
-        ["euphoria-vip", "bella", 0xFFF85E4D],
-        ["nefarious-vip", "bella", 0xFFF85E4D],
-        ["divergence-vip", "bella", 0xFFF85E4D],
-        ["exotic", "cutenevil", 0xFFFFFFFF],
     ];
     static var curSelected:Int = 0;
     static var curDiff:Int = 0;
@@ -58,7 +34,7 @@ class Freeplay extends MusicBeatState
     var box:FlxSprite;
     var arrows:FlxSprite;
     var shaking:Bool = false;
-    var selected:Bool = false;
+    public static var selected:Bool = false;
 
     var fr:FlxSprite;
     var shack:FlxSprite;
@@ -75,6 +51,48 @@ class Freeplay extends MusicBeatState
 
         DiscordClient.changePresence("In the Freeplay Menu", null);
         CoolUtil.playMusic("movement");
+
+        selected = false;
+
+        if(SaveData.progression.get("week2")) {
+            songs.push(["allegro", "duo", 0xFF0C2E55]);
+            songs.push(["panic-attack", "bree", 0xFFF85EA4]);
+            songs.push(["convergence", "bree", 0xFFB6318E]);
+            songs.push(["desertion", "bree-angry", 0xFFFF0000]);
+        }
+
+        if(SaveData.progression.get("intimidated")) {
+            songs.push(["sin", "helica", 0xFFE17B00]);
+            songs.push(["intimidate", "bex-scared", 0xFF0A203B]);
+        }
+
+        if(SaveData.shop.get("mic")) {
+            songs.push(["conservation", "watts", 0xFFFEC404]);
+            songs.push(["irritation", "watts", 0xFFFEC404]);
+        }
+
+        if(SaveData.progression.get("vip")) {
+            songs.push(["euphoria-vip", "bellavip", 0xFFFFCB1F]);
+            songs.push(["nefarious-vip", "bexvip", 0xFFFFCB1F]);
+            songs.push(["divergence-vip", "duovip", 0xFFFFCB1F]);
+        }
+
+        if(SaveData.shop.get("ticket")) {
+            songs.push(["kaboom", "spicy-v2", 0xFFFF006A]);
+        }
+
+        if(SaveData.shop.get("shack")) {
+            songs.push(["ripple", "drown", 0xFF049AFE]);
+            songs.push(["customer-service", "empitri", 0xFFfdacbc]);
+        }
+
+        if(SaveData.progression.get("week2")) {
+            songs.push(["heartpounder", "duo", 0xFFF85EA4]);
+        }
+
+        if(SaveData.progression.get("vip")) {
+            songs.push(["exotic", "cutenevil", 0xFFFFFFFF]);
+        }
 
         bg = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/desat'));
 		bg.updateHitbox();
@@ -111,7 +129,7 @@ class Freeplay extends MusicBeatState
                 char.color = 0xFF000000;
             characters.add(char);
 
-            if(charN == "cutenevil" || charN == "duo")
+            if(charN == "cutenevil" || charN == "duo" || charN == "bellavip" || charN == "duovip")
                 char.offset.set(50,0);
             else if(charN == "bex" || charN == "bex-scared")
                 char.offset.set(-50,0);
@@ -149,8 +167,10 @@ class Freeplay extends MusicBeatState
 		lerpValues = {score: 0, accuracy: 0, misses: 0};
 
         arrows = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/arrows'));
-        arrows.x = 11.95;
-        arrows.y = 637.2;
+        arrows.angle = 90;
+        arrows.updateHitbox();
+        arrows.x = 20;
+        arrows.y = FlxG.height - arrows.height + 8;
 		add(arrows);
 
         fr = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/fr_collab'));
@@ -176,33 +196,25 @@ class Freeplay extends MusicBeatState
     {
         super.update(elapsed);
 
-        var up:Bool = Controls.justPressed("UI_UP");
+        var left:Bool = Controls.justPressed("UI_LEFT") || (FlxG.mouse.wheel > 0);
         if(SaveData.data.get("Touch Controls"))
-            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed || (FlxG.mouse.wheel > 0));
 
-        var down:Bool = Controls.justPressed("UI_DOWN");
+        var right:Bool = Controls.justPressed("UI_RIGHT") || (FlxG.mouse.wheel < 0);
         if(SaveData.data.get("Touch Controls"))
-            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
-        var left:Bool = Controls.justPressed("UI_LEFT");
+        var accept:Bool = Controls.justPressed("ACCEPT") || FlxG.mouse.justPressed;
         if(SaveData.data.get("Touch Controls"))
-            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed || FlxG.mouse.justPressed);
 
-        var right:Bool = Controls.justPressed("UI_RIGHT");
+        var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))
-            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed) || FlxG.mouse.justPressedRight;
 
-        var back:Bool = Controls.justPressed("BACK");
-        if(SaveData.data.get("Touch Controls"))
-            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
-
-        var accept:Bool = Controls.justPressed("ACCEPT");
-        if(SaveData.data.get("Touch Controls"))
-            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
-
-        if(up)
+        if(left)
             changeSelection(-1);
-        if(down)
+        if(right)
             changeSelection(1);
         //if(left)
 		//	changeDiff(-1);
@@ -235,29 +247,21 @@ class Freeplay extends MusicBeatState
                 item.alpha = 0;
         }
 
-        if(accept)
+        if(accept && focused)
         {
             try
             {
                 selected = true;
                 switch(CoolUtil.getDiffs()[curDiff]) {
-                    case "mania":
-                        var diff = CoolUtil.getDiffs()[curDiff];
-                
-                        //trace('$diff');
-                        //trace('songs/${songList[curSelected][0]}/${songList[curSelected][0]}-${diff}');
-                        
-                        ManiaPlayState.SONG = SongData.loadFromJson(songs[curSelected][0], diff);
-                        
-                        Main.switchState(new ManiaPlayState());
                     default:
                         var diff = CoolUtil.getDiffs()[curDiff];
                 
-                        //trace('$diff');
-                        //trace('songs/${songList[curSelected][0]}/${songList[curSelected][0]}-${diff}');
+                        ////trace('$diff');
+                        ////trace('songs/${songList[curSelected][0]}/${songList[curSelected][0]}-${diff}');
                         
                         PlayState.playList = [];
                         PlayState.SONG = SongData.loadFromJson(songs[curSelected][0], diff);
+                        PlayState.isStoryMode = false;
                         //CoolUtil.playMusic();
                         
                         PlayState.songDiff = diff;
@@ -378,9 +382,10 @@ class CharacterSelect extends MusicBeatSubState
     {
         super.update(elapsed);
 
-        if(Controls.justPressed("BACK"))
+        if(Controls.justPressed("BACK") || FlxG.mouse.justPressedRight)
         {
             FlxG.sound.play(Paths.sound('menu/back'));
+            Freeplay.selected = false;
             close();
         }
 

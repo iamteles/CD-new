@@ -1,6 +1,5 @@
 package states.cd.fault;
 
-import flixel.tweens.misc.ShakeTween;
 import data.Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -9,7 +8,6 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
-import data.SongData;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
@@ -152,13 +150,13 @@ class MainMenu extends MusicBeatState
 
         //info.text = CoolUtil.posToTimer(SaveData.curTime());
 
-        var left:Bool = Controls.justPressed("UI_LEFT");
+        var left:Bool = Controls.justPressed("UI_LEFT") || (FlxG.mouse.wheel > 0);
         if(SaveData.data.get("Touch Controls"))
-            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed || (FlxG.mouse.wheel > 0));
 
-        var right:Bool = Controls.justPressed("UI_RIGHT");
+        var right:Bool = Controls.justPressed("UI_RIGHT") || (FlxG.mouse.wheel < 0);
         if(SaveData.data.get("Touch Controls"))
-            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
         var accept:Bool = Controls.justPressed("ACCEPT");
         if(SaveData.data.get("Touch Controls"))
@@ -188,7 +186,7 @@ class MainMenu extends MusicBeatState
         else if(!selected)
             arrowR.alpha = 0.7;
 
-        if(accept && !selected)
+        if(accept && !selected && focused)
         {
             if(returnMenu(curSelected)) {
                 selected = true;

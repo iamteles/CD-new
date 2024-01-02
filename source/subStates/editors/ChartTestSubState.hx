@@ -323,7 +323,7 @@ class ChartTestSubState extends MusicBeatSubState
 		{
 			vocals.volume = 0;
 
-			FlxG.sound.play(Paths.sound('miss/missnote' + FlxG.random.int(1, 3)), 0.55);
+			FlxG.sound.play(Paths.sound('miss/miss' + FlxG.random.int(1, 3)), 0.55);
 
 			// when the player misses notes
 			if(strumline.isPlayer)
@@ -760,7 +760,7 @@ class ChartTestSubState extends MusicBeatSubState
 				if(Math.abs(Conductor.songPos - music.time) >= 40 || forced)
 				{
 					// makes everyone sync to the instrumental
-					//trace("synced song");
+					////trace("synced song");
 					music.time = Conductor.songPos;
 				}
 			}

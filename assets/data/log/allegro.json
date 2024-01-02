@@ -1,0 +1,58 @@
+{
+    "characters": ["bella", "bex"],
+    "background": "allegro",
+    "finisher": "allegro",
+    "song": "21",
+    "lines": [
+        {
+            "character": "right",
+            "frame": "excited",
+            "text": "this stuff bangs! Thanks for paying for the food babe!"
+        },
+        {
+            "character": "left",
+            "frame": "mouthful",
+            "text": "Ya, no pawblum ;3"
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "heh"
+        },
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "Yknow I can’t believe it’s almost been 6 whole months since we met..wild isn’t it? ^^"
+        },
+        {
+            "character": "right",
+            "frame": "happy",
+            "text": "sure is! i’m so glad we bumped into each other"
+        },
+        {
+            "character": "right",
+            "frame": "shy",
+            "text": "I love you so much"
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "Awwwmmmmm... I love you too :,)"
+        },
+        {
+            "character": "right",
+            "frame": "ooh",
+            "text": "hey, do you wanna sing..."
+        },
+        {
+            "character": "right",
+            "frame": "loving",
+            "text": "yknow, for old times sake"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "Thought you’d never ask.. :D"
+        }
+    ]
+}

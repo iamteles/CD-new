@@ -1,8 +1,5 @@
 package data;
 
-import flixel.FlxG;
-import flixel.math.FlxMath;
-
 typedef ScoreData = {
 	var score:Float;
 	var accuracy:Float;

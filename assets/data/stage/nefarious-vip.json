@@ -7,7 +7,8 @@
         {
             "objName": "sky",
             "path": "backgrounds/vip/subway",
-            "position": [-200, -1300]
+            "position": [-200, -1300],
+            "lq": true
         }
     ]
 }

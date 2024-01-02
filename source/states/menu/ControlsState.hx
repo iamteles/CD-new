@@ -10,6 +10,7 @@ import flixel.util.FlxTimer;
 import data.GameData.MusicBeatState;
 import gameObjects.menu.Alphabet;
 import gameObjects.android.FlxVirtualPad;
+import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
 
@@ -36,11 +37,15 @@ class ControlsState extends MusicBeatState
 		super.create();
 		controlList = Controls.changeableControls;
 		
-		var bg = new FlxSprite().loadGraphic(Paths.image('menu/menuDesat'));
-		bg.scale.set(1.2,1.2); bg.updateHitbox();
-		bg.screenCenter();
-		bg.color = OptionsState.bgColors.get("controls");
-		add(bg);
+		var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFDBBF9B);
+		color.screenCenter();
+		add(color);
+
+		var tiles = new FlxBackdrop(Paths.image('menu/freeplay/tile'), XY, 0, 0);
+        tiles.velocity.set(30, 30);
+        tiles.screenCenter();
+		tiles.alpha = 0.6;
+        add(tiles);
 
 		grpMain = new FlxTypedGroup<Alphabet>();
 		add(grpMain);
@@ -216,13 +221,13 @@ class ControlsState extends MusicBeatState
 		super.update(elapsed);
 		var flxGamepad = FlxG.gamepads.firstActive;
 
-		var up:Bool = Controls.justPressed("UI_UP");
-        if(SaveData.data.get("Touch Controls"))
-            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+		var up:Bool = Controls.justPressed("UI_UP") || (FlxG.mouse.wheel > 0);
+        if(virtualPad != null)
+            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed) || (FlxG.mouse.wheel > 0);
 
-        var down:Bool = Controls.justPressed("UI_DOWN");
-        if(SaveData.data.get("Touch Controls"))
-            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+        var down:Bool = Controls.justPressed("UI_DOWN") || (FlxG.mouse.wheel < 0);
+        if(virtualPad != null)
+            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed) || (FlxG.mouse.wheel < 0);
 
         var left:Bool = Controls.justPressed("UI_LEFT");
         if(SaveData.data.get("Touch Controls"))
@@ -232,13 +237,13 @@ class ControlsState extends MusicBeatState
         if(SaveData.data.get("Touch Controls"))
             right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
 
-        var back:Bool = Controls.justPressed("BACK");
+        var accept:Bool = Controls.justPressed("ACCEPT") || FlxG.mouse.justPressed;
         if(SaveData.data.get("Touch Controls"))
-            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed || FlxG.mouse.justPressed);
 
-        var accept:Bool = Controls.justPressed("ACCEPT");
+        var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))
-            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed) || FlxG.mouse.justPressedRight;
 
 		if(back && !waitingInput)
 		{

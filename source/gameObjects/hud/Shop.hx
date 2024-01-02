@@ -1,20 +1,14 @@
 package gameObjects.hud;
 
 import flixel.math.FlxPoint;
-import flixel.FlxBasic.FlxType;
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
-import flixel.math.FlxMath;
 import flixel.text.FlxText;
-import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
-import data.Timings;
 import states.PlayState;
 import flixel.tweens.FlxTween;
 import flixel.addons.text.FlxTypeText;
 import flixel.tweens.FlxEase;
-import flixel.math.FlxMath;
 import flixel.system.FlxSound;
 import flixel.input.keyboard.FlxKey;
 import states.ShopState;
@@ -104,10 +98,10 @@ class ShopTalk extends FlxGroup
 		add(tex);
 
         if(!SaveData.progression.get("shopentrance")) {
-            trace(SaveData.progression.get("shopentrance"));
+            //trace(SaveData.progression.get("shopentrance"));
             starting = "intro";
             SaveData.progression.set("shopentrance", true);
-            trace(SaveData.progression.get("shopentrance"));
+            //trace(SaveData.progression.get("shopentrance"));
             SaveData.save();
         }
 
@@ -489,14 +483,14 @@ class ShopTab extends FlxTypedGroup<ShopItem>
     var itemList:Map<String, Array<Array<Dynamic>>> =
     [
         "songs" => [
-            ["crown", "Golden Crown", 100],
             ["mic", "Used Microphone", 50],
-            ["ticket", "Rave Ticket", 50]
+            ["crown", "Golden Crown", 100],
+            ["ticket", "Rave Ticket", 50],
+            ["shack", "Hair Dye", 75]
         ],
         "skins" => [
             ["base", "Classic FNF", 15],
             ["tails", "Tails.EXE", 15],
-            ["shack", "The Funk Shack", 15],
             ["mlc", "Mirror Life Crisis", 15]
         ],
         "extras" => [
@@ -597,12 +591,28 @@ class ShopItem extends FlxGroup
                 ShopBuy.scrollText(SaveData.displayShop.get(info[0])[1]);
 
                 if(FlxG.mouse.justPressed) {
-                    trace('PRESSED' + info[0]);
+                    //trace('PRESSED' + info[0]);
 
                     if(!SaveData.shop.get(info[0]) && SaveData.money >= info[2]) {
                         FlxG.sound.play(Paths.sound("csin"));
                         SaveData.buyItem(info[0]);
                         SaveData.transaction(-Std.int(info[2]));
+
+                        if(info[0] == 'crown') {
+                            states.cd.MainMenu.unlocks.push("Week 1: VIP!");
+                            //Main.switchState(new states.cd.MainMenu());
+                        }
+
+                        if(info[0] == 'shack') {
+                            states.cd.MainMenu.unlocks.push("Song: Ripple! (FREEPLAY)\nSong: Customer Service! (FREEPLAY)");
+                           // Main.switchState(new states.cd.MainMenu());
+                        }
+
+                        if(info[0] == 'ticket') {
+                            states.cd.MainMenu.unlocks.push("Song: Kaboom! (FREEPLAY)");
+                            //Main.switchState(new states.cd.MainMenu());
+                        }
+
                     }
 
                     if(info[0] == 'mic' && (SaveData.money >= info[2] || SaveData.shop.get(info[0]))) {

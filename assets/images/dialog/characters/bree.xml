@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bree.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="annoyed0000" x="809" y="34" width="636" height="931"/>
+	<SubTexture name="confused0000" x="800" y="983" width="698" height="931"/>
+	<SubTexture name="neutral0000" x="1463" y="34" width="636" height="931"/>
+	<SubTexture name="shock0000" x="800" y="983" width="698" height="931"/>
+	<SubTexture name="sin annoyed0000" x="1516" y="983" width="636" height="931"/>
+	<SubTexture name="sin neutral0000" x="2117" y="34" width="636" height="931"/>
+	<SubTexture name="sin very mad0000" x="34" y="983" width="748" height="931"/>
+	<SubTexture name="sin yap0000" x="34" y="1932" width="710" height="931"/>
+	<SubTexture name="smug0000" x="1486" y="1932" width="635" height="933"/>
+	<SubTexture name="stun talk0000" x="2139" y="1932" width="636" height="931"/>
+	<SubTexture name="stunned0000" x="2170" y="983" width="636" height="931"/>
+	<SubTexture name="very mad0000" x="34" y="34" width="757" height="931"/>
+	<SubTexture name="yap0000" x="762" y="1932" width="706" height="931"/>
+</TextureAtlas>

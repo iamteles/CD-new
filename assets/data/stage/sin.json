@@ -8,14 +8,16 @@
             "path": "backgrounds/helica/sky",
             "position": [-987.85, -587.65],
             "scrollFactor": [0.3, 0.3],
-            "scale": 1.5
+            "scale": 1.5,
+            "lq": true
         },
         {
             "objName": "clouds",
             "path": "backgrounds/helica/cloud",
             "position": [-1334.6, -570.15],
             "scrollFactor": [0.4, 0.4],
-            "scale": 1.5
+            "scale": 1.5,
+            "lq": true
         },
         {
             "objName": "city",
@@ -43,7 +45,8 @@
             "path": "backgrounds/helica/aurora",
             "position": [-642.3, 708.25],
             "scrollFactor": [1, 1],
-            "scale": 1.2
+            "scale": 1.2,
+            "lq": true
         }     
     ]
 }

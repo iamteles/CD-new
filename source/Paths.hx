@@ -51,14 +51,14 @@ class Paths
 				#end
 				
 				var newGraphic = FlxGraphic.fromBitmapData(bitmap, false, key, false);
-				trace('created new image $key');
+				//trace('created new image $key');
 				
 				renderedGraphics.set(key, newGraphic);
 			}
 			
 			return renderedGraphics.get(key);
 		}
-		trace('$key doesnt exist, fuck');
+		//trace('$key doesnt exist, fuck');
 		return null;
 	}
 
@@ -66,8 +66,10 @@ class Paths
 	*	add .ogg at the end for sounds
 	*/
 	public static var dumpExclusions:Array<String> = [
+		"transition.png",
 		"menu/alphabet/default.png",
-		"hud/base/money.png"
+		"hud/base/money.png",
+		"menu/cursor.png"
 	];
 	public static function clearMemory()
 	{	
@@ -78,7 +80,7 @@ class Paths
 		{
 			if(dumpExclusions.contains(key + '.png')) continue;
 
-			//trace('cleared $key');
+			////trace('cleared $key');
 			//clearCount++;
 			clearCount.push(key);
 
@@ -91,8 +93,8 @@ class Paths
 			renderedGraphics.remove(key);
 		}
 
-		trace('cleared $clearCount');
-		trace('cleared ${clearCount.length} assets');
+		//trace('cleared $clearCount');
+		//trace('cleared ${clearCount.length} assets');
 		
 		// sound clearing
 		for (key => sound in renderedSounds)
@@ -154,6 +156,7 @@ class Paths
 	// sparrow (.xml) sheets
 	public static function getSparrowAtlas(key:String)
 		return FlxAtlasFrames.fromSparrow(getGraphic(key), getPath('images/$key.xml'));
+		//return FlxAnimateFrames.fromSparrow(getPath('images/$key.xml'), getGraphic(key));
 	
 	// packer (.txt) sheets
 	public static function getPackerAtlas(key:String)
@@ -188,7 +191,7 @@ class Paths
 		} catch(e) {}
 		#end
 		
-		trace(theList);
+		//trace(theList);
 		return theList;
 	}
 
@@ -199,9 +202,9 @@ class Paths
 		var assetModifier = states.PlayState.assetModifier;
 		var preGraphics:Array<String> = [];
 		var preSounds:Array<String> = [
-			"sounds/miss/missnote1",
-			"sounds/miss/missnote2",
-			"sounds/miss/missnote3",
+			"sounds/miss/miss1",
+			"sounds/miss/miss2",
+			"sounds/miss/miss3",
 
 			"music/death/deathSound",
 			"music/death/deathMusic",

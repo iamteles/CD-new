@@ -7,25 +7,29 @@
             "objName": "outside",
             "path": "backgrounds/gfd/sky",
             "position": [-304.05, -57.5],
-            "scrollFactor": [0.3, 0.3]
+            "scrollFactor": [0.3, 0.3],
+            "lq": true
         },
         {
             "objName": "stars",
             "path": "backgrounds/gfd/stars",
             "position": [-293.5, 104.8],
-            "scrollFactor": [0.5, 0.5]
+            "scrollFactor": [0.5, 0.5],
+            "lq": true
         },
         {
             "objName": "ocean",
             "path": "backgrounds/gfd/ocean",
             "position": [-294, 719.8],
-            "scrollFactor": [0.7, 0.7]
+            "scrollFactor": [0.7, 0.7],
+            "lq": true
         },
         {
             "objName": "grd",
             "path": "backgrounds/gfd/tree",
             "position": [-303.15, 399.7],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ]
 }

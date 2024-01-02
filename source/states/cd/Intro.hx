@@ -6,7 +6,9 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+import flixel.addons.display.FlxBackdrop;
 import data.GameData.MusicBeatState;
+import flixel.text.FlxText;
 
 class Intro extends MusicBeatState
 {
@@ -71,7 +73,7 @@ class Intro extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		var click:Bool = FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed;
+		var click:Bool = FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.ENTER || FlxG.mouse.justPressed;
 
 		#if mobile
 		for (touch in FlxG.touches.list)
@@ -90,6 +92,60 @@ class Intro extends MusicBeatState
 	private function finish():Void
 	{
 		Main.switchState(new TitleScreen());
+	}
+	
+}
+
+class Warning extends MusicBeatState
+{
+	var isPlaytester:Bool = false;
+	override public function create():Void 
+	{
+		super.create();
+
+        var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFF000000);
+		color.screenCenter();
+		add(color);
+
+		var tiles = new FlxBackdrop(Paths.image('all'), XY, 0, 0);
+        tiles.velocity.set(30, 30);
+        tiles.screenCenter();
+		tiles.alpha = 0.7;
+        add(tiles);
+
+		var tex:String = "Warning!\n\nThis mod features flashing lights that may\nbe harmful to those with photosensitivity.\nYou can disable them in the Options menu.\n\nPress ENTER to continue!";
+		if(isPlaytester)
+			tex = "Hello playtester!\n\nThank you so much for helping us ensure\nthe mod has a bug-free experience.\nWe ask you that you NOT share anything in this\nbuild to anyone to keep the surprise!\nPlease report any bugs in the Google Forms\nthat was sent with the build.\n\nPress ENTER to continue!";
+		var popUpTxt = new FlxText(0,0,0,tex);
+		popUpTxt.setFormat(Main.gFont, 43, 0xFFFFFFFF, CENTER);
+		popUpTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2.5);
+		popUpTxt.screenCenter();
+		add(popUpTxt);
+	}
+	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
+
+		var click:Bool = FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.ENTER || FlxG.mouse.justPressed;
+
+		#if mobile
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+				finish();
+		}
+		#end
+
+		if (click)
+		{
+			finish();
+		}
+	}
+	
+	private function finish():Void
+	{
+		Main.switchState(new Intro());
 	}
 	
 }

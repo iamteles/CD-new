@@ -7,7 +7,8 @@
             "objName": "back",
             "path": "backgrounds/cave/cave back",
             "position": [-439.05, -207.65],
-            "scrollFactor": [0.5, 0.5]
+            "scrollFactor": [0.5, 0.5],
+            "lq": true
         },
         {
             "objName": "water",
@@ -22,13 +23,15 @@
                     "looped": true
                 }
             ],
-            "scrollFactor": [0.6, 0.6]
+            "scrollFactor": [0.6, 0.6],
+            "lq": true
         },
         {
             "objName": "floor",
             "path": "backgrounds/cave/floor",
             "position": [-285.5, 13.35],
-            "scrollFactor": [0.7, 0.7]
+            "scrollFactor": [0.7, 0.7],
+            "lq": true
         },
         {
             "objName": "lwall",

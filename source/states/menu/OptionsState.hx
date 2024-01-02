@@ -7,8 +7,6 @@ import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import data.GameData.MusicBeatState;
@@ -16,6 +14,7 @@ import gameObjects.menu.AlphabetMenu;
 import gameObjects.menu.options.*;
 import SaveData.SettingType;
 import gameObjects.android.FlxVirtualPad;
+import flixel.addons.display.FlxBackdrop;
 
 class OptionsState extends MusicBeatState
 {
@@ -33,28 +32,30 @@ class OptionsState extends MusicBeatState
 			"Cutscenes",
 			"Framerate Cap",
 			"Preload Songs",
-			"Touch Controls"
+			//"Touch Controls"
 		],
 		"appearance" => [
 			"Skin",
-			"Antialiasing",
 			"Song Timer",
 			"Note Splashes",
 			"Smooth Healthbar",
 			"Split Holds",
-			"Shaders"
+
 		],
 		"accessibility" => [
 			"Flashing Lights",
+			"FPS Counter",
+			"Antialiasing",
+			"Shaders",
+			"Low Quality",
 			"Colorblind Filter",
+		],
+		"save" => [
+			"Reset Progression",
+			"Reset Options",
+			"Reset Highscores",
+			"Reset All"
 		]
-	];
-
-	public static var bgColors:Map<String, FlxColor> = [
-		"main" 		=> 0xFFF85E4D,
-		"gameplay"	=> 0xFF83e6aa,
-		"appearance"=> 0xFFFEC404,
-		"controls"  => 0xFF8295f5,
 	];
 
 	public static var curCat:String = "main";
@@ -65,12 +66,13 @@ class OptionsState extends MusicBeatState
 	var grpTexts:FlxTypedGroup<FlxText>;
 	var grpAttachs:FlxTypedGroup<FlxBasic>;
 	var infoTxt:FlxText;
-
-	// objects
-	var bg:FlxSprite;
+	var verTxt:FlxText;
+	var square:FlxSprite;
+	var notes:FlxSprite;
 
 	// makes you able to go to the options and go back to the state you were before
 	static var backTarget:FlxState;
+	var buttonsMain:FlxTypedGroup<FlxSprite>;
 	public function new(?newBackTarget:FlxState)
 	{
 		super();
@@ -89,20 +91,51 @@ class OptionsState extends MusicBeatState
 	{
 		super.create();
 		CoolUtil.playMusic("movement");
-		bg = new FlxSprite().loadGraphic(Paths.image('menu/menuDesat'));
-		bg.scale.set(1.2,1.2); bg.updateHitbox();
-		bg.screenCenter();
-		add(bg);
+		var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFDBBF9B);
+		color.screenCenter();
+		add(color);
+
+		var tiles = new FlxBackdrop(Paths.image('menu/freeplay/tile'), XY, 0, 0);
+        tiles.velocity.set(30, 30);
+        tiles.screenCenter();
+		tiles.alpha = 0.9;
+        add(tiles);
+
+		square = new FlxSprite().loadGraphic(Paths.image("menu/options/square"));
+		square.updateHitbox();
+		square.screenCenter();
+		add(square);
+
+		notes = new FlxSprite();
+		notes.loadGraphic(Paths.image("menu/options/notes"), true, 460, 115);
+		notes.updateHitbox();
+		notes.animation.add("cd", [0], 0, false);
+		notes.animation.add("base", [1], 0, false);
+		notes.animation.add("pixel", [2], 0, false);
+		notes.animation.add("tails", [3], 0, false);
+		notes.animation.add("mlc", [4], 0, false);
+		notes.animation.add("shack", [5], 0, false);
+		notes.animation.add("doido", [6], 0, false);
+		notes.animation.add("ylyl", [7], 0, false);
+		notes.animation.add("fitdon", [8], 0, false);
+		notes.animation.play(SaveData.skin());
+		notes.screenCenter(X);
+		notes.y += 4;
+		add(notes);
+
 
 		grpTexts = new FlxTypedGroup<FlxText>();
 		grpAttachs = new FlxTypedGroup<FlxBasic>();
+		buttonsMain = new FlxTypedGroup<FlxSprite>();
 
 		add(grpTexts);
 		add(grpAttachs);
+		add(buttonsMain);
 		
 		infoTxt = new FlxText(0, 0, FlxG.width * 0.92, "");
 		infoTxt.setFormat(Main.dsFont, 28, 0xFFFFFFFF, CENTER);
 		infoTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
+		infoTxt.antialiasing = false;
 		add(infoTxt);
 
 		if(SaveData.data.get("Touch Controls")) {
@@ -110,6 +143,12 @@ class OptionsState extends MusicBeatState
             add(virtualPad);
         }
 
+		verTxt = new FlxText(0,0,0,"Characteristic Disparity V2.0.0                     Running Doido Engine                     Press R to reset your save data.");
+		verTxt.setFormat(Main.dsFont, 24, 0xFFFFFFFF, CENTER);
+		verTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
+        verTxt.y = FlxG.height - verTxt.height;
+		verTxt.screenCenter(X);
+		add(verTxt);
 
 		reloadCat();
 	}
@@ -121,27 +160,68 @@ class OptionsState extends MusicBeatState
 		OptionsState.curCat = curCat;
 		grpTexts.clear();
 		grpAttachs.clear();
+		buttonsMain.clear();
 
 		if(storedSelected.exists(curCat))
 			curSelected = storedSelected.get(curCat);
 		else
 			curSelected = 0;
 
-		if(bgColors.exists(curCat))
-			bg.color = bgColors.get(curCat);
-		else
-			bg.color = bgColors.get("main");
-
 		FlxG.sound.play(Paths.sound("menu/scroll"));
 
 		if(curCat == "main")
 		{
+			verTxt.visible = true;
+			square.alpha = 0;
+			notes.visible = false;
+			for(i in 0...optionShit.get(curCat).length)
+			{
+				var name = optionShit.get(curCat)[i];
+				var index = i;
+	
+				var button = new FlxSprite();
+				button.frames = Paths.getSparrowAtlas('menu/options/icons');
+				button.animation.addByPrefix('idle',  name + '0', 24, true);
+				button.animation.play('idle');
+				button.ID = i;
+	
+				//button.scale.set(0.65,0.65);
+				button.updateHitbox();
+	
+	
+				switch(index) {
+					case 0:
+						button.screenCenter();
+						button.x -= 300;
+						button.y -= 170;
+					case 1:
+						button.screenCenter();
+						button.x += 300 + 30;
+						button.y -= 170;
+					case 2:
+						button.screenCenter();
+						button.x -= 300;
+						button.y += 180;
+					case 3:
+						button.screenCenter();
+						button.x += 300 + 30;
+						button.y += 180;
+				}
+	
+				buttonsMain.add(button);
+			}
+		}
+		else if(curCat == "save") {
+			verTxt.visible = true;
+			square.alpha = 0;
+			notes.visible = false;
 			for(i in 0...optionShit.get(curCat).length)
 			{
 				var item = new FlxText(0, 0, FlxG.width * 0.92, "");
 				item.setFormat(Main.gFont, 70, 0xFFFFFFFF, CENTER);
 				item.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
 				item.text = optionShit.get(curCat)[i];
+
 				grpTexts.add(item);
 
 				item.ID = i;
@@ -157,6 +237,14 @@ class OptionsState extends MusicBeatState
 		}
 		else
 		{
+			verTxt.visible = false;
+			square.alpha = 1;
+
+			if(curCat == "appearance")
+				notes.visible = true;
+			else
+				notes.visible = false;
+
 			for(i in 0...optionShit.get(curCat).length)
 			{
 				var daOption:String = optionShit.get(curCat)[i];
@@ -259,7 +347,7 @@ class OptionsState extends MusicBeatState
 		}
 		
 		infoTxt.text = "";
-		if(curCat != "main")
+		if(curCat != "main" && curCat != "save")
 		{
 			try{
 				
@@ -270,7 +358,7 @@ class OptionsState extends MusicBeatState
 				infoTxt.y -= 30;
 				
 			} catch(e) {
-				trace("no description found");
+				//trace("no description found");
 			}
 		}
 
@@ -311,13 +399,13 @@ class OptionsState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		var up:Bool = Controls.justPressed("UI_UP");
+		var up:Bool = Controls.justPressed("UI_UP") || (FlxG.mouse.wheel > 0);
         if(virtualPad != null)
-            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed);
+            up = (Controls.justPressed("UI_UP") || virtualPad.buttonUp.justPressed) || (FlxG.mouse.wheel > 0);
 
-        var down:Bool = Controls.justPressed("UI_DOWN");
+        var down:Bool = Controls.justPressed("UI_DOWN") || (FlxG.mouse.wheel < 0);
         if(virtualPad != null)
-            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed);
+            down = (Controls.justPressed("UI_DOWN") || virtualPad.buttonDown.justPressed) || (FlxG.mouse.wheel < 0);
 
         var left:Bool = Controls.justPressed("UI_LEFT");
         if(virtualPad != null)
@@ -343,13 +431,13 @@ class OptionsState extends MusicBeatState
         if(virtualPad != null)
             rightR = (Controls.released("UI_RIGHT") || virtualPad.buttonRight.released);
 
-        var back:Bool = Controls.justPressed("BACK");
-        if(virtualPad != null)
-            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
-
         var accept:Bool = Controls.justPressed("ACCEPT");
-        if(virtualPad != null)
+        if(SaveData.data.get("Touch Controls"))
             accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+
+        var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
+        if(SaveData.data.get("Touch Controls"))
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed) || FlxG.mouse.justPressedRight;
 
 		updateAttachPos();
 		if(infoTxt.text != "")
@@ -362,7 +450,7 @@ class OptionsState extends MusicBeatState
 				storedSelected.set("main", curSelected);
 				FlxG.sound.play(Paths.sound("menu/back"));
 				Main.switchState(backTarget);
-				backTarget = null;
+				backTarget = null;    
 			}
 			else
 				reloadCat("main");
@@ -373,27 +461,54 @@ class OptionsState extends MusicBeatState
 		if(down)
 			changeSelection(1);
 
-		if(accept)
-		{
-			if(curCat == "main")
-			{
-				storedSelected.set("main", curSelected);
-				var daOption:String = grpTexts.members[curSelected].text.toLowerCase();
-				switch(daOption)
-				{
-					default:
-						if(optionShit.exists(daOption))
-							reloadCat(daOption);
+		if(FlxG.keys.justPressed.R && focused) {
+			if(optionShit.exists("save"))
+				reloadCat("save");
+		}
 
-					case "controls":
-						new FlxTimer().start(0.1, function(tmr:FlxTimer)
-						{
-							Main.skipStuff();
-							Main.switchState(new ControlsState());
-						});
+		for(item in buttonsMain.members) {
+			if(CoolUtil.mouseOverlap(item, FlxG.camera)) {
+				item.alpha = 1;
+				if(FlxG.mouse.justPressed && focused) {
+					var justSelected:String = optionShit.get(curCat)[item.ID].toLowerCase();
+					switch(justSelected)
+					{
+						default:
+							if(optionShit.exists(justSelected))
+								reloadCat(justSelected);
+	
+						case "controls":
+							new FlxTimer().start(0.1, function(tmr:FlxTimer)
+							{
+								Main.skipStuff();
+								Main.switchState(new ControlsState());
+							});
+					}
 				}
 			}
 			else
+				item.alpha = 0.6;
+		}
+
+		if(accept && focused)
+		{
+			if(curCat == "save")
+			{
+				storedSelected.set("Save Data", curSelected);
+				var daOption:String = grpTexts.members[curSelected].text;
+				switch(daOption.toLowerCase())
+				{
+					case "reset progression":
+						SaveData.wipe('PROGRESS');
+					case "reset highscores":
+						SaveData.wipe('HIGHSCORE');
+					case "reset options":
+						SaveData.wipe('OPTIONS');
+					case "reset all":
+						SaveData.wipe('ALL');
+				}
+			}
+			else if(curCat != "main")
 			{
 				var curAttach = grpAttachs.members[curSelected];
 				if(Std.isOfType(curAttach, OptionCheckmark))
@@ -463,5 +578,7 @@ class OptionsState extends MusicBeatState
 				}
 			}
 		}
+
+		notes.animation.play(SaveData.skin());
 	}
 }

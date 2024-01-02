@@ -14,15 +14,21 @@ class Init extends MusicBeatState
 		SaveData.init();
 				
 		FlxG.fixedTimestep = false;
-		FlxG.mouse.useSystemCursor = true;
+		//FlxG.mouse.useSystemCursor = true;
 		//FlxG.mouse.visible = false;
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 		FlxGraphic.defaultPersist = true;
 
+		var cursor:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menu/cursor"));
+		FlxG.mouse.load(cursor.pixels);
+
 		Main.randomizeTitle();
 		
-		Main.switchState(new Intro());
+		if(SaveData.progression.get("firstboot"))
+			Main.switchState(new Intro());
+		else
+			Main.switchState(new Intro.Warning());
 	}
 }

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="helica.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="angry0000" x="34" y="34" width="541" height="937"/>
+	<SubTexture name="neutral0000" x="34" y="989" width="541" height="937"/>
+</TextureAtlas>

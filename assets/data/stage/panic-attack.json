@@ -7,7 +7,8 @@
             "objName": "outside",
             "path": "backgrounds/pa/outside",
             "position": [-900, -530],
-            "scrollFactor": [0.5, 1]
+            "scrollFactor": [0.5, 1],
+            "lq": true
         },
         {
             "objName": "outsidenight",
@@ -49,7 +50,8 @@
             "objName": "inside",
             "path": "backgrounds/pa/inside",
             "position": [-1500, -600],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ]
 }

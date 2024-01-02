@@ -1,6 +1,5 @@
 package gameObjects.android;
 
-import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.graphics.FlxGraphic;
 import flixel.FlxSprite;

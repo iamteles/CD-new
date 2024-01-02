@@ -1,7 +1,5 @@
 package gameObjects;
 
-import haxe.Json;
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 
@@ -17,6 +15,8 @@ class DialogChar extends FlxSprite
 	public var isPlayer:Bool = false;
 
 	public var globalOffset:FlxPoint = new FlxPoint();
+
+	public var name:String = "Bella";
 
 	public function reloadChar(curChar:String = "bf"):DialogChar
 	{
@@ -40,14 +40,116 @@ class DialogChar extends FlxSprite
 				animation.addByPrefix('playful', 	'playful', 10, true);
 				animation.addByPrefix('excited', 	'excited', 10, true);
                 animation.addByPrefix('blush', 	'blush', 10, true);
+				animation.addByPrefix('ooh', 	'ooh', 10, true);
+				animation.addByPrefix('mouthful', 	'mouthfull', 10, true);
+				animation.addByPrefix('flustered', 	'flustered', 10, true);
 
 				scale.set(0.65,0.65);
-
-				antialiasing = false;
 
                 //addOffset(animData[0], animData[1], animData[2]);
                 playAnim("neutral");
 
+
+				name = "Bella";
+
+			case "bella-cv":
+				frames = Paths.getSparrowAtlas("dialog/characters/bella");
+				animation.addByPrefix('neutral', 		'conv neutral', 10, true);
+				animation.addByPrefix('angry', 		'conv angry', 10, true);
+				animation.addByPrefix('annoyed', 		'conv annoyed', 10, true);
+				animation.addByPrefix('confused', 		'conv confused', 10, true);
+				animation.addByPrefix('playful', 		'conv playful', 10, true);
+				animation.addByPrefix('realize', 		'conv realize', 10, true);
+
+				scale.set(0.65,0.65);
+
+				//addOffset(animData[0], animData[1], animData[2]);
+				playAnim("neutral");
+
+				name = "Bella";
+
+			case "bree":
+				frames = Paths.getSparrowAtlas("dialog/characters/bree");
+				animation.addByPrefix('neutral', 		'neutral', 10, true);
+				animation.addByPrefix('shock', 		'shock', 10, true);
+				animation.addByPrefix('annoyed', 		'annoyed', 10, true);
+				animation.addByPrefix('confused', 		'confused', 10, true);
+				animation.addByPrefix('smug', 		'smug', 10, true);
+				animation.addByPrefix('stun talk', 		'stun talk', 10, true);
+				animation.addByPrefix('stunned', 		'stunned', 10, true);
+				animation.addByPrefix('very mad', 		'very mad', 10, true);
+				animation.addByPrefix('yap', 		'yap', 10, true);
+
+				scale.set(0.65,0.65);
+
+				//addOffset(animData[0], animData[1], animData[2]);
+				playAnim("neutral");
+
+				name = "Bree";
+
+			case "bree-sin":
+				frames = Paths.getSparrowAtlas("dialog/characters/bree");
+				animation.addByPrefix('neutral', 		'sin neutral', 10, true);
+				animation.addByPrefix('annoyed', 		'sin annoyed', 10, true);
+				animation.addByPrefix('very mad', 		'sin very mad', 10, true);
+				animation.addByPrefix('yap', 		'sin yap', 10, true);
+
+				scale.set(0.65,0.65);
+
+				//addOffset(animData[0], animData[1], animData[2]);
+				playAnim("neutral");
+
+				name = "Bree";
+
+			case "helica":
+				frames = Paths.getSparrowAtlas("dialog/characters/helica");
+				animation.addByPrefix('neutral', 		'neutral', 10, true);
+				animation.addByPrefix('angry', 		'angry', 10, true);
+
+				scale.set(0.65,0.65);
+
+				//addOffset(animData[0], animData[1], animData[2]);
+				playAnim("neutral");
+
+				name = "???";
+			
+			case "bex":
+				frames = Paths.getSparrowAtlas("dialog/characters/bex");
+				animation.addByPrefix('neutral', 		'neutral', 10, true);
+				animation.addByPrefix('shy', 	'shy0', 10, true);
+				animation.addByPrefix('shy2', 	'shy 2', 10, true);
+				animation.addByPrefix('ooh', 	'ooh', 10, true);
+				animation.addByPrefix('mad', 	'mad', 10, true);
+				animation.addByPrefix('loving', 	'loving', 10, true);
+				animation.addByPrefix('happy', 	'happy', 10, true);
+				animation.addByPrefix('excited', 	'excited', 10, true);
+				animation.addByPrefix('mouthful', 	'mouthful', 10, true);
+				animation.addByPrefix('conv hurt', 	'conv hurt', 10, true);
+				animation.addByPrefix('conv blank', 	'conv blank', 10, true);
+				animation.addByPrefix('confused', 	'confused', 10, true);
+				animation.addByPrefix('annoyed', 	'annoyed', 10, true);
+				animation.addByPrefix('tired', 	'tired', 10, true);
+
+				scale.set(0.65,0.65);
+				//flipX = true;
+
+				//addOffset(animData[0], animData[1], animData[2]);
+				playAnim("neutral");
+
+				name = "Bex";
+
+			case "bex-cv":
+				frames = Paths.getSparrowAtlas("dialog/characters/bex");
+				animation.addByPrefix('conv hurt', 	'conv hurt', 10, true);
+				animation.addByPrefix('conv blank', 	'conv blank', 10, true);
+
+				scale.set(0.65,0.65);
+				//flipX = true;
+
+				//addOffset(animData[0], animData[1], animData[2]);
+				playAnim("conv blank");
+
+				name = "Bex";
 			default:
 				return reloadChar(isPlayer ? "bella" : "bella");
 		}
@@ -75,6 +177,7 @@ class DialogChar extends FlxSprite
 	{
 		animation.play(animName, forced, reversed, frame);
 
+		/*
 		try
 		{
 			var daOffset = animOffsets.get(animName);
@@ -82,5 +185,6 @@ class DialogChar extends FlxSprite
 		}
 		catch(e)
 			offset.set(0,0);
+		*/
 	}
 }

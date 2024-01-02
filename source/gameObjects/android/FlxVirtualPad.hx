@@ -7,7 +7,6 @@ import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
 import flixel.util.FlxDestroyUtil;
 import flixel.ui.FlxButton;
-import openfl.utils.Assets;
 
 enum FlxDPadMode
 {

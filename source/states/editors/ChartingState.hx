@@ -65,7 +65,7 @@ class ChartingState extends MusicBeatState
 		'no animation',
 		'bomb',
 		'bella',
-		'thunder',
+		'beam',
 		'alt'
 	];
 
@@ -394,7 +394,7 @@ class ChartingState extends MusicBeatState
 			var daCrochet:Float = Conductor.calcStep(Conductor.bpm);
 			for(i in daNums[0]...daNums[1])
 			{
-				//trace('looped $i');
+				////trace('looped $i');
 				var section = getSection(i);
 				if(section.changeBPM)
 					daCrochet = Conductor.calcStep(section.bpm);
@@ -525,7 +525,7 @@ class ChartingState extends MusicBeatState
 			if(snapText != "none")
 				GRID_SNAP = Std.parseInt(snapText);
 
-			trace('curSnap: ' + GRID_SNAP);
+			//trace('curSnap: ' + GRID_SNAP);
 		});
 		snapDropDown.name = "dropdown_snap";
 		snapDropDown.selectedLabel = formatSnaps[allSnaps.indexOf(GRID_SNAP)];
@@ -830,7 +830,7 @@ class ChartingState extends MusicBeatState
 						swagNote.ID = 1;
 						if(allNoteTypes.contains(swagNote.noteType) && swagNote.noteType != "none")
 						{
-							//trace(swagNote.noteType);
+							////trace(swagNote.noteType);
 							var numTxt:String = Std.string(allNoteTypes.indexOf(swagNote.noteType));
 
 							var typeTxt = new FlxText(0,0,0,numTxt,16);
@@ -930,7 +930,7 @@ class ChartingState extends MusicBeatState
 		autosavetimer += elapsed;
 		if(autosavetimer >= 60 * 5)
 		{
-			trace('autosaved');
+			//trace('autosaved');
 			autosavetimer = 0;
 			ChartAutoSaveSubState.addSave(SONG, songDiff);
 		}
@@ -1010,7 +1010,7 @@ class ChartingState extends MusicBeatState
 					newNote[0] += FlxMath.remapToRange(selectSquare.y, 0, GRID_SIZE * GRID_ZOOM, 0, Conductor.stepCrochet);
 					newNote[1] = Math.floor((FlxG.mouse.x - mainGrid.x) / GRID_SIZE);
 
-					//trace(newNote);
+					////trace(newNote);
 					curSelectedNote = newNote;
 					updateCurNote();
 					getSection(curSection).sectionNotes.push(newNote);
@@ -1061,7 +1061,7 @@ class ChartingState extends MusicBeatState
 
 				reloadSection(curSection, false);
 				updateCurNote();
-				trace(curSelectedNote[2]);
+				//trace(curSelectedNote[2]);
 			}
 		}
 
@@ -1201,7 +1201,7 @@ class ChartGrid extends FlxGroup
 		this.zoom = zoom;
 
 		//if(i == 1)
-		//	trace('sucessfully reloaded');
+		//	//trace('sucessfully reloaded');
 
 		clear();
 		var GRID_SIZE = ChartingState.GRID_SIZE;

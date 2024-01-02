@@ -52,7 +52,7 @@ class GameOverSubState extends MusicBeatSubState
 		text.y -= 160;
 		add(text);
 	
-		FlxG.sound.play(Paths.sound('death/${CoolUtil.formatChar(char)}_death_sound'));
+		FlxG.sound.play(Paths.sound('death/${CoolUtil.formatChar(char)}_death'));
 
 		new FlxTimer().start(2.1, function(tmr:FlxTimer)
 		{
@@ -64,7 +64,7 @@ class GameOverSubState extends MusicBeatSubState
 		{
 			CoolUtil.playMusic(switch(PlayState.SONG.song)
 			{
-				case "panic-attack" | "convergence" | "desertion" | "sin": "death/bree";
+				case "panic-attack" | "convergence" | "desertion" | "sin" | "intimidate": "death/bree";
 				default: "death/reiterate";
 			});
 			
@@ -118,7 +118,7 @@ class GameOverSubState extends MusicBeatSubState
 		CoolUtil.playMusic();
 		FlxG.sound.play(Paths.music(switch(PlayState.SONG.song)
 		{
-			case "panic-attack" | "convergence" | "desertion" | "sin": "death/bree_end";
+			case "panic-attack" | "convergence" | "desertion" | "sin" | "intimidate": "death/bree_end";
 			default: "death/reiterate_end";
 		}));
 

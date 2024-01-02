@@ -27,7 +27,7 @@ class Controls
 	{
 		if(!allControls.exists(bind))
 		{
-			trace("that bind does not exist dumbass");
+			//trace("that bind does not exist dumbass");
 			return false;
 		}
 

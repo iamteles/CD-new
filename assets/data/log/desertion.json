@@ -1,0 +1,98 @@
+{
+    "characters": ["bree", "bex-cv", "bella-cv"],
+    "background": "dark",
+    "finisher": "desertion",
+    "song": "24",
+    "lines": [
+        {
+            "character": "left",
+            "frame": "stunned",
+            "text": "..."
+        },
+        {
+            "character": "center",
+            "frame": "realize",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "annoyed",
+            "text": "You weren't supposed to do that."
+        },
+        {
+            "character": "right",
+            "frame": "conv hurt",
+            "text": "Bella...."
+        },
+        {
+            "character": "center",
+            "frame": "realize",
+            "text": "I..."
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "Whatever that shit was it won’t get in my damn way"
+        },
+        {
+            "character": "center",
+            "frame": "annoyed",
+            "text": "Y'know after that I don’t think I really want to interact with you anymore bye!"
+        },
+        {
+            "character": "center",
+            "frame": "confused",
+            "text": "Bex we’re out of here :/"
+        },
+        {
+            "character": "right",
+            "frame": "conv hurt",
+            "text": "gotcha."
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "Oh no you fucking don't."
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "You think you can just run away from ME????"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "I am a GOD, understand me?"
+        },
+        {
+            "character": "left",
+            "frame": "very mad",
+            "text": "You two little pests are no match for ME."
+        },
+        {
+            "character": "left",
+            "frame": "very mad",
+            "text": "I CAN FUCKING KILL THE BOTH OF YOU."
+        },
+        {
+            "character": "right",
+            "frame": "conv hurt",
+            "text": "uh Bella..."
+        },
+        {
+            "character": "right",
+            "frame": "conv hurt",
+            "text": "run."
+        },
+        {
+            "character": "left",
+            "frame": "very mad",
+            "text": "GET BACK HERE YOU INSIGNIFICANT MORTALS."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "I'm not done with you just yet."
+        }
+    ]
+}

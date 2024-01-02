@@ -1,10 +1,8 @@
 package gameObjects;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
-import shaders.ColorSwap;
 import states.PlayState;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
@@ -32,6 +30,7 @@ typedef StageObject =
 	var alpha:Null<Float>; // alpha
 	var scrollFactor:Null<Array<Int>>; // self explanatory i hope
 	var height:Null<Bool>; // wether to subtract the objects height (like chars in playstate do)
+	var lq:Null<Bool>;
 }
 
 typedef Animation =
@@ -61,12 +60,10 @@ class Stage extends FlxGroup
 	public var objectMap:Map<String, FlxSprite> = new Map<String, FlxSprite>();
 	public var foreground:FlxGroup;
 
-	var colorSwap:ColorSwap;
 
 	public function new() {
 		super();
 		foreground = new FlxGroup();
-		//colorSwap = new ColorSwap();
 	}
 
 	public function reloadStageFromSong(song:String = "test"):Void
@@ -81,7 +78,7 @@ class Stage extends FlxGroup
 	}
 
 	function loadFromJson() {
-		//trace('Finish load.');
+		////trace('Finish load.');
 
 		if(stageData.zoom != null) 
 			PlayState.defaultCamZoom = stageData.zoom;
@@ -118,95 +115,92 @@ class Stage extends FlxGroup
 		{
 			for (object in stageData.objects)
 			{
-				var newSpr:FlxSprite = new FlxSprite(object.position[0], object.position[1]);
+				if(object.lq || !SaveData.data.get("Low Quality")) {
+					var newSpr:FlxSprite = new FlxSprite(object.position[0], object.position[1]);
 
-				if(object.animations != null) {
-					newSpr.frames = Paths.getSparrowAtlas(object.path);
-					for (anim in object.animations) {
-						newSpr.animation.addByPrefix(anim.name, anim.prefix, anim.framerate, anim.looped);
+					if(object.animations != null) {
+						newSpr.frames = Paths.getSparrowAtlas(object.path);
+						for (anim in object.animations) {
+							newSpr.animation.addByPrefix(anim.name, anim.prefix, anim.framerate, anim.looped);
+						}
+						newSpr.animation.play('idle');
 					}
-					newSpr.animation.play('idle');
+					else {
+						newSpr.loadGraphic(Paths.image(object.path));
+					}
+	
+					if (object.scale != null)
+					{
+						newSpr.setGraphicSize(Std.int(newSpr.width * object.scale));
+						newSpr.updateHitbox();
+						////trace('Scaled.');
+					}
+	
+					if (object.alpha != null)
+						newSpr.alpha = object.alpha;
+	
+					if(object.scrollFactor != null) {
+						newSpr.scrollFactor.set(object.scrollFactor[0], object.scrollFactor[1]);
+					}
+	
+					if (object.flipped != null)
+					{
+						newSpr.flipX = object.flipped[0];
+						newSpr.flipY = object.flipped[1];
+					}
+	
+					objectMap.set(object.objName, newSpr);
+					//trace('added ' + object.objName);
+					add(newSpr);
 				}
-				else {
-					newSpr.loadGraphic(Paths.image(object.path));
-				}
-
-				if (object.scale != null)
-				{
-					newSpr.setGraphicSize(Std.int(newSpr.width * object.scale));
-					newSpr.updateHitbox();
-					//trace('Scaled.');
-				}
-
-				if (object.alpha != null)
-					newSpr.alpha = object.alpha;
-
-				if(object.scrollFactor != null) {
-					newSpr.scrollFactor.set(object.scrollFactor[0], object.scrollFactor[1]);
-				}
-
-				if (object.flipped != null)
-				{
-					newSpr.flipX = object.flipped[0];
-					newSpr.flipY = object.flipped[1];
-				}
-
-				if(colorSwap != null) {
-					newSpr.shader = colorSwap.shader;
-				}
-
-				objectMap.set(object.objName, newSpr);
-				trace('added ' + object.objName);
-				add(newSpr);
 			}
 		}
 
 		if (stageData.foreground != null)
 		{
+
 			for (object in stageData.foreground)
 			{
-				var newSpr:FlxSprite = new FlxSprite(object.position[0], object.position[1]);
-				
-				if(object.animations != null) {
-					newSpr.frames = Paths.getSparrowAtlas(object.path);
-					for (anim in object.animations) {
-						newSpr.animation.addByPrefix(anim.name, anim.prefix, anim.framerate, anim.looped);
+				if(object.lq || !SaveData.data.get("Low Quality")) {
+					var newSpr:FlxSprite = new FlxSprite(object.position[0], object.position[1]);
+					
+					if(object.animations != null) {
+						newSpr.frames = Paths.getSparrowAtlas(object.path);
+						for (anim in object.animations) {
+							newSpr.animation.addByPrefix(anim.name, anim.prefix, anim.framerate, anim.looped);
+						}
+						newSpr.animation.play('idle');
 					}
-					newSpr.animation.play('idle');
+					else {
+						newSpr.loadGraphic(Paths.image(object.path));
+					}
+
+					if (object.scale != null)
+					{
+						newSpr.setGraphicSize(Std.int(newSpr.width * object.scale));
+						newSpr.updateHitbox();
+						////trace('Scaled.');
+					}
+
+					if(object.height)
+						newSpr.y -= newSpr.height;
+
+					if (object.alpha != null)
+						newSpr.alpha = object.alpha;
+
+					if(object.scrollFactor != null) {
+						newSpr.scrollFactor.set(object.scrollFactor[0], object.scrollFactor[1]);
+					}
+
+					if (object.flipped != null)
+					{
+						newSpr.flipX = object.flipped[0];
+						newSpr.flipY = object.flipped[1];
+					}
+
+					objectMap.set(object.objName, newSpr);
+					foreground.add(newSpr);
 				}
-				else {
-					newSpr.loadGraphic(Paths.image(object.path));
-				}
-
-				if (object.scale != null)
-				{
-					newSpr.setGraphicSize(Std.int(newSpr.width * object.scale));
-					newSpr.updateHitbox();
-					//trace('Scaled.');
-				}
-
-				if(object.height)
-					newSpr.y -= newSpr.height;
-
-				if (object.alpha != null)
-					newSpr.alpha = object.alpha;
-
-				if(object.scrollFactor != null) {
-					newSpr.scrollFactor.set(object.scrollFactor[0], object.scrollFactor[1]);
-				}
-
-				if (object.flipped != null)
-				{
-					newSpr.flipX = object.flipped[0];
-					newSpr.flipY = object.flipped[1];
-				}
-
-				if(colorSwap != null) {
-					newSpr.shader = colorSwap.shader;
-				}
-
-				objectMap.set(object.objName, newSpr);
-				foreground.add(newSpr);
 			}
 		}
 	}
@@ -232,7 +226,7 @@ class Stage extends FlxGroup
 				}
 				catch (e)
 				{
-					trace('Uncaught Error: $e');
+					//trace('Uncaught Error: $e');
 		
 					reloadStage("stage");
 				}
@@ -253,26 +247,6 @@ class Stage extends FlxGroup
 	public function tweenStage(alpha:Float, time:Float) {
 		for (obj in this) {
 			FlxTween.tween(obj, {alpha: alpha}, time, {ease: FlxEase.expoOut});
-		}
-	}
-	public function red(yeah:Bool = true) {
-		if(yeah) {
-			for(obj in this) {
-				if(colorSwap != null) {
-					colorSwap.hue = 140 / 360;
-					colorSwap.saturation = 0 / 360;
-					colorSwap.brightness = 0 / 360; //oops?
-				}
-			}
-		}
-		else {
-			for(obj in this) {
-				if(colorSwap != null) {
-					colorSwap.hue = 0 / 360;
-					colorSwap.saturation = 0 / 360;
-					colorSwap.brightness = 0 / 360; //oops?
-				}
-			}
 		}
 	}
 }

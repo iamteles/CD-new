@@ -1,6 +1,5 @@
 package gameObjects.hud;
 
-import lime.tools.Platform;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
@@ -53,15 +52,6 @@ class HudClass extends FlxGroup
 
 		if(PlayState.SONG.song.toLowerCase() == 'nefarious' || PlayState.SONG.song.toLowerCase() == 'nefarious-vip' || PlayState.SONG.song.toLowerCase() == 'divergence' || PlayState.invertedCharacters)
 			invertedIcons = true;
-		else if(PlayState.SONG.song.toLowerCase() == "desertion") {
-			beamBar = new FlxSprite();
-			beamBar.frames = Paths.getSparrowAtlas("hud/base/beambar");
-			beamBar.animation.addByPrefix("idle", 'bar', 24, true);
-			beamBar.alpha = 0.4;
-			beamBar.animation.play('idle');
-			beamBar.updateHitbox();
-			//add(beamBar);
-		}
 
 		healthBar = new FlxBar(
 			0, 0,

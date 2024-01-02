@@ -1,0 +1,58 @@
+{
+    "characters": ["bella", "bex"],
+    "background": "divergence",
+    "finisher": "divergence",
+    "song": "13",
+    "lines": [
+        {
+            "character": "left",
+            "frame": "ooh",
+            "text": "That was.."
+        },
+        {
+            "character": "left",
+            "frame": "excited",
+            "text": "I freakin adored that oh my gosh.."
+        },
+        {
+            "character": "right",
+            "frame": "shy2",
+            "text": "wait really..? i didn’t think it was that good-"
+        },
+        {
+            "character": "left",
+            "frame": "excited",
+            "text": "ARE YOU KIDDING I LOVED THAT I LOVE YOU YOU’RE SO TALENTED!!! XD"
+        },
+        {
+            "character": "left",
+            "frame": "realization",
+            "text": ".."
+        },
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "i uhm…"
+        },
+        {
+            "character": "left",
+            "frame": "flustered",
+            "text": "I’ve never enjoyed my time with someone this much before"
+        },
+        {
+            "character": "right",
+            "frame": "shy",
+            "text": "do you... wanna do one more..?"
+        },
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "That would be wonderful…..<:3"
+        },
+        {
+            "character": "right",
+            "frame": "happy",
+            "text": "alright, let’s put our all into this one!"
+        }
+    ]
+}

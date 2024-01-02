@@ -8,7 +8,8 @@
             "objName": "cd",
             "path": "backgrounds/shack/shop",
             "position": [-600, -700],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ]
 }

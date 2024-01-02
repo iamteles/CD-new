@@ -1,0 +1,73 @@
+{
+    "characters": ["bella", "bex"],
+    "background": "nefarious",
+    "finisher": "nefarious",
+    "song": "12",
+    "lines": [
+        {
+            "character": "right",
+            "frame": "shy2",
+            "text": "uu.."
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "You kept up so well with me! X3"
+        },
+        {
+            "character": "right",
+            "frame": "shy",
+            "text": "i uh..thanks...."
+        },
+        {
+            "character": "right",
+            "frame": "loving",
+            "text": "you have a lovely voice by the way just thought I’d get that off my mind"
+        },
+        {
+            "character": "left",
+            "frame": "flustered",
+            "text": "..."
+        },
+        {
+            "character": "right",
+            "frame": "loving",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "Hey uh.. I just realized I didn’t get your name! I’m Bella! ^^"
+        },
+        {
+            "character": "right",
+            "frame": "loving",
+            "text": "i'm bex..."
+        },
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "OMG that’s such a pretty name! :0"
+        },
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "Looks like your ride still isn't here Bex. Wanna go for another round? ^^"
+        },
+        {
+            "character": "right",
+            "frame": "loving",
+            "text": "sure"
+        },
+        {
+            "character": "right",
+            "frame": "shy2",
+            "text": "actually.. do you mind if I play the song I’m meant to play at the bar? a second opinion on it would be nice…"
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "Of course! :D"
+        }
+    ]
+}

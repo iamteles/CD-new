@@ -1,21 +1,14 @@
 package states.cd;
 
-import flixel.tweens.misc.ShakeTween;
 import data.Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.group.FlxGroup;
-import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
-import data.SongData;
-import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.effects.FlxFlicker;
-import flixel.input.keyboard.FlxKey;
-import gameObjects.android.FlxVirtualPad;
 import flixel.addons.display.FlxBackdrop;
 
 class TitleScreen extends MusicBeatState
@@ -39,7 +32,7 @@ class TitleScreen extends MusicBeatState
 		add(bg);
         
 		tiles = new FlxBackdrop(Paths.image('menu/title/tiles/' + Main.possibleTitles[Main.randomized][0]), XY, 0, 0);
-        tiles.velocity.set(FlxG.random.bool(50) ? 90 : -90, FlxG.random.bool(50) ? 90 : -90);
+        tiles.velocity.set(40,40);
         tiles.screenCenter();
         add(tiles);
 
@@ -76,7 +69,7 @@ class TitleScreen extends MusicBeatState
         }
         #end
 
-        if(Controls.justPressed("ACCEPT") || isTouch)
+        if(Controls.justPressed("ACCEPT") || isTouch || (FlxG.mouse.justPressed && focused))
             end();
     }
 

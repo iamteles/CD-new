@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="icons.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Accessability0000" x="34" y="34" width="531" height="380"/>
+	<SubTexture name="Appearance0000" x="583" y="34" width="531" height="380"/>
+	<SubTexture name="Controls0000" x="34" y="432" width="531" height="380"/>
+	<SubTexture name="Gameplay0000" x="583" y="432" width="531" height="380"/>
+</TextureAtlas>

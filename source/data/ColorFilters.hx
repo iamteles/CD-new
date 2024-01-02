@@ -20,7 +20,7 @@ class ColorFilter
 		var g:Array<Float> = [0,1,0];
 		var b:Array<Float> = [0,0,1];
 
-        //trace(curFilter);
+        ////trace(curFilter);
         switch(curFilter)
         {
             case "protanopia":

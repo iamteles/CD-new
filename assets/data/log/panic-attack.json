@@ -1,0 +1,118 @@
+{
+    "characters": ["bree", "bex"],
+    "background": "allegro",
+    "finisher": "panic-attack",
+    "song": "22",
+    "lines": [
+        {
+            "character": "right",
+            "frame": "annoyed",
+            "text": "......."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "Bex Parker... I need a word with you."
+        },
+        {
+            "character": "right",
+            "frame": "tired",
+            "text": "Who the... how do you know my..."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "I know a lot of things."
+        },
+        {
+            "character": "left",
+            "frame": "yap",
+            "text": "My name is Bree, god of balance, daughter of Zeus."
+        },
+        {
+            "character": "left",
+            "frame": "annoyed",
+            "text": "YOU my friend- are DISRUPTING the balance on Earth."
+        },
+        {
+            "character": "right",
+            "frame": "confused",
+            "text": "i... huh??"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "Long story short..."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "I need you and Bella to break up."
+        },
+        {
+            "character": "right",
+            "frame": "confused",
+            "text": "???"
+        },
+        {
+            "character": "right",
+            "frame": "mad",
+            "text": "no?????"
+        },
+        {
+            "character": "right",
+            "frame": "mad",
+            "text": "who the hell do you think you are."
+        },
+        {
+            "character": "left",
+            "frame": "stun talk",
+            "text": "I told you who I am, or did you forget."
+        },
+        {
+            "character": "left",
+            "frame": "yap",
+            "text": "Just in case you forgot, my name is Bree, god of-"
+        },
+        {
+            "character": "right",
+            "frame": "annoyed",
+            "text": "yeah i fuckin heard you the first time"
+        },
+        {
+            "character": "left",
+            "frame": "confused",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "annoyed",
+            "text": "Anyway, I suggest you comply with me and end what you have with her."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "You wouldn't want me to intervene would you..."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "...Rebecca."
+        },
+        {
+            "character": "right",
+            "frame": "annoyed",
+            "text": "!"
+        },
+        {
+            "character": "right",
+            "frame": "mad",
+            "text": "i'll never let her go."
+        },
+        {
+            "character": "left",
+            "frame": "smug",
+            "text": "Alright then."
+        }
+    ]
+}

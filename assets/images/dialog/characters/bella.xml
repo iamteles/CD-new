@@ -2,10 +2,18 @@
 <TextureAtlas imagePath="bella.png">
 	<!-- Created with Adobe Animate version 20.0.0.17400 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="blush0000" x="1360" y="34" width="568" height="873"/>
-	<SubTexture name="excited0000" x="34" y="924" width="667" height="877"/>
-	<SubTexture name="neutral0000" x="719" y="929" width="568" height="873"/>
+	<SubTexture name="blush0000" x="2029" y="34" width="568" height="873"/>
+	<SubTexture name="conv angry0000" x="748" y="924" width="676" height="872"/>
+	<SubTexture name="conv annoyed0000" x="749" y="34" width="557" height="869"/>
+	<SubTexture name="conv confused0000" x="719" y="2705" width="569" height="872"/>
+	<SubTexture name="conv neutral0000" x="34" y="2710" width="569" height="872"/>
+	<SubTexture name="conv playful0000" x="748" y="1814" width="674" height="873"/>
+	<SubTexture name="conv realize0000" x="1442" y="34" width="569" height="872"/>
+	<SubTexture name="excited0000" x="34" y="1815" width="667" height="877"/>
+	<SubTexture name="flustered0000" x="1442" y="924" width="568" height="863"/>
+	<SubTexture name="mouthfull0000" x="34" y="924" width="696" height="873"/>
+	<SubTexture name="neutral0000" x="1306" y="2709" width="568" height="873"/>
+	<SubTexture name="ooh0000" x="1440" y="1814" width="593" height="877"/>
 	<SubTexture name="playful0000" x="34" y="34" width="697" height="872"/>
-	<SubTexture name="realization0000" x="1305" y="929" width="568" height="873"/>
-	<SubTexture name="shock0000" x="749" y="34" width="593" height="877"/>
+	<SubTexture name="realization0000" x="1892" y="2709" width="568" height="873"/>
 </TextureAtlas>

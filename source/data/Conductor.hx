@@ -1,6 +1,5 @@
 package data;
 
-import flixel.FlxG;
 import data.SongData.SwagSong;
 
 typedef BPMChangeEvent =
@@ -51,7 +50,7 @@ class Conductor
 			totalSteps += deltaSteps;
 			totalPos += calcStep(curBPM) * deltaSteps;
 		}
-		//trace("new BPM map BUDDY " + bpmChangeMap);
+		////trace("new BPM map BUDDY " + bpmChangeMap);
 	}
 
 	public static function calcBeat(bpm:Float):Float

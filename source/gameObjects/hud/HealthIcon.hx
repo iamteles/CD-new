@@ -1,6 +1,5 @@
 package gameObjects.hud;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 
@@ -26,7 +25,7 @@ class HealthIcon extends FlxSprite
 		if(curIcon == "watts-alt" && isPlayer)
 			return setIcon("bella", isPlayer);
 
-		trace("attempt icon " + curIcon);
+		//trace("attempt icon " + curIcon);
 		if(!Paths.fileExists('images/icons/icon-${curIcon}.png'))
 		{
 			if(curIcon.contains('-')) {
@@ -45,7 +44,7 @@ class HealthIcon extends FlxSprite
 				return setIcon("face", isPlayer);
 		}
 
-		trace("loaded icon " + curIcon);
+		//trace("loaded icon " + curIcon);
 
 		var iconGraphic = Paths.image("icons/icon-" + curIcon);
 

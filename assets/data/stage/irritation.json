@@ -7,7 +7,8 @@
             "objName": "outside",
             "path": "hud/shop/back",
             "position": [-121, -126.95],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ],
     "foreground": [
@@ -16,7 +17,8 @@
             "path": "hud/shop/desk",
             "position": [-174.4, 643.35],
             "scale": 1.1,
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         }
     ]
 }

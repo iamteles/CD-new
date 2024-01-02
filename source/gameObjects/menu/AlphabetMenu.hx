@@ -1,7 +1,5 @@
 package gameObjects.menu;
 
-import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.math.FlxMath;
 import gameObjects.hud.HealthIcon;
 

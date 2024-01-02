@@ -1,10 +1,6 @@
 package gameObjects.hud;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.group.FlxGroup;
-import flixel.group.FlxSpriteGroup;
-import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.math.FlxPoint;
 import data.Conductor;

@@ -7,7 +7,8 @@
             "objName": "outside",
             "path": "backgrounds/convergence/back",
             "position": [-707, -225.65],
-            "scrollFactor": [1, 1]
+            "scrollFactor": [1, 1],
+            "lq": true
         },
         {
             "objName": "smoke",
@@ -39,7 +40,8 @@
                     "framerate": 24,
                     "looped": true
                 }
-            ]
+            ],
+            "lq": true
         }
     ],
     "foreground": [

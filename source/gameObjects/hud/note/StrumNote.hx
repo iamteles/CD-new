@@ -1,9 +1,7 @@
 package gameObjects.hud.note;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
-import shaders.ColorSwap;
 
 class StrumNote extends FlxSprite
 {

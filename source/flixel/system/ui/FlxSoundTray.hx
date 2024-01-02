@@ -141,7 +141,7 @@ class FlxSoundTray extends Sprite
 			var sound = Paths.sound("menu/scroll");
 			if (sound != null)
 				FlxG.sound.load(sound).play();
-            //trace(up);
+            ////trace(up);
 		}
 
 		_timer = 1;

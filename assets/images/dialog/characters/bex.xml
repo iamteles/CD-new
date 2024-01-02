@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bex.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="annoyed0000" x="1778" y="34" width="516" height="891"/>
+	<SubTexture name="confused0000" x="2312" y="34" width="516" height="891"/>
+	<SubTexture name="conv blank0000" x="2806" y="943" width="495" height="873"/>
+	<SubTexture name="conv hurt0000" x="3319" y="943" width="495" height="873"/>
+	<SubTexture name="excited0000" x="34" y="34" width="618" height="892"/>
+	<SubTexture name="happy0000" x="1227" y="34" width="533" height="891"/>
+	<SubTexture name="loving0000" x="2846" y="34" width="516" height="891"/>
+	<SubTexture name="mad0000" x="3380" y="34" width="516" height="891"/>
+	<SubTexture name="neutral0000" x="670" y="940" width="516" height="891"/>
+	<SubTexture name="ooh0000" x="1204" y="943" width="516" height="891"/>
+	<SubTexture name="shy0000" x="670" y="34" width="539" height="888"/>
+	<SubTexture name="shy 20000" x="1738" y="943" width="516" height="891"/>
+	<SubTexture name="tired0000" x="2272" y="943" width="516" height="891"/>
+</TextureAtlas>

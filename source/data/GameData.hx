@@ -1,20 +1,19 @@
 package data;
 
-import flixel.FlxG;
-import flixel.FlxBasic;
 import flixel.FlxState;
 import flixel.FlxSubState;
-import flixel.FlxSprite;
 import flixel.addons.ui.FlxUIState;
 import flixel.group.FlxGroup;
-import data.Conductor.BPMChangeEvent;
+import flixel.util.FlxTimer;
 
 class MusicBeatState extends FlxUIState
 {
+	var focused:Bool = true;
 	override function create()
 	{
 		super.create();
-		trace('switched to ${Type.getClassName(Type.getClass(FlxG.state))}');
+		Main.activeState = this;
+		//trace('switched to ${Type.getClassName(Type.getClass(FlxG.state))}');
 		
 		Controls.setSoundKeys();
 
@@ -81,15 +80,48 @@ class MusicBeatState extends FlxUIState
 		// finally you're useful for something
 		curBeat = Math.floor(curStep / 4);
 	}
+
+	override function onFocusLost():Void
+	{
+		super.onFocusLost();
+
+		focused = false;
+		//trace(focused);
+	}
+
+	override function onFocus():Void
+	{
+		super.onFocus();
+
+		new FlxTimer().start(0.2, function(tmr:FlxTimer)
+		{
+			focused = true;
+		});
+
+		//trace(focused);
+	}
 }
 
 class MusicBeatSubState extends FlxSubState
 {
+	var focused:Bool = true;
+	var subParent:FlxState;
+
 	override function create()
 	{
 		super.create();
+		subParent = Main.activeState;
+		Main.activeState = this;
+		persistentDraw = true;
+		persistentUpdate = false;
 		curStep = _curStep = Conductor.calcStateStep();
 		curBeat = Math.floor(curStep / 4);
+	}
+	
+	override function close()
+	{
+		Main.activeState = subParent;
+		super.close();
 	}
 
 	private var _curStep = 0; // actual curStep
@@ -142,6 +174,26 @@ class MusicBeatSubState extends FlxSubState
 	{
 		// finally you're useful for something
 		curBeat = Math.floor(curStep / 4);
+	}
+
+	override function onFocusLost():Void
+	{
+		super.onFocusLost();
+
+		focused = false;
+		//trace(focused);
+	}
+
+	override function onFocus():Void
+	{
+		super.onFocus();
+
+		new FlxTimer().start(0.2, function(tmr:FlxTimer)
+		{
+			focused = true;
+		});
+
+		//trace(focused);
 	}
 }
 

@@ -1,6 +1,5 @@
 package states.cd;
 
-import flixel.tweens.misc.ShakeTween;
 import data.Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -9,7 +8,6 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
-import data.SongData;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
@@ -40,6 +38,12 @@ class MainMenu extends MusicBeatState
     var arrowR:FlxSprite;
     var info:FlxText;
     var bar:FlxSprite;
+    var mouseInfo:FlxSprite;
+
+    var popUp:FlxSprite;
+    var popUpTxt:FlxText;
+    var isPop:Bool = false;
+    public static var unlocks:Array<String> = [];
 
     public static var virtualPad:FlxVirtualPad;
 
@@ -134,7 +138,53 @@ class MainMenu extends MusicBeatState
 		add(bar);
         add(info);
 
+        mouseInfo = new FlxSprite().loadGraphic(Paths.image("menu/main/info"));
+		mouseInfo.updateHitbox();
+        mouseInfo.x = 0;
+        mouseInfo.y = FlxG.height - mouseInfo.height;
+		add(mouseInfo);
+
         changeSelection();
+
+        if(unlocks.length > 0) {
+            Paths.preloadSound('sounds/gift');
+
+            var string:String = "";
+
+            string += "Unlocked:\n\n";
+
+            for(i in unlocks) {
+                string += i;
+                string += "\n";
+            }
+
+            string += "\nPress Accept to Continue.";
+
+            popUp = new FlxSprite().loadGraphic(Paths.image("menu/gift"));
+            popUp.updateHitbox();
+            popUp.screenCenter();
+            popUp.alpha = 0;
+            add(popUp);
+
+            popUpTxt = new FlxText(0,0,0,string);
+            popUpTxt.setFormat(Main.gFont, 43, 0xFFFFFFFF, CENTER);
+            popUpTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2.5);
+            popUpTxt.screenCenter();
+            popUpTxt.alpha = 0;
+            add(popUpTxt);
+
+            //isPop = true;
+            selected = true;
+
+            FlxTween.tween(popUp, {alpha: 1}, 0.15, {onComplete: function(twn:FlxTween)
+            {
+                FlxTween.tween(popUpTxt, {alpha: 1}, 0.15, {onComplete: function(twn:FlxTween)
+                {
+                    FlxG.sound.play(Paths.sound("gift"));
+                    isPop = true;
+                }});
+            }});
+        }
 
         if(SaveData.data.get("Touch Controls")) {
             virtualPad = new FlxVirtualPad(LEFT_RIGHT, A_B);
@@ -150,21 +200,21 @@ class MainMenu extends MusicBeatState
 
         //info.text = CoolUtil.posToTimer(SaveData.curTime());
 
-        var left:Bool = Controls.justPressed("UI_LEFT");
+        var left:Bool = Controls.justPressed("UI_LEFT") || (FlxG.mouse.wheel > 0);
         if(SaveData.data.get("Touch Controls"))
-            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed);
+            left = (Controls.justPressed("UI_LEFT") || virtualPad.buttonLeft.justPressed || (FlxG.mouse.wheel > 0));
 
-        var right:Bool = Controls.justPressed("UI_RIGHT");
+        var right:Bool = Controls.justPressed("UI_RIGHT") || (FlxG.mouse.wheel < 0);
         if(SaveData.data.get("Touch Controls"))
-            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed);
+            right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
-        var accept:Bool = Controls.justPressed("ACCEPT");
+        var accept:Bool = Controls.justPressed("ACCEPT") || FlxG.mouse.justPressed;
         if(SaveData.data.get("Touch Controls"))
-            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed || FlxG.mouse.justPressed);
 
-        var back:Bool = Controls.justPressed("BACK");
+        var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))
-            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed);
+            back = (Controls.justPressed("BACK") || virtualPad.buttonB.justPressed) || FlxG.mouse.justPressedRight;
 
         if(back)
         {
@@ -186,7 +236,7 @@ class MainMenu extends MusicBeatState
         else if(!selected)
             arrowR.alpha = 0.7;
 
-        if(accept && !selected)
+        if(accept && !selected && focused)
         {
             if(returnMenu(curSelected)) {
                 selected = true;
@@ -215,9 +265,15 @@ class MainMenu extends MusicBeatState
                                 case "shop":
                                     Main.switchState(new states.ShopState.LoadShopState());
                                 case "music":
-                                    Main.switchState(new states.cd.MusicPlayer());
+                                    if(SaveData.data.get("Preload Songs")) {
+                                        Main.switchState(new states.LoadSongState.LoadMusicPlayer());
+                                    }
+                                    else
+                                        Main.switchState(new states.cd.MusicPlayer());
                                 case "options":
                                     Main.switchState(new states.menu.OptionsState());
+                                case "credits":
+                                    Main.switchState(new states.cd.Credits());
                                 default:
                                     Main.switchState(new states.DebugState());
                             }
@@ -238,6 +294,13 @@ class MainMenu extends MusicBeatState
                     }
                 });
             }
+        }
+        else if(accept && isPop) {
+            selected = false;
+            isPop = false;
+            popUp.alpha = 0;
+            popUpTxt.alpha = 0;
+            unlocks = [];
         }
 
         for(item in buttons.members)
@@ -308,8 +371,10 @@ class MainMenu extends MusicBeatState
             item.y = 20;
         }
 
-        if(!SaveData.progression.get("week2") && !returnMenu(curSelected))
-            info.text = "Complete both weeks first!";
+        if(!SaveData.progression.get("week1") && !returnMenu(curSelected))
+            info.text = "Complete Week 1 first!";
+        else if(!SaveData.progression.get("week2") && !returnMenu(curSelected))
+            info.text = "Complete Week 2 first!";
         else if(returnMenu(curSelected))
             info.text = hints[curSelected];
         else
@@ -322,6 +387,12 @@ class MainMenu extends MusicBeatState
     {
         if(unlockables.contains(list[num]))
             return SaveData.shop.get(list[num]);
+        else if(list[num] == "freeplay") {
+            if(SaveData.progression.get("week1") == null)
+                return false;
+            else
+                return SaveData.progression.get("week1");
+        }
         else if(list[num] == "shop") {
             if(SaveData.progression.get("week2") == null)
                 return false;
