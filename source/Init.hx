@@ -24,6 +24,9 @@ class Init extends MusicBeatState
 		var cursor:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menu/cursor"));
 		FlxG.mouse.load(cursor.pixels);
 
+		for(i in 0...Paths.dumpExclusions.length)
+			Paths.preloadGraphic(Paths.dumpExclusions[i].replace('.png', ''));
+
 		Main.randomizeTitle();
 		
 		if(SaveData.progression.get("firstboot"))

@@ -28,6 +28,7 @@ typedef DialogueLine =
 	var frame:String;
 	var text:String;
 	var delay:Null<Float>;
+    var thing:Null<String>;
 }
 
 class Dialog extends MusicBeatState
@@ -73,11 +74,20 @@ class Dialog extends MusicBeatState
 		bg.screenCenter();
 		add(bg);
 
+        var ypos:Int = 30;
+        var thirdpos:Int = 30;
+
+        if(dialog == "ripple" || dialog == "customer-service") {
+            ypos = 120;
+            thirdpos = 90;
+            introCenterAlpha = 0.6;
+        }
+
         left = new DialogChar();
         left.reloadChar(log.characters[0]);
 		left.setPosition(
             50,
-            30
+            ypos
 		);
         add(left);
 
@@ -86,7 +96,7 @@ class Dialog extends MusicBeatState
 		//right.flipX = true;
 		right.setPosition(
             FlxG.width - right.width - 56,
-            30
+            ypos
 		);
         right.alpha = 0.6;
         add(right);
@@ -97,7 +107,7 @@ class Dialog extends MusicBeatState
             //right.flipX = true;
             right2.setPosition(
                 (FlxG.width/2) - (right2.width/2),
-                30
+                thirdpos
             );
             right2.alpha = introCenterAlpha;
             add(right2);
@@ -129,6 +139,13 @@ class Dialog extends MusicBeatState
 		name.setBorderStyle(OUTLINE, FlxColor.BLACK, 2.3);
         add(name);
 
+        var skipTxt = new FlxText(0,0,0,"Press ESCAPE to skip.");
+		skipTxt.setFormat(Main.dsFont, 34, 0xFFFFFFFF, CENTER);
+		skipTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
+        skipTxt.y = FlxG.height - skipTxt.height;
+		skipTxt.screenCenter(X);
+		add(skipTxt);
+
         if(loaded)
             textbox();
         
@@ -138,47 +155,15 @@ class Dialog extends MusicBeatState
     {
         super.update(elapsed);
 
+        if(FlxG.keys.justPressed.ESCAPE)
+            end();
+
         if(FlxG.keys.justPressed.SPACE && hasScrolled) {
             FlxG.sound.play(Paths.sound('dialog/skip'));
 
             if(curLine == log.lines.length) {
                 if(log.finisher != null) {
-                    switch (log.finisher) {
-                        case "euphoria":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("euphoria", "normal");
-                            Main.switchState(new LoadSongState());
-                        case "nefarious":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("nefarious", "normal");
-                            Main.switchState(new LoadSongState());
-                        case "divergence":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("divergence", "normal");
-                            Main.switchState(new LoadSongState());
-                        case "allegro":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("allegro", "normal");
-                            Main.switchState(new LoadSongState());
-                        case "panic-attack":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("panic-attack", "normal");
-                            Main.switchState(new LoadSongState());
-                        case "convergence":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("convergence", "normal");
-                            Main.switchState(new LoadSongState());
-                        case "desertion":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("desertion", "normal");
-                            Main.switchState(new LoadSongState());
-                        case "sin":
-                            PlayState.isStoryMode = true;
-                            PlayState.SONG = SongData.loadFromJson("sin", "normal");
-                            Main.switchState(new LoadSongState());
-                        default:
-                            //close();
-                    }
+                    end();
                 }
                 //else
                     //close();
@@ -194,6 +179,13 @@ class Dialog extends MusicBeatState
         if (log.lines[curLine].delay != null)
             tex.delay = log.lines[curLine].delay;
         tex.resetText(log.lines[curLine].text);
+
+        if(log.lines[curLine].thing != null) {
+            switch(log.lines[curLine].thing) {
+                case 'hideleft':
+                    left.visible = false;
+            }
+        }
 
         switch (log.lines[curLine].character) {
             case 'left':
@@ -230,5 +222,46 @@ class Dialog extends MusicBeatState
         });
 
         curLine ++;
+    }
+
+    function end() {
+        switch (log.finisher) {
+            case "euphoria":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("euphoria", "normal");
+                Main.switchState(new LoadSongState());
+            case "nefarious":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("nefarious", "normal");
+                Main.switchState(new LoadSongState());
+            case "divergence":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("divergence", "normal");
+                Main.switchState(new LoadSongState());
+            case "allegro":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("allegro", "normal");
+                Main.switchState(new LoadSongState());
+            case "panic-attack":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("panic-attack", "normal");
+                Main.switchState(new LoadSongState());
+            case "convergence":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("convergence", "normal");
+                Main.switchState(new LoadSongState());
+            case "desertion":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("desertion", "normal");
+                Main.switchState(new LoadSongState());
+            case "sin":
+                PlayState.isStoryMode = true;
+                PlayState.SONG = SongData.loadFromJson("sin", "normal");
+                Main.switchState(new LoadSongState());
+            case "song":
+                Main.switchState(new LoadSongState());
+            default:
+                //close();
+        }
     }
 }

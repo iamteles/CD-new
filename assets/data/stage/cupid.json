@@ -1,0 +1,30 @@
+{
+    "zoom": 0.6,
+    "bfPos": [1300, -50, -320, -420],
+    "dadPos": [300, 0, 200, -420],
+    "middle":  [1150,-530],
+    "objects": [
+        {
+            "objName": "sky",
+            "path": "backgrounds/week1/sky-night",
+            "position": [-600, -700],
+            "scale": 1.2,
+            "scrollFactor": [0.3, 0.3],
+            "lq": true
+        },
+        {
+            "objName": "buildings",
+            "path": "backgrounds/week1/buildings-night",
+            "position": [-130, -1200],
+            "scrollFactor": [0.9, 0.9],
+            "lq": true
+        },
+        {
+            "objName": "outside",
+            "path": "backgrounds/week1/plat-night",
+            "position": [-150, -1160],
+            "scrollFactor": [1, 1],
+            "lq": true
+        }
+    ]
+}

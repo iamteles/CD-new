@@ -204,10 +204,14 @@ class Character extends FlxSprite
 			holdTimer += elapsed;
 		}
 
+		/*
+
 		if(banList.contains(animation.curAnim.name))
 			specialAnim = true;
 		else
 			specialAnim = false;
+
+		*/
 
 		//if(loop && animation.curAnim.finished && singAnims.contains(animation.curAnim.name)) {
 		//	dance();

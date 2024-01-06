@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="shack.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Drown normal0000" x="957" y="34" width="384" height="450"/>
+	<SubTexture name="Drown sadder0000" x="34" y="560" width="390" height="439"/>
+	<SubTexture name="Drown saddest0000" x="957" y="502" width="384" height="450"/>
+	<SubTexture name="Empitri chat0000" x="34" y="34" width="439" height="508"/>
+	<SubTexture name="wave chat0000" x="491" y="34" width="448" height="469"/>
+	<SubTexture name="wave mad0000" x="491" y="521" width="448" height="469"/>
+</TextureAtlas>

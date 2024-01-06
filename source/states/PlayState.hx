@@ -226,7 +226,7 @@ class PlayState extends MusicBeatState
 		add(stageBuild);
 
 		if(!SaveData.data.get("Low Quality")) {
-			if(daSong == 'euphoria' || daSong == 'nefarious' || daSong == 'divergence')
+			if(daSong == 'euphoria' || daSong == 'nefarious' || daSong == 'divergence' || daSong == 'cupid')
 			{
 				charGroup = new CharGroup();
 				add(charGroup);
@@ -455,7 +455,7 @@ class PlayState extends MusicBeatState
 		barUp.cameras = [camVg];
 		barDown.cameras = [camVg];
 
-		var barsByDefault = ['allegro', 'euphoria', 'nefarious', 'divergence', "intimidate", "exotic", "ripple", 'euphoria-vip', 'nefarious-vip', 'divergence-vip', "customer-service"];
+		var barsByDefault = ['allegro', 'euphoria', 'nefarious', 'divergence', "intimidate", "exotic", "ripple", 'euphoria-vip', 'nefarious-vip', 'divergence-vip', "customer-service", 'cupid'];
 		if(barsByDefault.contains(daSong)) {
 			barUp.y = 0-55;
 			barDown.y = FlxG.height - barDown.height+55;
@@ -484,14 +484,14 @@ class PlayState extends MusicBeatState
 			strumPos = [160 + (960 / 2), 960 / 4]; //lmao?
 
 		var downscroll:Bool = SaveData.data.get("Downscroll");
-		var isSwapped:Bool = ((daSong == 'nefarious' || daSong == 'divergence') || (daSong == 'euphoria-vip'));
+		var isSwapped:Bool = ((daSong == 'nefarious' || daSong == 'divergence') || (daSong == 'euphoria-vip' || daSong == 'cupid'));
 		var noteColors:Array<Array<Int>> = [dad.noteColor, boyfriend.noteColor];
 
 		if(isSwapped)
 			noteColors = [boyfriend.noteColor, dad.noteColor];
 
 		var positions:Array<Float> = [strumPos[0] - strumPos[1], strumPos[0] + strumPos[1]];
-		if(daSong == "divergence")
+		if(daSong == "divergence" || daSong == "cupid")
 			positions = [strumPos[0] + strumPos[1], strumPos[0] - strumPos[1]];
 		
 		dadStrumline = new Strumline(positions[0], (isSwapped ? boyfriend : dad), downscroll, invertedCharacters, !invertedCharacters, assetModifier);
@@ -509,7 +509,7 @@ class PlayState extends MusicBeatState
 		var you:FlxSprite = new FlxSprite().loadGraphic(Paths.image("hud/base/you" + isit));
 		you.scale.set(0.35, 0.35);
 		you.updateHitbox();
-		if((isSwapped || invertedCharacters) && daSong != "divergence")
+		if((isSwapped || invertedCharacters) && (daSong != "divergence" && daSong != "cupid"))
 			you.x = dadStrumline.x - (you.width/2);
 		else
 			you.x = bfStrumline.x - (you.width/2);
@@ -522,7 +522,7 @@ class PlayState extends MusicBeatState
 		you.cameras = [camStrum];
 		add(you);
 
-		if(daSong == "nefarious" || daSong == "kaboom") {
+		if(daSong == "nefarious" || daSong == "kaboom" || daSong == "cupid") {
 			FlxTween.tween(you, {alpha: 1}, 0.6, {
 				ease: FlxEase.cubeOut,
 				startDelay: 0.8,
@@ -591,7 +591,7 @@ class PlayState extends MusicBeatState
 			camStrum.setFilters([new openfl.filters.ShaderFilter(cast guitar.shader)]);
 			*/
 		}
-		else if(daSong == 'divergence') {
+		else if(daSong == 'divergence' || daSong == 'cupid') {
 
 			for (thing in dadStrumline.strumGroup) {
 				thing.alpha = 0.5;
@@ -931,7 +931,10 @@ class PlayState extends MusicBeatState
 					camHUD.alpha = 0;
 					camStrum.alpha = 0;
 				}
-
+			case "cupid":
+				if(!SaveData.data.get("Low Quality")) {
+					FlxG.camera.fade(0xFF000000, 0.01, false);
+				}
 			case "sin":
 				if(!SaveData.data.get("Low Quality")) {
 					dad.alpha = 0;
@@ -1120,6 +1123,10 @@ class PlayState extends MusicBeatState
 					var soundName:String = ["intro3", "intro2", "intro1", "introGo"][daCount];
 					
 					var soundPath:String = assetModifier;
+					
+					if(daSong == "kaboom")
+						soundPath = "fr";
+
 					if(!Paths.fileExists('sounds/countdown/$soundPath/$soundName.ogg'))
 						soundPath = 'base';
 					
@@ -1337,6 +1344,8 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
+		if(strumline.isPlayer && !note.isHold && !note.isHoldEnd)
+			FlxG.sound.play(Paths.sound('hitsounds/' + SaveData.data.get("Hitsounds")), 1);
 	}
 	function onNoteMiss(note:Note, strumline:Strumline)
 	{
@@ -1428,6 +1437,9 @@ class PlayState extends MusicBeatState
 					dad.holdTimer = 0;
 
 					stageBuild.objectMap.get("bex").animation.play("flinch");
+				case 'alt':
+					thisChar.playAnim(thisChar.singAnims[note.noteData] + "alt", true);
+					thisChar.holdTimer = 0;
 				case 'bella':
 					if(third != null) {
 						third.playAnim(third.singAnims[note.noteData], true);
@@ -2105,7 +2117,7 @@ class PlayState extends MusicBeatState
 					}
 				}
 				else {
-					switch (boyfriend.animation.curAnim.name)
+					switch (bfStrumline.character.animation.curAnim.name)
 					{
 						case 'singLEFT':
 							camDisplaceX = - cameraMoveItensity;
@@ -2263,6 +2275,45 @@ class PlayState extends MusicBeatState
 
 		if(!SaveData.data.get("Low Quality")) {
 			switch(daSong) {
+				case "cupid":
+					switch(curStep) {
+						case 16:
+							FlxG.camera.fade(0xFF000000, 0.001, true);
+							CoolUtil.flash(camStrum, 0.5);
+						case 80:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.65;
+						case 336:
+							defaultCamZoom = 0.6;
+						case 454:
+							FlxG.camera.fade(0xFFFFFFFF, 1.5, false);
+						case 480:
+							changeChar(boyfriend, "bex-hp2");
+							changeChar(dad, "bella-hp2");
+							changeStage("cupid2");
+						case 528:
+							FlxG.camera.fade(0xFFFFFFFF, 1.5, true);
+						case 592:
+							CoolUtil.flash(camStrum, 0.5);
+						case 784:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.64;
+						case 1024:
+							FlxG.camera.fade(0xFFFFFFFF, 1.5, false);
+						case 1056:
+							changeChar(boyfriend, "bex-1alt");
+							changeChar(dad, "bella-1");
+							changeStage("cupid");
+						case 1168:
+							FlxG.camera.fade(0xFFFFFFFF, 1.5, true);
+						case 1296:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.65;
+						case 1424:
+							FlxG.camera.fade(0xFF000000, 3, false);
+							FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+							FlxTween.tween(camStrum, {alpha: 0}, 3, {ease: FlxEase.expoOut});
+					}
 				case "kaboom":
 					switch(curStep) {
 						case 1:

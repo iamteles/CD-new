@@ -146,6 +146,13 @@ class MainMenu extends MusicBeatState
 
         changeSelection();
 
+        if(SaveData.cupidCheck() && !SaveData.progression.get("finished")) {
+            unlocks.push("Song: Cupid (FREEPLAY)");
+            SaveData.progression.set("finished", true);
+            SaveData.save();
+        }
+
+
         if(unlocks.length > 0) {
             Paths.preloadSound('sounds/gift');
 

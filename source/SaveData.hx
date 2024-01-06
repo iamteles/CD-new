@@ -101,13 +101,21 @@ class SaveData
 		// this one doesnt actually appear at the regular options menu
 		"Song Offset" => [
 			0,
-			[-500, 500]
+			SELECTOR,
+			"no one is going to see this anyway whatever",
+			[-500, 500],
 		],
 		'Colorblind Filter' => [
 			'NONE',
 			SELECTOR,
 			'Filters to aid people with colorblindness.',
 			['NONE', 'PROTANOPIA', 'PROTANOMALY', 'DEUTERANOPIA', 'DEUTERANOMALY', 'TRITANOPIA', 'TRITANOMALY', 'ACHROMATOPSIA', 'ACHROMATOMALY']
+		],
+		'Hitsounds' => [
+			"OFF",
+			SELECTOR,
+			"Whether to play hitsounds whenever you hit a note.",
+			["CD", "OSU", "OFF"]
 		],
 		'Flashing Lights' => [
 			"ON",
@@ -140,7 +148,8 @@ class SaveData
 		"week1" => false,
 		"vip" => false,
 		"oneofthem" => false,
-		"debug" => false
+		"debug" => false,
+		"finished" => false
 	];
 	public static var songs:Map<String, Dynamic> = [
 		"euphoria" => false,
@@ -162,6 +171,7 @@ class SaveData
 		"euphoria-vip" => false,
 		"nefarious-vip" => false,
 		"divergence-vip" => false,
+		"cupid" => true
 	];
 	public static var money:Int = 0;
 	public static var shop:Map<String, Dynamic> = [];
@@ -433,7 +443,8 @@ class SaveData
 					"week1" => false,
 					"vip" => false,
 					"oneofthem" => false,
-					"debug" => false
+					"debug" => false,
+					"finished" => false
 				];
 				songs = [
 					"euphoria" => false,
@@ -455,6 +466,7 @@ class SaveData
 					"euphoria-vip" => false,
 					"nefarious-vip" => false,
 					"divergence-vip" => false,
+					"cupid" => false
 				];
 				money = 0;
 				////trace ("Wiping progress " + progressionSave.data.progression + ' ' + progressionSave.data.clowns);
@@ -470,5 +482,36 @@ class SaveData
 		}
 
 		load();
+	}
+
+	public static function cupidCheck() {
+		var count:Int = 0;
+		var songList:Array<String> = [
+			"euphoria",
+			"nefarious",
+			"divergence",
+			"allegro",
+			"panic-attack",
+			"convergence",
+			"desertion",
+			"sin",
+			"conservation",
+			"irritation",
+			"kaboom",
+			"intimidate",
+			"heartpounder",
+			"ripple",
+			"exotic",
+			"customer-service",
+			"euphoria-vip",
+			"nefarious-vip",
+			"divergence-vip"
+		];
+
+		for (song in songList) {
+			if (songs.get(song))  count++;
+		}
+
+		return count == songList.length;
 	}
 }

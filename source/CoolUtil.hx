@@ -7,6 +7,8 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxCamera;
 import gameObjects.hud.note.Note;
+import flixel.math.FlxAngle;
+import flixel.FlxSprite;
 
 using StringTools;
 
@@ -23,6 +25,16 @@ class CoolUtil
 			return (FlxG.mouse.getScreenPosition(cam).x > sprite.x && FlxG.mouse.getScreenPosition(cam).x < limit.x && FlxG.mouse.getScreenPosition(cam).y > sprite.y && FlxG.mouse.getScreenPosition(cam).y < limit.y);
 		else
 			return (FlxG.mouse.getScreenPosition(cam).x > sprite.x && FlxG.mouse.getScreenPosition(cam).x < sprite.x + sprite.width && FlxG.mouse.getScreenPosition(cam).y > sprite.y && FlxG.mouse.getScreenPosition(cam).y < sprite.y + sprite.height);
+	}
+
+	public static function setNotePos(note:FlxSprite, target:FlxSprite, angle:Float, offsetX:Float, offsetY:Float)
+	{
+		note.x = target.x
+			+ (Math.cos(FlxAngle.asRadians(angle)) * offsetX)
+			+ (Math.sin(FlxAngle.asRadians(angle)) * offsetY);
+		note.y = target.y
+			+ (Math.cos(FlxAngle.asRadians(angle)) * offsetY)
+			+ (Math.sin(FlxAngle.asRadians(angle)) * offsetX);
 	}
 
 	public static function colorFromArray(rgb:Array<Int>):FlxColor

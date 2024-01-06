@@ -34,6 +34,8 @@ class PauseSubState extends MusicBeatSubState
 	var left:FlxSprite;
 	var right:FlxSprite;
 	var bpButton:FlxSprite;
+	var skull:FlxSprite;
+	var deaths:FlxText;
 	public function new()
 	{
 		super();
@@ -122,6 +124,19 @@ class PauseSubState extends MusicBeatSubState
 		bpButton.x = 1004 + 138 - (bpButton.width/2);
 		bpButton.y = FlxG.height - bpButton.height - 20;
 		add(bpButton);
+
+		skull = new FlxSprite().loadGraphic(Paths.image("icons/icon-face"));
+		skull.updateHitbox();
+		skull.x = 1004 + 138 - (skull.width/2);
+		skull.y = 20;
+		add(skull);
+
+		deaths = new FlxText(0, 0, 0, Std.string(PlayState.blueballed));
+		deaths.setFormat(Main.gFont, 46, 0xFFFFFFFF, CENTER);
+		deaths.setBorderStyle(OUTLINE, 0xFF000000, 2);
+		deaths.x = skull.x + (skull.width/2) - (deaths.width/2);
+		deaths.y = skull.y + skull.height;
+		add(deaths);
 
 		var grphic:FlxSprite;
 		grphic = new FlxSprite().loadGraphic(Paths.image("hud/pause/pause"));

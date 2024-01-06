@@ -69,7 +69,7 @@ class Paths
 		"transition.png",
 		"menu/alphabet/default.png",
 		"hud/base/money.png",
-		"menu/cursor.png"
+		"menu/cursor.png",
 	];
 	public static function clearMemory()
 	{	
@@ -93,7 +93,7 @@ class Paths
 			renderedGraphics.remove(key);
 		}
 
-		//trace('cleared $clearCount');
+		trace('cleared $clearCount');
 		//trace('cleared ${clearCount.length} assets');
 		
 		// sound clearing
@@ -197,7 +197,7 @@ class Paths
 
 	// preload stuff for playstate
 	// so it doesnt lag whenever it gets called out
-	public static function preloadPlayStuff():Void
+	public static function preloadPlayStuff(song:String = "euphoria"):Void
 	{
 		var assetModifier = states.PlayState.assetModifier;
 		var preGraphics:Array<String> = [];
@@ -216,6 +216,8 @@ class Paths
 			var soundName:String = ["3", "2", "1", "Go"][i];
 
 			var soundPath:String = assetModifier;
+			if(song == "kaboom")
+				soundPath = "fr";
 			if(!fileExists('sounds/countdown/$soundPath/intro$soundName.ogg'))
 				soundPath = 'base';
 
@@ -232,6 +234,8 @@ class Paths
 				preGraphics.push('hud/$spritePath/$countName');
 			}
 		}
+
+		preSounds.push("hitsounds/"+SaveData.data.get("HitSounds"));
 
 		for(i in preGraphics)
 			preloadGraphic(i);

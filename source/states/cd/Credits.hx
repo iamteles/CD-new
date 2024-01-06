@@ -290,7 +290,7 @@ class SpecialThanks extends MusicBeatSubState
         var banana = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		add(banana);
 
-        var popUpTxt = new FlxText(0,0,0,"> Special Thanks <\n\nDiogoTV - Creator of Doido Engine\n\nPlaytesters\nBepixel, Kal, DiogoTV, Leozito\n\nTeam Shatterdisk\nParallax, Whisper, Shaya, Astro\n\nDusterBuster and the rest of Team TBD\nTurtle Pals Tapes\nThe Funkin Crew\n\nGuest Cameos\nAntonyR, YairLK7, Nobodi, The Neko No Ni Dansu Team, Top 10 Portugal\n\nYou and everyone who supported us through the development!");
+        var popUpTxt = new FlxText(0,0,0,"> Special Thanks <\n\nDiogoTV - Creator of Doido Engine\n\nPlaytesters\nBepixel, Kal, DiogoTV, Leozito\n\nTeam Shatterdisk\nParallax, Whisper, Shaya, Astro\n\nDusterBuster and the rest of Team TBD\nTurtle Pals Tapes\nThe Funkin Crew\n\nGuest Cameos\nAntonyR, YairLK7, LukasP, The Neko No Ni Dansu Team, Top 10 Portugal\n\nYou and everyone who supported us through the development!");
 		popUpTxt.setFormat(Main.gFont, 37, 0xFFFFFFFF, CENTER);
 		popUpTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2.5);
 		popUpTxt.screenCenter();

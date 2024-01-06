@@ -1,0 +1,14 @@
+{
+    "zoom": 0.54,
+    "bfPos": [1200, 1400, 0, 70],
+    "dadPos": [300, 1430, 0, 70],
+    "objects": [
+        {
+            "objName": "grd",
+            "path": "backgrounds/gfd/white",
+            "position": [-703.15, -499.7],
+            "scrollFactor": [0, 0],
+            "lq": true
+        }
+    ]
+}

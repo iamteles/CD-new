@@ -32,7 +32,7 @@ class OptionsState extends MusicBeatState
 			"Cutscenes",
 			"Framerate Cap",
 			"Preload Songs",
-			//"Touch Controls"
+			"Hitsounds"
 		],
 		"appearance" => [
 			"Skin",
@@ -55,6 +55,9 @@ class OptionsState extends MusicBeatState
 			"Reset Options",
 			"Reset Highscores",
 			"Reset All"
+		],
+		"controls" => [
+			"nothin"
 		]
 	];
 
@@ -155,6 +158,7 @@ class OptionsState extends MusicBeatState
 
 	public function reloadCat(curCat:String = "main")
 	{
+		trace("went to " + curCat);
 		storedSelected.set(OptionsState.curCat, curSelected);
 
 		OptionsState.curCat = curCat;
@@ -477,12 +481,13 @@ class OptionsState extends MusicBeatState
 							if(optionShit.exists(justSelected))
 								reloadCat(justSelected);
 	
+						
 						case "controls":
 							new FlxTimer().start(0.1, function(tmr:FlxTimer)
 							{
-								Main.skipStuff();
-								Main.switchState(new ControlsState());
+								openSubState(new subStates.ControlsSubstate());
 							});
+						
 					}
 				}
 			}

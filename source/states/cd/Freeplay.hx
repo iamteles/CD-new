@@ -94,6 +94,11 @@ class Freeplay extends MusicBeatState
             songs.push(["exotic", "cutenevil", 0xFFFFFFFF]);
         }
 
+        if(SaveData.progression.get("finished"))
+            songs.push(["cupid", "duo", 0xFFFFFFFF]);
+
+
+
         bg = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/desat'));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -265,11 +270,16 @@ class Freeplay extends MusicBeatState
                         //CoolUtil.playMusic();
                         
                         PlayState.songDiff = diff;
-                        
-                        if(songs[curSelected][0] == "kaboom")
-                            openSubState(new CharacterSelect());
-                        else
-                            Main.switchState(new LoadSongState());
+
+                        switch(songs[curSelected][0]) {
+                            case "kaboom":
+                                openSubState(new CharacterSelect());
+                            case "cupid" | "ripple" | "customer-service":
+                                states.cd.Dialog.dialog = songs[curSelected][0];
+                                Main.switchState(new states.cd.Dialog());
+                            default:
+                                Main.switchState(new LoadSongState());
+                        }
                 }
 
             }

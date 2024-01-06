@@ -1,0 +1,43 @@
+{
+    "characters": ["bella", "bex"],
+    "background": "divergence",
+    "finisher": "song",
+    "song": "25",
+    "lines": [
+        {
+            "character": "left",
+            "frame": "blush",
+            "text": "So this is the place we met..."
+        },
+        {
+            "character": "right",
+            "frame": "shy",
+            "text": "yeah...."
+        },
+        {
+            "character": "right",
+            "frame": "loving",
+            "text": "you know what..."
+        },
+        {
+            "character": "right",
+            "frame": "loving",
+            "text": "we should sing again"
+        },
+        {
+            "character": "right",
+            "frame": "happy",
+            "text": "for old times sake you know"
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "Sure!!! :)"
+        },
+        {
+            "character": "left",
+            "frame": "playful",
+            "text": "I have the perfect song!!! :DDD"
+        }
+    ]
+}

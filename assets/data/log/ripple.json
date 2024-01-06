@@ -1,0 +1,163 @@
+{
+    "characters": ["wave", "drown", "empitri"],
+    "background": "shack",
+    "finisher": "song",
+    "song": "freeplay",
+    "lines": [
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "Man the store doesnt have any customers at this time"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "My shift ends in 10 minutes so i can finally leave this place"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": ": D"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": "um"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": "hi"
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "..."
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Welcome To The Shack What Can We Get You :D"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": "can you uh"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": "sing"
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "What"
+        },
+        {
+            "character": "right",
+            "frame": "sadder",
+            "text": "im sorry im sorry ill be leaving now goodbye have a nice day yeah"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "No Wait!"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Im Sure My Friend Wave Here Would Love To Sing With You :P"
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "What"
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "really?"
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "..."
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Come On Wave!"
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "Shut up"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "You Know The Customer Is Always Right"
+        },
+        {
+            "character": "right",
+            "frame": "sadder",
+            "text": "no its fine i can leave if im bothering sorry sorry sorry"
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "Whatever"
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "ok thank you miss wave and miss-"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Empitri :D"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "And You Are???"
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "naomi"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": "but people usually call me drown"
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "Well enough with the chatting lets sing before i change my mind"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": ": D"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": ": ("
+        }
+    ]
+}

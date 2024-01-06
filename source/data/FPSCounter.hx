@@ -69,7 +69,7 @@ class FPSCounter extends TextField
 
 		var currentCount = times.length;
 		currentFPS = Math.round((currentCount + cacheCount) / 2);
-		//if (currentFPS > FlxG.updateFramerate) currentFPS = FlxG.updateFramerate;
+		if (currentFPS > SaveData.data.get("Framerate Cap")) currentFPS = SaveData.data.get("Framerate Cap");
 		
 		if (currentCount != cacheCount /*&& visible*/)
 		{

@@ -90,14 +90,15 @@ class LoadSongState extends MusicBeatState
 		{
 			mutex.acquire();
 			#end
-			Paths.preloadPlayStuff();
+			Paths.preloadPlayStuff(SONG.song);
 			Rating.preload(assetModifier);
 
 			if(!SaveData.data.get("Low Quality")) {
 				Paths.preloadGraphic('hud/base/healthBar');
-				Paths.preloadGraphic('hud/base/blackBar');
 				Paths.preloadGraphic('vignette');
 			}
+
+			Paths.preloadGraphic('hud/base/blackBar');
 
 			Paths.preloadGraphic("hud/pause/botplay");
 			Paths.preloadGraphic("hud/pause/buttons");
@@ -117,6 +118,8 @@ class LoadSongState extends MusicBeatState
 						stages.push("divergence-e");
 						stages.push("panic-attack-e");
 						stages.push("wake");
+					case 'cupid':
+						stages.push("cupid2");
 					default:
 						//
 				}
@@ -151,6 +154,9 @@ class LoadSongState extends MusicBeatState
 						charList.push("bex-1e");
 						charList.push("bex-2e");
 						charList.push("bree-2e");
+					case 'cupid':
+						charList.push("bella-hp2");
+						charList.push("bex-hp2");
 					default:
 						////trace('loaded lol');
 				}

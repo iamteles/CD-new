@@ -1,0 +1,74 @@
+{
+    "characters": ["wave", "drown", "empitri"],
+    "background": "shack",
+    "finisher": "song",
+    "song": "freeplay",
+    "lines": [
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "..."
+        },
+        {
+            "character": "left",
+            "frame": "mad",
+            "text": "Alright im outta here"
+        },
+        {
+            "character": "left",
+            "frame": "neutral",
+            "text": "See you tomorrow Em"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Bye! : D"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": ": (",
+            "thing": "hideleft"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "I Have To Close The Shop Soon..."
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": ": ("
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "You Want Another Song Don't You!"
+        },
+        {
+            "character": "right",
+            "frame": "neutral",
+            "text": "yeah..................."
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Alright!"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Get Ready!"
+        },
+        {
+            "character": "center",
+            "frame": "neutral",
+            "text": "Be Prepared!"
+        },
+        {
+            "character": "right",
+            "frame": "saddest",
+            "text": "......."
+        }
+    ]
+}
