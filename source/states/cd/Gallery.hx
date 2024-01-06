@@ -49,6 +49,8 @@ class Gallery extends MusicBeatState
 		super.create();
 		menuItems = new FlxTypedGroup<FlxSprite>();
 
+		FlxG.mouse.visible = false;
+
         bg = new FlxSprite().loadGraphic(Paths.image('menu/gallery/bg'));
 		bg.updateHitbox();
 		bg.screenCenter();

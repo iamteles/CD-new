@@ -9,6 +9,8 @@ import flixel.tweens.FlxEase;
 import flixel.addons.display.FlxBackdrop;
 import data.GameData.MusicBeatState;
 import flixel.text.FlxText;
+import hxcodec.flixel.FlxVideo;
+import flixel.system.FlxSound;
 
 class Intro extends MusicBeatState
 {
@@ -33,6 +35,8 @@ class Intro extends MusicBeatState
 		sprite.alpha = 0;
 		add(sprite);
 
+		/*
+
 		spriteSD = new FlxSprite();
 		spriteSD.frames = Paths.getSparrowAtlas("menu/intros/shatterdisk");
 		spriteSD.animation.addByPrefix('start', 		'opening', 24, false);
@@ -44,6 +48,8 @@ class Intro extends MusicBeatState
 		spriteSD.alpha = 0;
 		add(spriteSD);
 
+		*/
+
 
 		new FlxTimer().start(0.5, function(tmr:FlxTimer)
 		{
@@ -54,8 +60,12 @@ class Intro extends MusicBeatState
 
 		new FlxTimer().start(3.2, function(tmr:FlxTimer)
 		{
+			finish();
+			/*
 			FlxTween.tween(sprite, {alpha: 0}, 0.5, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
 			{
+				finish();
+				/*
 				FlxTween.tween(spriteSD, {alpha: 1}, 0.4);
 				spriteSD.animation.play('start');
 				FlxG.sound.play(Paths.sound("intro/shatterdisk"), 1, false, null, true);
@@ -65,6 +75,7 @@ class Intro extends MusicBeatState
 					finish();
 				});
 			}});
+			*/
 		});
 	
 	}
@@ -91,7 +102,7 @@ class Intro extends MusicBeatState
 	
 	private function finish():Void
 	{
-		Main.switchState(new TitleScreen());
+		Main.switchState(new states.cd.Intro.Video());
 	}
 	
 }
@@ -148,4 +159,46 @@ class Warning extends MusicBeatState
 		Main.switchState(new Intro());
 	}
 	
+}
+
+
+
+class Video extends MusicBeatState
+{
+    var video:FlxVideo;
+
+    public static var name:String = "intro";
+	override public function create():Void
+	{
+		Paths.preloadGraphic('menu/title/gradients/' + Main.possibleTitles[Main.randomized][0]);
+		Paths.preloadGraphic('menu/title/tiles/' + Main.possibleTitles[Main.randomized][0]);
+		Paths.preloadGraphic('menu/title/logo');
+		Paths.preloadSound("intro/end");
+
+		video = new FlxVideo();
+		video.onEndReached.add(onComplete);
+		video.play(Paths.video(name));
+
+		CoolUtil.playMusic("intro");
+
+		super.create();
+	}
+
+    public function onComplete():Void
+    {
+        video.dispose();
+
+		Main.skipStuff();
+		Main.switchState(new states.cd.TitleScreen());
+    }
+
+    override function update(elapsed:Float) {
+        super.update(elapsed);
+        
+		var click:Bool = FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.ENTER || FlxG.mouse.justPressed;
+
+        if(click && SaveData.progression.get("firstboot")) {
+            onComplete();
+        }
+    }
 }

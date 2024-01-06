@@ -91,6 +91,8 @@ class MusicPlayer extends MusicBeatState
 
         CoolUtil.playMusic();
 
+        FlxG.mouse.visible = true;
+
         var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFFFFFF);
 		color.screenCenter();
 		add(color);

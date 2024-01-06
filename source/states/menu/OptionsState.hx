@@ -98,6 +98,8 @@ class OptionsState extends MusicBeatState
 		color.screenCenter();
 		add(color);
 
+		FlxG.mouse.visible = true;
+
 		var tiles = new FlxBackdrop(Paths.image('menu/freeplay/tile'), XY, 0, 0);
         tiles.velocity.set(30, 30);
         tiles.screenCenter();

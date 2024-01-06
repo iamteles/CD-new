@@ -42,6 +42,8 @@ class PauseSubState extends MusicBeatSubState
 		var banana = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		add(banana);
 
+		FlxG.mouse.visible = true;
+
 		banana.alpha = 0;
 		FlxTween.tween(banana, {alpha: 0.4}, 0.1);
 

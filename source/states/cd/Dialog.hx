@@ -69,6 +69,8 @@ class Dialog extends MusicBeatState
         if(log.song != null)
             CoolUtil.playMusic("dialogue/" + log.song);
 
+        FlxG.mouse.visible = false;
+
         bg = new FlxSprite().loadGraphic(Paths.image('dialog/bgs/' + log.background));
 		bg.updateHitbox();
 		bg.screenCenter();

@@ -52,6 +52,8 @@ class Credits extends MusicBeatState
         DiscordClient.changePresence("In the Credits Menu", null);
         CoolUtil.playMusic("credits");
 
+        FlxG.mouse.visible = false;
+
         bg = new FlxSprite().loadGraphic(Paths.image('menu/bios/bio-bg'));
 		bg.updateHitbox();
 		bg.screenCenter();

@@ -52,6 +52,8 @@ class Freeplay extends MusicBeatState
         DiscordClient.changePresence("In the Freeplay Menu", null);
         CoolUtil.playMusic("movement");
 
+        FlxG.mouse.visible = false;
+
         selected = false;
 
         if(SaveData.progression.get("week2")) {

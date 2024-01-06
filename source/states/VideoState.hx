@@ -14,6 +14,8 @@ class VideoState extends MusicBeatState
 	{
         CoolUtil.playMusic();
 
+        FlxG.mouse.visible = false;
+
 		video = new FlxVideo();
 		video.onEndReached.add(onComplete);
 		video.play(Paths.video(name));

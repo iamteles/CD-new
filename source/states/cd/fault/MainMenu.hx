@@ -42,6 +42,8 @@ class MainMenu extends MusicBeatState
         DiscordClient.changePresence("In the Menus", null);
         CoolUtil.playMusic("fault");
 
+        FlxG.mouse.visible = false;
+
         bg = new FlxSprite().loadGraphic(Paths.image('menu/main/bg'));
 		bg.updateHitbox();
 		bg.screenCenter();

@@ -90,6 +90,8 @@ class CharacterEditorState extends MusicBeatState
 		var grid = FlxGridOverlay.create(32, 32, FlxG.width * 2, FlxG.height * 2);
 		//grid.screenCenter();
 		add(grid);
+
+		FlxG.mouse.visible = true;
 		
 		Rating.preload("base");
 		

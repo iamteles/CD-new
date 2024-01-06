@@ -41,6 +41,8 @@ class Bios extends MusicBeatState
         DiscordClient.changePresence("In the Bios Menu", null);
         CoolUtil.playMusic("LoveLetter");
 
+        FlxG.mouse.visible = false;
+
         bg = new FlxSprite().loadGraphic(Paths.image('menu/bios/bio-bg'));
 		bg.updateHitbox();
 		bg.screenCenter();

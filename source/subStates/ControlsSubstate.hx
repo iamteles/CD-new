@@ -19,6 +19,8 @@ import gameObjects.hud.note.Note;
 import gameObjects.menu.Alphabet;
 import gameObjects.menu.options.OptionSelector.ControlSelector as OptionSelector;
 import states.PlayState;
+import flixel.input.gamepad.id.PS4ID;
+import flixel.input.gamepad.FlxGamepad.FlxGamepadModel;
 
 class ControlsSubstate extends MusicBeatSubState
 {
@@ -230,7 +232,7 @@ class ControlsSubstate extends MusicBeatSubState
             }
         }
 
-        for(group in allGroups)
+        /*for(group in allGroups)
         for(bind in group.members)
         for(dGroup in allGroups)
         for(dBind in group.members)
@@ -240,7 +242,19 @@ class ControlsSubstate extends MusicBeatSubState
             && bind.text != '---'
             && dBind.text != '---')
                 bind.color = dBind.color = 0xFFFF0000;
-        }
+        }*/
+        var allBinds:Array<FlxText> = [];
+        for(group in allGroups)
+            for(bind in group.members)
+                allBinds.push(bind);
+
+        for(bind in allBinds)
+        for(dBind in allBinds)
+        if(bind.text == dBind.text
+        && dBind != bind
+        && bind.text != '---'
+        && dBind.text != '---')
+            bind.color = dBind.color = 0xFFFF0000;
     }
 
     final formatNum:Array<String> = ['ZERO','ONE','TWO','THREE','FOUR','FIVE','SIX','SEVEN','EIGHT','NINE'];
@@ -461,6 +475,15 @@ class ControlsSubstate extends MusicBeatSubState
                 if(key == FlxPad.LEFT_STICK_CLICK
                 || key == FlxPad.RIGHT_STICK_CLICK)
                     key = FlxPad.NONE;
+
+                if(curGamepad.detectedModel == PS4)
+                {
+                    var rawKey = curGamepad.firstJustPressedRawID();
+                    if(rawKey == PS4ID.L2)
+                        key = FlxPad.LEFT_TRIGGER;
+                    if(rawKey == PS4ID.R2)
+                        key = FlxPad.RIGHT_TRIGGER;
+                }
 
                 checkAnalogs();
                 var digitalAnalogs:Array<FlxPad> = [

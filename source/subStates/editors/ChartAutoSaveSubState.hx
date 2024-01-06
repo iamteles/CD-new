@@ -47,6 +47,8 @@ class ChartAutoSaveSubState extends MusicBeatSubState
 		var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		bg.screenCenter();
 		add(bg);
+
+		FlxG.mouse.visible = true;
 		
 		var mainTxt = new FlxText(0,8,0,"AutoSaved Charts Station",36);
 		mainTxt.setFormat(Main.gFont, 36, 0xFFFFFFFF, CENTER);

@@ -32,6 +32,8 @@ class GameOverSubState extends MusicBeatSubState
 	{
 		super.create();
 
+		FlxG.mouse.visible = false;
+
 		heart = new FlxSprite();
 		heart.frames = Paths.getSparrowAtlas("hud/base/gameover/heart");
 		heart.animation.addByPrefix("idle", 'game over', 24, false);

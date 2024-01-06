@@ -52,6 +52,8 @@ class LoadSongState extends MusicBeatState
 		mutex = new Mutex();
 		#end
 
+		FlxG.mouse.visible = false;
+
 		behind = new FlxGroup();
 		add(behind);
 		

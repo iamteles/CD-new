@@ -25,6 +25,8 @@ class DebugState extends MusicBeatState
 		super.create();
 		CoolUtil.playMusic("MENU");
 
+		FlxG.mouse.visible = true;
+
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Song Selection", null);
 

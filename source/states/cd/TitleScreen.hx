@@ -22,9 +22,14 @@ class TitleScreen extends MusicBeatState
     {
         super.create();
 
-        CoolUtil.playMusic("MENU");
+        //CoolUtil.playMusic("MENU");
+        CoolUtil.playMusic("intro");
         SaveData.progression.set("firstboot", true);
         SaveData.save();
+
+        FlxG.mouse.visible = false;
+
+        CoolUtil.flash(FlxG.camera, 0.5);
 
         bg = new FlxSprite().loadGraphic(Paths.image('menu/title/gradients/' + Main.possibleTitles[Main.randomized][0]));
 		bg.updateHitbox();
@@ -77,9 +82,10 @@ class TitleScreen extends MusicBeatState
     {
         if(started) return;
         started = true;
-        FlxG.sound.play(Paths.sound("menu/select"));
+        CoolUtil.playMusic("");
+        FlxG.sound.play(Paths.sound("intro/end"));
         CoolUtil.flash(FlxG.camera, 1, 0xffffffff); 
-        FlxFlicker.flicker(info, 1, 0.06, true, false, function(_)
+        FlxFlicker.flicker(info, 2, 0.06, true, false, function(_)
         {
             Main.switchState(new states.cd.MainMenu());
         });

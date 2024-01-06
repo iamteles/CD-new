@@ -175,6 +175,8 @@ class PlayState extends MusicBeatState
 		resetStatics();
 		if(SONG == null)
 			SONG = SongData.loadFromJson("ugh");
+
+		FlxG.mouse.visible = false;
 		
 		daSong = SONG.song.toLowerCase();
 

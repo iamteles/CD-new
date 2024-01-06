@@ -52,6 +52,8 @@ class Freeplay extends MusicBeatState
         DiscordClient.changePresence("In the Freeplay Menu", null);
         CoolUtil.playMusic("fault");
 
+        FlxG.mouse.visible = false;
+
         bg = new FlxSprite().loadGraphic(Paths.image('menu/freeplay/desat'));
 		bg.updateHitbox();
 		bg.screenCenter();

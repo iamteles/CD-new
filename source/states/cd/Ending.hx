@@ -43,6 +43,8 @@ class Ending extends MusicBeatState
 
         CoolUtil.playMusic("godsend");
 
+        FlxG.mouse.visible = false;
+
         panelGroup = new FlxTypedGroup<FlxSprite>();
 		add(panelGroup);
 
