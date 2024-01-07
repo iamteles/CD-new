@@ -96,10 +96,14 @@ class SaveData
 		],
 		
 		"Cutscenes" => [
+			#if mobile
+			"STATIC",
+			#else
 			"ON",
+			#end
 			SELECTOR,
-			"Whether to play song cutscenes or dialogues.",
-			["ON", "FREEPLAY OFF", "OFF"],
+			"Whether to play song cutscenes.",
+			["ON", "STATIC", "OFF"],
 		],
 
 		// this one doesnt actually appear at the regular options menu

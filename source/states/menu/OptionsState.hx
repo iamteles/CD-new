@@ -42,7 +42,7 @@ class OptionsState extends MusicBeatState
 			"Note Splashes",
 			"Smooth Healthbar",
 			"Split Holds",
-
+			"Cutscenes"
 		],
 		"accessibility" => [
 			"Flashing Lights",

@@ -3590,11 +3590,30 @@ class PlayState extends MusicBeatState
 						states.cd.Dialog.dialog = "divergence";
 						Main.switchState(new states.cd.Dialog());
 					case "divergence":
-						states.VideoState.name = "divergence";
-						Main.switchState(new states.VideoState());
+						switch(SaveData.data.get("Cutscenes")) {
+							case "ON":
+								states.VideoState.name = "divergence";
+								Main.switchState(new states.VideoState());
+							case "OFF":
+								if(!SaveData.progression.get("week1"))
+									states.cd.MainMenu.unlocks.push("Week 2!\nFreeplay!");
+								SaveData.progression.set("week1", true);
+								SaveData.save();
+								Main.switchState(new states.cd.MainMenu());
+							case "STATIC":
+								Main.switchState(new states.cd.statics.Divergence());
+						}
 					case "allegro":
-						states.VideoState.name = "panic";
-						Main.switchState(new states.VideoState());
+						switch(SaveData.data.get("Cutscenes")) {
+							case "ON":
+								states.VideoState.name = "panic";
+								Main.switchState(new states.VideoState());
+							case "OFF":
+								states.cd.Dialog.dialog = "panic-attack";
+								Main.switchState(new states.cd.Dialog());
+							case "STATIC":
+								Main.switchState(new states.cd.statics.Panic());
+						}
 					case "panic-attack":
 						states.cd.Dialog.dialog = "convergence";
 						Main.switchState(new states.cd.Dialog());

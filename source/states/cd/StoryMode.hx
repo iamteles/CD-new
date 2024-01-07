@@ -9,6 +9,7 @@ import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
 import data.SongData;
 import flixel.tweens.FlxTween;
+import gameObjects.android.FlxVirtualPad;
 
 class StoryMode extends MusicBeatState
 {
@@ -127,9 +128,15 @@ class StoryMode extends MusicBeatState
             Main.switchState(new states.cd.MainMenu());
         }
 
+        if(SaveData.data.get("Touch Controls")) {
+            virtualPad = new FlxVirtualPad(BLANK, B);
+            add(virtualPad);
+        }
 
         updatePos();
     }
+
+    var virtualPad:FlxVirtualPad;
 
     function updatePos() {
         week1.screenCenter();
