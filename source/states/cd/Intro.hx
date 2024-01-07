@@ -11,6 +11,10 @@ import data.GameData.MusicBeatState;
 import flixel.text.FlxText;
 import hxcodec.flixel.FlxVideo;
 import flixel.system.FlxSound;
+#if !html5
+import sys.thread.Mutex;
+import sys.thread.Thread;
+#end
 
 class Intro extends MusicBeatState
 {
@@ -102,6 +106,7 @@ class Intro extends MusicBeatState
 	
 	private function finish():Void
 	{
+		Main.skipClearMemory = true;
 		Main.switchState(new states.cd.Intro.Video());
 	}
 	
@@ -156,7 +161,7 @@ class Warning extends MusicBeatState
 	
 	private function finish():Void
 	{
-		Main.switchState(new Intro());
+		Main.switchState(new Intro.IntroLoading());
 	}
 	
 }
@@ -170,11 +175,6 @@ class Video extends MusicBeatState
     public static var name:String = "intro";
 	override public function create():Void
 	{
-		Paths.preloadGraphic('menu/title/gradients/' + Main.possibleTitles[Main.randomized][0]);
-		Paths.preloadGraphic('menu/title/tiles/' + Main.possibleTitles[Main.randomized][0]);
-		Paths.preloadGraphic('menu/title/logo');
-		Paths.preloadSound("intro/end");
-
 		video = new FlxVideo();
 		video.onEndReached.add(onComplete);
 		video.play(Paths.video(name));
@@ -201,4 +201,90 @@ class Video extends MusicBeatState
             onComplete();
         }
     }
+}
+
+class IntroLoading extends MusicBeatState
+{
+	var threadActive:Bool = true;
+
+	#if !html5
+	var mutex:Mutex;
+	#end
+
+	var bg:FlxSprite;
+	var logo:FlxSprite;
+
+	var loadBar:FlxSprite;
+	var loadPercent:Float = 0;
+	
+	override function create()
+	{
+		super.create();
+
+		#if !html5
+		mutex = new Mutex();
+		#end
+		
+		var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFF000000);
+		color.screenCenter();
+		add(color);
+
+		logo = new FlxSprite().loadGraphic(Paths.image('menu/loading'));
+		logo.scale.set(0.3,0.3);
+		logo.updateHitbox();
+		logo.x = FlxG.width - logo.width - 10;
+		logo.y = FlxG.height - logo.height - 10;
+		add(logo);
+		
+		var oldAnti:Bool = FlxSprite.defaultAntialiasing;
+		FlxSprite.defaultAntialiasing = false;
+
+		#if !html5
+		var preloadThread = Thread.create(function()
+		{
+			mutex.acquire();
+			#end
+
+			Paths.preloadGraphic('menu/title/gradients/' + Main.possibleTitles[Main.randomized][0]);
+			Paths.preloadGraphic('menu/title/tiles/' + Main.possibleTitles[Main.randomized][0]);
+			Paths.preloadGraphic('menu/title/logo');
+			Paths.preloadSound("intro/end");
+			Paths.preloadGraphic("menu/intros/flixel");
+			Paths.preloadSound("intro/haxe");
+
+			var video = new FlxVideo();
+			video.play(Paths.video("video"));
+			video.pause();
+			video.dispose();
+
+
+			loadPercent = 1.0;
+			trace('finished loading');
+
+			FlxSprite.defaultAntialiasing = oldAnti;
+			#if !html5
+			threadActive = false;
+			mutex.release();
+		});
+		#else
+		Main.skipClearMemory = true;
+		Main.switchState(new states.cd.Intro());
+		#end
+	}
+	
+	var byeLol:Bool = false;
+	
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		#if !html5
+		if(!threadActive && !byeLol)
+		{
+			byeLol = true;
+			Main.skipClearMemory = true;
+			Main.switchState(new states.cd.Intro());
+		}
+		#end
+	}
 }

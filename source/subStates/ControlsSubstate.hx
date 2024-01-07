@@ -375,7 +375,7 @@ class ControlsSubstate extends MusicBeatSubState
                     note.songTime += songBeat * 4;
                     playTick(note.noteData == 0);
                 }
-                if (note.songTime > FlxG.sound.music.length)
+                if (note.songTime > FlxG.sound.music.length && FlxG.sound.music.time <= 1000)
                     note.songTime = songBeat * note.noteData;
             }
 

@@ -240,13 +240,13 @@ class LoadShopState extends MusicBeatState
 		logo.scale.set(0.3,0.3);
 		logo.updateHitbox();
 		logo.x = FlxG.width - logo.width - 10;
-		logo.y = FlxG.height - logo.height - 10;
+		logo.y = FlxG.height - logo.height - 18;
 		add(logo);
 
 		loadBar = new FlxSprite().makeGraphic(FlxG.width, 20, 0xFFFFFFFF);
 		loadBar.y = FlxG.height - loadBar.height + 10;
 		loadBar.scale.x = 0;
-		loadBar.alpha = 0;
+		//loadBar.alpha = 0;
 		add(loadBar);
 		
 		var oldAnti:Bool = FlxSprite.defaultAntialiasing;

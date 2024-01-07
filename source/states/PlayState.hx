@@ -388,7 +388,7 @@ class PlayState extends MusicBeatState
 		}
 
 
-		else if(daSong == "heartpounder")
+		if(daSong == "heartpounder")
 		{
 			var sideBars = new FlxSprite().loadGraphic(Paths.image('hud/base/sidebars'));
 			sideBars.screenCenter();
@@ -2289,7 +2289,7 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.6;
 						case 454:
 							FlxG.camera.fade(0xFFFFFFFF, 1.5, false);
-						case 480:
+						case 485:
 							changeChar(boyfriend, "bex-hp2");
 							changeChar(dad, "bella-hp2");
 							changeStage("cupid2");

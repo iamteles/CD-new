@@ -13,6 +13,7 @@ import gameObjects.android.FlxVirtualPad;
 class MusicPlayer extends MusicBeatState
 {
     public static var songs:Array<Array<Dynamic>> = [
+        ["Characteristic Disparity", "CharaWhy", "music/intro"],
         ["Euphoria", "Coco Puffs", "songs/euphoria/Inst", "songs/euphoria/Voices"],
         ["Nefarious", "teles", "songs/nefarious/Inst", "songs/nefarious/Voices"],
         ["Divergence", "CharaWhy", "songs/divergence/Inst", "songs/divergence/Voices"],
@@ -38,7 +39,7 @@ class MusicPlayer extends MusicBeatState
         ["Over the Counter", "teles", "music/shopkeeper"],
         ["Over the Clouds", "YaBoiJustin", "music/overTheHorizonHelica"],
         ["Movement", "CharaWhy", "music/movement"],
-        ["Whatcha buyin?", "CharaWhy", "music/WhatchaBuyin"],
+        ["Whatcha Buyin?", "CharaWhy", "music/WhatchaBuyin"],
         ["Love Letter (Bios Theme)", "Coco Puffs", "music/LoveLetter"],
         ["Allegretto (Credits Theme)", "teles", "music/credits"],
         ["Euphoria (Dialogue)", "Coco Puffs", "music/dialogue/11"],
@@ -49,7 +50,7 @@ class MusicPlayer extends MusicBeatState
         ["Convergence (Dialogue)", "teles", "music/dialogue/23"],
         ["Desertion (Dialogue)", "teles", "music/dialogue/24"],
         ["Godsend (Finale)", "Coco Puffs", "music/godsend"],
-        ["Fun Times (Dialogue)", "teles", "music/dialogue/freeplay"],
+        ["Ripple/Customer Service (Dialogue)", "teles", "music/dialogue/freeplay"],
         ["Reiterate (Game Over Theme)", "teles", "music/death/reiterate"],
         ["THUNDEROUS", "teles", "music/death/bree"],
         ["Speaker", "Coco Puffs", "music/speaker"],

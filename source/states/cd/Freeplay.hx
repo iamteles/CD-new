@@ -369,6 +369,8 @@ class CharacterSelect extends MusicBeatSubState
         var banana = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		add(banana);
 
+        FlxG.mouse.visible = true;
+
 		banana.alpha = 0;
 
         var select:FlxSprite = new FlxSprite(408.15, 28.4).loadGraphic(Paths.image('menu/freeplay/select/select'));
@@ -398,6 +400,7 @@ class CharacterSelect extends MusicBeatSubState
         {
             FlxG.sound.play(Paths.sound('menu/back'));
             Freeplay.selected = false;
+            FlxG.mouse.visible = false;
             close();
         }
 

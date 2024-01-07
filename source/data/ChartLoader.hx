@@ -29,7 +29,7 @@ class ChartLoader
 			for (songNotes in section.sectionNotes)
 			{
 				/* - late || + early */
-				var daStrumTime:Float = songNotes[0];
+				var daStrumTime:Float = songNotes[0] - SaveData.data.get('Song Offset');
 				var daNoteData:Int = Std.int(songNotes[1] % 4);
 				var daNoteType:String = 'none';
 				// very stupid but I'm lazy

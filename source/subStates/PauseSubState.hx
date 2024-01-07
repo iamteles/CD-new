@@ -153,6 +153,7 @@ class PauseSubState extends MusicBeatSubState
 
 	override function close()
 	{
+		FlxG.mouse.visible = false;
 		pauseSong.stop();
 		super.close();
 	}

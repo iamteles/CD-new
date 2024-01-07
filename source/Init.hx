@@ -1,5 +1,6 @@
 package;
 
+import states.cd.Intro.IntroLoading;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
@@ -28,9 +29,10 @@ class Init extends MusicBeatState
 			Paths.preloadGraphic(Paths.dumpExclusions[i].replace('.png', ''));
 
 		Main.randomizeTitle();
-		
+
+		Main.skipTrans = true;
 		if(SaveData.progression.get("firstboot"))
-			Main.switchState(new Intro());
+			Main.switchState(new IntroLoading());
 		else
 			Main.switchState(new Intro.Warning());
 	}
