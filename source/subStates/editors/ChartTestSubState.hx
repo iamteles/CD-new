@@ -78,7 +78,7 @@ class ChartTestSubState extends MusicBeatSubState
 		if(SONG == null)
 			SONG = SongData.loadFromJson("ugh");
 
-		FlxG.mouse.visible = true;
+		Main.setMouse(true);
 		
 		FlxG.camera.scroll.y = 0;
 		

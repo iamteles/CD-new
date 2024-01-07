@@ -161,7 +161,11 @@ class Warning extends MusicBeatState
 	
 	private function finish():Void
 	{
+		#if mobile
+		Main.switchState(new TitleScreen());
+		#else
 		Main.switchState(new Intro.IntroLoading());
+		#end
 	}
 	
 }

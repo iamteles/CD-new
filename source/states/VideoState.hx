@@ -14,9 +14,12 @@ class VideoState extends MusicBeatState
 	{
         CoolUtil.playMusic();
 
-        FlxG.mouse.visible = false;
+        Main.setMouse(false);
 
-		video = new FlxVideo();
+        #if mobile
+        onComplete();
+        #else
+        video = new FlxVideo();
 		video.onEndReached.add(onComplete);
 		video.play(Paths.video(name));
 
@@ -24,14 +27,16 @@ class VideoState extends MusicBeatState
 		audio.loadEmbedded(Paths.sound('video/$name'), false, false);
         FlxG.sound.list.add(audio);
         audio.play();
-
+        #end
 		super.create();
 	}
 
     public function onComplete():Void
     {
+        #if !mobile
         audio.stop();
         video.dispose();
+        #end
 
         switch(name) {
             case "divergence":

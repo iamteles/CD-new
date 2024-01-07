@@ -56,7 +56,7 @@ class ShopState extends MusicBeatState
         CoolUtil.playMusic("WhatchaBuyin", 0.8);
         Conductor.setBPM(88);
 
-        FlxG.mouse.visible = true;
+        Main.setMouse(true);
 
         camGame = new FlxCamera();
         camHUD = new FlxCamera();

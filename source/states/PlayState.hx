@@ -86,7 +86,7 @@ class PlayState extends MusicBeatState
 
 	// hud
 	public var hudBuild:HudClass;
-	public var moneyCount:MoneyCounter;
+	public static var moneyCount:MoneyCounter;
 	public var countdown:Countdown;
 
 	// cameras!!
@@ -176,7 +176,7 @@ class PlayState extends MusicBeatState
 		if(SONG == null)
 			SONG = SongData.loadFromJson("ugh");
 
-		FlxG.mouse.visible = false;
+		Main.setMouse(false);
 		
 		daSong = SONG.song.toLowerCase();
 
@@ -1921,10 +1921,14 @@ class PlayState extends MusicBeatState
 							else
 							{
 								if(!songHasTaiko) {
-									var thisChar = strumline.character;
-									if(thisChar != null)
-									{
-										thisChar.miss(i);
+									var songsThatAreFuckedUp:Array<String> = ["panic-attack", "cupid"];
+
+									if(!songsThatAreFuckedUp.contains(daSong)) {
+										var thisChar = strumline.character;
+										if(thisChar != null)
+										{
+											thisChar.miss(i);
+										}
 									}
 									// you ghost tapped lol
 									if(!SaveData.data.get("Ghost Tapping") && startedCountdown)
@@ -3521,7 +3525,7 @@ class PlayState extends MusicBeatState
 	
 	// ends it all
 	public static var endedSong:Bool = false;
-	public function endSong()
+	public static function endSong()
 	{
 		if(endedSong) return;
 		
@@ -3565,7 +3569,7 @@ class PlayState extends MusicBeatState
 		
 	}
 
-	function exit()
+	public static function exit()
 	{
 		if(playList.length <= 0)
 		{
@@ -3574,6 +3578,8 @@ class PlayState extends MusicBeatState
 			{
 				switch(daSong) {
 					case "divergence-vip":
+						if(!SaveData.progression.get("vip"))
+							states.cd.MainMenu.unlocks.push("Song: Exotic! (FREEPLAY)");
 						SaveData.progression.set("vip", true);
 						SaveData.save();
 						sendToMenu();
@@ -3591,16 +3597,14 @@ class PlayState extends MusicBeatState
 						Main.switchState(new states.VideoState());
 					case "panic-attack":
 						states.cd.Dialog.dialog = "convergence";
-						states.cd.Dialog.introCenterAlpha = 0.6;
 						Main.switchState(new states.cd.Dialog());
 					case "convergence":
 						states.cd.Dialog.dialog = "desertion";
+						states.cd.Dialog.introCenterAlpha = 0.6;
 						Main.switchState(new states.cd.Dialog());
 					case "desertion":
 						Main.switchState(new states.cd.Ending());
 					case "intimidate":
-						if(!SaveData.progression.get("intimidated"))
-							states.cd.MainMenu.unlocks.push("Song: Exotic! (FREEPLAY)");
 						SaveData.progression.set("intimidated", true);
 						SaveData.save();
 						Main.switchState(new states.cd.MainMenu());

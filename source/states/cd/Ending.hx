@@ -43,7 +43,7 @@ class Ending extends MusicBeatState
 
         CoolUtil.playMusic("godsend");
 
-        FlxG.mouse.visible = false;
+        Main.setMouse(false);
 
         panelGroup = new FlxTypedGroup<FlxSprite>();
 		add(panelGroup);
@@ -80,7 +80,16 @@ class Ending extends MusicBeatState
             //    panel.alpha = FlxMath.lerp(panel.alpha, 0, elapsed*12);
         }
 
-        if(FlxG.keys.justPressed.SPACE && hasScrolled) {
+        var isTouch:Bool = false;
+        #if mobile
+        for (touch in FlxG.touches.list)
+        {
+            if (touch.justPressed)
+                isTouch = true;
+        }
+        #end
+
+        if((FlxG.keys.justPressed.SPACE || isTouch) && hasScrolled) {
                 FlxG.sound.play(Paths.sound('dialog/skip'));
                 FlxTween.tween(tex, {alpha: 0}, 0.4, {
                     ease: FlxEase.sineInOut,

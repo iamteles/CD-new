@@ -27,7 +27,7 @@ class StoryMode extends MusicBeatState
 
         CoolUtil.playMusic("LoveLetter");
 
-        FlxG.mouse.visible = true;
+        Main.setMouse(true);
 
         weekData = [
             [["euphoria", "nefarious", "divergence"], "week1"],

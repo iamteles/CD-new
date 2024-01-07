@@ -16,7 +16,7 @@ class Init extends MusicBeatState
 				
 		FlxG.fixedTimestep = false;
 		//FlxG.mouse.useSystemCursor = true;
-		FlxG.mouse.visible = false;
+		Main.setMouse(false);
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
@@ -32,7 +32,11 @@ class Init extends MusicBeatState
 
 		Main.skipTrans = true;
 		if(SaveData.progression.get("firstboot"))
-			Main.switchState(new IntroLoading());
+			#if mobile
+			Main.switchState(new TitleScreen());
+			#else
+			Main.switchState(new Intro.IntroLoading());
+			#end
 		else
 			Main.switchState(new Intro.Warning());
 	}

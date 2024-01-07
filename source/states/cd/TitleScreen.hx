@@ -27,7 +27,7 @@ class TitleScreen extends MusicBeatState
         SaveData.progression.set("firstboot", true);
         SaveData.save();
 
-        FlxG.mouse.visible = false;
+        Main.setMouse(false);
 
         CoolUtil.flash(FlxG.camera, 0.5);
 

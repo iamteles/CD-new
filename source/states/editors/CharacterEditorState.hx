@@ -86,12 +86,12 @@ class CharacterEditorState extends MusicBeatState
 	{
 		super.create();
 		Controls.setSoundKeys(true);
-		//FlxG.mouse.visible = true;
+		//Main.setMouse(true);
 		var grid = FlxGridOverlay.create(32, 32, FlxG.width * 2, FlxG.height * 2);
 		//grid.screenCenter();
 		add(grid);
 
-		FlxG.mouse.visible = true;
+		Main.setMouse(true);
 		
 		Rating.preload("base");
 		
@@ -373,7 +373,7 @@ class CharacterEditorState extends MusicBeatState
 		super.update(elapsed);
 		if(FlxG.keys.justPressed.ESCAPE)
 		{
-			//FlxG.mouse.visible = false;
+			//Main.setMouse(false);
 			Main.switchState(new PlayState());
 		}
 			

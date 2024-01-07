@@ -47,7 +47,11 @@ class SaveData
 			"Disables smoothing in scaling sprites. Might increase performance."
 		],
 		"Shaders" => [
+			#if mobile
+			false,
+			#else
 			true,
+			#end
 			CHECKMARK,
 			"Whether to display graphical shaders. Disabling them improves performance."
 		],

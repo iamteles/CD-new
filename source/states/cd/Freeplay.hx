@@ -52,7 +52,7 @@ class Freeplay extends MusicBeatState
         DiscordClient.changePresence("In the Freeplay Menu", null);
         CoolUtil.playMusic("movement");
 
-        FlxG.mouse.visible = false;
+        Main.setMouse(false);
 
         selected = false;
 
@@ -211,9 +211,15 @@ class Freeplay extends MusicBeatState
         if(SaveData.data.get("Touch Controls"))
             right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
+        #if mobile
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+        #else
         var accept:Bool = Controls.justPressed("ACCEPT") || FlxG.mouse.justPressed;
         if(SaveData.data.get("Touch Controls"))
             accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed || FlxG.mouse.justPressed);
+        #end
 
         var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))
@@ -369,7 +375,7 @@ class CharacterSelect extends MusicBeatSubState
         var banana = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		add(banana);
 
-        FlxG.mouse.visible = true;
+        Main.setMouse(true);
 
 		banana.alpha = 0;
 
@@ -400,7 +406,7 @@ class CharacterSelect extends MusicBeatSubState
         {
             FlxG.sound.play(Paths.sound('menu/back'));
             Freeplay.selected = false;
-            FlxG.mouse.visible = false;
+            Main.setMouse(false);
             close();
         }
 

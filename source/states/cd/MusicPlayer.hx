@@ -50,7 +50,7 @@ class MusicPlayer extends MusicBeatState
         ["Convergence (Dialogue)", "teles", "music/dialogue/23"],
         ["Desertion (Dialogue)", "teles", "music/dialogue/24"],
         ["Godsend (Finale)", "Coco Puffs", "music/godsend"],
-        ["Ripple/Customer Service (Dialogue)", "teles", "music/dialogue/freeplay"],
+        ["Ripple (Dialogue)", "teles", "music/dialogue/freeplay"],
         ["Reiterate (Game Over Theme)", "teles", "music/death/reiterate"],
         ["THUNDEROUS", "teles", "music/death/bree"],
         ["Speaker", "Coco Puffs", "music/speaker"],
@@ -92,7 +92,7 @@ class MusicPlayer extends MusicBeatState
 
         CoolUtil.playMusic();
 
-        FlxG.mouse.visible = true;
+        Main.setMouse(true);
 
         var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFFFFFF);
 		color.screenCenter();

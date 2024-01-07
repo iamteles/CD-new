@@ -32,7 +32,7 @@ class GameOverSubState extends MusicBeatSubState
 	{
 		super.create();
 
-		FlxG.mouse.visible = false;
+		Main.setMouse(false);
 
 		heart = new FlxSprite();
 		heart.frames = Paths.getSparrowAtlas("hud/base/gameover/heart");

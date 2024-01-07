@@ -41,7 +41,7 @@ class Bios extends MusicBeatState
         DiscordClient.changePresence("In the Bios Menu", null);
         CoolUtil.playMusic("LoveLetter");
 
-        FlxG.mouse.visible = false;
+        Main.setMouse(false);
 
         bg = new FlxSprite().loadGraphic(Paths.image('menu/bios/bio-bg'));
 		bg.updateHitbox();
@@ -121,9 +121,15 @@ class Bios extends MusicBeatState
         if(SaveData.data.get("Touch Controls"))
             right = (Controls.justPressed("UI_RIGHT") || virtualPad.buttonRight.justPressed || (FlxG.mouse.wheel < 0));
 
+        #if mobile
+        var accept:Bool = Controls.justPressed("ACCEPT");
+        if(SaveData.data.get("Touch Controls"))
+            accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed);
+        #else
         var accept:Bool = Controls.justPressed("ACCEPT") || FlxG.mouse.justPressed;
         if(SaveData.data.get("Touch Controls"))
             accept = (Controls.justPressed("ACCEPT") || virtualPad.buttonA.justPressed || FlxG.mouse.justPressed);
+        #end
 
         var back:Bool = Controls.justPressed("BACK") || FlxG.mouse.justPressedRight;
         if(SaveData.data.get("Touch Controls"))

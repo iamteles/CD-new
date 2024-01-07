@@ -69,7 +69,7 @@ class Dialog extends MusicBeatState
         if(log.song != null)
             CoolUtil.playMusic("dialogue/" + log.song);
 
-        FlxG.mouse.visible = false;
+        Main.setMouse(false);
 
         bg = new FlxSprite().loadGraphic(Paths.image('dialog/bgs/' + log.background));
 		bg.updateHitbox();
@@ -141,6 +141,11 @@ class Dialog extends MusicBeatState
 		name.setBorderStyle(OUTLINE, FlxColor.BLACK, 2.3);
         add(name);
 
+        var txt:String = "Press ESCAPE to skip.";
+        #if mobile
+        txt = "Press BACK to skip.";
+        #end
+
         var skipTxt = new FlxText(0,0,0,"Press ESCAPE to skip.");
 		skipTxt.setFormat(Main.dsFont, 34, 0xFFFFFFFF, CENTER);
 		skipTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
@@ -160,7 +165,23 @@ class Dialog extends MusicBeatState
         if(FlxG.keys.justPressed.ESCAPE)
             end();
 
-        if(FlxG.keys.justPressed.SPACE && hasScrolled) {
+        #if mobile
+		if(FlxG.android.justReleased.BACK)
+		{
+			end();
+		}
+		#end
+
+        var isTouch:Bool = false;
+        #if mobile
+        for (touch in FlxG.touches.list)
+        {
+            if (touch.justPressed)
+                isTouch = true;
+        }
+        #end
+
+        if((FlxG.keys.justPressed.SPACE || isTouch) && hasScrolled) {
             FlxG.sound.play(Paths.sound('dialog/skip'));
 
             if(curLine == log.lines.length) {

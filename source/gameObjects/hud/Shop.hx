@@ -193,6 +193,7 @@ class ShopTalk extends FlxGroup
                                     PlayState.SONG = SongData.loadFromJson("conservation");
                                     Main.skipTrans = true;
                                     Main.skipClearMemory = true;
+                                    PlayState.isStoryMode = false;
                                     Main.switchState(new PlayState());
                                 });
                             }
@@ -205,6 +206,7 @@ class ShopTalk extends FlxGroup
                                     PlayState.SONG = SongData.loadFromJson("irritation");
                                     Main.skipTrans = true;
                                     Main.skipClearMemory = true;
+                                    PlayState.isStoryMode = false;
                                     Main.switchState(new PlayState());
                                 });
                             }

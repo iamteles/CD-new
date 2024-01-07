@@ -95,6 +95,15 @@ class Main extends Sprite
 		["main", "overTheHorizon"]
 	];
 	public static var randomized:Int = 0;
+	
+	public static function setMouse(visibility:Bool = false)
+	{
+		#if !mobile
+		FlxG.mouse.visible = visibility;
+		#else
+		FlxG.mouse.visible = false;
+		#end
+	}
 
 	public static function randomizeTitle()
 	{

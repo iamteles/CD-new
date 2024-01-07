@@ -96,7 +96,7 @@ class ChartingState extends MusicBeatState
 		CoolUtil.playMusic();
 		reloadAudio();
 		Controls.setSoundKeys(true);
-		FlxG.mouse.visible = true;
+		Main.setMouse(true);
 
 		// setting up the cameras
 		var camGame = new FlxCamera();
@@ -939,7 +939,7 @@ class ChartingState extends MusicBeatState
 		{
 			if(FlxG.keys.justPressed.ENTER)
 			{
-				//FlxG.mouse.visible = false;
+				//Main.setMouse(false);
 				ChartAutoSaveSubState.addSave(SONG, songDiff);
 				PlayState.SONG = SONG;
 				//Main.switchState(new PlayState());

@@ -42,7 +42,7 @@ class PauseSubState extends MusicBeatSubState
 		var banana = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		add(banana);
 
-		FlxG.mouse.visible = true;
+		Main.setMouse(true);
 
 		banana.alpha = 0;
 		FlxTween.tween(banana, {alpha: 0.4}, 0.1);
@@ -153,7 +153,7 @@ class PauseSubState extends MusicBeatSubState
 
 	override function close()
 	{
-		FlxG.mouse.visible = false;
+		Main.setMouse(false);
 		pauseSong.stop();
 		super.close();
 	}
@@ -251,8 +251,14 @@ class PauseSubState extends MusicBeatSubState
 				botplay();
 
 			case "options":
+				#if !mobile
 				FlxG.sound.play(Paths.sound("menu/select"));
 				Main.switchState(new states.menu.OptionsState(new LoadSongState()));
+				#else
+				PlayState.paused = false;
+				close();
+				PlayState.endSong();
+				#end
 
 			case "exit":
 				//Main.switchState(new MenuState());
