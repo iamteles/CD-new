@@ -223,7 +223,7 @@ class DialogChar extends FlxSprite
 		try
 		{
 			var daOffset = animOffsets.get(animName);
-			offset.set(daOffset[0], daOffset[1]);
+			offset.set(daOffset[0] * scale.x, daOffset[1] * scale.y);
 		}
 		catch(e)
 			offset.set(0,0);

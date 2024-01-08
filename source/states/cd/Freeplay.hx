@@ -97,7 +97,7 @@ class Freeplay extends MusicBeatState
         }
 
         if(SaveData.progression.get("finished"))
-            songs.push(["cupid", "duo", 0xFFFFFFFF]);
+            songs.push(["cupid", "duo", 0xFFF85EA4]);
 
 
 
