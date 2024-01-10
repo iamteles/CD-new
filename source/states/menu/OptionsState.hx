@@ -150,8 +150,8 @@ class OptionsState extends MusicBeatState
             add(virtualPad);
         }
 
-		verTxt = new FlxText(0,0,0,"Characteristic Disparity V2.0.0                     Running Doido Engine                     Press R to reset your save data.");
-		verTxt.setFormat(Main.dsFont, 24, 0xFFFFFFFF, CENTER);
+		verTxt = new FlxText(0,0,0,'Characteristic Disparity V2.0.0           Running Doido Engine           Completion Rate: ${SaveData.percentage()}%           Press R to reset your save data.');
+		verTxt.setFormat(Main.dsFont, 30, 0xFFFFFFFF, CENTER);
 		verTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
         verTxt.y = FlxG.height - verTxt.height;
 		verTxt.screenCenter(X);

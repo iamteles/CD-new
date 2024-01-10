@@ -10,12 +10,15 @@ import flixel.util.FlxColor;
 import data.GameData.MusicBeatState;
 import gameObjects.menu.Alphabet;
 import gameObjects.android.FlxVirtualPad;
+import flixel.util.FlxTimer;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 
 using StringTools;
 
 class DebugState extends MusicBeatState
 {
-	var optionShit:Array<String> = ["menu", "video", "ending", "editor"];
+	var optionShit:Array<String> = ["menu", "video", "ending", "kiss"];
 	static var curSelected:Int = 0;
 
 	var optionGroup:FlxTypedGroup<Alphabet>;
@@ -47,6 +50,23 @@ class DebugState extends MusicBeatState
 			item.ID = i;
 			optionGroup.add(item);
 		}
+
+		var gif = new FlxSprite();
+		gif.frames = Paths.getSparrowAtlas("menu/bios/text");
+		gif.animation.addByPrefix("idle", 'Símbolo 1', 24, false);
+		gif.animation.play("idle");
+		gif.scale.set(2.3, 2.4);
+		gif.updateHitbox();
+		gif.screenCenter();
+		add(gif);
+
+		new FlxTimer().start(1, function(tmr:FlxTimer)
+		{
+			FlxTween.tween(gif, {alpha: 0}, 0.6, {
+				ease: FlxEase.cubeOut,
+				startDelay: 0.8
+			});
+		});
 
         if(SaveData.data.get("Touch Controls")) {
             virtualPad = new FlxVirtualPad(UP_DOWN, A_B_C);
@@ -101,8 +121,8 @@ class DebugState extends MusicBeatState
 					Main.switchState(new states.cd.Dialog());
 				case "ending":
 					Main.switchState(new states.cd.Ending());
-				//case "freeplay":
-				//	Main.switchState(new states.menu.FreeplayState());
+				case "kiss":
+					Main.switchState(new states.cd.Kissing());
 				case "intimidating":
 					Main.switchState(new states.cd.fault.MainMenu());
 				case "video":

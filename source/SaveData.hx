@@ -331,6 +331,8 @@ class SaveData
 			//trace("not found fitdon");
 		}
 
+		trace(percentage());
+
 		save();
 	}
 
@@ -490,6 +492,64 @@ class SaveData
 		}
 
 		load();
+	}
+
+	public static function percentage() {
+		var count:Int = 0;
+		var songList:Array<String> = [
+			"euphoria",
+			"nefarious",
+			"divergence",
+			"allegro",
+			"panic-attack",
+			"convergence",
+			"desertion",
+			"sin",
+			"conservation",
+			"irritation",
+			"kaboom",
+			"intimidate",
+			"heartpounder",
+			"ripple",
+			"exotic",
+			"customer-service",
+			"euphoria-vip",
+			"nefarious-vip",
+			"divergence-vip",
+			"cupid"
+		];
+
+		for (song in songList) {
+			if (songs.get(song))  count += 2;
+		}
+		
+		var shopItems:Array<String> = [
+			"crown",
+			"mic",
+			"ticket",
+			"tails",
+			"mlc",
+			"base",
+			"shack",
+			"music",
+			"gallery",
+			"bio",
+			"fitdon",
+			"ylyl"
+		];
+
+		for (item in shopItems) {
+			if (shop.get(item))  count += 2;
+		}
+
+		if (progression.get("week1"))  count += 12;
+		if (progression.get("week2"))  count += 13;
+		if (progression.get("vip"))  count += 6;
+		if (progression.get("intimidated"))  count += 9;
+
+		if (progression.get("debug"))  count += 2;
+
+		return count;
 	}
 
 	public static function cupidCheck() {

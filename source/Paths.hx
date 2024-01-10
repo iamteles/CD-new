@@ -84,7 +84,7 @@ class Paths
 			//clearCount++;
 			clearCount.push(key);
 
-			if (openfl.Assets.cache.hasBitmapData(key))
+			if (openfl.Assets.cache.hasBitmapData(key)) 
 				openfl.Assets.cache.removeBitmapData(key);
 			
 			graphic.dump();
@@ -93,7 +93,7 @@ class Paths
 			renderedGraphics.remove(key);
 		}
 
-		trace('cleared $clearCount');
+		//trace('cleared $clearCount');
 		//trace('cleared ${clearCount.length} assets');
 		
 		// sound clearing
