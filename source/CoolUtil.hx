@@ -50,14 +50,14 @@ class CoolUtil
 		}
 	}
 
-	public static function flash(camera:FlxCamera, ?duration:Float = 0.5, ?color:FlxColor) {
+	public static function flash(camera:FlxCamera, ?duration:Float = 0.5, ?color:FlxColor, ?forced:Bool = false) {
 
-		if(SaveData.data.get("Flashing Lights") == "OFF") return;
+		if(SaveData.data.get("Flashing Lights") == "OFF" && !forced) return;
 
 		var color2:FlxColor = color;
 		if(color == null)
 			color2 = 0xFFFFFFFF;
-		if(SaveData.data.get("Flashing Lights") == "REDUCED")
+		if(SaveData.data.get("Flashing Lights") == "REDUCED" && !forced)
 			color2.alphaFloat = 0.4;
 
 		camera.flash(color2, duration, null, true);

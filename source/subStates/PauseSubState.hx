@@ -251,14 +251,8 @@ class PauseSubState extends MusicBeatSubState
 				botplay();
 
 			case "options":
-				#if !mobile
 				FlxG.sound.play(Paths.sound("menu/select"));
 				Main.switchState(new states.menu.OptionsState(new LoadSongState()));
-				#else
-				PlayState.paused = false;
-				close();
-				PlayState.endSong();
-				#end
 
 			case "exit":
 				//Main.switchState(new MenuState());

@@ -19,13 +19,23 @@ class Kissing extends MusicBeatState
 {
     var bxbNeutral:FlxSprite;
     var bxbKissing:FlxSprite;
+    var bxbOops:FlxSprite;
+    var bxbDie:FlxSprite;
+    var bxbDust:FlxSprite;
+
     var breeLeft:FlxSprite;
     var breeRight:FlxSprite;
+    var breeAngry:FlxSprite;
+
+    var title:FlxSprite;
+
     var warning:FlxSprite;
     var scoreTxt:FlxText;
 
     var score:Int = 0;
 
+    var begun:Bool = false;
+    var tweening:Bool = false;
     override function create()
     {
         super.create();
@@ -48,6 +58,24 @@ class Kissing extends MusicBeatState
         bxbKissing.alpha = 0;
 		add(bxbKissing);
 
+        bxbOops = new FlxSprite().loadGraphic(Paths.image('minigame/bxboops'));
+		bxbOops.updateHitbox();
+		bxbOops.screenCenter();
+        bxbOops.alpha = 0;
+		add(bxbOops);
+
+        bxbDie = new FlxSprite().loadGraphic(Paths.image('minigame/bxbdie'));
+		bxbDie.updateHitbox();
+		bxbDie.screenCenter();
+        bxbDie.alpha = 0;
+		add(bxbDie);
+
+        bxbDust = new FlxSprite().loadGraphic(Paths.image('minigame/bxbdust'));
+		bxbDust.updateHitbox();
+		bxbDust.screenCenter();
+        bxbDust.alpha = 0;
+		add(bxbDust);
+
         breeLeft = new FlxSprite().loadGraphic(Paths.image('minigame/breeleft'));
 		breeLeft.updateHitbox();
 		breeLeft.screenCenter();
@@ -57,6 +85,12 @@ class Kissing extends MusicBeatState
 		breeRight.updateHitbox();
 		breeRight.screenCenter();
 		add(breeRight);
+
+        breeAngry = new FlxSprite().loadGraphic(Paths.image('minigame/breeangry'));
+		breeAngry.updateHitbox();
+		breeAngry.screenCenter();
+        breeAngry.alpha = 0;
+		add(breeAngry);
 
         warning = new FlxSprite().loadGraphic(Paths.image('minigame/warning'));
 		warning.updateHitbox();
@@ -71,7 +105,18 @@ class Kissing extends MusicBeatState
 		scoreTxt.screenCenter(X);
 		add(scoreTxt);
 
-        loop();
+        title = new FlxSprite().loadGraphic(Paths.image('minigame/title'));
+		title.updateHitbox();
+		title.screenCenter();
+        //title.alpha = 0;
+		add(title);
+
+        var hypercam = new FlxSprite().loadGraphic(Paths.image('minigame/hypercam'));
+		hypercam.updateHitbox();
+		hypercam.screenCenter();
+		add(hypercam);
+
+        //loop();
     }
 
     var isKissing:Bool = false;
@@ -83,39 +128,55 @@ class Kissing extends MusicBeatState
         
         var click:Bool = FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed;
 
-		if (click)
+		if (click && !dead)
 		{
-            if(!breeWaiting) {
-                Main.switchState(new states.DebugState());
+            if(!begun) {
 
+                if(!tweening) {
+                    FlxTween.tween(title, {alpha: 0}, 1, {ease: FlxEase.circInOut, onComplete: function(twn:FlxTween)
+                        {
+                            begun = true;
+                            loop();
+                        }});
+
+                    tweening = true;
+                }
             }
             else {
-                bxbNeutral.alpha = 0;
-                bxbKissing.alpha = 1;
-                FlxG.sound.play(Paths.sound('minigame/kiss'));
-    
-                isKissing = true;
-    
-                if(kissTimer != null)
-                    if(kissTimer.active)
-                        kissTimer.cancel();
-    
-                kissTimer = new FlxTimer().start(0.2, function(tmr:FlxTimer)
-                {
-                    bxbNeutral.alpha = 1;
-                    bxbKissing.alpha = 0;
-    
-                    isKissing = false;
-                });
-    
-                score++;
-    
-                scoreTxt.text = "Score: " + score;
-                scoreTxt.screenCenter(X);
+                if(!breeWaiting) {
+                    triggerDeath();
+                }
+                else {
+                    bxbNeutral.alpha = 0;
+                    bxbKissing.alpha = 1;
+                    FlxG.sound.play(Paths.sound('minigame/kiss'));
+        
+                    isKissing = true;
+        
+                    if(kissTimer != null)
+                        if(kissTimer.active)
+                            kissTimer.cancel();
+        
+                    kissTimer = new FlxTimer().start(0.2, function(tmr:FlxTimer)
+                    {
+                        bxbNeutral.alpha = 1;
+                        bxbKissing.alpha = 0;
+        
+                        isKissing = false;
+                    });
+        
+                    score++;
+        
+                    scoreTxt.text = "Score: " + score;
+                    scoreTxt.screenCenter(X);
+                }
             }
 		}
     }
 
+    var preWarning:FlxTimer;
+    var preLook:FlxTimer;
+    var preLeft:FlxTimer;
     function loop() {
         breeLeft.alpha = 1;
         breeRight.alpha = 0;
@@ -124,20 +185,81 @@ class Kissing extends MusicBeatState
 
         breeWaiting = true;
 
-        new FlxTimer().start(FlxG.random.float(calc(true), calc(false)), function(tmr:FlxTimer)
+        if(preWarning != null)
+            if(preWarning.active)
+                preWarning.cancel();
+
+        preWarning = new FlxTimer().start(FlxG.random.float(calc(true), calc(false)), function(tmr:FlxTimer)
         {
             FlxG.sound.play(Paths.sound('minigame/surprised'));
             warning.alpha = 1;
 
-            new FlxTimer().start(0.5, function(tmr:FlxTimer)
+            if(preLook != null)
+                if(preLook.active)
+                    preLook.cancel();
+
+            preLook = new FlxTimer().start(0.5, function(tmr:FlxTimer)
             {
                 breeWaiting = false;
                 breeLeft.alpha = 0;
                 breeRight.alpha = 1;
 
-                new FlxTimer().start(FlxG.random.float(1, 3), function(tmr:FlxTimer)
+                if(preLeft != null)
+                    if(preLeft.active)
+                        preLeft.cancel();
+
+                preLeft = new FlxTimer().start(FlxG.random.float(1, 3), function(tmr:FlxTimer)
                 {  
                     loop();
+                });
+            });
+        });
+    }
+    
+    var dead:Bool = false;
+
+    function triggerDeath()
+    {
+        dead = true;
+        if(kissTimer != null)
+            if(kissTimer.active)
+                kissTimer.cancel();
+
+        if(preWarning != null)
+            if(preWarning.active)
+                preWarning.cancel();
+
+        if(preLeft != null)
+            if(preLeft.active)
+                preLeft.cancel();
+
+        if(preLook != null)
+            if(preLook.active)
+                preLook.cancel();
+
+        breeAngry.alpha = 1;
+        breeLeft.alpha = 0;
+        breeRight.alpha = 0;
+
+        bxbNeutral.alpha = 0;
+        bxbKissing.alpha = 0;
+        bxbOops.alpha = 1;
+
+        new FlxTimer().start(0.7, function(tmr:FlxTimer)
+        {
+            bxbOops.alpha = 0;
+            bxbDie.alpha = 1;
+
+            FlxG.sound.play(Paths.sound('thunder'));
+
+            new FlxTimer().start(1.4, function(tmr:FlxTimer)
+            {
+                bxbDie.alpha = 0;
+                bxbDust.alpha = 1;
+
+                new FlxTimer().start(2, function(tmr:FlxTimer)
+                {
+                    Main.switchState(new states.DebugState());
                 });
             });
         });
