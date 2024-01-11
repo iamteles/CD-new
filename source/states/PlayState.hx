@@ -1253,7 +1253,9 @@ class PlayState extends MusicBeatState
 	{
 		var thisStrum = strumline.strumGroup.members[note.noteData];
 		var thisChar = strumline.character;
-
+		var singLogged:Bool = false;
+		if(thisChar.animation.curAnim != null)
+			singLogged = singList.contains(thisChar.animation.curAnim.name);
 		// anything else
 		note.gotHeld = true;
 		note.gotHit = true;
@@ -1283,7 +1285,7 @@ class PlayState extends MusicBeatState
 
 		if(thisChar != null && !note.isHold)
 		{
-			if(note.noteType != "no animation" && !singList.contains(thisChar.animation.curAnim.name))
+			if(note.noteType != "no animation" && !singLogged)
 			{
 				switch (note.noteType) {
 					case 'beam':
@@ -1353,6 +1355,9 @@ class PlayState extends MusicBeatState
 	{
 		var thisStrum = strumline.strumGroup.members[note.noteData];
 		var thisChar = strumline.character;
+		var singLogged:Bool = false;
+		if(thisChar.animation.curAnim != null)
+			singLogged = singList.contains(thisChar.animation.curAnim.name);
 
 		note.gotHit = false;
 		note.missed = true;
@@ -1377,7 +1382,7 @@ class PlayState extends MusicBeatState
 			else
 				FlxG.sound.play(Paths.sound('punch/punch_' + FlxG.random.int(1, 4)), 0.55);
 
-			if(thisChar != null && note.noteType != "no animation" && !singList.contains(thisChar.animation.curAnim.name))
+			if(thisChar != null && note.noteType != "no animation" && !singLogged)
 			{
 				if(strumline.isTaiko) {
 					boyfriend.playAnim("hit", true);
@@ -1418,6 +1423,9 @@ class PlayState extends MusicBeatState
 		
 		var thisStrum = strumline.strumGroup.members[note.noteData];
 		var thisChar = strumline.character;
+		var singLogged:Bool = false;
+		if(thisChar.animation.curAnim != null)
+			singLogged = singList.contains(thisChar.animation.curAnim.name);
 		
 		vocals.volume = 1;
 		thisStrum.playAnim("confirm");
@@ -1428,7 +1436,7 @@ class PlayState extends MusicBeatState
 
 		if(note.gotHit) return;
 
-		if(note.noteType != "no animation"  && !singList.contains(thisChar.animation.curAnim.name))
+		if(note.noteType != "no animation"  && !singLogged)
 		{
 			switch (note.noteType) {
 				case 'beam':
@@ -2103,43 +2111,48 @@ class PlayState extends MusicBeatState
 				extraCamZoom = 0;
 
 				if(third != null && bellasings && daSong != "customer-service") {
-					switch (third.animation.curAnim.name)
-					{
-						case 'singLEFT':
-							camDisplaceX = - cameraMoveItensity;
-							camDisplaceY = 0;
-						case 'singRIGHT':
-							camDisplaceX = cameraMoveItensity;
-							 camDisplaceY = 0;
-						case 'singUP':
-							camDisplaceX = 0;
-							camDisplaceY = -cameraMoveItensity;
-						case 'singDOWN':
-							camDisplaceX = 0;
-							camDisplaceY = cameraMoveItensity;
-						default:
-							camDisplaceX = 0;
-							camDisplaceY = 0;
+					if(third.animation.curAnim != null) {
+						switch (third.animation.curAnim.name)
+						{
+							case 'singLEFT':
+								camDisplaceX = - cameraMoveItensity;
+								camDisplaceY = 0;
+							case 'singRIGHT':
+								camDisplaceX = cameraMoveItensity;
+								 camDisplaceY = 0;
+							case 'singUP':
+								camDisplaceX = 0;
+								camDisplaceY = -cameraMoveItensity;
+							case 'singDOWN':
+								camDisplaceX = 0;
+								camDisplaceY = cameraMoveItensity;
+							default:
+								camDisplaceX = 0;
+								camDisplaceY = 0;
+						}
 					}
+
 				}
 				else {
-					switch (bfStrumline.character.animation.curAnim.name)
-					{
-						case 'singLEFT':
-							camDisplaceX = - cameraMoveItensity;
-							camDisplaceY = 0;
-						case 'singRIGHT':
-							camDisplaceX = cameraMoveItensity;
-							camDisplaceY = 0;
-						case 'singUP':
-							camDisplaceX = 0;
-							camDisplaceY = -cameraMoveItensity;
-						case 'singDOWN':
-							camDisplaceX = 0;
-							camDisplaceY = cameraMoveItensity;
-						default:
-							camDisplaceX = 0;
-							camDisplaceY = 0;
+					if(bfStrumline.character.animation.curAnim != null) {
+						switch (bfStrumline.character.animation.curAnim.name)
+						{
+							case 'singLEFT':
+								camDisplaceX = - cameraMoveItensity;
+								camDisplaceY = 0;
+							case 'singRIGHT':
+								camDisplaceX = cameraMoveItensity;
+								camDisplaceY = 0;
+							case 'singUP':
+								camDisplaceX = 0;
+								camDisplaceY = -cameraMoveItensity;
+							case 'singDOWN':
+								camDisplaceX = 0;
+								camDisplaceY = cameraMoveItensity;
+							default:
+								camDisplaceX = 0;
+								camDisplaceY = 0;
+						}
 					}
 				}
 			}
@@ -2157,43 +2170,47 @@ class PlayState extends MusicBeatState
 					extraCamZoom = 0;
 
 				if(third != null && bellasings && daSong == "customer-service") {
-					switch (third.animation.curAnim.name)
-					{
-						case 'singLEFT':
-							camDisplaceX = - cameraMoveItensity;
-							camDisplaceY = 0;
-						case 'singRIGHT':
-							camDisplaceX = cameraMoveItensity;
-							 camDisplaceY = 0;
-						case 'singUP':
-							camDisplaceX = 0;
-							camDisplaceY = -cameraMoveItensity;
-						case 'singDOWN':
-							camDisplaceX = 0;
-							camDisplaceY = cameraMoveItensity;
-						default:
-							camDisplaceX = 0;
-							camDisplaceY = 0;
+					if(third.animation.curAnim != null) {
+						switch (third.animation.curAnim.name)
+						{
+							case 'singLEFT':
+								camDisplaceX = - cameraMoveItensity;
+								camDisplaceY = 0;
+							case 'singRIGHT':
+								camDisplaceX = cameraMoveItensity;
+								camDisplaceY = 0;
+							case 'singUP':
+								camDisplaceX = 0;
+								camDisplaceY = -cameraMoveItensity;
+							case 'singDOWN':
+								camDisplaceX = 0;
+								camDisplaceY = cameraMoveItensity;
+							default:
+								camDisplaceX = 0;
+								camDisplaceY = 0;
+						}
 					}
 				}
 				else {
-					switch (dadStrumline.character.animation.curAnim.name)
-					{
-						case 'singLEFT':
-							camDisplaceX = - cameraMoveItensity;
-							camDisplaceY = 0;
-						case 'singRIGHT':
-							camDisplaceX = cameraMoveItensity;
-							camDisplaceY = 0;
-						case 'singUP':
-							camDisplaceX = 0;
-							camDisplaceY = -cameraMoveItensity;
-						case 'singDOWN':
-							camDisplaceX = 0;
-							camDisplaceY = cameraMoveItensity;
-						default:
-							camDisplaceX = 0;
-							camDisplaceY = 0;
+					if(dadStrumline.character.animation.curAnim != null) {
+						switch (dadStrumline.character.animation.curAnim.name)
+						{
+							case 'singLEFT':
+								camDisplaceX = - cameraMoveItensity;
+								camDisplaceY = 0;
+							case 'singRIGHT':
+								camDisplaceX = cameraMoveItensity;
+								camDisplaceY = 0;
+							case 'singUP':
+								camDisplaceX = 0;
+								camDisplaceY = -cameraMoveItensity;
+							case 'singDOWN':
+								camDisplaceX = 0;
+								camDisplaceY = cameraMoveItensity;
+							default:
+								camDisplaceX = 0;
+								camDisplaceY = 0;
+						}
 					}
 				}
 			}
@@ -2262,10 +2279,12 @@ class PlayState extends MusicBeatState
 				if(char.isPlayer && playerSinging)
 					canIdle = false;
 
-				if(banList.contains(char.animation.curAnim.name))
-					canIdle = false;
-				else if(daSong == "customer-service" && (curStep > 607 && curStep < 647))
-					canIdle = false;
+				if(char.animation.curAnim != null) {
+					if(banList.contains(char.animation.curAnim.name))
+						canIdle = false;
+					else if(daSong == "customer-service" && (curStep > 607 && curStep < 647))
+						canIdle = false;
+				}
 
 				if(canIdle)
 					char.dance();
