@@ -85,7 +85,7 @@ class PlayState extends MusicBeatState
 	public static var botplay:Bool = false;
 	public static var validScore:Bool = true;
 
-	var forceBotplay:Bool = FlxActionSet;
+	var forceBotplay:Bool = false;
 
 	// hud
 	public var hudBuild:HudClass;
