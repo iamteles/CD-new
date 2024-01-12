@@ -163,8 +163,11 @@ class HudClass extends FlxGroup
 	
 	public function updateTimeTxt()
 	{
+		var displayedTime:Float = Conductor.songPos;
+		if(Conductor.songPos > PlayState.songLength)
+			displayedTime = Conductor.songPos;
 		timeTxt.text
-		= CoolUtil.posToTimer(Conductor.songPos)
+		= CoolUtil.posToTimer(displayedTime)
 		+ ' / '
 		+ CoolUtil.posToTimer(PlayState.songLength);
 		timeTxt.screenCenter(X);

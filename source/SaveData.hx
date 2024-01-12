@@ -547,7 +547,7 @@ class SaveData
 		if (progression.get("vip"))  count += 6;
 		if (progression.get("intimidated"))  count += 9;
 
-		if (progression.get("debug"))  count += 2;
+		if (progression.get("debug"))  count += 2; 
 
 		return count;
 	}

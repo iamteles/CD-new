@@ -2,12 +2,13 @@
 <TextureAtlas imagePath="texts.png">
 	<!-- Created with Adobe Animate version 20.0.0.17400 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="bio Graphic0000" x="1266" y="690" width="374" height="256"/>
-	<SubTexture name="credits graphic0000" x="34" y="378" width="582" height="339"/>
-	<SubTexture name="freeplay graphic0000" x="1060" y="34" width="642" height="307"/>
-	<SubTexture name="gallery graphic 0000" x="653" y="704" width="552" height="293"/>
-	<SubTexture name="options graphic0000" x="634" y="378" width="614" height="308"/>
-	<SubTexture name="shop graphic0000" x="1266" y="359" width="468" height="313"/>
-	<SubTexture name="music graphic0000" x="34" y="735" width="601" height="273"/>
+	<SubTexture name="bio Graphic0000" x="1660" y="34" width="374" height="256"/>
+	<SubTexture name="credits graphic0000" x="1060" y="34" width="582" height="339"/>
+	<SubTexture name="freeplay graphic0000" x="34" y="378" width="642" height="307"/>
+	<SubTexture name="gallery graphic0000" x="1205" y="391" width="552" height="293"/>
+	<SubTexture name="kiss graphic0000" x="694" y="391" width="493" height="362"/>
+	<SubTexture name="options graphic0000" x="34" y="703" width="614" height="308"/>
+	<SubTexture name="shop graphic0000" x="1285" y="702" width="468" height="313"/>
+	<SubTexture name="music graphic0000" x="666" y="771" width="601" height="273"/>
 	<SubTexture name="story mode graphic0000" x="34" y="34" width="1008" height="326"/>
 </TextureAtlas>

@@ -17,7 +17,7 @@ import gameObjects.android.FlxVirtualPad;
 
 class MainMenu extends MusicBeatState
 {
-	var list:Array<String> = ["story mode", "freeplay", "shop", "music", "gallery", "bio", "credits", "options"];
+	var list:Array<String> = ["story mode", "freeplay", "shop", "music", "gallery", "bio", "kiss", "credits", "options"];
     var hints:Array<String> = [
         "Play the main storyline!", 
         "Replay story songs or play some bonus ones!", 
@@ -25,6 +25,7 @@ class MainMenu extends MusicBeatState
         "Listen to our OST!", 
         "Lots of bonus art!", 
         "Learn more about the protagonists of the mod!",
+        "Special Subgame!",
         "The awesome people who made the mod!", 
         "Tinker the mod to your liking!"
     ];
@@ -95,6 +96,9 @@ class MainMenu extends MusicBeatState
             text.screenCenter(X);
             text.y = 47;
 
+            if(name == "kiss")
+                text.offset.set(0,50);
+
             if(i == curSelected) {
                 text.alpha = 1;
                 button.alpha = 1;
@@ -149,7 +153,7 @@ class MainMenu extends MusicBeatState
         changeSelection();
 
         if(SaveData.cupidCheck() && !SaveData.progression.get("finished")) {
-            unlocks.push("Song: Cupid (FREEPLAY)");
+            unlocks.push("Song: Cupid (FREEPLAY)\nA special Subgame!");
             SaveData.progression.set("finished", true);
             SaveData.save();
         }
@@ -277,6 +281,8 @@ class MainMenu extends MusicBeatState
                                     Main.switchState(new states.cd.Gallery());
                                 case "bio":
                                     Main.switchState(new states.cd.Bios());
+                                case "kiss":
+                                    Main.switchState(new states.cd.Kissing());
                                 case "shop":
                                     Main.switchState(new states.ShopState.LoadShopState());
                                 case "music":
@@ -392,8 +398,15 @@ class MainMenu extends MusicBeatState
             info.text = "Complete Week 2 first!";
         else if(returnMenu(curSelected))
             info.text = hints[curSelected];
-        else
-            info.text = "Unlock this by buying something from Watts' Store!";
+        else {
+            switch(list[curSelected]) {
+                case "kiss":
+                    info.text = "Unlock this by beating every song!";
+                default:
+                    info.text = "Unlock this by buying something from Watts' Store!";
+            }
+        }
+
         info.screenCenter(X);
     }
 
@@ -413,6 +426,9 @@ class MainMenu extends MusicBeatState
                 return false;
             else
                 return SaveData.progression.get("week2");
+        }
+        else if(list[num] == "kiss") {
+            return SaveData.cupidCheck();
         }
         else
             return true;

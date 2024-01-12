@@ -125,8 +125,29 @@ class Kissing extends MusicBeatState
     override public function update(elapsed:Float)
     {
         super.update(elapsed);
+
+        var back:Bool = Controls.justPressed("BACK");
+
+        #if mobile
+			back = FlxG.android.justReleased.BACK;
+		#end
+
+        if(back)
+        {
+            FlxG.sound.play(Paths.sound('menu/back'));
+            Main.switchState(new states.cd.MainMenu());
+        }
+
         
         var click:Bool = FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed;
+
+        #if mobile
+        for (touch in FlxG.touches.list)
+        {
+            if (touch.justPressed)
+                click = true;
+        }
+        #end
 
 		if (click && !dead)
 		{
@@ -259,7 +280,7 @@ class Kissing extends MusicBeatState
 
                 new FlxTimer().start(2, function(tmr:FlxTimer)
                 {
-                    Main.switchState(new states.DebugState());
+                    Main.switchState(new Kissing());
                 });
             });
         });

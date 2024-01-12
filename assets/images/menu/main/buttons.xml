@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="CD_Menus.png">
+<TextureAtlas imagePath="buttons.png">
 	<!-- Created with Adobe Animate version 20.0.0.17400 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="bio0000" x="34" y="34" width="275" height="280"/>
-	<SubTexture name="empty0000" x="34" y="332" width="275" height="280"/>
 	<SubTexture name="credits0000" x="327" y="34" width="275" height="280"/>
+	<SubTexture name="box0000" x="34" y="332" width="275" height="280"/>
 	<SubTexture name="freeplay0000" x="327" y="332" width="275" height="280"/>
 	<SubTexture name="gallery0000" x="620" y="34" width="275" height="280"/>
-	<SubTexture name="box0000" x="1206" y="332" width="275" height="280"/>
-	<SubTexture name="music0000" x="620" y="332" width="275" height="280"/>
-	<SubTexture name="options0000" x="913" y="34" width="275" height="280"/>
+	<SubTexture name="kiss0000" x="620" y="332" width="275" height="280"/>
+	<SubTexture name="music0000" x="913" y="34" width="275" height="280"/>
+	<SubTexture name="options0000" x="913" y="332" width="275" height="280"/>
 	<SubTexture name="shop0000" x="1206" y="34" width="275" height="280"/>
-	<SubTexture name="story mode0000" x="913" y="332" width="275" height="280"/>
+	<SubTexture name="story mode0000" x="1206" y="332" width="275" height="280"/>
 </TextureAtlas>
