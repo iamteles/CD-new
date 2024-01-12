@@ -1,5 +1,6 @@
 package states;
 
+import flixel.input.actions.FlxActionSet;
 import data.Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxBasic;
@@ -83,6 +84,8 @@ class PlayState extends MusicBeatState
 
 	public static var botplay:Bool = false;
 	public static var validScore:Bool = true;
+
+	var forceBotplay:Bool = FlxActionSet;
 
 	// hud
 	public var hudBuild:HudClass;
@@ -1682,8 +1685,10 @@ class PlayState extends MusicBeatState
 		// strumline handler!!
 		for(strumline in strumlines.members)
 		{
-			if(strumline.isPlayer)
-				strumline.botplay = botplay;
+			if(strumline.isPlayer) {
+				strumline.botplay = (forceBotplay || botplay);
+			}
+
 
 			for(strum in strumline.strumGroup)
 			{

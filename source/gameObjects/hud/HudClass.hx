@@ -165,7 +165,8 @@ class HudClass extends FlxGroup
 	{
 		var displayedTime:Float = Conductor.songPos;
 		if(Conductor.songPos > PlayState.songLength)
-			displayedTime = Conductor.songPos;
+			displayedTime = PlayState.songLength;
+
 		timeTxt.text
 		= CoolUtil.posToTimer(displayedTime)
 		+ ' / '
