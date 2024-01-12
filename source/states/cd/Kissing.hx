@@ -12,6 +12,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
+import data.Discord.DiscordClient;
 
 using StringTools;
 
@@ -42,6 +43,8 @@ class Kissing extends MusicBeatState
 
         CoolUtil.playMusic("kiss");
         Main.setMouse(false);
+
+        DiscordClient.changePresence("Playing: SUBGAME", null);
 
         var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.fromRGB(80,80,80));
 		bg.screenCenter();

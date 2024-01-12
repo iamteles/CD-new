@@ -3,6 +3,7 @@ package states;
 import hxcodec.flixel.FlxVideo;
 import flixel.system.FlxSound;
 import data.GameData.MusicBeatState;
+import data.Discord.DiscordClient;
 
 class VideoState extends MusicBeatState
 {
@@ -15,6 +16,8 @@ class VideoState extends MusicBeatState
         CoolUtil.playMusic();
 
         Main.setMouse(false);
+
+        DiscordClient.changePresence("Watching cutscene...", null);
 
         #if mobile
         onComplete();

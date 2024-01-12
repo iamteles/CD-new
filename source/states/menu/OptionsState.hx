@@ -15,6 +15,7 @@ import gameObjects.menu.options.*;
 import SaveData.SettingType;
 import gameObjects.android.FlxVirtualPad;
 import flixel.addons.display.FlxBackdrop;
+import data.Discord.DiscordClient;
 
 class OptionsState extends MusicBeatState
 {
@@ -101,6 +102,8 @@ class OptionsState extends MusicBeatState
 		add(color);
 
 		Main.setMouse(true);
+
+		DiscordClient.changePresence("In the Options Menu...", null);
 
 		var tiles = new FlxBackdrop(Paths.image('menu/freeplay/tile'), XY, 0, 0);
         tiles.velocity.set(30, 30);

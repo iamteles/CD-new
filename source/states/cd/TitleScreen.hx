@@ -29,6 +29,8 @@ class TitleScreen extends MusicBeatState
 
         Main.setMouse(false);
 
+        DiscordClient.changePresence("In the Menus...", null);
+
         CoolUtil.flash(FlxG.camera, 0.5);
 
         bg = new FlxSprite().loadGraphic(Paths.image('menu/title/gradients/' + Main.possibleTitles[Main.randomized][0]));

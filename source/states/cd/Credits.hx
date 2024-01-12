@@ -49,7 +49,7 @@ class Credits extends MusicBeatState
     {
         super.create();
 
-        DiscordClient.changePresence("In the Credits Menu", null);
+        DiscordClient.changePresence("In the Credits Menu...", null);
         CoolUtil.playMusic("credits");
 
         Main.setMouse(false);

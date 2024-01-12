@@ -10,6 +10,7 @@ import data.GameData.MusicBeatState;
 import data.SongData;
 import flixel.tweens.FlxTween;
 import gameObjects.android.FlxVirtualPad;
+import data.Discord.DiscordClient;
 
 class StoryMode extends MusicBeatState
 {
@@ -29,6 +30,8 @@ class StoryMode extends MusicBeatState
         CoolUtil.playMusic("LoveLetter");
 
         Main.setMouse(true);
+
+        DiscordClient.changePresence("In the Story Mode...", null);
 
         weekData = [
             [["euphoria", "nefarious", "divergence"], "week1"],

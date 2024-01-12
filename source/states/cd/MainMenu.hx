@@ -52,7 +52,7 @@ class MainMenu extends MusicBeatState
 	{
         super.create();
 
-        DiscordClient.changePresence("In the Menus", null);
+        DiscordClient.changePresence("In the Menus...", null);
         CoolUtil.playMusic("MENU");
 
         Main.setMouse(false);

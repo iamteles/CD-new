@@ -14,6 +14,7 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxMath;
 import data.GameData.MusicBeatState;
 import gameObjects.android.FlxVirtualPad;
+import data.Discord.DiscordClient;
 
 class Gallery extends MusicBeatState
 {
@@ -50,6 +51,8 @@ class Gallery extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 
 		Main.setMouse(false);
+
+		DiscordClient.changePresence("In the Gallery...", null);
 
         bg = new FlxSprite().loadGraphic(Paths.image('menu/gallery/bg'));
 		bg.updateHitbox();

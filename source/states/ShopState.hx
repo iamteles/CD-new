@@ -58,6 +58,8 @@ class ShopState extends MusicBeatState
 
         Main.setMouse(true);
 
+        DiscordClient.changePresence("In Watts' Shop", null);
+
         camGame = new FlxCamera();
         camHUD = new FlxCamera();
 		camHUD.bgColor.alphaFloat = 0;
@@ -219,6 +221,11 @@ class LoadShopState extends MusicBeatState
 	override function create()
 	{
 		super.create();
+
+        Main.setMouse(false);
+
+		DiscordClient.changePresence("Loading...", null);
+        
         #if !html5
 		mutex = new Mutex();
         #end

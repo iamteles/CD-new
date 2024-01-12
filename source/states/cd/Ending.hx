@@ -12,6 +12,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
+import data.Discord.DiscordClient;
 
 using StringTools;
 
@@ -44,6 +45,9 @@ class Ending extends MusicBeatState
         CoolUtil.playMusic("godsend");
 
         Main.setMouse(false);
+
+        DiscordClient.changePresence("Reading dialogue...", null);
+
 
         panelGroup = new FlxTypedGroup<FlxSprite>();
 		add(panelGroup);

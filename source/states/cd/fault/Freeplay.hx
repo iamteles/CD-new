@@ -49,7 +49,7 @@ class Freeplay extends MusicBeatState
     {
         super.create();
 
-        DiscordClient.changePresence("In the Freeplay Menu", null);
+        DiscordClient.changePresence("your fault.", null);
         CoolUtil.playMusic("fault");
 
         Main.setMouse(false);

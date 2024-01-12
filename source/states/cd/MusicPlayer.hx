@@ -9,6 +9,7 @@ import flixel.system.FlxSound;
 import data.Conductor;
 import flixel.ui.FlxBar;
 import gameObjects.android.FlxVirtualPad;
+import data.Discord.DiscordClient;
 
 class MusicPlayer extends MusicBeatState
 {
@@ -93,6 +94,8 @@ class MusicPlayer extends MusicBeatState
         CoolUtil.playMusic();
 
         Main.setMouse(true);
+
+        DiscordClient.changePresence("In the Music Player...", null);
 
         var color = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFFFFFF);
 		color.screenCenter();

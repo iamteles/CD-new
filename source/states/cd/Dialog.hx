@@ -11,6 +11,7 @@ import gameObjects.DialogChar;
 import flixel.addons.text.FlxTypeText;
 import flixel.input.keyboard.FlxKey;
 import flixel.system.FlxSound;
+import data.Discord.DiscordClient;
 
 // same dialog code as mlc btw
 typedef Dialogue =
@@ -70,6 +71,8 @@ class Dialog extends MusicBeatState
             CoolUtil.playMusic("dialogue/" + log.song);
 
         Main.setMouse(false);
+
+        DiscordClient.changePresence("Reading dialogue...", null);
 
         bg = new FlxSprite().loadGraphic(Paths.image('dialog/bgs/' + log.background));
 		bg.updateHitbox();

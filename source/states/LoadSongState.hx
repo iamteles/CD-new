@@ -12,6 +12,7 @@ import gameObjects.*;
 import gameObjects.hud.*;
 import gameObjects.hud.note.*;
 import flixel.addons.display.FlxBackdrop;
+import data.Discord.DiscordClient;
 
 #if !html5
 import sys.thread.Mutex;
@@ -53,6 +54,8 @@ class LoadSongState extends MusicBeatState
 		#end
 
 		Main.setMouse(false);
+
+		DiscordClient.changePresence("Loading...", null);
 
 		behind = new FlxGroup();
 		add(behind);
@@ -287,6 +290,10 @@ class LoadMusicPlayer extends MusicBeatState
 	override function create()
 	{
 		super.create();
+
+		Main.setMouse(false);
+
+		DiscordClient.changePresence("Loading...", null);
 
 		#if !html5
 		mutex = new Mutex();
