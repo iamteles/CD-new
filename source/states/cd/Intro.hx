@@ -263,7 +263,7 @@ class IntroLoading extends MusicBeatState
 
 
 			loadPercent = 1.0;
-			trace('finished loading');
+			//trace('finished loading');
 
 			FlxSprite.defaultAntialiasing = oldAnti;
 			#if !html5

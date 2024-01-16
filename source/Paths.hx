@@ -223,6 +223,11 @@ class Paths
 
 			preSounds.push('sounds/countdown/$soundPath/intro$soundName');
 
+
+			var caution:String = ["1", "1", "1", "2"][i];
+			if(song == "nefarious-vip")
+				preSounds.push('sounds/countdown/caution/$caution');
+
 			if(i >= 1)
 			{
 				var countName:String = ["ready", "set", "go"][i - 1];

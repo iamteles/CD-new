@@ -85,7 +85,7 @@ class DiscordClient
 		}
 
 		DiscordRpc.presence({
-			details: "What are you lookin at?",
+			details: details,
 			state: state,
 			largeImageKey: 'icon',
 			largeImageText: "CDv2",

@@ -85,7 +85,7 @@ class PlayState extends MusicBeatState
 	public static var botplay:Bool = false;
 	public static var validScore:Bool = true;
 
-	var forceBotplay:Bool = false;
+	var forceBotplay:Bool = true;
 
 	// hud
 	public var hudBuild:HudClass;
@@ -496,7 +496,7 @@ class PlayState extends MusicBeatState
 			noteColors = [boyfriend.noteColor, dad.noteColor];
 
 		var positions:Array<Float> = [strumPos[0] - strumPos[1], strumPos[0] + strumPos[1]];
-		if(daSong == "divergence" || daSong == "cupid")
+		if(daSong == "divergence" || daSong == "euphoria-vip" || daSong == "cupid")
 			positions = [strumPos[0] + strumPos[1], strumPos[0] - strumPos[1]];
 		
 		dadStrumline = new Strumline(positions[0], (isSwapped ? boyfriend : dad), downscroll, invertedCharacters, !invertedCharacters, assetModifier);
@@ -514,7 +514,7 @@ class PlayState extends MusicBeatState
 		var you:FlxSprite = new FlxSprite().loadGraphic(Paths.image("hud/base/you" + isit));
 		you.scale.set(0.35, 0.35);
 		you.updateHitbox();
-		if((isSwapped || invertedCharacters) && (daSong != "divergence" && daSong != "cupid"))
+		if((isSwapped || invertedCharacters) && (daSong != "divergence" && daSong != "euphoria-vip" && daSong != "cupid"))
 			you.x = dadStrumline.x - (you.width/2);
 		else
 			you.x = bfStrumline.x - (you.width/2);
@@ -527,7 +527,7 @@ class PlayState extends MusicBeatState
 		you.cameras = [camStrum];
 		add(you);
 
-		if(daSong == "nefarious" || daSong == "kaboom" || daSong == "cupid") {
+		if(daSong == "nefarious-vip" || daSong == "nefarious" || daSong == "kaboom" || daSong == "cupid") {
 			FlxTween.tween(you, {alpha: 1}, 0.6, {
 				ease: FlxEase.cubeOut,
 				startDelay: 0.8,
@@ -541,7 +541,7 @@ class PlayState extends MusicBeatState
 			});
 		}
 
-		if(daSong == "divergence") {
+		if(daSong == "euphoria-vip" || daSong == "divergence") {
 			FlxTween.tween(you, {alpha: 1}, 0.6, {
 				ease: FlxEase.cubeOut,
 				startDelay: 0.5,
@@ -596,7 +596,7 @@ class PlayState extends MusicBeatState
 			camStrum.setFilters([new openfl.filters.ShaderFilter(cast guitar.shader)]);
 			*/
 		}
-		else if(daSong == 'divergence' || daSong == 'cupid') {
+		else if(daSong == 'divergence' || daSong == 'euphoria-vip' || daSong == 'cupid') {
 
 			for (thing in dadStrumline.strumGroup) {
 				thing.alpha = 0.5;
@@ -1010,6 +1010,11 @@ class PlayState extends MusicBeatState
 				if(!SaveData.data.get("Low Quality")) {
 					FlxG.camera.fade(0xFF000000, 0.01, false);
 				}
+			
+			case 'euphoria-vip':
+				if(!SaveData.data.get("Low Quality")) {
+					FlxG.camera.fade(0xFF000000, 0.01, false);
+				}
 
 		}
 
@@ -1126,6 +1131,7 @@ class PlayState extends MusicBeatState
 				if(daCount != 4)
 				{
 					var soundName:String = ["intro3", "intro2", "intro1", "introGo"][daCount];
+					var caution:String = ["1", "1", "1", "2"][daCount];
 					
 					var soundPath:String = assetModifier;
 					
@@ -1136,6 +1142,9 @@ class PlayState extends MusicBeatState
 						soundPath = 'base';
 					
 					FlxG.sound.play(Paths.sound('countdown/$soundPath/$soundName'));
+
+					if(daSong == "nefarious-vip")
+						FlxG.sound.play(Paths.sound('countdown/caution/$caution'));
 				}
 	
 				////trace(daCount);
@@ -2366,8 +2375,12 @@ class PlayState extends MusicBeatState
 							defaultCamZoom = 0.6;
 							beatSpeed = 4;
 							FlxG.camera.fade(0xFF000000, 1.5, false);
+
+							var hidden = dadStrumline;
+							if(invertedCharacters)
+								hidden = bfStrumline;
 	
-							dadStrumline.doSplash = false;
+							hidden.doSplash = false;
 	
 							for (strum in strumlines) {
 								strum.updatePls = true;
@@ -2377,14 +2390,14 @@ class PlayState extends MusicBeatState
 								}});
 							}
 	
-							for (thing in dadStrumline.strumGroup) {
+							for (thing in hidden.strumGroup) {
 								FlxTween.tween(thing, {alpha: 0}, 1, {ease: FlxEase.circOut});
 							}
 	
-							for (thing in dadStrumline.allNotes) {
+							for (thing in hidden.allNotes) {
 								FlxTween.tween(thing, {alpha: 0.14}, 1, {ease: FlxEase.circOut});
 							}
-							dadStrumline.noteAlpha = 0.25;
+							hidden.noteAlpha = 0.25;
 						case 1088:
 							FlxG.camera.fade(0xFF000000, 0.01, true);
 							CoolUtil.flash(camStrum, 0.5);
@@ -2410,7 +2423,52 @@ class PlayState extends MusicBeatState
 							FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.expoOut});
 							FlxTween.tween(camStrum, {alpha: 0}, 3, {ease: FlxEase.expoOut});
 	
-					}	
+					}
+				case "euphoria-vip":
+					switch(curStep) {
+						case 16:
+							FlxG.camera.fade(0xFF000000, 0.01, true);
+							CoolUtil.flash(camStrum, 0.5);
+						case 144:
+							beatSpeed = 2;
+						case 400:
+							CoolUtil.flash(camStrum, 0.5);
+							beatSpeed = 1;
+							beatZoom = 0.08;
+							defaultCamZoom = 0.64;
+						case 528:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.55;
+							beatZoom = 0.10;
+						case 784:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.64;
+							beatZoom = 0.04;
+						case 848:
+							CoolUtil.flash(camStrum, 0.5);
+							beatSpeed = 1;
+							beatZoom = 0.08;
+							defaultCamZoom = 0.55;
+						case 855:
+							CoolUtil.flash(camStrum, 0.5);
+							defaultCamZoom = 0.64;
+							beatZoom = 0.10;
+							conTxt.alpha = 1;
+						case 1104:
+							CoolUtil.flash(camStrum, 0.5);
+							beatZoom = 0.04;
+							conTxt.alpha = 0;
+						case 400:
+							CoolUtil.flash(camStrum, 0.5);
+							beatSpeed = 1;
+							beatZoom = 0.08;
+							defaultCamZoom = 0.55;
+						case 1488:
+							CoolUtil.flash(camStrum, 0.5);
+							beatSpeed = 4;
+							beatZoom = 0;
+							defaultCamZoom = 0.64;
+					}
 				case "divergence-vip":
 					switch(curStep) {
 						case 64:

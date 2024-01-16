@@ -34,7 +34,7 @@ class Credits extends MusicBeatState
         ["CharaWhy", "chara", "@CharaWhyy", "Composer\nSFX", "Ill Bree your freakazoid, come on and wind me up", "https://twitter.com/CharaWhyy"],
         ["DiamondDiglett", "diamond", "@DiamonDiglett42", "Charter", "Do you ever just sit back", "https://twitter.com/DiamonDiglett42"],
         ["YaBoiJustin", "justin", "@YaBoiJustinGG", "Composer", "welcome back king of pop <3", "https://twitter.com/YaBoiJustinGG"],
-        ["Leebert", "leebert", "@Bruh_Leebert", "Composer", "i'm making dubstep cus i'm depressed", "https://twitter.com/Bruh_Leebert"],
+        //["Leebert", "leebert", "@Bruh_Leebert", "Composer", "i'm making dubstep cus i'm depressed", "https://twitter.com/Bruh_Leebert"],
         ["HighPoweredKeyz", "hpk", "@HighPoweredKeyz", "Composer", "Stay kind, stay creative, and stay powerful!", "https://www.youtube.com/@HighPoweredKeyz"],
         ["Jospi", "jospi", "@jospi_music", "Composer", "boo", "https://twitter.com/jospi_music"],
         ["Linguini", "linguini", "@linguini7294", "Animation Helper", "make baby daisy meta again mario kart eight", "https://www.youtube.com/@linguini7294"],

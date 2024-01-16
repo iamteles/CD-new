@@ -331,7 +331,7 @@ class SaveData
 			//trace("not found fitdon");
 		}
 
-		trace(percentage());
+		//trace(percentage());
 
 		save();
 	}

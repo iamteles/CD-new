@@ -165,7 +165,7 @@ class OptionsState extends MusicBeatState
 
 	public function reloadCat(curCat:String = "main")
 	{
-		trace("went to " + curCat);
+		//trace("went to " + curCat);
 		storedSelected.set(OptionsState.curCat, curSelected);
 
 		OptionsState.curCat = curCat;
