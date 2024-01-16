@@ -106,7 +106,7 @@ class DebugState extends MusicBeatState
 			changeSelection(1);
 
 		if(HAX) { // INFINITE MONEY HAX
-			SaveData.transaction(99999);
+			SaveData.transaction(150);
 		}
 
 		if(accept)

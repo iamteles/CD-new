@@ -85,7 +85,7 @@ class PlayState extends MusicBeatState
 	public static var botplay:Bool = false;
 	public static var validScore:Bool = true;
 
-	var forceBotplay:Bool = true;
+	var forceBotplay:Bool = false;
 
 	// hud
 	public var hudBuild:HudClass;
@@ -2458,11 +2458,12 @@ class PlayState extends MusicBeatState
 							CoolUtil.flash(camStrum, 0.5);
 							beatZoom = 0.04;
 							conTxt.alpha = 0;
-						case 400:
+						/*case 400:
 							CoolUtil.flash(camStrum, 0.5);
 							beatSpeed = 1;
 							beatZoom = 0.08;
 							defaultCamZoom = 0.55;
+						*/
 						case 1488:
 							CoolUtil.flash(camStrum, 0.5);
 							beatSpeed = 4;
