@@ -3572,7 +3572,7 @@ class PlayState extends MusicBeatState
 	public function syncSong():Void
 	{
 		if(!startedSong) return;
-
+		
 		if(!inst.playing && Conductor.songPos > 0 && !paused)
 			endSong();
 		
@@ -3581,7 +3581,7 @@ class PlayState extends MusicBeatState
 			// syncs the conductor
 			if(Math.abs(Conductor.songPos - inst.time) >= 40 && Conductor.songPos - inst.time <= 5000)
 			{
-				//trace('synced song ${Conductor.songPos} to ${inst.time}');
+				trace('synced song ${Conductor.songPos} to ${inst.time}');
 				Conductor.songPos = inst.time;
 			}
 			

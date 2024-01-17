@@ -9,7 +9,7 @@ import flixel.tweens.FlxEase;
 import flixel.addons.display.FlxBackdrop;
 import data.GameData.MusicBeatState;
 import flixel.text.FlxText;
-import hxcodec.flixel.FlxVideo;
+import hxvlc.flixel.FlxVideo;
 import flixel.system.FlxSound;
 #if !html5
 import sys.thread.Mutex;
@@ -181,7 +181,8 @@ class Video extends MusicBeatState
 	{
 		video = new FlxVideo();
 		video.onEndReached.add(onComplete);
-		video.play(Paths.video(name));
+		video.load(Paths.video("intro"));
+        video.play();
 
 		CoolUtil.playMusic("intro");
 
@@ -257,8 +258,8 @@ class IntroLoading extends MusicBeatState
 			Paths.preloadSound("intro/haxe");
 
 			var video = new FlxVideo();
-			video.play(Paths.video("video"));
-			video.pause();
+			//video.play(Paths.video("video"));
+			video.load(Paths.video("intro"));
 			video.dispose();
 
 

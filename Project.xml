@@ -45,7 +45,8 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC"/>
-	<haxelib name="hxCodec"/>
+	<!--<haxelib name="hxCodec"/>-->
+	<haxelib name="hxvlc"/>
 	<!--<haxelib name="FlxAnimate"/>-->
 
 	<!--In case you want to use nape with flixel-->

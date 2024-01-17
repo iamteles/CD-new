@@ -1,6 +1,6 @@
 package states;
 
-import hxcodec.flixel.FlxVideo;
+import hxvlc.flixel.FlxVideo;
 import flixel.system.FlxSound;
 import data.GameData.MusicBeatState;
 import data.Discord.DiscordClient;
@@ -24,7 +24,8 @@ class VideoState extends MusicBeatState
         #else
         video = new FlxVideo();
 		video.onEndReached.add(onComplete);
-		video.play(Paths.video(name));
+		video.load(Paths.video(name));
+        video.play();
 
         audio = new FlxSound();
 		audio.loadEmbedded(Paths.sound('video/$name'), false, false);
