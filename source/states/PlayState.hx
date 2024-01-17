@@ -177,7 +177,7 @@ class PlayState extends MusicBeatState
 
 		resetStatics();
 		if(SONG == null)
-			SONG = SongData.loadFromJson("euphoria");
+			SONG = SongData.loadFromJson("test");
 
 		Main.setMouse(false);
 		
